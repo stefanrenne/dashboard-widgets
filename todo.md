@@ -33,4 +33,3 @@ The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
 - [ ] **Tests of their own for widgets with logic.** 112 widgets are only covered by the checks
   that run every widget (README fields, attributes, label length). Widgets that mark problems,
   convert units or combine several calls deserve a focused test.
-- [ ] **Node 24 in CI.** CI runs on Node 22; the dashboard's image runs Node 24.
