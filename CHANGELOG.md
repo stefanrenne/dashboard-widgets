@@ -4,6 +4,14 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.11.2] - 2026-11-02
+
+### Changed
+- `calendar` shows the viewer's month again, as before 0.11.1, and asks the server for that month
+  when the data is for another one (a server clock or time zone that is not the viewer's). 0.11.1
+  showed the server's month instead, which put the docs site's example on a month without events.
+  Its test runs on a fixed date now.
+
 ## [0.11.1] - 2026-11-02
 
 ### Fixed

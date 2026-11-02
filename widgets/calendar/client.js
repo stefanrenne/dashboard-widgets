@@ -68,8 +68,8 @@ class HdCalendar extends HTMLElement {
   show(month, day) {
     const other = month !== this._month;
     this._month = month;
-    this._monthSet = true;
     this._selected = day;
+    if (other) this._asked = month;
     if (other) this.dispatchEvent(new CustomEvent('hd-widget-params', { bubbles: true, composed: true, detail: { month } }));
     this.render();
   }
@@ -114,9 +114,13 @@ class HdCalendar extends HTMLElement {
       return;
     }
     const today = this.dayKey(new Date());
-    // today's month until the data names one (a render before the data must not keep it)
-    if (!this._monthSet) this._month = cal?.month ?? this._month ?? today.slice(0, 7);
-    if (cal) this._monthSet = true;
+    this._month ??= today.slice(0, 7);
+    // data for another month than the one in view (the server's clock or time zone is not the
+    // viewer's): ask for this one, once
+    if (cal?.month && cal.month !== this._month && this._asked !== this._month) {
+      this._asked = this._month;
+      this.dispatchEvent(new CustomEvent('hd-widget-params', { bubbles: true, composed: true, detail: { month: this._month } }));
+    }
     const events = cal?.events ?? [];
     const byDay = new Map();
     for (const e of events) {

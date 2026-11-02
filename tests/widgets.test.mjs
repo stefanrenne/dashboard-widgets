@@ -422,9 +422,15 @@ test('unifi: login on UniFi OS (cookie and CSRF token) or a classic controller, 
 
 
 /** A widget's client.js in jsdom, as the dashboard mounts it. */
-async function renderClient(id, options = {}) {
+/** A widget's client.js in jsdom; `now` fixes the page's clock (an ISO date). */
+async function renderClient(id, options = {}, now = null) {
   const { JSDOM } = await import('jsdom');
   const dom = new JSDOM('<!doctype html><html lang="en"><body></body></html>', { runScripts: 'outside-only', url: 'http://localhost/' });
+  if (now) {
+    const fixed = new Date(now).getTime();
+    const RealDate = dom.window.Date;
+    dom.window.Date = class extends RealDate { constructor(...a) { super(...(a.length ? a : [fixed])); } static now() { return fixed; } };
+  }
   dom.window.eval(fs.readFileSync(path.join(WIDGETS, id, 'client.js'), 'utf8'));
   const el = dom.window.document.createElement(`hd-${id}`);
   Object.assign(el, { options, t: (k) => k });
@@ -1112,7 +1118,9 @@ test('calendar: events of the month in view from the *arrs and an iCal feed, one
 });
 
 test('calendar client: a month with dots, the chosen day\'s events, paging asks for the month; an agenda', async () => {
-  const { el, window } = await renderClient('calendar');
+  const { el, window } = await renderClient('calendar', {}, '2026-10-20T12:00:00Z');
+  const asked = [];
+  el.addEventListener('hd-widget-params', (e) => asked.push({ ...e.detail }));
   window.document.documentElement.lang = 'en';
   el.t = (k) => ({ today: 'Today', noEvents: 'No events', inCinemas: 'In cinemas', notAnswered: 'Did not answer' })[k] ?? k;
   const events = [
@@ -1134,11 +1142,20 @@ test('calendar client: a month with dots, the chosen day\'s events, paging asks 
   assert.equal(items[1].querySelector('a').getAttribute('href'), 'https://sonarr.lan/series/silo');
   assert.ok(items[1].classList.contains('done'));
   assert.equal(root.querySelector('.failed').textContent, 'Did not answer: Books');
-  const asked = [];
-  el.addEventListener('hd-widget-params', (e) => asked.push({ ...e.detail }));
+  assert.deepEqual(asked, [], 'the data is for the month in view');
   root.querySelector('[aria-label="nextMonth"]').click();
   assert.deepEqual(asked, [{ month: '2026-11' }]);
   assert.equal(root.querySelector('.title').textContent.toLowerCase(), 'november 2026');
+
+  // data for another month than the viewer's (the server's clock): it asks for the viewer's, once
+  const other = await renderClient('calendar', {}, '2026-11-01T00:30:00Z');
+  const asks = [];
+  other.el.addEventListener('hd-widget-params', (e) => asks.push({ ...e.detail }));
+  const october = { blocks: [], calendar: { view: 'monthly', month: '2026-10', timezone: 'UTC', events, failed: [] } };
+  other.el.data = october;
+  other.el.data = structuredClone(october);
+  assert.deepEqual(asks, [{ month: '2026-11' }]);
+  assert.equal(other.el.shadowRoot.querySelector('.title').textContent.toLowerCase(), 'november 2026');
 
   const agenda = await renderClient('calendar');
   agenda.el.t = (k) => k;
