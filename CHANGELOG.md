@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.12.2] - 2026-11-02
+
 ### Changed
 - `search` no longer reads the old option name `filter`; use `filterServices`. Before 1.0 old
   names are not kept.
