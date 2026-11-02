@@ -78,7 +78,7 @@ widget names it in backticks** (`radarr`; several in one line when one change co
 release text (`scripts/release-notes.mjs`) lists only the widgets that are new or whose `version`
 went up since the previous tag, each with the lines that name it, and fails when an updated widget
 has none; lines that name no widget come under "Other changes". CI checks the tag against
-package.json and publishes the GitHub release with that text and one zip of the collection.
+package.json and that it is a commit on `main` (a push to `main` alone releases nothing), and publishes the GitHub release with that text and one zip of the collection.
 `npm run release-notes` shows the text before tagging. When a tag cannot be pushed, run the CI workflow by hand on
 `main` (workflow_dispatch): it releases package.json's version (unless released already)
 and creates the tag.

@@ -28,8 +28,9 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
 
-  # A tag vX.Y.Z becomes a GitHub release: the widgets that are new or updated since the previous
-  # tag, each with its CHANGELOG lines (scripts/release-notes.mjs), and one zip of the collection.
+  # A tag vX.Y.Z on a commit on main becomes a GitHub release (a push to main alone releases
+  # nothing): the widgets that are new or updated since the previous tag, each with its
+  # CHANGELOG lines (scripts/release-notes.mjs), and one zip of the collection.
   # Run by hand on main (workflow_dispatch), it releases package.json's version and creates the
   # tag on that commit, for when a tag cannot be pushed; a version released already is skipped.
   release:
@@ -45,7 +46,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "22"
-      - name: The tag, checked against package.json
+      - name: The tag, checked against package.json and main
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -58,6 +59,8 @@ jobs:
             tag="$GITHUB_REF_NAME"
           fi
           if [ "${tag#v}" != "$pkg" ]; then echo "::error::tag $tag but package.json says $pkg"; exit 1; fi
+          # only a commit on main is released
+          if ! git merge-base --is-ancestor HEAD origin/main; then echo "::error::$tag is not a commit on main: only releases from main are published"; exit 1; fi
           echo "TAG=$tag" >> "$GITHUB_ENV"
       - name: Notes and assets
         if: env.SKIP != 'true'
