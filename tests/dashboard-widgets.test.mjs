@@ -231,11 +231,13 @@ test('proxmoxvm: state, CPU and memory of a VM or container, with homepage\'s AP
     assert.deepEqual([vm.status, vm.statusText], ['up', 'running']);
     assert.deepEqual(vm.blocks.map((b) => [b.key, b.value, b.unit]), [['status', 'running', undefined], ['cpu', 4.5, '%'], ['mem', 2.2, 'GB']]);
     assert.equal(auth[0], 'PVEAPIToken=api@pam!dash=s3cret');
+    assert.deepEqual(vm.attributes, { cpu: 4.5, memory: 2150 }, 'raw numbers for a filter: % and MB');
     assert.deepEqual((await run('200', 'lxc')).blocks.map((b) => b.value), ['running', 20, 300]);
     const paused = await run('102');
     assert.deepEqual([paused.status, paused.blocks[0].status], ['warn', 'warn']);
     const stopped = await run('103');
     assert.deepEqual([stopped.status, stopped.statusText, stopped.blocks.length], ['down', 'stopped', 1]);
+    assert.deepEqual(stopped.attributes, { cpu: null, memory: null });
     assert.equal((await run('999')).statusText, 'not found');
     await assert.rejects(run('401'), /Proxmox status answered 401/);
     await assert.rejects(run('1/../2'), /vmid/);

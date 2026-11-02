@@ -22,7 +22,7 @@ export default {
     });
     // Proxmox answers 500 ("does not exist") for an unknown id on a known node
     if (res.status === 404 || res.status === 500) {
-      return { status: 'down', statusText: 'not found', blocks: [{ key: 'status', label: 'status', value: 'not found', status: 'error' }] };
+      return { status: 'down', statusText: 'not found', blocks: [{ key: 'status', label: 'status', value: 'not found', status: 'error' }], attributes: { cpu: null, memory: null } };
     }
     if (!res.ok) throw new Error(`Proxmox status answered ${res.status}`);
     const data = (await res.json())?.data;
@@ -35,6 +35,13 @@ export default {
       blocks.push({ key: 'cpu', label: 'cpu', value: typeof data.cpu === 'number' ? Math.round(data.cpu * 1000) / 10 : null, unit: '%' });
       blocks.push(memoryBlock(data.mem));
     }
-    return { status, statusText: state, blocks };
+    const running = state === 'running' || state === 'paused';
+    return {
+      status, statusText: state, blocks,
+      attributes: {
+        cpu: running && typeof data.cpu === 'number' ? Math.round(data.cpu * 1000) / 10 : null,
+        memory: running && typeof data.mem === 'number' ? Math.round(data.mem / 1e6) : null,
+      },
+    };
   },
 };

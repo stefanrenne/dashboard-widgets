@@ -14,10 +14,14 @@ export function fill(text, data) {
   }).trim();
 }
 
-const counted = (states, domain, on) => {
+/** How many entities of a domain are in a state, of how many: { on, all }. */
+const count = (states, domain, on) => {
   const all = states.filter((s) => s.entity_id?.startsWith(`${domain}.`));
-  return `${all.filter((s) => s.state === on).length} / ${all.length}`;
+  return { on: all.filter((s) => s.state === on).length, all: all.length };
 };
+const counted = ({ on, all }) => `${on} / ${all}`;
+// every attribute in both forms: what the form does not have is null
+const NONE = { peopleHome: null, lightsOn: null, switchesOn: null, custom1: null, custom2: null, custom3: null, custom4: null };
 
 export default {
   async fetch(ctx) {
@@ -33,12 +37,16 @@ export default {
     if (typeof custom === 'string') custom = JSON.parse(custom);
     if (!Array.isArray(custom) || custom.length === 0) {
       const states = await (await call('/api/states')).json();
+      const people = count(states, 'person', 'home');
+      const lights = count(states, 'light', 'on');
+      const switches = count(states, 'switch', 'on');
       return {
         blocks: [
-          { key: 'people_home', label: 'people_home', value: counted(states, 'person', 'home') },
-          { key: 'lights_on', label: 'lights_on', value: counted(states, 'light', 'on') },
-          { key: 'switches_on', label: 'switches_on', value: counted(states, 'switch', 'on') },
+          { key: 'people_home', label: 'people_home', value: counted(people) },
+          { key: 'lights_on', label: 'lights_on', value: counted(lights) },
+          { key: 'switches_on', label: 'switches_on', value: counted(switches) },
         ],
+        attributes: { ...NONE, peopleHome: people.on, lightsOn: lights.on, switchesOn: switches.on },
       };
     }
     const blocks = await Promise.all(custom.slice(0, 4).map(async (q, i) => {
@@ -54,6 +62,7 @@ export default {
       }
       throw new Error(`custom[${i}]: needs state or template`);
     }));
-    return { blocks };
+    // each custom entry's value (its state, or what its template renders) for a filter
+    return { blocks, attributes: { ...NONE, ...Object.fromEntries(blocks.map((b) => [b.key, b.value])) } };
   },
 };

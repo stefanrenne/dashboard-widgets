@@ -6,6 +6,18 @@
 const DAY = 86400_000;
 
 const pad = (n) => String(n).padStart(2, '0');
+/** A day "2026-10-23" in a time zone (UTC when it is not set or not known). */
+export function dayIn(date, zone) {
+  try {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: zone || 'UTC', year: 'numeric', month: '2-digit', day: '2-digit' }).format(date);
+  } catch {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit' }).format(date);
+  }
+}
+/** How many events fall on a day ("2026-10-23") in a time zone; all-day events carry their day in UTC. */
+export function eventsOn(events, day, zone) {
+  return events.filter((e) => (e.allDay ? e.date.slice(0, 10) : dayIn(new Date(e.date), zone)) === day).length;
+}
 const isoDay = (d) => `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`;
 
 /** The days to ask for: the month in view with a week around it, or the agenda's days. */
@@ -215,6 +227,8 @@ export default {
     if (integrations.length > 0 && failed.length === integrations.length) throw new Error(`Calendar: no integration answered (${failed.join(', ')})`);
     return {
       blocks: [],
+      // today in the widget's time zone: the server cannot know the viewer's
+      attributes: { eventsToday: eventsOn(events, dayIn(new Date(), o.timezone), o.timezone), failed: failed.length },
       calendar: {
         view: o.view ?? 'monthly',
         month: isoDay(new Date(r.start.getTime() + 8 * DAY)).slice(0, 7),

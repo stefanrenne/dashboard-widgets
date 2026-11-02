@@ -1,6 +1,6 @@
 id: calendar
 name: Calendar
-version: 0.1.2
+version: 0.2.0
 apiVersion: 1
 description: A month or an agenda with releases from Sonarr, Radarr, Lidarr and Readarr and events from iCal feeds (homepage's calendar widget).
 refresh: 5m
@@ -14,3 +14,6 @@ options:
   timezone: { type: string }                  # e.g. Europe/Amsterdam; default the viewer's
   # [{ type: sonarr|radarr|lidarr|readarr|ical, service_group, service_name | url (+ key), name, color, baseUrl, params }]
   integrations: { type: list, secret: true }
+attributes:                 # public values for a service's filter: (widget.<name>)
+  eventsToday: { type: number }  # events today, in the widget's timezone (UTC without one)
+  failed: { type: number }       # integrations that did not answer

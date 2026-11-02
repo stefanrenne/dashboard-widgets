@@ -23,8 +23,6 @@ The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
   uptimes, time since the last backup (duplicati, backrest, kopia).
 - [ ] **Better attribute descriptions.** Most are the block's label ("Wanted", "Queued"). Say what
   the value is and its unit ("movies wanted and not downloaded").
-- [ ] **Widgets without attributes that could have some**: homeassistant (its custom states),
-  proxmoxvm (CPU and memory), calendar (events today), feed (new items).
 
 ## Tests and CI
 

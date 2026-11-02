@@ -614,6 +614,9 @@ test('homeassistant: people, lights and switches from one states call; custom st
     { key: 'custom3', label: 'Switches', value: '1' },
   ]);
   assert.deepEqual(JSON.parse(lastRequest('homeassistant').body), { template: '{{ states.switch | list | count }}' });
+  // filter attributes: the counts, or each custom entry's value; the other form's are null
+  assert.deepEqual(out.attributes, { peopleHome: null, lightsOn: null, switchesOn: null, custom1: '412 W', custom2: '14.4 km/h', custom3: '1', custom4: null });
+  assert.deepEqual((await run('homeassistant')).attributes, { peopleHome: 2, lightsOn: 2, switchesOn: 1, custom1: null, custom2: null, custom3: null, custom4: null });
   await assert.rejects(run('homeassistant', { custom: [{ state: '../config' }] }), /entity id/);
 });
 
@@ -1114,6 +1117,13 @@ test('calendar: events of the month in view from the *arrs and an iCal feed, one
     ['2026-11-02T16:00', 'Family: Swimming, kids', null, 'Family'],
   ]);
   assert.equal(ev.events.find((e) => e.title === 'Silo').url, 'https://sonarr.lan/series/silo');
+  assert.equal(out.attributes.failed, 1);
+  assert.equal(typeof out.attributes.eventsToday, 'number');
+  const { eventsOn, dayIn } = await import(path.join(WIDGETS, 'calendar', 'server.js'));
+  assert.equal(eventsOn(ev.events, '2026-10-26', 'UTC'), 2, 'an all-day event and a timed one');
+  assert.equal(eventsOn(ev.events, '2026-10-28', 'UTC'), 1);
+  assert.equal(eventsOn(ev.events, '2026-10-27', 'America/New_York'), 1, 'Silo at 02:00 UTC is the evening before in New York');
+  assert.equal(dayIn(new Date('2026-10-28T02:00:00Z'), 'Nowhere/Else'), '2026-10-28', 'an unknown zone counts as UTC');
   await assert.rejects(run('calendar', { integrations: [{ type: 'ical', url: `${mock.url}/nothing/x.ics`, name: 'X' }] }), /no integration answered \(X\)/);
 });
 
@@ -1290,8 +1300,11 @@ test('duplicati, feed, filebrowser, fileflows, firefly, flood, freshrss and frit
   assert.equal(lastRequest('duplicati').headers.authorization, 'Bearer dup-token');
   assert.equal(JSON.parse(mock.requests.find((r) => r.widget === 'duplicati' && r.route.startsWith('POST')).body).Password, 'pw');
 
-  const { parseFeed } = await import(path.join(WIDGETS, 'feed', 'server.js'));
+  const { parseFeed, recentItems } = await import(path.join(WIDGETS, 'feed', 'server.js'));
   const feed = await run('feed', { maxItems: 3 });
+  assert.equal(feed.attributes.items, (await run('feed', { maxItems: 50 })).feed.items.length, 'items counts the whole feed, not maxItems');
+  assert.equal(recentItems(feed.feed.items, Date.parse('2026-03-02T12:00:00Z')), 2, 'the last 24 hours; no date does not count');
+  assert.equal(recentItems(feed.feed.items, Date.parse('2026-03-03T10:00:00Z')), 0);
   assert.deepEqual(feed.feed, { layout: 'list', items: [
     { title: 'Proxmox 9.1 & more', link: 'https://news.example.com/proxmox', date: '2026-03-02T09:00:00.000Z', image: 'https://img.example.com/pve.jpg' },
     { title: 'Unraid 7 released', link: `${mock.url}/unraid`, date: '2026-03-01T18:30:00.000Z', image: 'https://img.example.com/unraid.png' },

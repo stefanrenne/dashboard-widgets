@@ -4,6 +4,14 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Added
+- `proxmoxvm` publishes `cpu` (%) and `memory` (MB) as filter attributes, null while stopped.
+- `homeassistant` publishes `peopleHome`, `lightsOn` and `switchesOn` as numbers, or with `custom`
+  each entry's value as `custom1` to `custom4`.
+- `calendar` publishes `eventsToday` (in its `timezone`, UTC without one) and `failed`, the
+  integrations that did not answer.
+- `feed` publishes `items` and `recent`, the items of the last 24 hours.
+
 ### Changed
 - Each widget's fixture lives in its own folder, `widgets/<id>/fixture.json`, instead of
   `fixtures/<id>.json`, so a widget and its test data move together.

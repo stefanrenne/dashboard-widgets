@@ -65,15 +65,22 @@ export function parseFeed(xml, base) {
   }).filter((i) => i.title || i.link);
 }
 
+/** Items published in the 24 hours before `now` (ms); an item without a date does not count. */
+export function recentItems(items, now = Date.now()) {
+  return items.filter((i) => i.date && Date.parse(i.date) >= now - 86400_000 && Date.parse(i.date) <= now).length;
+}
+
 export default {
   async fetch(ctx) {
     const { url, images } = ctx.options;
     const max = Math.min(50, Math.max(1, Math.floor(Number(ctx.options.maxItems) || 5)));
     const res = await ctx.fetch(url, { headers: { accept: 'application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.5' } });
     if (!res.ok) throw new Error(`Feed answered ${res.status}`);
-    const items = parseFeed(await res.text(), res.url || url).slice(0, max);
+    const all = parseFeed(await res.text(), res.url || url);
+    const items = all.slice(0, max);
     return {
       blocks: [],
+      attributes: { items: all.length, recent: recentItems(all) },
       feed: {
         layout: ctx.options.layout === 'grid' ? 'grid' : 'list',
         items: images === false ? items.map((i) => ({ ...i, image: null })) : items,
