@@ -5,14 +5,6 @@ The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
 
 ## README examples and fixtures
 
-- [ ] **README examples that do not run on their fixture.** The example of arcane, azuredevops,
-  calendar, cloudflared, coinmarketcap, glances, homeassistant, jackett, longhorn, medusa,
-  nextdns, proxmoxvm, tailscale, truenas and uptimerobot uses ids, options or an API version the
-  fixture does not answer (arcane's `env`, tailscale's device id, glances `version: 4` with
-  `cputemp`, jackett's password login, truenas `version: 2`, ...). The dashboard's docs images
-  fall back to the test options for them. Align the examples or the fixtures, then add a test
-  that runs every README example on its fixture (with `scripts/fakes.mjs`), so every example on
-  the docs site is known to work.
 
 ## Filter attributes
 

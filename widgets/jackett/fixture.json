@@ -1,6 +1,7 @@
 {
  "_note": "Jackett configured indexers: four, one with a last error.",
  "routes": {
+  "POST /UI/Dashboard": { "_headers": { "set-cookie": "Jackett=s3ss10n; Path=/; HttpOnly" }, "_body": null },
   "GET /api/v2.0/indexers": [
    { "id": "1337x", "name": "1337x", "configured": true, "last_error": null },
    { "id": "eztv", "name": "EZTV", "configured": true, "last_error": "" },

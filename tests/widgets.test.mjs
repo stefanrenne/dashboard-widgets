@@ -5,7 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
 import { startMock } from '../scripts/mock-homelab.mjs';
-import { startFakes, exampleOptions, nis } from '../scripts/fakes.mjs';
+import { startFakes, exampleOptions, nis, truenasServer } from '../scripts/fakes.mjs';
+import { readmeExample } from '../scripts/readme-example.mjs';
 
 const WIDGETS = path.resolve('widgets');
 const IDS = fs.readdirSync(WIDGETS).filter((d) => fs.existsSync(path.join(WIDGETS, d, 'widget.yaml'))).sort();
@@ -13,7 +14,7 @@ const IDS = fs.readdirSync(WIDGETS).filter((d) => fs.existsSync(path.join(WIDGET
 const LANGS = ['en', 'nl', 'fr', 'de', 'es', 'ca', 'he', 'hr', 'hu', 'it', 'nb-NO', 'pt', 'ru', 'sv', 'vi', 'zh-Hans', 'zh-Hant'];
 
 let mock;
-let fakes; // apcupsd (TCP), a2s (UDP), myjd (encrypted), mc (TCP), urb (login hash), dockerd (absolute paths)
+let fakes; // apcupsd (TCP), a2s (UDP), myjd (encrypted), mc (TCP), urb (login hash), dockerd (absolute paths), truenas (WebSocket)
 let apcupsd, a2s, myjd, mc, urb, dockerd;
 let REQUIRED; // options a widget cannot do without, for the tests that run every widget
 before(async () => {
@@ -77,7 +78,7 @@ const NAMES = { tailscale: ['user', 'hostname', 'name', 'os', 'tags', 'address']
 test('every label, string value and row state has a translation', async () => {
   for (const id of IDS) {
     const i18n = JSON.parse(fs.readFileSync(path.join(WIDGETS, id, 'i18n.json'), 'utf8'));
-    const out = await run(id, { env: 1, pool1: 'trunk', enableQueue: true, queueLimit: 2 });
+    const out = await run(id, { pool1: 'trunk', enableQueue: true, queueLimit: 2 });
     for (const b of out.blocks ?? []) {
       assert.ok(b.label in i18n.en, `${id}: label ${b.label}`);
       if (typeof b.value === 'string' && /^[a-z]+$/.test(b.value) && !(NAMES[id] ?? []).includes(b.key)) assert.ok(b.value in i18n.en, `${id}: value ${b.value}`);
@@ -239,7 +240,7 @@ test('block labels need at most two lines on a phone (375px), estimated per widg
   // Measured at 375px: a block in a card with 4 blocks is 65px wide, about 8 bold uppercase
   // characters per line; 3 blocks about 11; 2 blocks about 16. A longer word is hyphenated.
   for (const id of IDS) {
-    const out = await run(id, { env: 1, pool1: 'trunk', enableQueue: true });
+    const out = await run(id, { pool1: 'trunk', enableQueue: true });
     const manifest = YAML.parse(fs.readFileSync(path.join(WIDGETS, id, 'widget.yaml'), 'utf8'));
     const keys = manifest.defaultFields ?? (out.blocks ?? []).map((b) => b.key);
     const shown = (out.blocks ?? []).filter((b) => keys.includes(b.key));
@@ -275,6 +276,39 @@ test('unraid: a server without array disks (pools only) gets no array blocks', a
   assert.ok(keys.includes('pool1UsedPercent'));
 });
 
+// Every README example runs on its fixture as written, so every example on the docs site works:
+// the options the dashboard would give it (scripts/readme-example.mjs), pointed at the mock.
+// Widgets that do not speak HTTP to their service get the address of their fake on top
+// (and the login the fake checks); calendar's integrations name services, which the dashboard
+// resolves; kubernetes needs a cluster and ping a host that answers.
+test('README examples run on their fixture', async () => {
+  const PROTOCOL = ['apcups', 'gamedig', 'jdownloader', 'minecraft', 'urbackup', 'docker', 'calendar'];
+  const ELSEWHERE = ['kubernetes', 'kubernetes-pods', 'ping'];
+  const failed = [];
+  for (const id of IDS) {
+    if (!fs.existsSync(path.join(WIDGETS, id, 'server.js')) || ELSEWHERE.includes(id)) continue;
+    const example = readmeExample(id, mock.url);
+    if (!example) { failed.push(`${id}: no example with the widget`); continue; }
+    const options = {
+      ...example,
+      ...(PROTOCOL.includes(id) ? REQUIRED[id] : {}),
+      ...(id === 'truenas' && Number(example.version) >= 2 ? { url: fakes.truenas.url } : {}),
+    };
+    const { default: widget } = await import(path.join(WIDGETS, id, 'server.js'));
+    try {
+      const out = await widget.fetch({
+        apiVersion: 1, instanceId: 'readme', params: {}, options, signal: new AbortController().signal, cache: new Map(), log: silent,
+        fetch: (u, init) => fetch(/^[a-z][a-z0-9+.-]*:/i.test(String(u)) ? u : new URL(String(u), options.url ?? `${mock.url}/${id}`), init),
+      });
+      const state = (out.blocks ?? []).find((b) => (b.key ?? b.label) === 'status');
+      if (out.status === 'down' || state?.status === 'error') failed.push(`${id}: ${out.statusText ?? state?.value ?? out.status}`);
+    } catch (err) {
+      failed.push(`${id}: ${err.message}`);
+    }
+  }
+  assert.deepEqual(failed, []);
+});
+
 test('every widget has a README for its docs page: title, every field, an example', async () => {
   for (const id of IDS) {
     const m = YAML.parse(fs.readFileSync(path.join(WIDGETS, id, 'widget.yaml'), 'utf8'));
@@ -283,7 +317,7 @@ test('every widget has a README for its docs page: title, every field, an exampl
     // a service widget (type: <id>) or a header widget in widgets.yaml (- <id>:)
     assert.match(readme.split(/^## Example$/m)[1] ?? '', new RegExp(`type: ${id}\\b|^- ${id}:`, 'm'), `${id}: an example that uses it`);
     const fields = new Set([...(readme.split(/^## Fields$/m)[1]?.split(/^## /m)[0] ?? '').matchAll(/`([A-Za-z0-9_.]+)`/g)].map((x) => x[1]));
-    const out = await run(id, { env: 1, pool1: 'trunk', enableQueue: true, queueLimit: 2 });
+    const out = await run(id, { pool1: 'trunk', enableQueue: true, queueLimit: 2 });
     for (const b of out.blocks ?? []) assert.ok(fields.has(b.key ?? b.label), `${id}: field ${b.key ?? b.label} missing from README`);
   }
 });
@@ -298,7 +332,7 @@ test('filter attributes: declared, documented and of the declared type on the fi
     if (!m.attributes) continue;
     const readme = fs.readFileSync(path.join(WIDGETS, id, 'README.md'), 'utf8');
     const fields = new Set([...(readme.split(/^## Fields$/m)[1]?.split(/^## /m)[0] ?? '').matchAll(/`([A-Za-z0-9_.]+)`/g)].map((x) => x[1]));
-    const out = await run(id, { env: 1, pool1: 'trunk', enableQueue: true, queueLimit: 2 });
+    const out = await run(id, { pool1: 'trunk', enableQueue: true, queueLimit: 2 });
     for (const [name, def] of Object.entries(m.attributes)) {
       assert.ok(['boolean', 'number', 'string'].includes(def.type), `${id}.${name}: type`);
       const ofType = (v) => v === null || typeof v === def.type;
@@ -871,49 +905,20 @@ test('truenas: load, uptime and alerts (marked) over REST, pools per row, unheal
 });
 
 test('truenas version 2: the same over the JSON-RPC WebSocket API, with an API key login', async () => {
-  const http = await import('node:http');
-  const crypto = await import('node:crypto');
-  const calls = [];
-  const answers = {
-    'auth.login_with_api_key': (p) => p[0] === 'k3y',
-    'alert.list': () => [{ dismissed: false }, { dismissed: false }],
-    'system.info': () => ({ loadavg: [1.5, 1, 1], uptime_seconds: 3700 }),
-  };
-  const srv = http.createServer();
-  srv.on('upgrade', (req, sock) => {
-    const accept = crypto.createHash('sha1').update(`${req.headers['sec-websocket-key']}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
-    sock.write(`HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ${accept}\r\n\r\n`);
-    let buf = Buffer.alloc(0);
-    sock.on('data', (c) => {
-      buf = Buffer.concat([buf, c]);
-      while (buf.length >= 6) {
-        let len = buf[1] & 0x7f;
-        let at = 2;
-        if (len === 126) { len = buf.readUInt16BE(2); at = 4; }
-        if (buf.length < at + 4 + len) return;
-        const mask = buf.subarray(at, at + 4);
-        const data = Buffer.from(buf.subarray(at + 4, at + 4 + len).map((b, i) => b ^ mask[i % 4]));
-        const op = buf[0] & 0x0f;
-        buf = buf.subarray(at + 4 + len);
-        if (op === 8) { sock.end(); return; }
-        const msg = JSON.parse(data.toString());
-        calls.push(msg.method);
-        const text = Buffer.from(JSON.stringify({ jsonrpc: '2.0', id: msg.id, result: answers[msg.method](msg.params) }));
-        sock.write(Buffer.concat([Buffer.from(text.length < 126 ? [0x81, text.length] : [0x81, 126, text.length >> 8, text.length & 255]), text]));
-      }
-    });
-  });
-  await new Promise((r) => srv.listen(0, '127.0.0.1', r));
+  const srv = await truenasServer();
   const { default: truenas } = await import(path.join(WIDGETS, 'truenas', 'server.js'));
-  const ctx = (key) => ({ options: { url: `http://127.0.0.1:${srv.address().port}`, key, version: 2 }, cache: new Map(), log: silent, fetch: (u, i) => fetch(u, i) });
+  const ctx = (key, more = {}) => ({ options: { url: srv.url, key, version: 2, ...more }, cache: new Map(), log: silent, fetch: (u, i) => fetch(u, i) });
   try {
-    assert.deepEqual(values(await truenas.fetch(ctx('k3y'))), { load: 1.5, uptime: '1h 1m', alerts: 2 });
-    assert.deepEqual(calls, ['auth.login_with_api_key', 'alert.list', 'system.info']);
+    const rest = await run('truenas', { enablePools: true });
+    const ws = await truenas.fetch(ctx('test-key', { enablePools: true }));
+    assert.deepEqual(ws, rest, 'the same card as over REST');
+    assert.deepEqual(srv.calls, ['auth.login_with_api_key', 'alert.list', 'system.info', 'pool.query', 'pool.dataset.query']);
     await assert.rejects(truenas.fetch(ctx('wrong')), /TrueNAS login answered 401/);
   } finally {
     srv.close();
   }
 });
+
 
 test('diskstation: uptime, free space on a volume (marked below 10%), CPU and memory; the login is POSTed', async () => {
   const out = await run('diskstation', { username: 'remote_stats', password: 'p&w' });

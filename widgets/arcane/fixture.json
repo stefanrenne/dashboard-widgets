@@ -1,8 +1,8 @@
 {
- "_note": "Arcane environment 1 (the shared tests pass env 1): container and image counts and the update summary.",
+ "_note": "Arcane environment 0, the local one (the example and the shared tests pass env 0): container and image counts and the update summary.",
  "routes": {
-  "GET /api/environments/1/containers/counts": { "success": true, "data": { "runningContainers": 21, "stoppedContainers": 3, "totalContainers": 24 } },
-  "GET /api/environments/1/images/counts": { "success": true, "data": { "totalImages": 40, "imagesInuse": 24, "imagesUnused": 16, "totalImageSize": 12000000000 } },
-  "GET /api/environments/1/image-updates/summary": { "success": true, "data": { "totalImages": 24, "imagesWithUpdates": 5, "hasUpdate": true } }
+  "GET /api/environments/0/containers/counts": { "success": true, "data": { "runningContainers": 21, "stoppedContainers": 3, "totalContainers": 24 } },
+  "GET /api/environments/0/images/counts": { "success": true, "data": { "totalImages": 40, "imagesInuse": 24, "imagesUnused": 16, "totalImageSize": 12000000000 } },
+  "GET /api/environments/0/image-updates/summary": { "success": true, "data": { "totalImages": 24, "imagesWithUpdates": 5, "hasUpdate": true } }
  }
 }

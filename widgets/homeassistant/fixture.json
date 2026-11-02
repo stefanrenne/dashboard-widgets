@@ -1,6 +1,7 @@
 {
  "_note": "Home Assistant REST API: three people (two home), lights, switches and a few sensors; a template renders as text.",
  "routes": {
+  "GET /api/states/sensor.energy_today": { "entity_id": "sensor.energy_today", "state": "8.4", "attributes": { "unit_of_measurement": "kWh", "friendly_name": "Energy today" } },
   "GET /api/states": [
    { "entity_id": "person.anna", "state": "home" },
    { "entity_id": "person.bob", "state": "not_home" },

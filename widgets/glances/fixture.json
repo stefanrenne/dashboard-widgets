@@ -1,6 +1,9 @@
 {
  "_note": "Glances 3 in web server mode: 8 cores, a Package id sensor, two file systems.",
  "routes": {
+  "GET /api/4/sensors": [{ "label": "acpitz 1", "value": 27.8, "unit": "C", "type": "temperature_core" }, { "label": "Package id 0", "value": 51, "unit": "C", "type": "temperature_core" }, { "label": "Core 0", "value": 49, "unit": "C", "type": "temperature_core" }, { "label": "fan1", "value": 1200, "unit": "R", "type": "fan_speed" }],
+  "GET /api/4/uptime": "12 days, 4: 05: 06",
+  "GET /api/4/fs": [{ "device_name": "/dev/sda1", "mnt_point": "/", "size": 500000000000, "used": 200000000000, "free": 300000000000, "percent": 40 }, { "device_name": "/dev/sdb1", "mnt_point": "/mnt/data", "size": 4000000000000, "used": 3000000000000, "free": 1000000000000, "percent": 75 }],
   "GET /api/3/cpu": {
    "total": 23.4,
    "user": 15.1,

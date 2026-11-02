@@ -22,6 +22,53 @@ export async function atRoot(id) {
   return { url: `http://127.0.0.1:${srv.address().port}`, close: () => srv.close() };
 }
 
+/**
+ * A fake TrueNAS JSON-RPC WebSocket API (/api/current, version 2), answering from the truenas
+ * fixture's REST routes; the API key test-key logs in. `calls` records the methods.
+ */
+export async function truenasServer() {
+  const http = await import('node:http');
+  const crypto = await import('node:crypto');
+  const { routes } = JSON.parse(fs.readFileSync(path.join(WIDGETS, 'truenas', 'fixture.json'), 'utf8'));
+  const rest = (p) => routes[`GET /api/v2.0/${p}`];
+  const answers = {
+    'auth.login_with_api_key': (p) => p[0] === 'test-key',
+    'alert.list': () => rest('alert/list'),
+    'system.info': () => rest('system/info'),
+    'pool.query': () => rest('pool'),
+    'pool.dataset.query': () => rest('pool/dataset'),
+  };
+  const calls = [];
+  const srv = http.createServer();
+  srv.on('upgrade', (req, sock) => {
+    const accept = crypto.createHash('sha1').update(`${req.headers['sec-websocket-key']}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
+    sock.write(`HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: ${accept}\r\n\r\n`);
+    let buf = Buffer.alloc(0);
+    sock.on('data', (c) => {
+      buf = Buffer.concat([buf, c]);
+      while (buf.length >= 6) {
+        let len = buf[1] & 0x7f;
+        let at = 2;
+        if (len === 126) { len = buf.readUInt16BE(2); at = 4; }
+        if (buf.length < at + 4 + len) return;
+        const mask = buf.subarray(at, at + 4);
+        const data = Buffer.from(buf.subarray(at + 4, at + 4 + len).map((b, i) => b ^ mask[i % 4]));
+        const op = buf[0] & 0x0f;
+        buf = buf.subarray(at + 4 + len);
+        if (op === 8) { sock.end(); return; }
+        const msg = JSON.parse(data.toString());
+        calls.push(msg.method);
+        const text = Buffer.from(JSON.stringify({ jsonrpc: '2.0', id: msg.id, result: answers[msg.method]?.(msg.params ?? []) ?? null }));
+        const head = text.length < 126 ? [0x81, text.length] : text.length < 65536 ? [0x81, 126, text.length >> 8, text.length & 255] : null;
+        if (!head) throw new Error('truenasServer: an answer too long for this fake');
+        sock.write(Buffer.concat([Buffer.from(head), text]));
+      }
+    });
+  });
+  await new Promise((r) => srv.listen(0, '127.0.0.1', r));
+  return { url: `http://127.0.0.1:${srv.address().port}`, calls, close: () => srv.close() };
+}
+
 /** A fake UrBackup web interface: salt, login (checking the hash), status and usage. */
 export async function urbackupServer() {
   const http = await import('node:http');
@@ -155,6 +202,7 @@ export async function startFakes() {
     mc: await minecraftServer(),
     urb: await urbackupServer(),
     dockerd: await atRoot('docker'),
+    truenas: await truenasServer(),
   };
   return { ...fakes, close: () => Object.values(fakes).forEach((f) => f.close()) };
 }
@@ -180,12 +228,13 @@ export function exampleOptions({ mockUrl, fakes }) {
     dispatcharr: { username: 'admin', password: 'pw' },
     downloadstation: { username: 'dl', password: 'pw' },
     checkmk: { site: 'cmk', username: 'automation', password: 's3cret' },
-    get cloudflared() { return { url: `${mock.url}/cloudflared`, accountid: 'acc1', tunnelid: 'tun1' }; },
+    get cloudflared() { return { url: `${mock.url}/cloudflared`, accountid: '0123456789abcdef0123456789abcdef', tunnelid: '01234567-89ab-cdef-0123-456789abcdef' }; },
     coinmarketcap: { symbols: ['BTC', 'ETH'], currency: 'EUR' },
     crowdsec: { username: 'dashboard', password: 'pw' },
     beszel: { version: 2, username: 'admin@example.com', password: 'pw' },
     get azuredevops() { return { organization: 'example', project: 'homelab', definitionId: '12', repositoryId: 'homelab', userEmail: 'anna@example.com' }; },
-    arcane: { env: '1' },
+    arcane: { env: '0' },
+    portainer: { env: 1 },
     duplicati: { password: 'pw' },
     filebrowser: { username: 'dashboard', password: 'pw' },
     freshrss: { username: 'anna', password: 'pw' },

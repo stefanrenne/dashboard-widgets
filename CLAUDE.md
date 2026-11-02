@@ -16,6 +16,7 @@ them only in a backward-compatible way.
 | `widgets/<id>/` | `widget.yaml`, `server.js`, `i18n.json`, `README.md` (its docs page, rule 13), `fixture.json` (below), optionally `client.js` (its own look; mjpeg has only a `client.js`). Folder name = widget id. |
 | `widgets/<id>/fixture.json` | The widget's API answers per route (`"GET /api/v3/movie": ...`; `{ "_headers": {...}, "_body": ... }` for headers, `"_text"` for a plain text body), used by tests and the mock. |
 | `scripts/mock-homelab.mjs` | Serves the fixtures at `/<id>/...`; the tests start it, `npm run mock` too. |
+| `scripts/readme-example.mjs` | A widget's README example as the options the dashboard would give it (providers, proxmox.yaml, option defaults), pointed at the mock; `tests/widgets.test.mjs` runs every example on its fixture. |
 | `scripts/release-notes.mjs` | The GitHub release text: new and updated widgets since the previous tag, with their CHANGELOG lines; tested in `tests/release-notes.test.mjs`. |
 | `scripts/fakes.mjs` | Fake services for widgets that do not speak HTTP with JSON, and the options each widget needs for its fixture; used by the tests and the dashboard's docs images. |
 | `todo.md` | Open work; remove an item when it is done (the CHANGELOG records it). |
@@ -54,7 +55,8 @@ them only in a backward-compatible way.
        on its fixture and fails when a returned key is missing.
     5. `## Example`: a complete `services.yaml` entry with `type: <id>` (or a `widgets.yaml` entry
        `- <id>:` for a header widget), the key through
-       `{{HD_VAR_...}}`, made-up hosts (`*.lan`).
+       `{{HD_VAR_...}}`, made-up hosts (`*.lan`). It must run on the widget's `fixture.json` as written (ids, options,
+       API version): a test runs every example.
     No dashboard or collection versions in a README before the dashboard's 1.0 ("needs dashboard
     0.9.0 or newer"): they go in CHANGELOG.md. Versions of the service itself are fine.
     Filter attributes (widget.yaml `attributes:`, for the dashboard's service `filter:`) get a
