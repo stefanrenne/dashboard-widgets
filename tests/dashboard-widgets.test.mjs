@@ -398,6 +398,19 @@ test('search widget: filter events while typing, web search only when the page l
   assert.deepEqual(opened, ['https://www.google.com/search?q=radarr']);
   input.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape' }));
   assert.deepEqual(events.at(-1), ['input', '']);
+  // filterServices: false (or its old name filter: false) only searches the web
+  for (const options of [{ filterServices: false }, { filter: false }]) {
+    const web = w.document.createElement('hd-search');
+    web.options = { provider: 'google', ...options };
+    web.t = (k) => k;
+    w.document.body.append(web);
+    const box = web.shadowRoot.querySelector('input');
+    assert.equal(box.getAttribute('aria-label'), 'placeholder', JSON.stringify(options));
+    events.length = 0;
+    box.value = 'radarr';
+    box.dispatchEvent(new w.Event('input'));
+    assert.deepEqual(events, [], 'no filter events');
+  }
   w.close();
 });
 
