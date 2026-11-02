@@ -44,7 +44,7 @@ them only in a backward-compatible way.
     problem rows first.
 12. Show at most a handful of blocks by default; offer the rest through `defaultFields` + `fields`.
 13. **`widgets/<id>/README.md` is the widget's page** on the dashboard's documentation site
-    (https://stefanrenne.github.io/homelab-dashboard/widgets/collection/<id>.html), generated
+    (https://getdashboard.dev/widgets/collection/<id>.html), generated
     from the newest release. It holds, in this order:
     1. `# <name>`: exactly the `name` in widget.yaml.
     2. What it shows, and the setup the user must do in the service: where the API key or token
@@ -89,7 +89,7 @@ and creates the tag.
 repository and picks up a new release of this collection only once a day. After the release is
 published, rebuild it: `gh workflow run pages.yml --repo stefanrenne/homelab-dashboard`, and check
 that each new or changed widget's page is there
-(`https://stefanrenne.github.io/homelab-dashboard/widgets/collection/<id>.html`) and shows the
+(`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.
 
 ## Commands

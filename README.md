@@ -8,7 +8,7 @@ service fields (`siteMonitor:` uses `http-status`, `ping:` `ping`, `container:` 
 repository is an ordinary widget collection, installed like any third-party one.
 
 Every widget has its own page with setup, fields and options on the
-[documentation site](https://stefanrenne.github.io/homelab-dashboard/widgets/collection/)
+[documentation site](https://getdashboard.dev/widgets/collection/)
 (and as `widgets/<id>/README.md` here).
 
 | Widget | Shows | Options |
