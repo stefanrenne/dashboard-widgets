@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-11-02
+
 ### Added
 - `proxmoxvm` publishes `cpu` (%) and `memory` (MB) as filter attributes, null while stopped.
 - `homeassistant` publishes `peopleHome`, `lightsOn` and `switchesOn` as numbers, or with `custom`
