@@ -4,6 +4,12 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.11.0] - 2026-11-02
+
+### Added
+- `docker` publishes `healthy` and `unhealthy` filter attributes from the container's Docker
+  healthcheck (both false without one), for a service's `filter: container.healthy`.
+
 ## [0.10.1] - 2026-10-31
 
 ### Changed

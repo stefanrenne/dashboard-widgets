@@ -68,7 +68,12 @@ async function swarmService(get, name) {
     blocks.push(...statsBlocks(stats));
     break;
   }
-  return { status, statusText: state, blocks };
+  return { status, statusText: state, blocks, attributes: healthAttributes() };
+}
+
+/** Docker's healthcheck result as filter attributes; without a healthcheck both are false. */
+function healthAttributes(health) {
+  return { healthy: health === 'healthy', unhealthy: health === 'unhealthy' };
 }
 
 export default {
@@ -89,7 +94,7 @@ export default {
       const service = await swarmService(get, name);
       if (service) return service;
     }
-    if (!info) return { status: 'down', statusText: 'not found', blocks: [{ label: 'status', value: 'not found', status: 'error' }] };
+    if (!info) return { status: 'down', statusText: 'not found', blocks: [{ label: 'status', value: 'not found', status: 'error' }], attributes: healthAttributes() };
     const state = info.State?.Status ?? 'unknown';
     const health = info.State?.Health?.Status;
     const blocks = [{ label: 'status', value: health ? `${state} (${health})` : state }];
@@ -100,6 +105,6 @@ export default {
       if (stats) blocks.push(...statsBlocks(stats));
     }
     blocks[0].status = status === 'up' ? 'ok' : status === 'warn' ? 'warn' : 'error';
-    return { status, statusText: health ?? state, blocks };
+    return { status, statusText: health ?? state, blocks, attributes: healthAttributes(state === 'running' ? health : undefined) };
   },
 };

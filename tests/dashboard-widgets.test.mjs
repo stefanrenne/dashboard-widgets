@@ -116,6 +116,9 @@ test('docker: running container over a unix socket', async () => {
   const srv = await serve((req, res) => {
     res.setHeader('content-type', 'application/json');
     if (req.url === '/containers/plex/json') return res.end(JSON.stringify({ State: { Status: 'running', Health: { Status: 'healthy' } } }));
+    if (req.url === '/containers/sick/json') return res.end(JSON.stringify({ State: { Status: 'running', Health: { Status: 'unhealthy' } } }));
+    if (req.url === '/containers/plain/json') return res.end(JSON.stringify({ State: { Status: 'running' } }));
+    if (req.url === '/containers/stopped/json') return res.end(JSON.stringify({ State: { Status: 'exited', Health: { Status: 'healthy' } } }));
     if (req.url.startsWith('/containers/plex/stats')) {
       return res.end(JSON.stringify({
         cpu_stats: { cpu_usage: { total_usage: 300 }, system_cpu_usage: 2000, online_cpus: 2 },
@@ -136,6 +139,13 @@ test('docker: running container over a unix socket', async () => {
     assert.equal(out.status, 'up');
     assert.deepEqual(out.blocks.map((b) => [b.label, b.value, b.unit]), [['status', 'running (healthy)', undefined], ['cpu', 40, '%'], ['memory', 210, 'MB'], ['rx', 55.5, 'MB'], ['tx', 24.6, 'MB']], 'RX and TX over all networks, as homepage');
     assert.equal((await docker.fetch(ctxFor('nope'))).status, 'down');
+    // healthy and unhealthy for a service's filter (container.healthy); no healthcheck: both false
+    const health = async (c) => (await docker.fetch(ctxFor(c))).attributes;
+    assert.deepEqual(out.attributes, { healthy: true, unhealthy: false });
+    assert.deepEqual(await health('sick'), { healthy: false, unhealthy: true });
+    assert.deepEqual(await health('plain'), { healthy: false, unhealthy: false });
+    assert.deepEqual(await health('stopped'), { healthy: false, unhealthy: false }, 'a stopped container is not healthy');
+    assert.deepEqual(await health('nope'), { healthy: false, unhealthy: false });
   } finally {
     await srv.close();
   }

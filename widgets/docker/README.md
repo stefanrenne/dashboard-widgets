@@ -15,6 +15,10 @@ With `swarm: true` (set from docker.yaml's `swarm: true` for `container:`), a na
 container is looked up as a Swarm service: its running tasks against the replicas (`replicas`),
 marked when only some run.
 
+The `healthy` and `unhealthy` attributes follow the container's Docker healthcheck (both false
+without one), so a service can hide its card while its container is healthy:
+`filter: container.healthy` reads them from the service's `container:`.
+
 ## Fields
 
 `status`, `replicas`, `cpu`, `memory`, `rx`, `tx` (data received and sent over the container's networks, as homepage's RX and TX)
