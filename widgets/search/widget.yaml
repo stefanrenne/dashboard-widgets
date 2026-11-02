@@ -1,6 +1,6 @@
 id: search
 name: Search
-version: 1.4.0
+version: 1.4.1
 apiVersion: 1
 description: Filters the dashboard's services as you type; Enter opens the only match, or searches the web.
 options:
@@ -8,6 +8,6 @@ options:
   url: { type: string }   # for provider "custom": a URL with {q}, e.g. https://search.lan/?q={q}
   target: { type: enum, values: [_blank, _self], default: _blank }
   filterServices: { type: boolean, default: true }   # false: only search the web, not the dashboard's services
-  filter: { type: boolean }   # the old name of filterServices, still read; `filter` is the dashboard's word for a service's filter:
+  filter: { type: boolean, deprecated: filterServices }   # the old name, still read (not on the docs page)
   showSearchSuggestions: { type: boolean, default: false }   # suggestions from the search engine while typing
   suggestionUrl: { type: string }   # for provider "custom": an OpenSearch suggestion URL, query appended or at {q}
