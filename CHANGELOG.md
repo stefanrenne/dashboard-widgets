@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.12.1] - 2026-11-02
+
 ### Changed
 - `search`'s option `filter` is now `filterServices`, so `filter` stays the dashboard's word for
   hiding a card (and, later, a widget). The old name still works.
