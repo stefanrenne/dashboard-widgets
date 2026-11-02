@@ -1,4 +1,4 @@
-// A fake homelab: serves the API answers in fixtures/ under /<widget>/..., e.g.
+// A fake homelab: serves the API answers in widgets/<id>/fixture.json under /<id>/..., e.g.
 // GET /radarr/api/v3/movie. Used by the tests and for trying the widgets without the
 // real services:  node scripts/mock-homelab.mjs [port]   (default 4100)
 import http from 'node:http';
@@ -8,10 +8,12 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-export function loadFixtures(dir = path.join(ROOT, 'fixtures')) {
+/** Every widget's fixture.json (widget id to its routes); a widget without one has none. */
+export function loadFixtures(dir = path.join(ROOT, 'widgets')) {
   const out = {};
-  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json'))) {
-    out[path.basename(file, '.json')] = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')).routes;
+  for (const id of fs.readdirSync(dir)) {
+    const file = path.join(dir, id, 'fixture.json');
+    if (fs.existsSync(file)) out[id] = JSON.parse(fs.readFileSync(file, 'utf8')).routes;
   }
   return out;
 }

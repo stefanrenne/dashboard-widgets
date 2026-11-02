@@ -240,11 +240,11 @@ Every release on GitHub lists the widgets that are new or updated, with what cha
 zip of the whole collection for installing without git.
 
 ```bash
-npm ci && npm test        # every widget against fixtures/, through a mock server
+npm ci && npm test        # every widget against its fixture.json, through a mock server
 npm run mock              # the mock on http://127.0.0.1:4100/<widget>/... for trying things by hand
 ```
 
-The fixtures in `fixtures/` are API answers in the shape the real services give. All widgets
+The fixtures (`widgets/<id>/fixture.json`) are API answers in the shape the real services give. All widgets
 except tdarr and whatsupdocker were checked against live services (Radarr, Sonarr, Bazarr,
 Prowlarr, SABnzbd, Seerr, Tautulli, Portainer CE, Unraid 7, Stash) on 2026-10-24.
 

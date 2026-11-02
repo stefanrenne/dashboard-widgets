@@ -4,6 +4,10 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Changed
+- Each widget's fixture lives in its own folder, `widgets/<id>/fixture.json`, instead of
+  `fixtures/<id>.json`, so a widget and its test data move together.
+
 ## [0.11.2] - 2026-11-02
 
 ### Changed

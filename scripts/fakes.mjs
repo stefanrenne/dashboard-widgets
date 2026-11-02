@@ -12,7 +12,7 @@ const WIDGETS = path.join(ROOT, 'widgets');
 /** A widget's fixture served at the root, for widgets that ask absolute paths on their url. */
 export async function atRoot(id) {
   const http = await import('node:http');
-  const { routes } = JSON.parse(fs.readFileSync(path.join(ROOT, `fixtures/${id}.json`), 'utf8'));
+  const { routes } = JSON.parse(fs.readFileSync(path.join(ROOT, `widgets/${id}/fixture.json`), 'utf8'));
   const srv = http.createServer((req, res) => {
     const answer = routes[`${req.method} ${new URL(req.url, 'http://x').pathname}`];
     res.statusCode = answer === undefined ? 404 : 200;

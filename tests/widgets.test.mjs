@@ -267,7 +267,7 @@ test('block labels need at most two lines on a phone (375px), estimated per widg
 
 test('unraid: a server without array disks (pools only) gets no array blocks', async () => {
   const { default: unraid } = await import(path.join(WIDGETS, 'unraid', 'server.js'));
-  const live = JSON.parse(fs.readFileSync(path.resolve('fixtures/unraid.json'), 'utf8')).routes['POST /graphql'];
+  const live = JSON.parse(fs.readFileSync(path.resolve('widgets/unraid/fixture.json'), 'utf8')).routes['POST /graphql'];
   live.data.array.capacity.kilobytes = { free: '0', used: '0', total: '0' }; // as a live ZFS-only server answers
   const out = await unraid.fetch({ options: { url: 'http://x', key: 'k', pool1: 'trunk' }, log: { warn() {} }, fetch: async () => new Response(JSON.stringify(live)) });
   const keys = out.blocks.map((b) => b.key);
