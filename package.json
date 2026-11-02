@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "node --test --test-force-exit \"tests/**/*.test.mjs\"",
-    "mock": "node scripts/mock-homelab.mjs"
+    "mock": "node scripts/mock-homelab.mjs",
+    "release-notes": "node scripts/release-notes.mjs"
   },
   "devDependencies": {
     "jsdom": "^30.1.3",

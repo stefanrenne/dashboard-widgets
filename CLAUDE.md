@@ -16,6 +16,7 @@ them only in a backward-compatible way.
 | `widgets/<id>/` | `widget.yaml`, `server.js`, `i18n.json`, `README.md` (its docs page, rule 13), optionally `client.js` (its own look; mjpeg has only a `client.js`). Folder name = widget id. |
 | `fixtures/<id>.json` | API answers per route (`"GET /api/v3/movie": ...`; `{ "_headers": {...}, "_body": ... }` for headers, `"_text"` for a plain text body), used by tests and the mock. |
 | `scripts/mock-homelab.mjs` | Serves the fixtures at `/<id>/...`; the tests start it, `npm run mock` too. |
+| `scripts/release-notes.mjs` | The GitHub release text: new and updated widgets since the previous tag, with their CHANGELOG lines; tested in `tests/release-notes.test.mjs`. |
 | `scripts/fakes.mjs` | Fake services for widgets that do not speak HTTP with JSON, and the options each widget needs for its fixture; used by the tests and the dashboard's docs images. |
 | `todo.md` | Open work; remove an item when it is done (the CHANGELOG records it). |
 | `tests/widgets.test.mjs` | Every widget through the public `ctx` against the mock, plus package checks. |
@@ -71,9 +72,14 @@ them only in a backward-compatible way.
 
 ## Releasing
 
-Bump the changed widgets' `version`, add a CHANGELOG section, set `package.json`'s version, tag
-`vX.Y.Z`, push with tags. CI checks the tag against package.json and the CHANGELOG and publishes a
-GitHub release with a zip per widget. When a tag cannot be pushed, run the CI workflow by hand on
+Bump the changed widgets' `version`, add a CHANGELOG section, set `package.json`'s version, run
+`npm run release-notes -- X.Y.Z`, tag `vX.Y.Z`, push with tags. **Every CHANGELOG line about a
+widget names it in backticks** (`radarr`; several in one line when one change covers them): the
+release text (`scripts/release-notes.mjs`) lists only the widgets that are new or whose `version`
+went up since the previous tag, each with the lines that name it, and fails when an updated widget
+has none; lines that name no widget come under "Other changes". CI checks the tag against
+package.json and publishes the GitHub release with that text and one zip of the collection.
+`npm run release-notes` shows the text before tagging. When a tag cannot be pushed, run the CI workflow by hand on
 `main` (workflow_dispatch): it releases package.json's version (unless released already)
 and creates the tag.
 

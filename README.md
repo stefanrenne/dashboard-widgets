@@ -236,8 +236,8 @@ Containers with homepage labels (`homepage.widget.type: radarr`, ...) work as th
 
 ## Development
 
-Every release on GitHub also has a zip per widget (`radarr-0.2.0.zip`) and one of the whole
-collection, for installing without git.
+Every release on GitHub lists the widgets that are new or updated, with what changed, and has a
+zip of the whole collection for installing without git.
 
 ```bash
 npm ci && npm test        # every widget against fixtures/, through a mock server

@@ -28,8 +28,8 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
 
-  # A tag vX.Y.Z becomes a GitHub release: the CHANGELOG section as notes, a zip of the whole
-  # collection and one zip per widget (<id>-<widget version>.zip) for installing a single widget.
+  # A tag vX.Y.Z becomes a GitHub release: the widgets that are new or updated since the previous
+  # tag, each with its CHANGELOG lines (scripts/release-notes.mjs), and one zip of the collection.
   # Run by hand on main (workflow_dispatch), it releases package.json's version and creates the
   # tag on that commit, for when a tag cannot be pushed; a version released already is skipped.
   release:
@@ -40,6 +40,11 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # the tags, to compare the widgets with the previous release
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
       - name: The tag, checked against package.json
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,34 +63,12 @@ jobs:
         if: env.SKIP != 'true'
         run: |
           version="${TAG#v}"
-          awk -v v="$version" '
-            $0 ~ "^## \\[" v "\\]" { on = 1; next }
-            on && /^## \[/ { exit }
-            on { print }
-          ' CHANGELOG.md > notes.md
-          if [ ! -s notes.md ]; then echo "::error::CHANGELOG.md has no section for $version"; exit 1; fi
-          {
-            echo
-            echo "| Widget | Version |"
-            echo "|---|---|"
-            for dir in widgets/*/; do
-              id=$(basename "$dir")
-              v=$(sed -n 's/^version: *//p' "$dir/widget.yaml")
-              echo "| \`$id\` | $v |"
-            done
-            echo
-            echo '```yaml'
-            echo "plugins:"
-            echo "  - source: git+https://github.com/$GITHUB_REPOSITORY#$TAG"
-            echo '```'
-          } >> notes.md
+          # fails when CHANGELOG.md has no section for the version, or names no line for an
+          # updated widget
+          node scripts/release-notes.mjs "$version" > notes.md
+          cat notes.md
           mkdir dist
           zip -qr "dist/homelab-dashboard-widgets-$version.zip" widgets README.md LICENSE 2>/dev/null || zip -qr "dist/homelab-dashboard-widgets-$version.zip" widgets README.md
-          for dir in widgets/*/; do
-            id=$(basename "$dir")
-            v=$(sed -n 's/^version: *//p' "$dir/widget.yaml")
-            (cd widgets && zip -qr "../dist/$id-$v.zip" "$id")
-          done
           ls dist
       - if: env.SKIP != 'true'
         env:

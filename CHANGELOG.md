@@ -11,6 +11,9 @@ Changes to the widget collection. Each widget also has its own `version` in its 
   when the data is for another one (a server clock or time zone that is not the viewer's). 0.11.1
   showed the server's month instead, which put the docs site's example on a month without events.
   Its test runs on a fixed date now.
+- The GitHub release text lists only the widgets that are new or updated since the previous
+  release, each with what changed (`scripts/release-notes.mjs`), instead of every widget; the
+  release has one zip of the collection instead of one per widget.
 
 ## [0.11.1] - 2026-11-02
 
