@@ -5,8 +5,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 ## [Unreleased]
 
 ### Changed
-- `search`'s old option name `filter` is marked `deprecated: filterServices`: it still works, the
-  dashboard warns about it, and the docs page no longer lists it.
+- `search` no longer reads the old option name `filter`; use `filterServices`. Before 1.0 old
+  names are not kept.
 
 ## [0.12.1] - 2026-11-02
 

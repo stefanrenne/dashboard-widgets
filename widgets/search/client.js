@@ -16,8 +16,7 @@ class HdSearch extends HTMLElement {
   connectedCallback() {
     const t = this.t ?? ((k) => k);
     const o = this.options ?? {};
-    // filterServices, or its old name filter: false on either searches only the web
-    const filter = o.filterServices !== false && o.filter !== false;
+    const filter = o.filterServices !== false;
     const provider = o.provider === 'custom' ? { url: o.url, mark: '⌕', name: 'Search' } : PROVIDERS[o.provider ?? 'duckduckgo'];
     const root = this.attachShadow({ mode: 'open' });
     root.innerHTML = `
