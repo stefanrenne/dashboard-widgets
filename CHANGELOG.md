@@ -4,6 +4,13 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-11-02
+
+### Fixed
+- `calendar` shows the month its data names: drawn before the data arrived, it kept today's
+  month. This also made a test fail from November on, which stopped the 0.11.0 release; 0.11.1
+  is that release with this fix.
+
 ## [0.11.0] - 2026-11-02
 
 ### Added
