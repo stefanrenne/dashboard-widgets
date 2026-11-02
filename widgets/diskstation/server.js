@@ -67,6 +67,10 @@ export default {
     const memory = mem.real_usage !== undefined ? Number(mem.real_usage)
       : 100 - (100 * (Number(mem.avail_real) + Number(mem.cached))) / Number(mem.total_real);
     return {
+      attributes: {
+        volumeFree: Number.isFinite(free) ? Math.round(free / 1e8) / 10 : null,
+        volumeFreePercent: total > 0 && Number.isFinite(free) ? Math.round((free / total) * 1000) / 10 : null,
+      },
       blocks: [
         { key: 'uptime', label: 'uptime', value: formatUptime(info.up_time) },
         { key: 'volumeAvailable', label: 'volumeAvailable', value: Number.isFinite(free) ? formatBytes(free) : null, ...(total > 0 && free / total < 0.1 ? { status: 'warn' } : {}) },

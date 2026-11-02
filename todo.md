@@ -8,11 +8,10 @@ The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
 
 ## Filter attributes
 
-- [ ] **Raw values behind formatted blocks.** 142 blocks in 68 widgets show text formatted for the
-  card ("1.2 TB", "2d 4h", "3 MB/s"), so they are no filter attribute. Return the raw number from
-  `fetch` in `attributes` where it is worth filtering on: transfer rates (qbittorrent, deluge,
-  transmission, flood, sabnzbd, downloadstation), free space (diskstation, filebrowser, unraid),
-  uptimes, time since the last backup (duplicati, backrest, kopia).
+- [ ] **Raw values behind formatted blocks, the rest.** Transfer rates, free space (diskstation,
+  filebrowser, unraid) and the time since a backup (duplicati, kopia) are done. Still formatted
+  only: uptimes (glances, diskstation, truenas, ...), backrest's bytes added, and the other
+  blocks with "1.2 TB" or "2d 4h" text in about 55 widgets.
 - [ ] **Better attribute descriptions.** Most are the block's label ("Wanted", "Queued"). Say what
   the value is and its unit ("movies wanted and not downloaded").
 

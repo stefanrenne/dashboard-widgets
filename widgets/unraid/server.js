@@ -76,6 +76,13 @@ export default {
         { key: `pool${n}UsedPercent`, label: 'pool', vars, value: pool ? pct(Number(pool.fsUsed), Number(pool.fsSize)) : null, unit: '%' },
       );
     }
-    return { blocks };
+    // free space in GB (the API counts KiB, as kib() above); null without an array or the pool
+    const freeGB = (kb) => (Number.isFinite(Number(kb)) ? Math.round((Number(kb) * 1024) / 1e8) / 10 : null);
+    const attributes = { arrayFree: Number(cap.total) > 0 ? freeGB(cap.free) : null };
+    for (const n of [1, 2, 3, 4]) {
+      const pool = ctx.options[`pool${n}`] ? (array.caches ?? []).find((c) => c.name === ctx.options[`pool${n}`]) : null;
+      attributes[`pool${n}Free`] = pool ? freeGB(pool.fsFree) : null;
+    }
+    return { blocks, attributes };
   },
 };

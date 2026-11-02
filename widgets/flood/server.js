@@ -32,12 +32,16 @@ export default {
     };
     const list = await torrents();
     const has = (t, s) => (t.status ?? []).includes(s);
+    const down = list.reduce((s, t) => s + (t.downRate ?? 0), 0);
+    const up = list.reduce((s, t) => s + (t.upRate ?? 0), 0);
     return {
+      // the rates in MB/s (decimal, one decimal) for a filter
+      attributes: { download: Math.round(down / 1e5) / 10, upload: Math.round(up / 1e5) / 10 },
       blocks: [
         { key: 'leech', label: 'leech', value: list.filter((t) => has(t, 'downloading')).length },
-        { key: 'download', label: 'download', value: formatRate(list.reduce((s, t) => s + (t.downRate ?? 0), 0)) },
+        { key: 'download', label: 'download', value: formatRate(down) },
         { key: 'seed', label: 'seed', value: list.filter((t) => has(t, 'complete')).length },
-        { key: 'upload', label: 'upload', value: formatRate(list.reduce((s, t) => s + (t.upRate ?? 0), 0)) },
+        { key: 'upload', label: 'upload', value: formatRate(up) },
       ],
     };
   },

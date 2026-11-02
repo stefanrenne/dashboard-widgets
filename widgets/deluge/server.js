@@ -46,12 +46,16 @@ export default {
     if (answer.error) throw new Error(`Deluge: ${answer.error.message ?? 'error'}`);
     const torrents = Object.values(answer.result?.torrents ?? {});
     const done = torrents.filter((t) => t.total_remaining === 0).length;
+    const down = torrents.reduce((s, t) => s + (t.download_payload_rate ?? 0), 0);
+    const up = torrents.reduce((s, t) => s + (t.upload_payload_rate ?? 0), 0);
     const out = {
+      // the rates in MB/s (decimal, one decimal) for a filter
+      attributes: { download: Math.round(down / 1e5) / 10, upload: Math.round(up / 1e5) / 10 },
       blocks: [
         { key: 'leech', label: 'leech', value: torrents.length - done },
-        { key: 'download', label: 'download', value: formatRate(torrents.reduce((s, t) => s + (t.download_payload_rate ?? 0), 0)) },
+        { key: 'download', label: 'download', value: formatRate(down) },
         { key: 'seed', label: 'seed', value: done },
-        { key: 'upload', label: 'upload', value: formatRate(torrents.reduce((s, t) => s + (t.upload_payload_rate ?? 0), 0)) },
+        { key: 'upload', label: 'upload', value: formatRate(up) },
       ],
     };
     if (o.enableLeechProgress) {

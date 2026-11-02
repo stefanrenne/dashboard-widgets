@@ -47,12 +47,16 @@ export default {
     const tasks = await list();
     const t = (task) => task.additional?.transfer ?? {};
     const done = tasks.filter((task) => t(task).size_downloaded === task.size).length;
+    const down = tasks.reduce((s, task) => s + (t(task).speed_download ?? 0), 0);
+    const up = tasks.reduce((s, task) => s + (t(task).speed_upload ?? 0), 0);
     return {
+      // the rates in MB/s (decimal, one decimal) for a filter
+      attributes: { download: Math.round(down / 1e5) / 10, upload: Math.round(up / 1e5) / 10 },
       blocks: [
         { key: 'leech', label: 'leech', value: tasks.length - done },
-        { key: 'download', label: 'download', value: formatRate(tasks.reduce((s, task) => s + (t(task).speed_download ?? 0), 0)) },
+        { key: 'download', label: 'download', value: formatRate(down) },
         { key: 'seed', label: 'seed', value: done },
-        { key: 'upload', label: 'upload', value: formatRate(tasks.reduce((s, task) => s + (t(task).speed_upload ?? 0), 0)) },
+        { key: 'upload', label: 'upload', value: formatRate(up) },
       ],
     };
   },

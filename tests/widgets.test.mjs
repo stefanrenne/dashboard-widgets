@@ -1886,3 +1886,29 @@ test('shelly client: a 401 becomes advice about the password, with the raw error
   el.error = 'Shelly shelly answered 404';
   assert.deepEqual(shown(), ['Shelly shelly answered 404'], 'other errors as they are');
 });
+
+// Raw numbers behind the formatted blocks, for a filter: the same value as the card, in the
+// unit the attribute names (MB/s, GB, %, hours).
+test('raw values behind formatted blocks: rates, free space and the time since a backup', async () => {
+  const attrs = async (id, options = {}) => (await run(id, options)).attributes;
+  assert.deepEqual(await attrs('qbittorrent'), { download: 2.5, upload: 0.5 });
+  assert.deepEqual(await attrs('deluge'), { download: 3, upload: 0.5 });
+  assert.deepEqual(await attrs('transmission'), { download: 2.8, upload: 0.5 });
+  assert.deepEqual(await attrs('flood'), { download: 3, upload: 0.2 }, '150 kB/s rounds to 0.2 MB/s');
+  assert.deepEqual(await attrs('downloadstation'), { download: 3, upload: 0.2 });
+  assert.deepEqual(await attrs('sabnzbd'), { rate: 45.7, paused: false });
+  assert.deepEqual(await attrs('diskstation'), { volumeFree: 600, volumeFreePercent: 7.5 });
+  assert.deepEqual(await attrs('filebrowser'), { available: 2765.5, usedPercent: 30.9 });
+  // Unraid counts KiB: 25.7 TB on the card is 25,697 GB
+  assert.deepEqual(await attrs('unraid', { pool1: 'trunk' }), { arrayFree: 25697, pool1Free: 1300.3, pool2Free: null, pool3Free: null, pool4Free: null });
+  const { default: sab } = await import(path.join(WIDGETS, 'sabnzbd', 'server.js'));
+  const fake = (body) => ({ options: { url: 'http://sab.lan', key: 'k' }, fetch: async () => ({ ok: true, json: async () => body }) });
+  assert.deepEqual((await sab.fetch(fake({ queue: { status: 'Paused', kbpersec: '900' } }))).attributes, { rate: 0, paused: true });
+  // hours since the newest backup (the fixture's 2026-03-02 03:15 UTC)
+  const hours = (iso) => Math.round((Date.now() - Date.parse(iso)) / 360000) / 10;
+  const dup = await attrs('duplicati');
+  assert.ok(Math.abs(dup.hoursSinceBackup - hours('2026-03-02T03:15:00Z')) < 0.2, `duplicati: ${dup.hoursSinceBackup}`);
+  const kopia = await attrs('kopia');
+  assert.equal(kopia.failed, false);
+  assert.equal(typeof kopia.hoursSinceRun, 'number');
+});

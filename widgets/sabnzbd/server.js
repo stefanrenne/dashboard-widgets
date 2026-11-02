@@ -31,11 +31,13 @@ export default {
     if (json.error) throw new Error(`SABnzbd: ${json.error}`);
     const q = json.queue ?? {};
     const paused = q.paused === true || String(q.status).toLowerCase() === 'paused';
+    const rate = paused ? 0 : (Number(q.kbpersec) || 0) * 1000;
     return {
+      attributes: { rate: Math.round(rate / 1e5) / 10, paused },
       blocks: [
         paused
           ? { key: 'rate', label: 'rate', value: 'paused', status: 'warn' }
-          : { key: 'rate', label: 'rate', value: formatRate((Number(q.kbpersec) || 0) * 1000) },
+          : { key: 'rate', label: 'rate', value: formatRate(rate) },
         { key: 'queue', label: 'queue', value: Number(q.noofslots) || 0 },
         { key: 'timeleft', label: 'timeleft', value: clock(q.timeleft) },
       ],

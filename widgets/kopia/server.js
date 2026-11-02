@@ -37,6 +37,7 @@ export default {
     const started = Date.parse(last?.startTime ?? '');
     const next = Date.parse(s.nextSnapshotTime ?? '');
     return {
+      attributes: { hoursSinceRun: Number.isFinite(started) ? Math.round((now - started) / 360000) / 10 : null, failed },
       blocks: [
         { key: 'status', label: 'status', value: STATES[s.status] ?? (String(s.status ?? '').toLowerCase() || null) },
         { key: 'size', label: 'size', value: last ? formatBytes(last.stats?.totalSize) : null },

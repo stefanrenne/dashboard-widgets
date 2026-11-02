@@ -11,6 +11,11 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 - `calendar` publishes `eventsToday` (in its `timezone`, UTC without one) and `failed`, the
   integrations that did not answer.
 - `feed` publishes `items` and `recent`, the items of the last 24 hours.
+- Raw numbers behind formatted blocks, for a filter: `qbittorrent`, `deluge`, `transmission`,
+  `flood` and `downloadstation` publish `download` and `upload` (MB/s); `sabnzbd` `rate` (MB/s)
+  and `paused`; `diskstation` `volumeFree` (GB) and `volumeFreePercent`; `filebrowser`
+  `available` (GB) and `usedPercent`; `unraid` `arrayFree` and `pool1Free` to `pool4Free` (GB);
+  `duplicati` `hoursSinceBackup`; `kopia` `hoursSinceRun` and `failed`.
 
 ### Changed
 - Each widget's fixture lives in its own folder, `widgets/<id>/fixture.json`, instead of

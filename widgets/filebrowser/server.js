@@ -34,6 +34,7 @@ export default {
     const total = Number(u.total) || 0;
     const used = Number(u.used) || 0;
     return {
+      attributes: { available: Math.round((total - used) / 1e8) / 10, usedPercent: total ? Math.round((used / total) * 1000) / 10 : null },
       blocks: [
         { key: 'available', label: 'available', value: formatBytes(total - used), ...(total && used / total > 0.9 ? { status: 'warn' } : {}) },
         { key: 'used', label: 'used', value: formatBytes(used) },

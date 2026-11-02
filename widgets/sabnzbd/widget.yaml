@@ -1,6 +1,6 @@
 id: sabnzbd
 name: SABnzbd
-version: 0.3.0
+version: 0.4.0
 apiVersion: 1
 description: Download rate, queue length and time left.
 refresh: 10s
@@ -10,3 +10,5 @@ options:
 attributes:                 # public values for a service's filter: (widget.<name>)
   queue: { type: number, from: queue }               # Queue
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
+  rate: { type: number }      # download rate in MB/s; 0 while paused
+  paused: { type: boolean }   # true while the queue is paused

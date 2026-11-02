@@ -56,6 +56,8 @@ export default {
     const warnings = own.filter((n) => n.Type === 'Warning').length;
     const errors = own.filter((n) => n.Type === 'Error').length;
     return {
+      // hours since the newest backup finished; null when there is none
+      attributes: { hoursSinceBackup: Number.isFinite(last) ? Math.round((now - last) / 360000) / 10 : null },
       blocks: [
         { key: 'jobs', label: 'jobs', value: (backups ?? []).length },
         { key: 'stored', label: 'stored', value: formatBytes((backups ?? []).reduce((s, b) => s + (Number(b.Backup?.Metadata?.TargetFilesSize) || 0), 0)) },
