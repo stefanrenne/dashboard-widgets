@@ -80,3 +80,13 @@ jobs:
         run: |
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then target=(--target "$GITHUB_SHA"); else target=(--verify-tag); fi
           gh release create "$TAG" dist/*.zip --title "$TAG" --notes-file notes.md "${target[@]}"
+      # the dashboard's docs site builds a page per widget from the newest release: rebuild it now
+      # instead of at its daily run (PAGES_DISPATCH_TOKEN: a fine-grained token with Actions read
+      # and write on homelab-dashboard; without it this step only says so)
+      - name: Rebuild the documentation site
+        if: env.SKIP != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run pages.yml in homelab-dashboard by hand"; exit 0; fi
+          gh workflow run pages.yml --repo stefanrenne/homelab-dashboard

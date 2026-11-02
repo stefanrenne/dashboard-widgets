@@ -86,8 +86,10 @@ package.json and that it is a commit on `main` (a push to `main` alone releases 
 and creates the tag.
 
 **Every widget update reaches the documentation site.** The site is built by the dashboard
-repository and picks up a new release of this collection only once a day. After the release is
-published, rebuild it: `gh workflow run pages.yml --repo stefanrenne/homelab-dashboard`, and check
+repository from this collection's newest release. The release job starts that build itself (the
+secret `PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on
+homelab-dashboard); without the secret, or when it failed, run
+`gh workflow run pages.yml --repo stefanrenne/homelab-dashboard`. Then check
 that each new or changed widget's page is there
 (`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.
