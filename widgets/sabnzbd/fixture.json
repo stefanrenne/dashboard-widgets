@@ -1,14 +1,22 @@
 {
- "_note": "SABnzbd mode=queue.",
+ "_note": "SABnzbd mode=queue, downloading: three jobs, the first one in progress.",
  "routes": {
   "GET /api": {
    "queue": {
-    "status": "Idle",
-    "kbpersec": "0.00",
-    "speed": "0 ",
-    "noofslots": 0,
-    "timeleft": "0:00:00",
-    "slots": []
+    "status": "Downloading",
+    "paused": false,
+    "kbpersec": "45678.12",
+    "speed": "44.6 M",
+    "mb": "9876.54",
+    "mbleft": "4321.09",
+    "noofslots": 3,
+    "noofslots_total": 3,
+    "timeleft": "0:12:30",
+    "slots": [
+     { "index": 0, "nzo_id": "SABnzbd_nzo_a1", "filename": "Silo.S02E01.1080p.WEB", "cat": "tv", "status": "Downloading", "mb": "2345.67", "mbleft": "789.01", "percentage": "66", "timeleft": "0:00:17" },
+     { "index": 1, "nzo_id": "SABnzbd_nzo_a2", "filename": "The.Social.Reckoning.2026.2160p", "cat": "movies", "status": "Queued", "mb": "6543.21", "mbleft": "6543.21", "percentage": "0", "timeleft": "0:02:26" },
+     { "index": 2, "nzo_id": "SABnzbd_nzo_a3", "filename": "Severance.S03E02.1080p.WEB", "cat": "tv", "status": "Queued", "mb": "987.66", "mbleft": "987.66", "percentage": "0", "timeleft": "0:12:30" }
+    ]
    }
   }
  }

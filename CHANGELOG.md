@@ -8,6 +8,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 - Each widget's fixture lives in its own folder, `widgets/<id>/fixture.json`, instead of
   `fixtures/<id>.json`, so a widget and its test data move together.
 - A release is made only for a tag on a commit on `main`; a tag elsewhere fails the release.
+- The `sabnzbd` fixture downloads three jobs (45.7 MB/s, 12:30 left) instead of an empty queue, so
+  the docs image and the dashboard's screenshots show what the widget does.
 
 ## [0.11.2] - 2026-11-02
 

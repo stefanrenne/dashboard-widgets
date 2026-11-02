@@ -154,7 +154,7 @@ test('bazarr, prowlarr, sabnzbd, seerr, whatsupdocker, portainer', async () => {
   assert.deepEqual(values(await run('bazarr')), { missingEpisodes: 200, missingMovies: 3 });
   assert.equal(lastRequest('bazarr').headers['x-api-key'], 'test-key');
   assert.deepEqual(values(await run('prowlarr')), { grabs: 37, queries: 44, failGrabs: 0, failQueries: 0 });
-  assert.deepEqual(values(await run('sabnzbd')), { rate: '0 B/s', queue: 0, timeleft: '0:00' });
+  assert.deepEqual(values(await run('sabnzbd')), { rate: '45.7 MB/s', queue: 3, timeleft: '12:30' });
   assert.deepEqual(lastRequest('sabnzbd').query, { mode: 'queue', output: 'json', apikey: 'test-key' });
   assert.deepEqual(values(await run('seerr')), { pending: 0, approved: 11, completed: 0 });
   assert.deepEqual(values(await run('whatsupdocker', { username: 'u', password: 'p' })), { monitoring: 30, updates: 0 });

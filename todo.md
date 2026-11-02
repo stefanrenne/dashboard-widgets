@@ -13,8 +13,6 @@ The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
   fall back to the test options for them. Align the examples or the fixtures, then add a test
   that runs every README example on its fixture (with `scripts/fakes.mjs`), so every example on
   the docs site is known to work.
-- [ ] **A busier SABnzbd fixture.** Its queue is empty, so the dashboard's README screenshot shows
-  0 B/s, 0 and 0:00. A download in progress would show what the widget does.
 
 ## Filter attributes
 
