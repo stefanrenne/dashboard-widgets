@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.13.0] - 2026-11-03
+
 ### Changed (breaking)
 - Every widget moves to widget API 2 (Dashboard, formerly Homelab Dashboard): `apiVersion: 2`,
   `dash-` element and event names and `--dash-*` theme properties in `client.js`, and
