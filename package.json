@@ -1,6 +1,6 @@
 {
   "name": "homelab-dashboard-widgets",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "private": true,
   "description": "Widgets for homelab-dashboard: radarr, sonarr, unraid, portainer and more",
   "type": "module",

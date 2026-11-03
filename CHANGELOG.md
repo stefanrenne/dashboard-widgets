@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.12.3] - 2026-11-03
+
 ### Removed
 - `docker`'s attributes `healthy` and `unhealthy`: `attention` already says it (true while the
   container is unhealthy, stopped or not found), so `filter: container.attention == false` hides
