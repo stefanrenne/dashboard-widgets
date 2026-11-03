@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.12.4] - 2026-11-03
+
 ### Fixed
 - `button` has 4px around it, as a block: two buttons on a card no longer touch, and stand 8px
   apart and from the card's edge, as blocks do.
