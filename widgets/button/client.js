@@ -40,7 +40,9 @@ class HdButton extends HTMLElement {
     }
     if (!this.shadowRoot) {
       this.attachShadow({ mode: 'open' }).innerHTML = `<style>
-        :host { display: block; }
+        /* 4px around it, as a block's margin: padding, so two buttons do not collapse it and stand
+           8px apart, as blocks do */
+        :host { display: block; padding: 4px; }
         a, button {
           box-sizing: border-box; display: flex; align-items: center; justify-content: center;
           inline-size: 100%; min-block-size: 2.25rem; padding-block: .5rem; padding-inline: 1rem;
