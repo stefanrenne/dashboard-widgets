@@ -1,7 +1,7 @@
 id: gitea
 name: Gitea
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Notifications, issues, pull requests and repositories in Gitea or Forgejo (homepage's gitea widget).
 refresh: 5m
 options:

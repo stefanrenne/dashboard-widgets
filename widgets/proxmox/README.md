@@ -29,6 +29,6 @@ Learn more about [Proxmox VE](https://www.proxmox.com/en/proxmox-virtual-environ
           type: proxmox
           url: https://pve.lan:8006
           username: api@pam!dashboard
-          password: "{{HD_VAR_PROXMOX_SECRET}}"
+          password: "{{DASHBOARD_VAR_PROXMOX_SECRET}}"
           node: pve-1                  # optional: one node
 ```

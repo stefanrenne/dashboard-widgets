@@ -1,7 +1,7 @@
 id: longhorn
 name: Longhorn
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Storage of the Longhorn nodes in a Kubernetes cluster, in total and per node (homepage's longhorn info widget).
 refresh: 1m
 options:

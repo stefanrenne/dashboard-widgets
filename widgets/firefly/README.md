@@ -21,5 +21,5 @@ Learn more about [Firefly III](https://www.firefly-iii.org/).
         widget:
           type: firefly
           url: https://firefly.lan
-          key: "{{HD_VAR_FIREFLY_TOKEN}}"
+          key: "{{DASHBOARD_VAR_FIREFLY_TOKEN}}"
 ```

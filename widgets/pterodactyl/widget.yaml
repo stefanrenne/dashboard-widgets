@@ -1,7 +1,7 @@
 id: pterodactyl
 name: Pterodactyl
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Nodes and game servers in a Pterodactyl panel (homepage's pterodactyl widget).
 refresh: 5m
 options:

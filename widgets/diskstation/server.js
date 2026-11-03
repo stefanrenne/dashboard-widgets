@@ -37,7 +37,7 @@ export default {
     const api = (name) => ({ path: apis[name]?.path ?? 'entry.cgi', version: String(apis[name]?.maxVersion ?? 1) });
     const login = async () => {
       const a = api('SYNO.API.Auth');
-      const r = await call(a.path, { api: 'SYNO.API.Auth', version: String(Math.min(Number(a.version), 6)), method: 'login', account: o.username, passwd: o.password, session: 'homelab-dashboard', format: 'sid' }, 'POST');
+      const r = await call(a.path, { api: 'SYNO.API.Auth', version: String(Math.min(Number(a.version), 6)), method: 'login', account: o.username, passwd: o.password, session: 'dashboard', format: 'sid' }, 'POST');
       // 400 wrong login, 401 disabled, 402 no permission, 403/404 two-step verification
       if (!r.success || !r.data?.sid) throw new Error(`Synology login answered ${r.error?.code >= 403 ? '403 (two-step verification is on)' : 401}`);
       ctx.cache.set('sid', r.data.sid);

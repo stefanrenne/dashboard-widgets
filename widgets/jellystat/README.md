@@ -21,6 +21,6 @@ Learn more about [Jellystat](https://github.com/CyferShepard/Jellystat).
         widget:
           type: jellystat
           url: http://jellystat.lan:3000
-          key: "{{HD_VAR_JELLYSTAT_KEY}}"
+          key: "{{DASHBOARD_VAR_JELLYSTAT_KEY}}"
           days: 7
 ```

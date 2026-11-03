@@ -21,5 +21,5 @@ Learn more about [Kavita](https://www.kavitareader.com/).
         widget:
           type: kavita
           url: http://kavita.lan:5000
-          key: "{{HD_VAR_KAVITA_KEY}}"
+          key: "{{DASHBOARD_VAR_KAVITA_KEY}}"
 ```

@@ -25,5 +25,5 @@ Learn more about [Argo CD](https://argo-cd.readthedocs.io/).
         widget:
           type: argocd
           url: https://argocd.example.com
-          key: "{{HD_VAR_ARGOCD_TOKEN}}"
+          key: "{{DASHBOARD_VAR_ARGOCD_TOKEN}}"
 ```

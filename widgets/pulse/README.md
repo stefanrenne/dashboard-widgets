@@ -21,5 +21,5 @@ Learn more about [Pulse](https://github.com/rcourtman/Pulse).
         widget:
           type: pulse
           url: http://pulse.lan:7655
-          key: "{{HD_VAR_PULSE_TOKEN}}"
+          key: "{{DASHBOARD_VAR_PULSE_TOKEN}}"
 ```

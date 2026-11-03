@@ -1,7 +1,7 @@
 id: emby
 name: Emby
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: What is playing on Emby, one row per stream, and optionally the library counts (homepage's emby widget).
 refresh: 10s
 options:

@@ -13,7 +13,7 @@ and the certificates itself. Give that account read access to nodes and their me
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
-metadata: { name: homelab-dashboard-nodes }
+metadata: { name: dashboard-nodes }
 rules:
   - apiGroups: [""]
     resources: ["nodes"]

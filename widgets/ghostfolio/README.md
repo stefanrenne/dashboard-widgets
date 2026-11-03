@@ -27,6 +27,6 @@ Learn more about [Ghostfolio](https://ghostfol.io/).
         widget:
           type: ghostfolio
           url: http://ghostfolio.lan:3333
-          key: "{{HD_VAR_GHOSTFOLIO_TOKEN}}"
+          key: "{{DASHBOARD_VAR_GHOSTFOLIO_TOKEN}}"
           fields: [gross_percent_today, gross_percent_max, net_worth]
 ```

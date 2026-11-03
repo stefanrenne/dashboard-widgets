@@ -1,7 +1,7 @@
 id: qui
 name: qui
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Torrents downloading and seeding with their rates across the qBittorrent instances of qui (homepage's qui widget).
 refresh: 15s
 defaultFields: [leech, download, seed, upload]

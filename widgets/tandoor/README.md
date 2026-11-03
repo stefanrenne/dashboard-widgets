@@ -20,5 +20,5 @@ Learn more about [Tandoor Recipes](https://tandoor.dev/).
         widget:
           type: tandoor
           url: http://tandoor.lan:8080
-          key: "{{HD_VAR_TANDOOR_TOKEN}}"
+          key: "{{DASHBOARD_VAR_TANDOOR_TOKEN}}"
 ```

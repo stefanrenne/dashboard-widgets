@@ -21,5 +21,5 @@ Learn more about [SparkyFitness](https://github.com/CodeWithCJ/SparkyFitness).
         widget:
           type: sparkyfitness
           url: http://sparkyfitness.lan:3004
-          key: "{{HD_VAR_SPARKYFITNESS_KEY}}"
+          key: "{{DASHBOARD_VAR_SPARKYFITNESS_KEY}}"
 ```

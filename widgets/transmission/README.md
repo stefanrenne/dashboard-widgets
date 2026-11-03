@@ -23,5 +23,5 @@ Learn more about [Transmission](https://transmissionbt.com/).
           type: transmission
           url: http://transmission.lan:9091
           username: admin
-          password: "{{HD_VAR_TRANSMISSION_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_TRANSMISSION_PASSWORD}}"
 ```

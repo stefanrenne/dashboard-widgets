@@ -21,5 +21,5 @@ Learn more about [Headscale](https://headscale.net/).
           type: headscale
           url: https://headscale.lan
           nodeId: 3
-          key: "{{HD_VAR_HEADSCALE_KEY}}"
+          key: "{{DASHBOARD_VAR_HEADSCALE_KEY}}"
 ```

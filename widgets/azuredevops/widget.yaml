@@ -1,7 +1,7 @@
 id: azuredevops
 name: Azure DevOps
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: The last run of a pipeline, and open pull requests in a repository (homepage's azuredevops widget).
 refresh: 5m
 options:

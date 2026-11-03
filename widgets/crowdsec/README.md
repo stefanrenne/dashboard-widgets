@@ -22,5 +22,5 @@ Learn more about [CrowdSec](https://www.crowdsec.net/).
           type: crowdsec
           url: http://crowdsec.lan:8080
           username: dashboard
-          password: "{{HD_VAR_CROWDSEC_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_CROWDSEC_PASSWORD}}"
 ```

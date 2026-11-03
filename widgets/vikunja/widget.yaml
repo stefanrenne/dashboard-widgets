@@ -1,7 +1,7 @@
 id: vikunja
 name: Vikunja
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Projects and open tasks due within a week, overdue and in progress in Vikunja, and optionally the next tasks (homepage's vikunja widget).
 refresh: 5m
 options:

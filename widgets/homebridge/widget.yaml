@@ -1,7 +1,7 @@
 id: homebridge
 name: Homebridge
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Whether Homebridge runs, updates for it and its plugins, and the child bridges running (homepage's homebridge widget).
 refresh: 60s
 options:

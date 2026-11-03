@@ -1,7 +1,7 @@
 id: octoprint
 name: OctoPrint
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: A 3D printer's state, tool and bed temperatures and the job's progress in OctoPrint (homepage's octoprint widget).
 refresh: 10s
 options:

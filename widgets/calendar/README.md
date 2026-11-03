@@ -46,7 +46,7 @@ No blocks: the calendar is drawn by the widget.
               service_group: Media
               service_name: Radarr
             - type: ical
-              url: "{{HD_VAR_FAMILY_CALENDAR_URL}}"
+              url: "{{DASHBOARD_VAR_FAMILY_CALENDAR_URL}}"
               name: Family
               color: zinc
               params:

@@ -23,7 +23,7 @@ Learn more about [Gluetun](https://github.com/qdm12/gluetun).
         widget:
           type: gluetun
           url: http://gluetun.lan:8000
-          key: "{{HD_VAR_GLUETUN_KEY}}"
+          key: "{{DASHBOARD_VAR_GLUETUN_KEY}}"
           version: 2
           fields: [public_ip, country, port_forwarded]
 ```

@@ -25,5 +25,5 @@ Learn more about [Nextcloud](https://nextcloud.com/).
         widget:
           type: nextcloud
           url: https://cloud.example.com
-          key: "{{HD_VAR_NEXTCLOUD_TOKEN}}"
+          key: "{{DASHBOARD_VAR_NEXTCLOUD_TOKEN}}"
 ```

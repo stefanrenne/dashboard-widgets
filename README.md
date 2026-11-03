@@ -1,6 +1,6 @@
-# homelab-dashboard widgets
+# dashboard widgets
 
-Every widget of [homelab-dashboard](https://github.com/stefanrenne/homelab-dashboard): the ones for the usual homelab
+Every widget of [dashboard](https://github.com/stefanrenne/dashboard): the ones for the usual homelab
 services, with the same fields as the matching [homepage](https://gethomepage.dev) widgets, the
 header widgets (`datetime`, `search`, `resources`, ...) and the ones behind the dashboard's own
 service fields (`siteMonitor:` uses `http-status`, `ping:` `ping`, `container:` `docker`, `app:`
@@ -213,10 +213,10 @@ that entry replaces the default:
 ```yaml
 # settings.yaml of the dashboard
 plugins:
-  - source: git+https://github.com/stefanrenne/homelab-dashboard-widgets#latest   # or a tag: #v0.2.0
+  - source: git+https://github.com/stefanrenne/dashboard-widgets#latest   # or a tag: #v0.2.0
     only: [radarr, sonarr]        # optional: just these (plus the five behind the service fields)
   # while developing (wins over the installed collection):
-  - path: ~/git/homelab-dashboard-widgets
+  - path: ~/git/dashboard-widgets
 ```
 
 ```yaml

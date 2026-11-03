@@ -1,7 +1,7 @@
 id: tailscale
 name: Tailscale
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Address, last seen and key expiry of one device in your tailnet, and more through fields (homepage's tailscale widget).
 refresh: 5m
 defaultFields: [address, last_seen, expires]

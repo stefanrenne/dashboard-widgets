@@ -6,10 +6,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const OUTPUT_LIMIT = 64 * 1024;
-// `user: root` runs through sudo and this wrapper of the dashboard image (docker/hd-root there);
+// `user: root` runs through sudo and this wrapper of the dashboard image (docker/dashboard-root there);
 // replaceable in tests
-export const ROOT = { sudo: 'sudo', runner: '/usr/local/bin/hd-root' };
-export const ROOT_OFF = 'user: root needs HD_ALLOW_ROOT_SCRIPTS=true on the dashboard container (dashboard image 0.9.0 or newer)';
+export const ROOT = { sudo: 'sudo', runner: '/usr/local/bin/dashboard-root' };
+export const ROOT_OFF = 'user: root needs DASHBOARD_ALLOW_ROOT_SCRIPTS=true on the dashboard container (dashboard image 0.9.0 or newer)';
 export const CUT_MARKER = '[earlier output cut]\n';
 const KILL_GRACE = 2000;
 

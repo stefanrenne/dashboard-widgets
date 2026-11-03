@@ -24,6 +24,6 @@ Learn more about [LubeLogger](https://lubelogger.com/).
           type: lubelogger
           url: https://lubelogger.lan
           username: anna
-          password: "{{HD_VAR_LUBELOGGER_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_LUBELOGGER_PASSWORD}}"
           vehicleID: 1
 ```

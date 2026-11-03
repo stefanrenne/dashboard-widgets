@@ -21,6 +21,6 @@ Learn more about [Mealie](https://mealie.io/).
         widget:
           type: mealie
           url: http://mealie.lan:9000
-          key: "{{HD_VAR_MEALIE_TOKEN}}"
+          key: "{{DASHBOARD_VAR_MEALIE_TOKEN}}"
           version: 2
 ```

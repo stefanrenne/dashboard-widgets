@@ -1,7 +1,7 @@
 id: headscale
 name: Headscale
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: A node's name, address, last seen and online state in Headscale (homepage's headscale widget).
 refresh: 60s
 options:

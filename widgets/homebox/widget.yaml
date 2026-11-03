@@ -1,7 +1,7 @@
 id: homebox
 name: Homebox
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Items, locations, labels, users and the total value of your inventory in Homebox (homepage's homebox widget).
 refresh: 5m
 defaultFields: [items, locations, totalValue]

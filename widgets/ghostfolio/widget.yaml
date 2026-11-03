@@ -1,7 +1,7 @@
 id: ghostfolio
 name: Ghostfolio
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Portfolio performance today, over a year and in total, and the net worth, in Ghostfolio (homepage's ghostfolio widget).
 refresh: 5m
 defaultFields: [gross_percent_today, gross_percent_1y, gross_percent_max]

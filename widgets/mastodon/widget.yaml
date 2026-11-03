@@ -1,7 +1,7 @@
 id: mastodon
 name: Mastodon
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Users, posts and known domains of a Mastodon instance (homepage's mastodon widget).
 refresh: 15m
 options:

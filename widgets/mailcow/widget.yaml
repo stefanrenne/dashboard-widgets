@@ -1,7 +1,7 @@
 id: mailcow
 name: Mailcow
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Domains, mailboxes, messages and storage in Mailcow (homepage's mailcow widget).
 refresh: 5m
 options:

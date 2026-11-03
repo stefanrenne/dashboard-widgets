@@ -1,7 +1,7 @@
 id: peanut
 name: PeaNUT
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: A UPS's battery charge, load and state through PeaNUT (homepage's peanut widget).
 refresh: 30s
 options:

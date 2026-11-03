@@ -4,7 +4,7 @@
 export default {
   async fetch(ctx) {
     const { url, user, token, salt } = ctx.options;
-    const query = new URLSearchParams({ u: user, t: token, s: salt, v: '1.16.1', c: 'homelab-dashboard', f: 'json' });
+    const query = new URLSearchParams({ u: user, t: token, s: salt, v: '1.16.1', c: 'dashboard', f: 'json' });
     const res = await ctx.fetch(`${url.replace(/\/+$/, '')}/rest/getNowPlaying?${query}`, { headers: { accept: 'application/json' } });
     if (!res.ok) throw new Error(`Navidrome answered ${res.status}`);
     const r = (await res.json())['subsonic-response'] ?? {};

@@ -21,5 +21,5 @@ Learn more about [Medusa](https://pymedusa.com/).
         widget:
           type: medusa
           url: http://medusa.lan:8081
-          key: "{{HD_VAR_MEDUSA_KEY}}"
+          key: "{{DASHBOARD_VAR_MEDUSA_KEY}}"
 ```

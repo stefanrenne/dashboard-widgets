@@ -20,5 +20,5 @@ Learn more about [changedetection.io](https://changedetection.io/).
         widget:
           type: changedetectionio
           url: http://changedetection.lan:5000
-          key: "{{HD_VAR_CHANGEDETECTION_KEY}}"
+          key: "{{DASHBOARD_VAR_CHANGEDETECTION_KEY}}"
 ```

@@ -1,7 +1,7 @@
 id: komodo
 name: Komodo
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Containers, or stacks, or a summary of servers, stacks and containers, in Komodo (homepage's komodo widget).
 refresh: 30s
 defaultFields: [total, running, stopped, down, unhealthy, servers, stacks, containers]

@@ -6,7 +6,7 @@
 const SUCCESS_MS = 1500;
 const CHECK = 'M20 6 9 17l-5-5';
 
-class HdButton extends HTMLElement {
+class DashButton extends HTMLElement {
   get busy() {
     return this._busy === true;
   }
@@ -46,18 +46,18 @@ class HdButton extends HTMLElement {
         a, button {
           box-sizing: border-box; display: flex; align-items: center; justify-content: center;
           inline-size: 100%; min-block-size: 2.25rem; padding-block: .5rem; padding-inline: 1rem;
-          border: 1px solid color-mix(in srgb, var(--hd-text) 25%, transparent); border-radius: 6px;
-          background: color-mix(in srgb, var(--hd-text) 8%, transparent); color: var(--hd-text);
+          border: 1px solid color-mix(in srgb, var(--dash-text) 25%, transparent); border-radius: 6px;
+          background: color-mix(in srgb, var(--dash-text) 8%, transparent); color: var(--dash-text);
           font: inherit; font-size: .9375rem; font-weight: 500; line-height: 1.25; text-align: center;
           text-decoration: none; cursor: pointer; transition: background-color .15s ease;
         }
-        a:hover, button:hover:not(:disabled) { background: color-mix(in srgb, var(--hd-text) 14%, transparent); }
-        a:focus-visible, button:focus-visible { outline: 2px solid var(--hd-text); outline-offset: 2px; }
+        a:hover, button:hover:not(:disabled) { background: color-mix(in srgb, var(--dash-text) 14%, transparent); }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--dash-text); outline-offset: 2px; }
         button:disabled { cursor: progress; }
-        button.done { cursor: default; color: var(--hd-ok); border-color: color-mix(in srgb, var(--hd-ok) 55%, transparent); }
+        button.done { cursor: default; color: var(--dash-ok); border-color: color-mix(in srgb, var(--dash-ok) 55%, transparent); }
         .spinner {
           inline-size: 1.125rem; block-size: 1.125rem; border-radius: 50%;
-          border: 2px solid color-mix(in srgb, var(--hd-text) 25%, transparent); border-block-start-color: var(--hd-text);
+          border: 2px solid color-mix(in srgb, var(--dash-text) 25%, transparent); border-block-start-color: var(--dash-text);
           animation: spin .8s linear infinite;
         }
         .check { inline-size: 1.25rem; block-size: 1.25rem; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -65,9 +65,9 @@ class HdButton extends HTMLElement {
         @keyframes pulse { 50% { opacity: .35; } }
         @media (prefers-reduced-motion: reduce) {
           a, button { transition: none; }
-          .spinner { animation: pulse 1.6s ease-in-out infinite; border-color: var(--hd-text); }
+          .spinner { animation: pulse 1.6s ease-in-out infinite; border-color: var(--dash-text); }
         }
-        @media (prefers-contrast: more) { a, button { border-color: var(--hd-text); } }
+        @media (prefers-contrast: more) { a, button { border-color: var(--dash-text); } }
       </style>`;
     }
     this.render();
@@ -99,7 +99,7 @@ class HdButton extends HTMLElement {
         el.addEventListener('click', () => {
           if (this.busy || this._success) return;
           // the label is the dialog's title; a successful run needs no dialog, the check says it
-          this.dispatchEvent(new CustomEvent('hd-widget-action', { bubbles: true, composed: true, detail: { title: this.options?.text ?? '', showResult: 'failure' } }));
+          this.dispatchEvent(new CustomEvent('dash-widget-action', { bubbles: true, composed: true, detail: { title: this.options?.text ?? '', showResult: 'failure' } }));
         });
       } else {
         el.target = '_blank';
@@ -140,4 +140,4 @@ class HdButton extends HTMLElement {
     }
   }
 }
-customElements.define('hd-button', HdButton);
+customElements.define('dash-button', DashButton);

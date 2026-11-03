@@ -1,7 +1,7 @@
 id: zabbix
 name: Zabbix
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Problems in Zabbix by severity, from unclassified to disaster (homepage's zabbix widget).
 refresh: 60s
 defaultFields: [warning, average, high, disaster]

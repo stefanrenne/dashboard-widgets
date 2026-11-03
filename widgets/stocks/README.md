@@ -17,7 +17,7 @@ One block per symbol in the watchlist, named after it (`AAPL`)
 ```yaml
 # settings.yaml
 providers:
-  finnhub: "{{HD_VAR_FINNHUB_KEY}}"
+  finnhub: "{{DASHBOARD_VAR_FINNHUB_KEY}}"
 
 # widgets.yaml
 - stocks:

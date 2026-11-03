@@ -23,5 +23,5 @@ Learn more about [FileFlows](https://fileflows.com/).
           type: fileflows
           url: http://fileflows.lan:19200
           version: 2
-          key: "{{HD_VAR_FILEFLOWS_TOKEN}}"
+          key: "{{DASHBOARD_VAR_FILEFLOWS_TOKEN}}"
 ```

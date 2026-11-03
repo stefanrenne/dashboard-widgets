@@ -1,7 +1,7 @@
 id: autobrr
 name: autobrr
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Approved and rejected pushes, filters and indexers in autobrr (homepage's autobrr widget).
 refresh: 5m
 options:

@@ -1,7 +1,7 @@
 id: calibreweb
 name: Calibre-Web
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Books, authors, categories and series in Calibre-Web (homepage's calibreweb widget).
 refresh: 10m
 options:

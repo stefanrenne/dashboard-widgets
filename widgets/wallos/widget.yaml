@@ -1,7 +1,7 @@
 id: wallos
 name: Wallos
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Active subscriptions, the next to renew and the cost of last, this and next month in Wallos (homepage's wallos widget).
 refresh: 1h
 defaultFields: [activeSubscriptions, nextRenewingSubscription, thisMonthlyCost, nextMonthlyCost]

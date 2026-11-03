@@ -1,7 +1,7 @@
 id: qnap
 name: QNAP
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: CPU, memory, temperature and pool or volume use of a QNAP NAS (homepage's qnap widget).
 refresh: 60s
 options:

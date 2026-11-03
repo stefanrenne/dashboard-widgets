@@ -27,7 +27,7 @@ Learn more about [TrueNAS](https://www.truenas.com/).
           type: truenas
           url: https://truenas.lan
           version: 2
-          key: "{{HD_VAR_TRUENAS_KEY}}"
+          key: "{{DASHBOARD_VAR_TRUENAS_KEY}}"
           enablePools: true
           insecure: true
 ```

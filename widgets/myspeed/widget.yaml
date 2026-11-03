@@ -1,7 +1,7 @@
 id: myspeed
 name: MySpeed
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Download, upload and ping of MySpeed's latest speed test (homepage's myspeed widget).
 refresh: 5m
 options:

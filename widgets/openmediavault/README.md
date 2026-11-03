@@ -28,6 +28,6 @@ Learn more about [OpenMediaVault](https://www.openmediavault.org/).
           type: openmediavault
           url: http://omv.lan
           username: admin
-          password: "{{HD_VAR_OMV_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_OMV_PASSWORD}}"
           method: services.getStatus
 ```

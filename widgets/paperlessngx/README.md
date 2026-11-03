@@ -23,5 +23,5 @@ Learn more about [Paperless-ngx](https://docs.paperless-ngx.com/).
         widget:
           type: paperlessngx
           url: http://paperless.lan:8000
-          key: "{{HD_VAR_PAPERLESS_TOKEN}}"
+          key: "{{DASHBOARD_VAR_PAPERLESS_TOKEN}}"
 ```

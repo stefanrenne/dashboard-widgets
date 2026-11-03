@@ -23,6 +23,6 @@ Learn more about [Speedtest Tracker](https://docs.speedtest-tracker.dev/).
           type: speedtest
           url: http://speedtest.lan:8080
           version: 2
-          key: "{{HD_VAR_SPEEDTEST_TOKEN}}"
+          key: "{{DASHBOARD_VAR_SPEEDTEST_TOKEN}}"
           bitratePrecision: 1
 ```

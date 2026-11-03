@@ -124,7 +124,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const { notes, errors } = releaseNotes({
     version,
     tag: `v${version}`,
-    repo: process.env.GITHUB_REPOSITORY ?? 'stefanrenne/homelab-dashboard-widgets',
+    repo: process.env.GITHUB_REPOSITORY ?? 'stefanrenne/dashboard-widgets',
     previous,
     changelog: fs.readFileSync('CHANGELOG.md', 'utf8'),
     before: previous ? versionsAt(previous) : {},

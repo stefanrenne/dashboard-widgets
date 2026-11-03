@@ -23,5 +23,5 @@ Learn more about [Backrest](https://garethgeorge.github.io/backrest/).
           type: backrest
           url: http://backrest.lan:9898
           username: admin
-          password: "{{HD_VAR_BACKREST_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_BACKREST_PASSWORD}}"
 ```

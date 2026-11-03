@@ -1,7 +1,7 @@
 id: proxmox
 name: Proxmox VE
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Running and total VMs and containers, and the CPU and memory of a Proxmox cluster or one node (homepage's proxmox widget).
 refresh: 30s
 options:

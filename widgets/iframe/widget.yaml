@@ -1,7 +1,7 @@
 id: iframe
 name: iFrame
-version: 1.0.0
-apiVersion: 1
+version: 1.1.0
+apiVersion: 2
 description: Another page in a frame on the card (homepage's iframe widget).
 frames: [src]
 options:

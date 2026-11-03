@@ -1,7 +1,7 @@
 id: pangolin
 name: Pangolin
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Sites online, healthy resources and targets, and the traffic of a Pangolin organization (homepage's pangolin widget).
 refresh: 60s
 defaultFields: [sites, resources, targets, traffic]

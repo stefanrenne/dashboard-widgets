@@ -23,5 +23,5 @@ Learn more about [Wallos](https://github.com/ellite/wallos).
         widget:
           type: wallos
           url: http://wallos.lan:8282
-          key: "{{HD_VAR_WALLOS_KEY}}"
+          key: "{{DASHBOARD_VAR_WALLOS_KEY}}"
 ```

@@ -22,5 +22,5 @@ Learn more about [Homebox](https://homebox.software/).
           type: homebox
           url: http://homebox.lan:7745
           username: anna@example.com
-          password: "{{HD_VAR_HOMEBOX_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_HOMEBOX_PASSWORD}}"
 ```

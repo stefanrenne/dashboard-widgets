@@ -22,5 +22,5 @@ Learn more about [NZBGet](https://nzbget.com/).
           type: nzbget
           url: http://nzbget.lan:6789
           username: nzbget
-          password: "{{HD_VAR_NZBGET_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_NZBGET_PASSWORD}}"
 ```

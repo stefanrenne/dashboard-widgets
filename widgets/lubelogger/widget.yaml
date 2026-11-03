@@ -1,7 +1,7 @@
 id: lubelogger
 name: LubeLogger
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Vehicles, service records and reminders in LubeLogger, or one vehicle with its next reminder (homepage's lubelogger widget).
 refresh: 5m
 options:

@@ -1,7 +1,7 @@
 id: omada
 name: TP-Link Omada
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Access points, clients, alerts, gateways and switches of an Omada site (homepage's omada widget).
 refresh: 60s
 defaultFields: [connectedAp, activeUser, alerts, connectedGateways]

@@ -35,7 +35,7 @@ Learn more about [UniFi Network](https://help.ui.com/hc/en-us/categories/6583256
         widget:
           type: unifi
           url: https://unifi.lan
-          key: "{{HD_VAR_UNIFI_KEY}}"
+          key: "{{DASHBOARD_VAR_UNIFI_KEY}}"
           insecure: true
           fields: [uptime, wan, wlan_users, wlan_devices]
 ```

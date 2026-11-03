@@ -21,5 +21,5 @@ Learn more about [Syncthing](https://syncthing.net/).
         widget:
           type: syncthing
           url: http://syncthing.lan:8384
-          key: "{{HD_VAR_SYNCTHING_KEY}}"
+          key: "{{DASHBOARD_VAR_SYNCTHING_KEY}}"
 ```

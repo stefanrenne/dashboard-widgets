@@ -1,7 +1,7 @@
 id: navidrome
 name: Navidrome
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: What is playing on Navidrome, one row per listener (homepage's navidrome widget).
 refresh: 15s
 options:

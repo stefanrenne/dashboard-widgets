@@ -23,6 +23,6 @@ Learn more about [JDownloader](https://jdownloader.org/).
         widget:
           type: jdownloader
           username: anna@example.com
-          password: "{{HD_VAR_MYJD_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_MYJD_PASSWORD}}"
           client: JDownloader@nas
 ```

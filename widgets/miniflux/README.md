@@ -20,5 +20,5 @@ Learn more about [Miniflux](https://miniflux.app/).
         widget:
           type: miniflux
           url: http://miniflux.lan:8080
-          key: "{{HD_VAR_MINIFLUX_KEY}}"
+          key: "{{DASHBOARD_VAR_MINIFLUX_KEY}}"
 ```

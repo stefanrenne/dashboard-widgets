@@ -1,7 +1,7 @@
 id: spoolman
 name: Spoolman
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: What is left on up to four filament spools in Spoolman (homepage's spoolman widget).
 refresh: 5m
 options:

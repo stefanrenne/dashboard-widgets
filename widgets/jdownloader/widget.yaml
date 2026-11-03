@@ -1,7 +1,7 @@
 id: jdownloader
 name: JDownloader
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Packages in the download list, their size, what is left and the download rate, through My.JDownloader (homepage's jdownloader widget).
 refresh: 30s
 options:

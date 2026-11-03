@@ -27,6 +27,6 @@ Learn more about [Beszel](https://beszel.dev/).
           url: http://beszel.lan:8090
           version: 2
           username: admin@example.com
-          password: "{{HD_VAR_BESZEL_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_BESZEL_PASSWORD}}"
           systemId: nas                # optional: one system
 ```

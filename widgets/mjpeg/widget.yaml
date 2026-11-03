@@ -1,7 +1,7 @@
 id: mjpeg
 name: MJPEG
-version: 0.1.0
-apiVersion: 1
+version: 0.2.0
+apiVersion: 2
 description: A camera's MJPEG stream on the card (homepage's mjpeg widget).
 options:
   stream: { type: url, required: true }    # the stream, e.g. http://printer.lan/webcam/?action=stream

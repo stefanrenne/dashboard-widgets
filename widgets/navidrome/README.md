@@ -26,6 +26,6 @@ No blocks: one row per stream.
           type: navidrome
           url: http://navidrome.lan:4533
           user: anna
-          token: "{{HD_VAR_NAVIDROME_TOKEN}}"
+          token: "{{DASHBOARD_VAR_NAVIDROME_TOKEN}}"
           salt: c19b2d
 ```

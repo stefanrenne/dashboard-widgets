@@ -1,7 +1,7 @@
 id: develancacheui
 name: DeveLanCacheUI
-version: 0.1.0
-apiVersion: 1
+version: 0.2.0
+apiVersion: 2
 description: Data served from the LAN cache and from the internet, from DeveLanCacheUI's backend (homepage's develancacheui widget).
 refresh: 5m
 options:

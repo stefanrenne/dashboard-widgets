@@ -1,7 +1,7 @@
 id: unmanic
 name: Unmanic
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Workers busy and in all, and the pending tasks in Unmanic (homepage's unmanic widget).
 refresh: 30s
 options:

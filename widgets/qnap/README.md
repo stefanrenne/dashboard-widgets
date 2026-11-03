@@ -24,6 +24,6 @@ Learn more about [QNAP](https://www.qnap.com/).
           type: qnap
           url: https://nas.lan
           username: dashboard
-          password: "{{HD_VAR_QNAP_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_QNAP_PASSWORD}}"
           volume: DataVol1
 ```

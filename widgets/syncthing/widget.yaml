@@ -1,7 +1,7 @@
 id: syncthing
 name: Syncthing
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Devices connected, how far in sync, errors and the data shared in Syncthing (homepage's syncthing widget).
 refresh: 1m
 options:

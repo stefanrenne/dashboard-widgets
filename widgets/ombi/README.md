@@ -20,5 +20,5 @@ Learn more about [Ombi](https://ombi.io/).
         widget:
           type: ombi
           url: http://ombi.lan:3579
-          key: "{{HD_VAR_OMBI_KEY}}"
+          key: "{{DASHBOARD_VAR_OMBI_KEY}}"
 ```

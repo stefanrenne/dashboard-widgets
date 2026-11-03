@@ -1,7 +1,7 @@
 id: urbackup
 name: UrBackup
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Clients whose backups are fine, failed or not recent in UrBackup, and the space used (homepage's urbackup widget).
 refresh: 5m
 defaultFields: [ok, errored, noRecent]

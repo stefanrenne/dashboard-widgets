@@ -1,7 +1,7 @@
 id: checkmk
 name: Checkmk
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Services and hosts that are not OK in a Checkmk site (homepage's checkmk widget).
 refresh: 1m
 options:

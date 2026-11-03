@@ -19,5 +19,5 @@ Learn more about [SABnzbd](https://sabnzbd.org).
         widget:
           type: sabnzbd
           url: http://sabnzbd:8080
-          key: "{{HD_VAR_SABNZBD_KEY}}"
+          key: "{{DASHBOARD_VAR_SABNZBD_KEY}}"
 ```

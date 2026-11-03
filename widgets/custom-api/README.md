@@ -12,7 +12,7 @@ in `mappings` picks a `field` (a dotted path such as `data.stats.count`) and giv
 | `prefix`, `suffix` | Text around the value |
 | `remap` | `[{ value: PLAYING, to: Playing }, { any: true, to: Other }]` |
 
-`headers` is secret: put API keys there, through `{{HD_VAR_...}}`. With `display: list` every
+`headers` is secret: put API keys there, through `{{DASHBOARD_VAR_...}}`. With `display: list` every
 mapping becomes a row instead of a block.
 
 ## Fields
@@ -29,7 +29,7 @@ The label of each mapping
         widget:
           type: custom-api
           url: http://pihole.lan/api/stats/summary
-          headers: { X-FTL-SID: "{{HD_VAR_PIHOLE_SID}}" }
+          headers: { X-FTL-SID: "{{DASHBOARD_VAR_PIHOLE_SID}}" }
           mappings:
             - { field: queries.total, label: Queries, format: number }
             - { field: queries.percent_blocked, label: Blocked, format: percent }

@@ -24,7 +24,7 @@ Learn more about [Omada](https://www.omadanetworks.com/).
           type: omada
           url: https://omada.lan:8043
           username: dashboard
-          password: "{{HD_VAR_OMADA_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_OMADA_PASSWORD}}"
           site: Default
           insecure: true
 ```

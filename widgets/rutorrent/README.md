@@ -22,5 +22,5 @@ Learn more about [ruTorrent](https://github.com/Novik/ruTorrent).
           type: rutorrent
           url: http://rutorrent.lan
           username: anna
-          password: "{{HD_VAR_RUTORRENT_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_RUTORRENT_PASSWORD}}"
 ```

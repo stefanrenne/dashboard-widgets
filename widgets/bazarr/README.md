@@ -19,5 +19,5 @@ Learn more about [Bazarr](https://www.bazarr.media).
         widget:
           type: bazarr
           url: http://bazarr:6767
-          key: "{{HD_VAR_BAZARR_KEY}}"
+          key: "{{DASHBOARD_VAR_BAZARR_KEY}}"
 ```

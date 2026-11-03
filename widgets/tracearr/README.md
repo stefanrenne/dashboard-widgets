@@ -23,7 +23,7 @@ With `view: summary` or `both`: `streams`, `transcodes`, `directplay`, `bitrate`
         widget:
           type: tracearr
           url: http://tracearr.lan:3000
-          key: "{{HD_VAR_TRACEARR_KEY}}"
+          key: "{{DASHBOARD_VAR_TRACEARR_KEY}}"
           view: both
           enableUser: true
 ```

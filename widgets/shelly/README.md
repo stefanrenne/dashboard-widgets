@@ -10,7 +10,7 @@ Set `password` only when the device has authentication on (Settings > Authentica
 and newer, Internet & Security > Restrict login on Gen1): Gen2 and newer log in as `admin` with
 digest authentication, Gen1 with the `username` and password set there. When the device refuses
 the password, or asks for one while none is set, the card says so. Fill the password in through
-`{{HD_VAR_...}}`, not `{{...}}` alone: an unknown placeholder stays literal and is refused. The widget asks the
+`{{DASHBOARD_VAR_...}}`, not `{{...}}` alone: an unknown placeholder stays literal and is refused. The widget asks the
 device to look for new firmware at most once an hour (it also looks by itself); with `beta: true`
 a beta version is offered when there is no newer stable one.
 
@@ -35,12 +35,12 @@ Learn more about [Shelly](https://shelly-api-docs.shelly.cloud/).
         widget:
           type: shelly
           url: http://shelly-garage.lan
-          password: "{{HD_VAR_SHELLY_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_SHELLY_PASSWORD}}"
     - Bureau plug:                       # only shown while a firmware update waits
         href: http://shelly-bureau.lan
         filter: widget.update == false
         widget:
           type: shelly
           url: http://shelly-bureau.lan
-          password: "{{HD_VAR_SHELLY_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_SHELLY_PASSWORD}}"
 ```

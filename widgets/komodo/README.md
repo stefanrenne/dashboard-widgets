@@ -22,7 +22,7 @@ Learn more about [Komodo](https://komo.do/).
         widget:
           type: komodo
           url: http://komodo.lan:9120
-          key: "{{HD_VAR_KOMODO_KEY}}"
-          secret: "{{HD_VAR_KOMODO_SECRET}}"
+          key: "{{DASHBOARD_VAR_KOMODO_KEY}}"
+          secret: "{{DASHBOARD_VAR_KOMODO_SECRET}}"
           showSummary: true
 ```

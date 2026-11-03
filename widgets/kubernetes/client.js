@@ -7,21 +7,21 @@ const fmtBytes = (n, lang) => {
   return `${new Intl.NumberFormat(lang, { maximumFractionDigits: n >= 100 ? 0 : 1 }).format(n)} ${units[i]}`;
 };
 
-class HdKubernetes extends HTMLElement {
+class DashKubernetes extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; }
-      .title { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--hd-muted); margin-bottom: 2px; }
+      .title { font-size: .75rem; font-weight: 700; text-transform: uppercase; color: var(--dash-muted); margin-bottom: 2px; }
       .meters { display: flex; gap: 16px; flex-wrap: wrap; }
       .meter { min-width: 120px; font-size: .75rem; line-height: 1rem; }
       .row { display: flex; justify-content: space-between; gap: 8px; font-variant-numeric: tabular-nums; }
-      .bar { margin-top: 2px; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--hd-text) 20%, transparent); overflow: hidden; }
-      .fill { height: 100%; background: color-mix(in srgb, var(--hd-text) 50%, transparent); }
+      .bar { margin-top: 2px; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--dash-text) 20%, transparent); overflow: hidden; }
+      .fill { height: 100%; background: color-mix(in srgb, var(--dash-text) 50%, transparent); }
       ul { list-style: none; margin: 8px 0 0; padding: 0; }
       li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; font-size: .75rem; line-height: 1.25rem; font-variant-numeric: tabular-nums; }
-      .down { color: var(--hd-error); }
-      .muted { color: var(--hd-muted); }
-      .error { font-size: .75rem; color: var(--hd-error); }
+      .down { color: var(--dash-error); }
+      .muted { color: var(--dash-muted); }
+      .error { font-size: .75rem; color: var(--dash-error); }
     </style><div class="box"></div>`;
     this.render();
   }
@@ -91,4 +91,4 @@ class HdKubernetes extends HTMLElement {
     }
   }
 }
-customElements.define('hd-kubernetes', HdKubernetes);
+customElements.define('dash-kubernetes', DashKubernetes);

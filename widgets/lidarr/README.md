@@ -22,5 +22,5 @@ Learn more about [Lidarr](https://lidarr.audio/).
         widget:
           type: lidarr
           url: http://lidarr.lan:8686
-          key: "{{HD_VAR_LIDARR_KEY}}"
+          key: "{{DASHBOARD_VAR_LIDARR_KEY}}"
 ```

@@ -1,7 +1,7 @@
 id: xteve
 name: xTeVe
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Streams in all, active and mapped to the EPG in xTeVe (homepage's xteve widget).
 refresh: 5m
 options:

@@ -1,11 +1,11 @@
 {
-  "name": "homelab-dashboard-widgets",
+  "name": "dashboard-widgets",
   "version": "0.12.4",
   "private": true,
-  "description": "Widgets for homelab-dashboard: radarr, sonarr, unraid, portainer and more",
+  "description": "Widgets for dashboard: radarr, sonarr, unraid, portainer and more",
   "type": "module",
   "keywords": [
-    "homelab-dashboard-widget"
+    "dashboard-widget"
   ],
   "engines": {
     "node": ">=22"
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stefanrenne/homelab-dashboard-widgets.git"
+    "url": "git+https://github.com/stefanrenne/dashboard-widgets.git"
   },
   "license": "MIT"
 }

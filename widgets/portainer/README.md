@@ -20,5 +20,5 @@ Learn more about [Portainer](https://www.portainer.io).
           type: portainer
           url: https://portainer:9443
           env: 1
-          key: "{{HD_VAR_PORTAINER_KEY}}"
+          key: "{{DASHBOARD_VAR_PORTAINER_KEY}}"
 ```

@@ -22,6 +22,6 @@ Learn more about [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr).
           type: dispatcharr
           url: http://dispatcharr.lan:9191
           username: admin
-          password: "{{HD_VAR_DISPATCHARR_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_DISPATCHARR_PASSWORD}}"
           enableActiveStreams: true
 ```

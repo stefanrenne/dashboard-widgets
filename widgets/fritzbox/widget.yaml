@@ -1,7 +1,7 @@
 id: fritzbox
 name: FRITZ!Box
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Internet connection, uptime, line speed and traffic of a FRITZ!Box (homepage's fritzbox widget).
 refresh: 30s
 defaultFields: [connectionStatus, uptime, maxDown, maxUp]

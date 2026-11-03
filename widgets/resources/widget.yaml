@@ -1,7 +1,7 @@
 id: resources
 name: System resources
-version: 1.5.0
-apiVersion: 1
+version: 1.6.0
+apiVersion: 2
 description: CPU, memory, disk, CPU temperature, uptime and network of the machine (or container) the dashboard runs on, as meters like homepage.
 refresh: 10s
 options:

@@ -22,5 +22,5 @@ Learn more about [Calibre-Web](https://github.com/janeczku/calibre-web).
           type: calibreweb
           url: http://calibre-web.lan:8083
           username: anna
-          password: "{{HD_VAR_CALIBREWEB_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_CALIBREWEB_PASSWORD}}"
 ```

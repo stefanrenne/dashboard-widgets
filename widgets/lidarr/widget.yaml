@@ -1,7 +1,7 @@
 id: lidarr
 name: Lidarr
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Wanted and queued albums and the number of artists (homepage's lidarr widget).
 refresh: 1m
 options:

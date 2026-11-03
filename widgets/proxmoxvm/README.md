@@ -28,7 +28,7 @@ Learn more about [Proxmox VE](https://www.proxmox.com/en/proxmox-virtual-environ
 pve:                                   # the node name, as in proxmoxNode
   url: https://pve.lan:8006
   token: api@pam!dashboard
-  secret: "{{HD_VAR_PROXMOX_SECRET}}"
+  secret: "{{DASHBOARD_VAR_PROXMOX_SECRET}}"
 
 # services.yaml
 - Home:

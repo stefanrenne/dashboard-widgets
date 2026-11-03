@@ -1,7 +1,7 @@
 id: atsumeru
 name: Atsumeru
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Series, archives, chapters and categories in Atsumeru (homepage's atsumeru widget).
 refresh: 10m
 options:

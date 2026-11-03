@@ -19,6 +19,6 @@ No blocks: one row per stream
         widget:
           type: tautulli
           url: http://tautulli:8181
-          key: "{{HD_VAR_TAUTULLI_KEY}}"
+          key: "{{DASHBOARD_VAR_TAUTULLI_KEY}}"
           enableUser: true
 ```

@@ -22,5 +22,5 @@ Learn more about [Atsumeru](https://github.com/AtsumeruDev/Atsumeru).
           type: atsumeru
           url: http://atsumeru.lan:31337
           username: anna
-          password: "{{HD_VAR_ATSUMERU_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_ATSUMERU_PASSWORD}}"
 ```

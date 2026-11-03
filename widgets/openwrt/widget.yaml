@@ -1,7 +1,7 @@
 id: openwrt
 name: OpenWrt
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: An OpenWrt router's uptime and load, or with interfaceName an interface's state and traffic (homepage's openwrt widget).
 refresh: 30s
 options:

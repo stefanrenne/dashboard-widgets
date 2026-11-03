@@ -1,7 +1,7 @@
 id: karakeep
 name: Karakeep
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Bookmarks, favorites, archived items, highlights, lists and tags in Karakeep (homepage's karakeep widget).
 refresh: 5m
 defaultFields: [bookmarks, favorites, archived, highlights]

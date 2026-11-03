@@ -35,7 +35,7 @@ async function run(id, options = {}, { params } = {}) {
   if (!fs.existsSync(path.join(WIDGETS, id, 'server.js'))) return { blocks: [] }; // client-only (mjpeg)
   const { default: widget } = await import(path.join(WIDGETS, id, 'server.js'));
   return widget.fetch({
-    apiVersion: 1,
+    apiVersion: 2,
     instanceId: 't',
     params: params ?? {},
     options: { url: `${mock.url}/${id}`, key: 'test-key', ...REQUIRED[id], ...options },
@@ -58,7 +58,7 @@ test('every folder is a valid package: manifest, i18n in all languages, only nod
     const m = YAML.parse(fs.readFileSync(path.join(WIDGETS, id, 'widget.yaml'), 'utf8'));
     assert.equal(m.id, id);
     assert.match(id, /^[a-z0-9][a-z0-9-]{0,62}$/, `${id}: the dashboard's id format (homepage's names with _ go in aliases)`);
-    assert.equal(m.apiVersion, 1);
+    assert.equal(m.apiVersion, 2);
     assert.match(m.version, /^\d+\.\d+\.\d+$/);
     for (const [name, def] of Object.entries(m.options)) {
       if (/key|password|token/i.test(name)) assert.equal(def.secret, true, `${id}.${name} must be secret`);
@@ -297,7 +297,7 @@ test('README examples run on their fixture', async () => {
     const { default: widget } = await import(path.join(WIDGETS, id, 'server.js'));
     try {
       const out = await widget.fetch({
-        apiVersion: 1, instanceId: 'readme', params: {}, options, signal: new AbortController().signal, cache: new Map(), log: silent,
+        apiVersion: 2, instanceId: 'readme', params: {}, options, signal: new AbortController().signal, cache: new Map(), log: silent,
         fetch: (u, init) => fetch(/^[a-z][a-z0-9+.-]*:/i.test(String(u)) ? u : new URL(String(u), options.url ?? `${mock.url}/${id}`), init),
       });
       const state = (out.blocks ?? []).find((b) => (b.key ?? b.label) === 'status');
@@ -466,7 +466,7 @@ async function renderClient(id, options = {}, now = null) {
     dom.window.Date = class extends RealDate { constructor(...a) { super(...(a.length ? a : [fixed])); } static now() { return fixed; } };
   }
   dom.window.eval(fs.readFileSync(path.join(WIDGETS, id, 'client.js'), 'utf8'));
-  const el = dom.window.document.createElement(`hd-${id}`);
+  const el = dom.window.document.createElement(`dash-${id}`);
   Object.assign(el, { options, t: (k) => k });
   dom.window.document.body.append(el);
   return { el, window: dom.window };
@@ -516,7 +516,7 @@ test('weather widgets: no coordinates ask for the viewer\'s location, then use i
   Object.defineProperty(secure.window, 'isSecureContext', { value: true });
   Object.defineProperty(secure.window.navigator, 'geolocation', { value: { getCurrentPosition: (ok) => ok({ coords: { latitude: 52.3676, longitude: 4.9041 } }) } });
   const events = [];
-  secure.el.addEventListener('hd-widget-params', (e) => events.push(e.detail));
+  secure.el.addEventListener('dash-widget-params', (e) => events.push(e.detail));
   secure.el.data = { blocks: [], weather: null, needsLocation: true };
   assert.deepEqual({ ...events[0] }, { latitude: '52.37', longitude: '4.90' }, 'rounded to two decimals'); // detail comes from the page's realm
   const plain = await renderClient('openweathermap');
@@ -1135,7 +1135,7 @@ test('calendar: events of the month in view from the *arrs and an iCal feed, one
 test('calendar client: a month with dots, the chosen day\'s events, paging asks for the month; an agenda', async () => {
   const { el, window } = await renderClient('calendar', {}, '2026-10-20T12:00:00Z');
   const asked = [];
-  el.addEventListener('hd-widget-params', (e) => asked.push({ ...e.detail }));
+  el.addEventListener('dash-widget-params', (e) => asked.push({ ...e.detail }));
   window.document.documentElement.lang = 'en';
   el.t = (k) => ({ today: 'Today', noEvents: 'No events', inCinemas: 'In cinemas', notAnswered: 'Did not answer' })[k] ?? k;
   const events = [
@@ -1165,7 +1165,7 @@ test('calendar client: a month with dots, the chosen day\'s events, paging asks 
   // data for another month than the viewer's (the server's clock): it asks for the viewer's, once
   const other = await renderClient('calendar', {}, '2026-11-01T00:30:00Z');
   const asks = [];
-  other.el.addEventListener('hd-widget-params', (e) => asks.push({ ...e.detail }));
+  other.el.addEventListener('dash-widget-params', (e) => asks.push({ ...e.detail }));
   const october = { blocks: [], calendar: { view: 'monthly', month: '2026-10', timezone: 'UTC', events, failed: [] } };
   other.el.data = october;
   other.el.data = structuredClone(october);
@@ -1854,7 +1854,7 @@ test('shelly client: blocks with the update marked, a button only for an update,
   const button = root.querySelector('button');
   assert.deepEqual([button.hidden, button.disabled, button.textContent], [false, false, 'updateFirmware']);
   const events = [];
-  window.document.body.addEventListener('hd-widget-action', (e) => events.push([e.bubbles, e.composed, e.detail.title, e.detail.showResult]));
+  window.document.body.addEventListener('dash-widget-action', (e) => events.push([e.bubbles, e.composed, e.detail.title, e.detail.showResult]));
   button.click();
   assert.deepEqual(events, [[true, true, 'updateFirmware', 'failure']]);
   el.busy = true;

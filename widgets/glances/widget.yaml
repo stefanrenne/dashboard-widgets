@@ -1,7 +1,7 @@
 id: glances
 name: Glances
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: CPU, memory, CPU temperature, uptime and disks of a machine running Glances (homepage's glances info widget).
 refresh: 10s
 defaultFields: [cpu, memory, cputemp, uptime]

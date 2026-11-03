@@ -22,7 +22,7 @@ Learn more about [Vikunja](https://vikunja.io/).
         widget:
           type: vikunja
           url: https://vikunja.lan
-          key: "{{HD_VAR_VIKUNJA_TOKEN}}"
+          key: "{{DASHBOARD_VAR_VIKUNJA_TOKEN}}"
           version: 2
           enableTaskList: true
 ```

@@ -1,7 +1,7 @@
 id: prometheusmetric
 name: Prometheus Metric
-version: 0.1.0
-apiVersion: 1
+version: 0.2.0
+apiVersion: 2
 description: Up to four PromQL query results with your own labels and formats (homepage's prometheusmetric widget).
 refresh: 10s
 options:

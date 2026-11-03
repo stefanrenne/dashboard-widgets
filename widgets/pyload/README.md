@@ -22,5 +22,5 @@ Learn more about [pyLoad](https://pyload.net/).
           type: pyload
           url: http://pyload.lan:8000
           username: admin
-          password: "{{HD_VAR_PYLOAD_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_PYLOAD_PASSWORD}}"
 ```

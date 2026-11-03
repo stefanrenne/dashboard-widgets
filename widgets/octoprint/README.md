@@ -21,5 +21,5 @@ Learn more about [OctoPrint](https://octoprint.org/).
         widget:
           type: octoprint
           url: http://octopi.lan
-          key: "{{HD_VAR_OCTOPRINT_KEY}}"
+          key: "{{DASHBOARD_VAR_OCTOPRINT_KEY}}"
 ```

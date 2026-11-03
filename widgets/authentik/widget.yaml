@@ -1,7 +1,7 @@
 id: authentik
 name: authentik
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Users, and logins, failed logins and (version 2) authorizations of the last 24 hours in authentik (homepage's authentik widget).
 refresh: 5m
 options:

@@ -27,6 +27,6 @@ Learn more about [Tailscale](https://tailscale.com/).
         widget:
           type: tailscale
           deviceid: n1234567CNTRL
-          key: "{{HD_VAR_TAILSCALE_KEY}}"
+          key: "{{DASHBOARD_VAR_TAILSCALE_KEY}}"
           fields: [address, last_seen, expires, update_available]
 ```

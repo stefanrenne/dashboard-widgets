@@ -23,5 +23,5 @@ Learn more about [Homebridge](https://homebridge.io/).
           type: homebridge
           url: http://homebridge.lan:8581
           username: admin
-          password: "{{HD_VAR_HOMEBRIDGE_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_HOMEBRIDGE_PASSWORD}}"
 ```

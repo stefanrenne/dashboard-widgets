@@ -1,7 +1,7 @@
 id: unraid
 name: Unraid
-version: 0.4.0
-apiVersion: 1
+version: 0.5.0
+apiVersion: 2
 description: CPU, memory, array and pool usage through the Unraid API (Unraid 7 / Connect).
 refresh: 15s
 defaultFields: [memoryPercent, cpu, arrayUsedPercent, pool1UsedPercent]

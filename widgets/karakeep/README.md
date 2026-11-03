@@ -21,5 +21,5 @@ Learn more about [Karakeep](https://karakeep.app/).
         widget:
           type: karakeep
           url: http://karakeep.lan:3000
-          key: "{{HD_VAR_KARAKEEP_KEY}}"
+          key: "{{DASHBOARD_VAR_KARAKEEP_KEY}}"
 ```

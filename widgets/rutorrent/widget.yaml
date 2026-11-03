@@ -1,7 +1,7 @@
 id: rutorrent
 name: ruTorrent
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Active torrents and the upload and download rates in ruTorrent (homepage's rutorrent widget).
 refresh: 15s
 options:

@@ -3,7 +3,7 @@
 // (`busy`) it shows a spinner, after a successful start it says so until the device reports a
 // new version. The dashboard shows the result dialog only when the action failed.
 
-class HdShelly extends HTMLElement {
+class DashShelly extends HTMLElement {
   get data() {
     return this._data ?? null;
   }
@@ -49,41 +49,41 @@ class HdShelly extends HTMLElement {
         :host { display: block; }
         .blocks { display: flex; flex-wrap: wrap; }
         .block { flex: 1 1 0; min-width: 64px; margin: 4px; padding: 4px; border-radius: 4px;
-          background: var(--hd-block, color-mix(in srgb, var(--hd-text) 10%, transparent));
+          background: var(--dash-block, color-mix(in srgb, var(--dash-text) 10%, transparent));
           display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 44px; }
         .v { font-size: .875rem; line-height: 1.25rem; font-weight: 400; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; font-variant-numeric: tabular-nums; }
         .l { font-size: .75rem; line-height: 1rem; font-weight: 700; text-transform: uppercase; max-width: 100%;
           display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; hyphens: auto; overflow-wrap: break-word; }
-        .warn .v { color: var(--hd-warn); }
+        .warn .v { color: var(--dash-warn); }
         .sym { display: inline-block; margin-inline-end: 3px; font-size: .75em; vertical-align: .05em; }
         .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-        .error { margin: 4px; font-size: .75rem; color: var(--hd-error); }
-        .detail { margin-block-start: 2px; color: var(--hd-muted); overflow-wrap: anywhere; }
+        .error { margin: 4px; font-size: .75rem; color: var(--dash-error); }
+        .detail { margin-block-start: 2px; color: var(--dash-muted); overflow-wrap: anywhere; }
         button {
           box-sizing: border-box; display: flex; align-items: center; justify-content: center;
           inline-size: calc(100% - 8px); min-block-size: 2.25rem; margin: 4px; padding-block: .5rem; padding-inline: 1rem;
-          border: 1px solid color-mix(in srgb, var(--hd-text) 25%, transparent); border-radius: 6px;
-          background: color-mix(in srgb, var(--hd-text) 8%, transparent); color: var(--hd-text);
+          border: 1px solid color-mix(in srgb, var(--dash-text) 25%, transparent); border-radius: 6px;
+          background: color-mix(in srgb, var(--dash-text) 8%, transparent); color: var(--dash-text);
           font: inherit; font-size: .9375rem; font-weight: 500; line-height: 1.25; text-align: center; cursor: pointer;
           transition: background-color .15s ease;
         }
-        button:hover:not(:disabled) { background: color-mix(in srgb, var(--hd-text) 14%, transparent); }
-        button:focus-visible { outline: 2px solid var(--hd-text); outline-offset: 2px; }
+        button:hover:not(:disabled) { background: color-mix(in srgb, var(--dash-text) 14%, transparent); }
+        button:focus-visible { outline: 2px solid var(--dash-text); outline-offset: 2px; }
         button:disabled { cursor: progress; }
         button[hidden] { display: none; }
-        button.started { cursor: default; color: var(--hd-ok); border-color: color-mix(in srgb, var(--hd-ok) 55%, transparent); }
+        button.started { cursor: default; color: var(--dash-ok); border-color: color-mix(in srgb, var(--dash-ok) 55%, transparent); }
         .spinner {
           inline-size: 1.125rem; block-size: 1.125rem; border-radius: 50%;
-          border: 2px solid color-mix(in srgb, var(--hd-text) 25%, transparent); border-block-start-color: var(--hd-text);
+          border: 2px solid color-mix(in srgb, var(--dash-text) 25%, transparent); border-block-start-color: var(--dash-text);
           animation: spin .8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes pulse { 50% { opacity: .35; } }
         @media (prefers-reduced-motion: reduce) {
           button { transition: none; }
-          .spinner { animation: pulse 1.6s ease-in-out infinite; border-color: var(--hd-text); }
+          .spinner { animation: pulse 1.6s ease-in-out infinite; border-color: var(--dash-text); }
         }
-        @media (prefers-contrast: more) { button { border-color: var(--hd-text); } }
+        @media (prefers-contrast: more) { button { border-color: var(--dash-text); } }
       </style><div class="box"></div>`;
     }
     this.render();
@@ -117,7 +117,7 @@ class HdShelly extends HTMLElement {
       button.type = 'button';
       button.addEventListener('click', () => {
         if (button.disabled) return;
-        this.dispatchEvent(new CustomEvent('hd-widget-action', { bubbles: true, composed: true, detail: { title: (this.t ?? ((k) => k))('updateFirmware'), showResult: 'failure' } }));
+        this.dispatchEvent(new CustomEvent('dash-widget-action', { bubbles: true, composed: true, detail: { title: (this.t ?? ((k) => k))('updateFirmware'), showResult: 'failure' } }));
       });
       root.append(button);
     }
@@ -153,4 +153,4 @@ class HdShelly extends HTMLElement {
     }
   }
 }
-customElements.define('hd-shelly', HdShelly);
+customElements.define('dash-shelly', DashShelly);

@@ -20,5 +20,5 @@ Learn more about [What's up Docker](https://getwud.github.io/wud/).
           type: whatsupdocker
           url: http://wud:3000
           username: admin
-          password: "{{HD_VAR_WUD_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_WUD_PASSWORD}}"
 ```

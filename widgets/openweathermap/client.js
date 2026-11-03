@@ -14,15 +14,15 @@ const ICONS = {
   unknown: '<path d="M17.5 19H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 20 11a4 4 0 0 1-2.5 8z"/>',
 };
 
-class HdWeather extends HTMLElement {
+class DashWeather extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; }
       .w { display: flex; align-items: center; gap: 10px; }
-      svg { width: 28px; height: 28px; flex: none; color: var(--hd-text); }
+      svg { width: 28px; height: 28px; flex: none; color: var(--dash-text); }
       .temp { font-size: 1rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-      .cond { font-size: .75rem; color: var(--hd-muted); }
-      .error { font-size: .75rem; color: var(--hd-error); }
+      .cond { font-size: .75rem; color: var(--dash-muted); }
+      .error { font-size: .75rem; color: var(--dash-error); }
     </style><div class="w"><span class="icon"></span><div><div class="temp"></div><div class="cond"></div></div></div>`;
     this.render();
   }
@@ -43,7 +43,7 @@ class HdWeather extends HTMLElement {
       return;
     }
     navigator.geolocation.getCurrentPosition(
-      (pos) => this.dispatchEvent(new CustomEvent('hd-widget-params', {
+      (pos) => this.dispatchEvent(new CustomEvent('dash-widget-params', {
         bubbles: true, composed: true,
         detail: { latitude: pos.coords.latitude.toFixed(2), longitude: pos.coords.longitude.toFixed(2) },
       })),
@@ -70,4 +70,4 @@ class HdWeather extends HTMLElement {
     root.querySelector('.w').setAttribute('aria-label', [w?.label, temp, w ? t(w.condition) : ''].filter(Boolean).join(', '));
   }
 }
-customElements.define('hd-openweathermap', HdWeather);
+customElements.define('dash-openweathermap', DashWeather);

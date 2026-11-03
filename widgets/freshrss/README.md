@@ -23,5 +23,5 @@ Learn more about [FreshRSS](https://freshrss.org/).
           type: freshrss
           url: http://freshrss.lan:8080
           username: anna
-          password: "{{HD_VAR_FRESHRSS_API_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_FRESHRSS_API_PASSWORD}}"
 ```

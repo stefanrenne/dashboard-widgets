@@ -14,10 +14,10 @@ succeeds (exit code 0) shows a check for a moment, then the label again. A run t
 the dashboard's result dialog with the output (stdout and stderr together, the last 64 kB) and the
 exit code; the output can be copied from there. A run that takes longer than `timeout` seconds
 (default 300) is stopped, together with everything it started. Values filled in from
-`{{HD_VAR_*}}` are scrubbed from the output.
+`{{DASHBOARD_VAR_*}}` are scrubbed from the output.
 
 The run gets only `PATH` and `HOME` from the dashboard's environment; set `inheritEnv: true` to
-pass all of it (including every `HD_VAR_*`). It runs as the dashboard's user (`node`, uid 1000, in
+pass all of it (including every `DASHBOARD_VAR_*`). It runs as the dashboard's user (`node`, uid 1000, in
 the image), so tools such as `curl`, `jq` or `docker` must be in the image and the Docker socket
 must allow that user.
 
@@ -25,7 +25,7 @@ must allow that user.
 
 `user: root` runs the script as root inside the container, for a script that writes files which
 must stay owned by root (a proxy's config, `chown`). It needs
-`HD_ALLOW_ROOT_SCRIPTS: "true"` in the dashboard container's environment; without it the button
+`DASHBOARD_ALLOW_ROOT_SCRIPTS: "true"` in the dashboard container's environment; without it the button
 says so. The dashboard itself keeps running as `node`: the image lets it start one fixed runner as
 root through sudo, and only when that variable is set. `HOME` is then `/root`; `inheritEnv: true`
 passes the dashboard's environment to the root script too. A timeout stops the root script and
@@ -64,5 +64,5 @@ No blocks: the button is drawn by the widget.
           type: button
           text: Generate proxy configs
           command: cd /srv/configs && ./gen-swag.sh
-          user: root                 # needs HD_ALLOW_ROOT_SCRIPTS: "true" on the dashboard container
+          user: root                 # needs DASHBOARD_ALLOW_ROOT_SCRIPTS: "true" on the dashboard container
 ```

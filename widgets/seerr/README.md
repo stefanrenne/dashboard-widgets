@@ -19,5 +19,5 @@ Learn more about [Seerr](https://github.com/seerr-team/seerr).
         widget:
           type: seerr
           url: http://seerr:5055
-          key: "{{HD_VAR_SEERR_KEY}}"
+          key: "{{DASHBOARD_VAR_SEERR_KEY}}"
 ```

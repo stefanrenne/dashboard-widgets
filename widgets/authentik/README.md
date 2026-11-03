@@ -25,6 +25,6 @@ Learn more about [authentik](https://goauthentik.io/).
         widget:
           type: authentik
           url: https://auth.example.com
-          key: "{{HD_VAR_AUTHENTIK_TOKEN}}"
+          key: "{{DASHBOARD_VAR_AUTHENTIK_TOKEN}}"
           version: 2
 ```

@@ -24,5 +24,5 @@ Learn more about [Dockhand](https://dockhand.pro/).
           url: http://dockhand.lan:3001
           environment: local
           username: admin
-          password: "{{HD_VAR_DOCKHAND_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_DOCKHAND_PASSWORD}}"
 ```

@@ -27,7 +27,7 @@ export default {
       const refreshed = ctx.cache.get('refresh') ? await tokens('auth/refresh', { refreshToken: ctx.cache.get('refresh') }) : null;
       if (refreshed) return refreshed;
       ctx.cache.delete('refresh');
-      const fromLogin = await tokens('auth/login', { username: o.username, password: o.password, clientKind: 'native', deviceLabel: 'homelab-dashboard' });
+      const fromLogin = await tokens('auth/login', { username: o.username, password: o.password, clientKind: 'native', deviceLabel: 'dashboard' });
       if (!fromLogin) throw new Error('BookOrbit login answered 401');
       return fromLogin;
     };

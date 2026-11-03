@@ -21,6 +21,6 @@ Learn more about [NetAlertX](https://netalertx.com/).
         widget:
           type: netalertx
           url: http://netalertx.lan:20212
-          key: "{{HD_VAR_NETALERTX_TOKEN}}"
+          key: "{{DASHBOARD_VAR_NETALERTX_TOKEN}}"
           version: 2
 ```

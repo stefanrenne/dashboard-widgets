@@ -1,7 +1,7 @@
 id: prometheus
 name: Prometheus
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Active scrape targets up, down and in total in Prometheus (homepage's prometheus widget).
 refresh: 60s
 options:

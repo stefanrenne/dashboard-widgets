@@ -19,7 +19,7 @@ Learn more about [OpenWeatherMap](https://openweathermap.org/current).
 ```yaml
 # settings.yaml
 providers:
-  openweathermap: "{{HD_VAR_OWM_KEY}}"
+  openweathermap: "{{DASHBOARD_VAR_OWM_KEY}}"
 
 # widgets.yaml
 - openweathermap:

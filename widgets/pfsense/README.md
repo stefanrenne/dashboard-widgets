@@ -28,7 +28,7 @@ Learn more about [pfSense](https://www.pfsense.org/).
           url: https://pfsense.lan
           version: 2
           headers:
-            X-API-Key: "{{HD_VAR_PFSENSE_KEY}}"
+            X-API-Key: "{{DASHBOARD_VAR_PFSENSE_KEY}}"
           wan: igb0
           insecure: true
 ```

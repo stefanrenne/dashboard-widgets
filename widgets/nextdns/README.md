@@ -21,5 +21,5 @@ Learn more about [NextDNS](https://nextdns.io/).
         widget:
           type: nextdns
           profile: abc123
-          key: "{{HD_VAR_NEXTDNS_KEY}}"
+          key: "{{DASHBOARD_VAR_NEXTDNS_KEY}}"
 ```

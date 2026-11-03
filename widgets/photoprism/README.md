@@ -21,5 +21,5 @@ Learn more about [PhotoPrism](https://www.photoprism.app/).
         widget:
           type: photoprism
           url: http://photoprism.lan:2342
-          key: "{{HD_VAR_PHOTOPRISM_APP_PASSWORD}}"
+          key: "{{DASHBOARD_VAR_PHOTOPRISM_APP_PASSWORD}}"
 ```

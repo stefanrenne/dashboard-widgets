@@ -25,6 +25,6 @@ Learn more about [Deluge](https://deluge-torrent.org/).
         widget:
           type: deluge
           url: http://deluge.lan:8112
-          password: "{{HD_VAR_DELUGE_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_DELUGE_PASSWORD}}"
           enableLeechProgress: true
 ```

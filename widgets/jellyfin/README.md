@@ -26,7 +26,7 @@ Learn more about [Jellyfin](https://jellyfin.org/).
         widget:
           type: jellyfin
           url: http://jellyfin.lan:8096
-          key: "{{HD_VAR_JELLYFIN_KEY}}"
+          key: "{{DASHBOARD_VAR_JELLYFIN_KEY}}"
           enableBlocks: true
           enableUser: true
           showEpisodeNumber: true

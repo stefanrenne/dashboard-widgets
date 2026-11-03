@@ -1,7 +1,7 @@
 id: booklore
 name: BookLore
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Libraries, books, books you are reading and finished in BookLore (homepage's booklore widget).
 refresh: 10m
 options:

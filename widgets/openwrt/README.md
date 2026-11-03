@@ -6,7 +6,7 @@ homepage's openwrt widget. The widget talks to ubus over `/ubus`, which needs a 
 ACL. Create `/usr/share/rpcd/acl.d/dashboard.json`:
 
 ```json
-{ "dashboard": { "description": "Homelab Dashboard", "read": { "ubus": { "network.device": ["status"], "system": ["info"] } } } }
+{ "dashboard": { "description": "Dashboard", "read": { "ubus": { "network.device": ["status"], "system": ["info"] } } } }
 ```
 
 make a password hash with `uhttpd -m "<password>"`, and add the user to `/etc/config/rpcd`:
@@ -38,5 +38,5 @@ Learn more about [OpenWrt](https://openwrt.org/docs/techref/ubus).
           type: openwrt
           url: http://router.lan
           username: dashboard
-          password: "{{HD_VAR_OPENWRT_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_OPENWRT_PASSWORD}}"
 ```

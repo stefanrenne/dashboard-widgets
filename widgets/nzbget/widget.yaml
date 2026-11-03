@@ -1,7 +1,7 @@
 id: nzbget
 name: NZBGet
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Download rate, what is left in the queue and what was downloaded (homepage's nzbget widget).
 refresh: 10s
 options:

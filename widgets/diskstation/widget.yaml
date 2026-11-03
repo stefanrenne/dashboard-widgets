@@ -1,7 +1,7 @@
 id: diskstation
 name: Synology DiskStation
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Uptime, free space on a volume, CPU and memory of a Synology NAS (homepage's diskstation widget).
 refresh: 1m
 options:

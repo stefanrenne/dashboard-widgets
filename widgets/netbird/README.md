@@ -23,6 +23,6 @@ Learn more about [NetBird](https://netbird.io/).
         widget:
           type: netbird
           url: https://api.netbird.io
-          key: "{{HD_VAR_NETBIRD_TOKEN}}"
+          key: "{{DASHBOARD_VAR_NETBIRD_TOKEN}}"
           fields: [online, users, login_expired]
 ```

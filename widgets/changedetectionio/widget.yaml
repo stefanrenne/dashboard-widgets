@@ -1,7 +1,7 @@
 id: changedetectionio
 name: changedetection.io
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Watches with an unseen change, and all watches, in changedetection.io (homepage's changedetectionio widget).
 refresh: 5m
 options:

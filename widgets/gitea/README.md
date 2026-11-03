@@ -21,5 +21,5 @@ Learn more about [Gitea](https://about.gitea.com/).
         widget:
           type: gitea
           url: http://gitea.lan:3000
-          key: "{{HD_VAR_GITEA_TOKEN}}"
+          key: "{{DASHBOARD_VAR_GITEA_TOKEN}}"
 ```

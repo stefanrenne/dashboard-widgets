@@ -27,5 +27,5 @@ Learn more about [Grafana](https://grafana.com/oss/grafana/).
           url: http://grafana.lan:3000
           version: 2
           username: admin
-          password: "{{HD_VAR_GRAFANA_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_GRAFANA_PASSWORD}}"
 ```

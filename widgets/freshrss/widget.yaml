@@ -1,7 +1,7 @@
 id: freshrss
 name: FreshRSS
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Unread articles and subscriptions in FreshRSS (homepage's freshrss widget).
 refresh: 5m
 options:

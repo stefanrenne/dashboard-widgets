@@ -23,5 +23,5 @@ Learn more about [Komga](https://komga.org/).
           type: komga
           url: http://komga.lan:25600
           username: anna@example.com
-          password: "{{HD_VAR_KOMGA_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_KOMGA_PASSWORD}}"
 ```

@@ -1,7 +1,7 @@
 id: unifi
 name: UniFi Controller
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 aliases: [unifi_console]   # homepage's name for the header widget
 description: Uptime, WAN status and LAN and WLAN users and devices from a UniFi Network controller (homepage's unifi widget).
 refresh: 30s

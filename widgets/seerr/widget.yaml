@@ -1,7 +1,7 @@
 id: seerr
 name: Seerr
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Pending, approved and completed requests in Overseerr, Jellyseerr or Seerr.
 refresh: 1m
 aliases: [overseerr, jellyseerr]   # homepage's overseerr widget (dashboard 0.5 and later)

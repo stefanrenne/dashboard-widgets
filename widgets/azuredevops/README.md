@@ -30,5 +30,5 @@ Learn more about [Azure DevOps](https://azure.microsoft.com/products/devops).
           branchName: refs/heads/main
           repositoryId: homelab
           userEmail: anna@example.com
-          key: "{{HD_VAR_AZDO_TOKEN}}"
+          key: "{{DASHBOARD_VAR_AZDO_TOKEN}}"
 ```

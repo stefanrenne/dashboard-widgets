@@ -1,7 +1,7 @@
 id: romm
 name: RomM
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Platforms, games, saves, states, screenshots and size of a RomM library (homepage's romm widget).
 refresh: 5m
 defaultFields: [platforms, totalRoms, saves, states]

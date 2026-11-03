@@ -1,7 +1,7 @@
 id: minecraft
 name: Minecraft
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Whether a Minecraft server is up, its players and its version (homepage's minecraft widget).
 refresh: 30s
 options:

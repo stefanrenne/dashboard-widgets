@@ -1,7 +1,7 @@
 id: scrutiny
 name: Scrutiny
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Disks that passed, failed and are unknown in Scrutiny (homepage's scrutiny widget).
 refresh: 5m
 options:

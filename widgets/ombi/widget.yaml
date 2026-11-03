@@ -1,7 +1,7 @@
 id: ombi
 name: Ombi
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Pending, approved and available requests (homepage's ombi widget).
 refresh: 1m
 options:

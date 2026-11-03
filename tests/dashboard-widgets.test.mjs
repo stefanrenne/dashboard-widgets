@@ -52,7 +52,7 @@ function widgetFetch(input, init = {}, baseUrl) {
 /** A minimal ctx for calling a widget's fetch() directly. */
 function fakeCtx(options, overrides = {}) {
   return {
-    apiVersion: 1,
+    apiVersion: 2,
     instanceId: 'test',
     options,
     params: {},
@@ -115,7 +115,7 @@ test('custom-api maps JSON fields to blocks', async () => {
 });
 
 test('docker: running container over a unix socket', async () => {
-  const socketPath = path.join(tmpDir('hd-sock-'), 'd.sock');
+  const socketPath = path.join(tmpDir('dash-sock-'), 'd.sock');
   const srv = await serve((req, res) => {
     res.setHeader('content-type', 'application/json');
     if (req.url === '/containers/plex/json') return res.end(JSON.stringify({ State: { Status: 'running', Health: { Status: 'healthy' } } }));
@@ -153,7 +153,7 @@ test('docker: running container over a unix socket', async () => {
 });
 
 test('docker: a Swarm service by name, running tasks against its replicas, as in homepage', async () => {
-  const socketPath = path.join(tmpDir('hd-sock-'), 'd.sock');
+  const socketPath = path.join(tmpDir('dash-sock-'), 'd.sock');
   const services = {
     web: { ID: 'svc-web', Spec: { Name: 'web', Mode: { Replicated: { Replicas: 3 } } } },
     api: { ID: 'svc-api', Spec: { Name: 'api', Mode: { Replicated: { Replicas: 2 } } } },
@@ -313,10 +313,10 @@ test('ping: latency parsing for Linux, BusyBox and macOS output', () => {
   assert.equal(parseLatency('Request timeout'), null);
 });
 
-test('client-only widgets ship a client.js that defines hd-<id>', () => {
+test('client-only widgets ship a client.js that defines dash-<id>', () => {
   for (const id of ['datetime', 'search']) {
     const src = fs.readFileSync(path.resolve('widgets', id, 'client.js'), 'utf8');
-    assert.match(src, new RegExp(`customElements\\.define\\('hd-${id}'`));
+    assert.match(src, new RegExp(`customElements\\.define\\('dash-${id}'`));
   }
 });
 
@@ -387,10 +387,10 @@ test('search widget: filter events while typing, web search only when the page l
   const opened = [];
   w.open = (url) => opened.push(url);
   const events = [];
-  w.document.addEventListener('hd-search-input', (e) => events.push(['input', e.detail.query]));
+  w.document.addEventListener('dash-search-input', (e) => events.push(['input', e.detail.query]));
   let handled = true;
-  w.document.addEventListener('hd-search-submit', (e) => { events.push(['submit', e.detail.query]); if (handled) e.preventDefault(); });
-  const el = w.document.createElement('hd-search');
+  w.document.addEventListener('dash-search-submit', (e) => { events.push(['submit', e.detail.query]); if (handled) e.preventDefault(); });
+  const el = w.document.createElement('dash-search');
   el.options = { provider: 'google' };
   el.t = (k) => k;
   w.document.body.append(el);
@@ -409,7 +409,7 @@ test('search widget: filter events while typing, web search only when the page l
   assert.deepEqual(events.at(-1), ['input', '']);
   // filterServices: false only searches the web
   for (const options of [{ filterServices: false }]) {
-    const web = w.document.createElement('hd-search');
+    const web = w.document.createElement('dash-search');
     web.options = { provider: 'google', ...options };
     web.t = (k) => k;
     w.document.body.append(web);
@@ -425,7 +425,7 @@ test('search widget: filter events while typing, web search only when the page l
 
 test('resources widget: meters are exposed with role, value and a spoken label', async () => {
   const w = await clientPage('widgets/resources/client.js');
-  const el = w.document.createElement('hd-resources');
+  const el = w.document.createElement('dash-resources');
   el.options = { label: 'Media' };
   el.t = (k) => ({ free: 'Free', used: 'used', disk: 'Disk', notFound: 'not found' })[k] ?? k;
   w.document.body.append(el);
@@ -443,7 +443,7 @@ test('resources widget: meters are exposed with role, value and a spoken label',
 
 
 test('resources: CPU temperature, uptime, network rates, expanded details and binary disk units', async () => {
-  const fake = tmpDir('hd-sys-');
+  const fake = tmpDir('dash-sys-');
   const sys = path.join(fake, 'sys');
   const proc = path.join(fake, 'proc');
   const put = (rel, text) => { fs.mkdirSync(path.dirname(path.join(fake, rel)), { recursive: true }); fs.writeFileSync(path.join(fake, rel), text); };
@@ -497,7 +497,7 @@ async function renderClient(id, options, props = {}) {
   const { JSDOM } = await import('jsdom');
   const dom = new JSDOM('<!doctype html><html lang="en"><body></body></html>', { runScripts: 'outside-only', url: 'http://localhost/' });
   dom.window.eval(fs.readFileSync(path.resolve('widgets', id, 'client.js'), 'utf8'));
-  const el = dom.window.document.createElement(`hd-${id}`);
+  const el = dom.window.document.createElement(`dash-${id}`);
   Object.assign(el, { options, t: (k) => k, ...props });
   dom.window.document.body.append(el);
   return { el, window: dom.window };
@@ -534,7 +534,7 @@ test('logo: its own mark, an image, or a single-colour icon as a mask', async ()
   assert.ok(mark.el.shadowRoot.querySelector('svg.logo'));
   const img = await renderClient('logo', { icon: '/icons/logo.png' });
   assert.equal(img.el.shadowRoot.querySelector('img.logo').getAttribute('src'), 'icons/logo.png');
-  const mask = await renderClient('logo', { icon: 'https://cdn.example.com/home.svg#hd-mask=38bdf8' });
+  const mask = await renderClient('logo', { icon: 'https://cdn.example.com/home.svg#dash-mask=38bdf8' });
   const span = mask.el.shadowRoot.querySelector('.logo.mask');
   assert.equal(span.style.getPropertyValue('--mask'), 'url("https://cdn.example.com/home.svg")');
   assert.equal(span.style.getPropertyValue('--fill'), '#38bdf8');
@@ -548,7 +548,7 @@ test('kubernetes: quantities, cluster totals and per node from nodes and metrics
   assert.equal(k8sBytes('16Gi'), 16 * 1024 ** 3);
   assert.equal(k8sBytes('2048Ki'), 2 * 1024 ** 2);
   assert.equal(k8sBytes('1G'), 1e9);
-  const sa = tmpDir('hd-sa-');
+  const sa = tmpDir('dash-sa-');
   fs.writeFileSync(path.join(sa, 'token'), 'tok3n\n');
   let metrics = true;
   const auth = [];
@@ -607,7 +607,7 @@ test('header widgets: the search button is a 28px target, resources honour Reduc
 });
 
 // ---- button: a link, or a script or command run through the widget API's action call
-const buttonCtx = (options, overrides = {}) => fakeCtx({ text: 'Run', ...options }, { configDir: tmpDir('hd-button-'), ...overrides });
+const buttonCtx = (options, overrides = {}) => fakeCtx({ text: 'Run', ...options }, { configDir: tmpDir('dash-button-'), ...overrides });
 
 test('button: exactly one of href, script or command, from fetch and action', async () => {
   for (const options of [{}, { href: 'https://a.lan/', command: 'true' }, { script: 'a.sh', command: 'true' }, { command: '  ' }]) {
@@ -655,16 +655,16 @@ test('button: an aborted signal stops the run', async () => {
 });
 
 test('button: only PATH and HOME from the environment, unless inheritEnv', async () => {
-  process.env.HD_BUTTON_TEST = 'visible';
+  process.env.DASHBOARD_BUTTON_TEST = 'visible';
   try {
     const names = async (options) => (await button.action(buttonCtx({ command: 'env | cut -d= -f1 | sort', ...options }))).output.trim().split('\n');
     const own = await names({});
     assert.ok(own.includes('PATH') && own.includes('HOME'));
-    assert.ok(!own.includes('HD_BUTTON_TEST'));
+    assert.ok(!own.includes('DASHBOARD_BUTTON_TEST'));
     assert.deepEqual(own.filter((n) => !['PATH', 'HOME', 'PWD', 'SHLVL', '_', 'OLDPWD'].includes(n)), [], 'nothing else but what bash sets itself');
-    assert.ok((await names({ inheritEnv: true })).includes('HD_BUTTON_TEST'));
+    assert.ok((await names({ inheritEnv: true })).includes('DASHBOARD_BUTTON_TEST'));
   } finally {
-    delete process.env.HD_BUTTON_TEST;
+    delete process.env.DASHBOARD_BUTTON_TEST;
   }
 });
 
@@ -688,7 +688,7 @@ test('button: a link, or a button that asks for the action and is disabled while
   const b = el.shadowRoot.querySelector('button');
   assert.deepEqual([b.textContent, b.type, b.disabled, b.getAttribute('aria-busy')], ['Pull images', 'button', false, null]);
   const events = [];
-  window.document.body.addEventListener('hd-widget-action', (e) => events.push([e.target, e.bubbles, e.composed, e.detail.title, e.detail.showResult]));
+  window.document.body.addEventListener('dash-widget-action', (e) => events.push([e.target, e.bubbles, e.composed, e.detail.title, e.detail.showResult]));
   b.click();
   assert.deepEqual(events, [[el, true, true, 'Pull images', 'failure']], 'a dialog only when it fails');
   el.busy = true;
@@ -718,20 +718,20 @@ test('button: a link, or a button that asks for the action and is disabled while
 });
 
 test('button: user root runs through sudo -n and the image\'s runner, -E only with inheritEnv; a clear error when it is off', async () => {
-  const dir = tmpDir('hd-sudo-');
+  const dir = tmpDir('dash-sudo-');
   const log = path.join(dir, 'sudo.log');
   // a stand-in for sudo: logs its arguments, then runs what follows "--" as it is
   fs.writeFileSync(path.join(dir, 'sudo'), `#!/bin/sh\nprintf '%s\\n' "$*" >> "${log}"\nwhile [ "$1" != "--" ]; do shift; done; shift\nexec "$@"\n`, { mode: 0o755 });
-  fs.writeFileSync(path.join(dir, 'hd-root'), '#!/bin/sh\necho "as root"\nexec /bin/bash "$@"\n', { mode: 0o755 });
+  fs.writeFileSync(path.join(dir, 'dashboard-root'), '#!/bin/sh\necho "as root"\nexec /bin/bash "$@"\n', { mode: 0o755 });
   // sudo without a rule for this user
   fs.writeFileSync(path.join(dir, 'nosudo'), '#!/bin/sh\necho "sudo: a password is required" >&2\nexit 1\n', { mode: 0o755 });
   const saved = { ...ROOT };
   try {
-    Object.assign(ROOT, { sudo: path.join(dir, 'sudo'), runner: path.join(dir, 'hd-root') });
+    Object.assign(ROOT, { sudo: path.join(dir, 'sudo'), runner: path.join(dir, 'dashboard-root') });
     assert.deepEqual(await button.action(buttonCtx({ command: 'echo hi', user: 'root' })), { status: 'ok', output: 'as root\nhi\n', exitCode: 0 });
     await button.action(buttonCtx({ command: 'true', user: 'root', inheritEnv: true }));
     const calls = fs.readFileSync(log, 'utf8').trim().split('\n');
-    assert.match(calls[0], new RegExp(`^-n -- ${path.join(dir, 'hd-root')} -c `), 'never asks for a password; no -E without inheritEnv');
+    assert.match(calls[0], new RegExp(`^-n -- ${path.join(dir, 'dashboard-root')} -c `), 'never asks for a password; no -E without inheritEnv');
     assert.match(calls[1], /^-n -E -- /, 'inheritEnv keeps the environment');
     assert.deepEqual(await button.action(buttonCtx({ command: 'echo node' })), { status: 'ok', output: 'node\n', exitCode: 0 }, 'node does not use sudo');
     assert.equal(fs.readFileSync(log, 'utf8').trim().split('\n').length, 2);

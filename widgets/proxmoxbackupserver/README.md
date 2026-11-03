@@ -28,6 +28,6 @@ Learn more about [Proxmox Backup Server](https://www.proxmox.com/en/proxmox-back
           type: proxmoxbackupserver
           url: https://pbs.lan:8007
           username: api@pbs!dashboard
-          password: "{{HD_VAR_PBS_SECRET}}"
+          password: "{{DASHBOARD_VAR_PBS_SECRET}}"
           datastore: backup            # optional
 ```

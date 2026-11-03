@@ -21,5 +21,5 @@ Learn more about [Tube Archivist](https://www.tubearchivist.com/).
         widget:
           type: tubearchivist
           url: http://tubearchivist.lan:8000
-          key: "{{HD_VAR_TUBEARCHIVIST_TOKEN}}"
+          key: "{{DASHBOARD_VAR_TUBEARCHIVIST_TOKEN}}"
 ```

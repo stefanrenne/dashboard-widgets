@@ -19,6 +19,6 @@ Learn more about [Stash](https://stashapp.cc).
         widget:
           type: stash
           url: http://stash:9999
-          key: "{{HD_VAR_STASH_KEY}}"
+          key: "{{DASHBOARD_VAR_STASH_KEY}}"
           fields: [scenes, studios, performers]
 ```

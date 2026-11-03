@@ -28,6 +28,6 @@ Learn more about [Synology DSM](https://www.synology.com/dsm).
           type: diskstation
           url: http://nas.lan:5000
           username: remote_stats
-          password: "{{HD_VAR_SYNOLOGY_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_SYNOLOGY_PASSWORD}}"
           volume: volume_1
 ```

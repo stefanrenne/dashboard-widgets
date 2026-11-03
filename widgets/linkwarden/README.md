@@ -20,5 +20,5 @@ Learn more about [Linkwarden](https://linkwarden.app/).
         widget:
           type: linkwarden
           url: http://linkwarden.lan:3000
-          key: "{{HD_VAR_LINKWARDEN_TOKEN}}"
+          key: "{{DASHBOARD_VAR_LINKWARDEN_TOKEN}}"
 ```

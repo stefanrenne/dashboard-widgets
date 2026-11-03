@@ -1,7 +1,7 @@
 id: hdhomerun
 name: HDHomeRun
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Channels, tuners in use and a tuner's channel and signal on an HDHomeRun (homepage's hdhomerun widget).
 refresh: 30s
 defaultFields: [channels, hd]

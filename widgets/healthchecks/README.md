@@ -23,6 +23,6 @@ Learn more about [Healthchecks](https://healthchecks.io/).
         widget:
           type: healthchecks
           url: https://healthchecks.lan
-          key: "{{HD_VAR_HEALTHCHECKS_KEY}}"
+          key: "{{DASHBOARD_VAR_HEALTHCHECKS_KEY}}"
           uuid: 5f1c3a2e-8b7d-4e6f-9a0b-1c2d3e4f5a6b
 ```

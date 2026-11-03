@@ -1,7 +1,7 @@
 id: esphome
 name: ESPHome
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: ESPHome devices online, offline and unknown (homepage's esphome widget).
 refresh: 1m
 defaultFields: [online, offline, offline_alt, total]

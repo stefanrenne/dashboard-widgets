@@ -19,7 +19,7 @@ Learn more about [Unraid](https://unraid.net).
         widget:
           type: unraid
           url: https://tower.lan
-          key: "{{HD_VAR_UNRAID_KEY}}"
+          key: "{{DASHBOARD_VAR_UNRAID_KEY}}"
           pool1: cache
           fields: [cpu, memoryPercent, arrayUsedPercent, pool1UsedPercent]
 ```

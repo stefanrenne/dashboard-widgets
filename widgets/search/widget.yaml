@@ -1,7 +1,7 @@
 id: search
 name: Search
-version: 1.5.0
-apiVersion: 1
+version: 1.6.0
+apiVersion: 2
 description: Filters the dashboard's services as you type; Enter opens the only match, or searches the web.
 options:
   provider: { type: enum, values: [duckduckgo, google, bing, startpage, baidu, brave, custom], default: duckduckgo }

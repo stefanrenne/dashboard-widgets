@@ -25,7 +25,7 @@ Learn more about [Emby](https://emby.media/).
         widget:
           type: emby
           url: http://emby.lan:8096
-          key: "{{HD_VAR_EMBY_KEY}}"
+          key: "{{DASHBOARD_VAR_EMBY_KEY}}"
           enableBlocks: true
           enableUser: true
           showEpisodeNumber: true

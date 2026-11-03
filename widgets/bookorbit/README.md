@@ -22,5 +22,5 @@ Learn more about [BookOrbit](https://github.com/bookorbit/bookorbit).
           type: bookorbit
           url: http://bookorbit.lan:3000
           username: anna
-          password: "{{HD_VAR_BOOKORBIT_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_BOOKORBIT_PASSWORD}}"
 ```

@@ -21,5 +21,5 @@ Learn more about [Audiobookshelf](https://www.audiobookshelf.org/).
         widget:
           type: audiobookshelf
           url: http://audiobookshelf.lan:13378
-          key: "{{HD_VAR_AUDIOBOOKSHELF_TOKEN}}"
+          key: "{{DASHBOARD_VAR_AUDIOBOOKSHELF_TOKEN}}"
 ```

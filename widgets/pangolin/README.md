@@ -24,6 +24,6 @@ Learn more about [Pangolin](https://pangolin.net/).
         widget:
           type: pangolin
           url: https://api.pangolin.lan
-          key: "{{HD_VAR_PANGOLIN_KEY}}"
+          key: "{{DASHBOARD_VAR_PANGOLIN_KEY}}"
           org: homelab
 ```

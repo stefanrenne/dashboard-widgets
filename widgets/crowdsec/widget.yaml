@@ -1,7 +1,7 @@
 id: crowdsec
 name: CrowdSec
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Alerts of the last 24 hours and active bans of a CrowdSec local API (homepage's crowdsec widget).
 refresh: 5m
 options:

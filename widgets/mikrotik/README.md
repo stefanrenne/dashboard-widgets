@@ -23,6 +23,6 @@ Learn more about [MikroTik RouterOS](https://help.mikrotik.com/docs/display/ROS/
           type: mikrotik
           url: https://router.lan
           username: dashboard
-          password: "{{HD_VAR_MIKROTIK_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_MIKROTIK_PASSWORD}}"
           insecure: true
 ```

@@ -1,7 +1,7 @@
 id: tandoor
 name: Tandoor
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Users, recipes and keywords in Tandoor Recipes (homepage's tandoor widget).
 refresh: 5m
 options:

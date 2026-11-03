@@ -1,7 +1,7 @@
 id: mealie
 name: Mealie
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Recipes, users, categories and tags in Mealie (homepage's mealie widget).
 refresh: 5m
 options:

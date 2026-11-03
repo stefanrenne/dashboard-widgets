@@ -21,5 +21,5 @@ Learn more about [Watchtower](https://watchtower.nickfedor.com/).
         widget:
           type: watchtower
           url: http://watchtower.lan:8080
-          key: "{{HD_VAR_WATCHTOWER_TOKEN}}"
+          key: "{{DASHBOARD_VAR_WATCHTOWER_TOKEN}}"
 ```

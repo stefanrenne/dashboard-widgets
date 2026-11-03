@@ -1,7 +1,7 @@
 id: uptimerobot
 name: UptimeRobot
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Monitors up and down in UptimeRobot, or one monitor's state, uptime and last downtime (homepage's uptimerobot widget).
 refresh: 5m
 options:

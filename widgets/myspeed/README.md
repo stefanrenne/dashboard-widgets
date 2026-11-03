@@ -20,5 +20,5 @@ Learn more about [MySpeed](https://myspeed.dev/).
         widget:
           type: myspeed
           url: http://myspeed.lan:5216
-          password: "{{HD_VAR_MYSPEED_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_MYSPEED_PASSWORD}}"
 ```

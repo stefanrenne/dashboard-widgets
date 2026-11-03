@@ -22,6 +22,6 @@ Learn more about [Radarr](https://radarr.video).
         widget:
           type: radarr
           url: http://radarr:7878
-          key: "{{HD_VAR_RADARR_KEY}}"
+          key: "{{DASHBOARD_VAR_RADARR_KEY}}"
           enableQueue: true
 ```

@@ -1,8 +1,8 @@
 # CLAUDE.md
 
-Widget collection for homelab-dashboard (`../homelab-dashboard`): every widget it has. Each folder
+Widget collection for dashboard (`../dashboard`): every widget it has. Each folder
 in `widgets/` is one widget package following the dashboard's widget API 1
-(`../homelab-dashboard/docs/widgets/api-reference.md`).
+(`../dashboard/docs/widgets/api-reference.md`).
 
 The dashboard creates `http-status`, `ping`, `docker`, `kubernetes-pods` and `proxmoxvm` itself for a
 service's `siteMonitor:`, `ping:`, `container:`, `app:` and `proxmoxNode:`, and fills in their
@@ -55,7 +55,7 @@ them only in a backward-compatible way.
        on its fixture and fails when a returned key is missing.
     5. `## Example`: a complete `services.yaml` entry with `type: <id>` (or a `widgets.yaml` entry
        `- <id>:` for a header widget), the key through
-       `{{HD_VAR_...}}`, made-up hosts (`*.lan`). It must run on the widget's `fixture.json` as written (ids, options,
+       `{{DASHBOARD_VAR_...}}`, made-up hosts (`*.lan`). It must run on the widget's `fixture.json` as written (ids, options,
        API version): a test runs every example.
     No dashboard or collection versions in a README before the dashboard's 1.0 ("needs dashboard
     0.9.0 or newer"): they go in CHANGELOG.md. Versions of the service itself are fine.
@@ -88,8 +88,8 @@ and creates the tag.
 **Every widget update reaches the documentation site.** The site is built by the dashboard
 repository from this collection's newest release. The release job starts that build itself (the
 secret `PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on
-homelab-dashboard); without the secret, or when it failed, run
-`gh workflow run pages.yml --repo stefanrenne/homelab-dashboard`. Then check
+dashboard); without the secret, or when it failed, run
+`gh workflow run pages.yml --repo stefanrenne/dashboard`. Then check
 that each new or changed widget's page is there
 (`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.

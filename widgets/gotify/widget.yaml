@@ -1,7 +1,7 @@
 id: gotify
 name: Gotify
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Applications, clients and messages in Gotify (homepage's gotify widget).
 refresh: 60s
 options:

@@ -1,7 +1,7 @@
 id: downloadstation
 name: Synology Download Station
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Downloads in progress and done, with their rates, in Synology Download Station (homepage's downloadstation widget).
 refresh: 30s
 options:

@@ -1,7 +1,7 @@
 id: tdarr
 name: Tdarr
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Transcode and health-check queue, processed and failed files, and space saved.
 refresh: 1m
 options:

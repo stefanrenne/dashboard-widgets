@@ -27,6 +27,6 @@ Learn more about [qBittorrent](https://www.qbittorrent.org/).
           type: qbittorrent
           url: http://qbittorrent.lan:8080
           username: admin
-          password: "{{HD_VAR_QBITTORRENT_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_QBITTORRENT_PASSWORD}}"
           enableLeechProgress: true
 ```

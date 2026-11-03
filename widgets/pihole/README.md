@@ -26,5 +26,5 @@ Learn more about [Pi-hole](https://pi-hole.net/).
           type: pihole
           url: http://pi.hole
           version: 6
-          key: "{{HD_VAR_PIHOLE_PASSWORD}}"
+          key: "{{DASHBOARD_VAR_PIHOLE_PASSWORD}}"
 ```

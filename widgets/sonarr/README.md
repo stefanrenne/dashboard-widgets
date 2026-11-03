@@ -22,7 +22,7 @@ Learn more about [Sonarr](https://sonarr.tv).
         widget:
           type: sonarr
           url: http://sonarr:8989
-          key: "{{HD_VAR_SONARR_KEY}}"
+          key: "{{DASHBOARD_VAR_SONARR_KEY}}"
           enableQueue: true
           queueLimit: 3
 ```

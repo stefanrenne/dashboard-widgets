@@ -1,7 +1,7 @@
 id: kavita
 name: Kavita
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Series and files in Kavita (homepage's kavita widget).
 refresh: 5m
 options:

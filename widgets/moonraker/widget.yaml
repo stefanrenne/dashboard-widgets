@@ -1,7 +1,7 @@
 id: moonraker
 name: Moonraker
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: A Klipper printer's state, the print's progress and layers, through Moonraker (homepage's moonraker widget).
 refresh: 10s
 options:

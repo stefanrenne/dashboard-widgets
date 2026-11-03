@@ -1,7 +1,7 @@
 id: backrest
 name: Backrest
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: The latest backups that succeeded and failed, and the last 30 days of Backrest's plans (homepage's backrest widget).
 refresh: 5m
 defaultFields: [num_success_latest, num_failure_latest, num_failure_30, bytes_added_30]

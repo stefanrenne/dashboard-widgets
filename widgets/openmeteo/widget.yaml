@@ -1,7 +1,7 @@
 id: openmeteo
 name: Open-Meteo
-version: 1.3.0
-apiVersion: 1
+version: 1.4.0
+apiVersion: 2
 description: The current weather from Open-Meteo, no account needed (homepage's recommended weather widget).
 refresh: 5m
 params: [latitude, longitude]   # the viewer's location, sent by client.js when the options have none

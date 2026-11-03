@@ -8,22 +8,22 @@ const ICONS = {
   network: '<path d="M7 17V7M4 10l3-3 3 3M17 7v10M14 14l3 3 3-3"/>',
 };
 
-class HdResources extends HTMLElement {
+class DashResources extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `
       <style>
         :host { display: block; }
         .meters { display: flex; gap: 12px; flex-wrap: wrap; }
         .meter { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
-        svg { width: 20px; height: 20px; flex: none; color: var(--hd-text); }
+        svg { width: 20px; height: 20px; flex: none; color: var(--dash-text); }
         .txt { min-width: 85px; font-size: .75rem; line-height: 1rem; }
         .row { display: flex; justify-content: space-between; gap: 8px; }
-        .bar { margin-top: 2px; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--hd-text) 20%, transparent); overflow: hidden; }
-        .fill { height: 100%; border-radius: 999px; background: color-mix(in srgb, var(--hd-text) 50%, transparent); transition: width 1s; }
-        .label { font-size: .75rem; text-align: center; color: var(--hd-text); margin-top: 2px; }
-        .detail { font-size: .6875rem; color: var(--hd-muted); }
+        .bar { margin-top: 2px; height: 4px; border-radius: 999px; background: color-mix(in srgb, var(--dash-text) 20%, transparent); overflow: hidden; }
+        .fill { height: 100%; border-radius: 999px; background: color-mix(in srgb, var(--dash-text) 50%, transparent); transition: width 1s; }
+        .label { font-size: .75rem; text-align: center; color: var(--dash-text); margin-top: 2px; }
+        .detail { font-size: .6875rem; color: var(--dash-muted); }
         .nobar .bar { display: none; }
-        .error, .missing .v { font-size: .75rem; color: var(--hd-error); }
+        .error, .missing .v { font-size: .75rem; color: var(--dash-error); }
         @media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
       </style>
       <div class="meters"></div><div class="label"></div>`;
@@ -87,4 +87,4 @@ class HdResources extends HTMLElement {
   }
 }
 
-customElements.define('hd-resources', HdResources);
+customElements.define('dash-resources', DashResources);

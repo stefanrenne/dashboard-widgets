@@ -1,7 +1,7 @@
 id: kubernetes
 name: Kubernetes
-version: 1.2.0
-apiVersion: 1
+version: 1.3.0
+apiVersion: 2
 description: CPU and memory of a Kubernetes cluster (the one the dashboard runs in, or kubernetes.yaml's kubeconfig), in total and per node (homepage's kubernetes widget).
 refresh: 15s
 options:

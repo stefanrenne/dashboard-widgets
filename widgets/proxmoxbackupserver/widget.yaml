@@ -1,7 +1,7 @@
 id: proxmoxbackupserver
 name: Proxmox Backup Server
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Datastore usage, failed tasks of the last 24 hours, CPU and memory of a Proxmox Backup Server (homepage's proxmoxbackupserver widget).
 refresh: 1m
 options:

@@ -21,5 +21,5 @@ Learn more about [UptimeRobot](https://uptimerobot.com/).
         icon: uptimerobot
         widget:
           type: uptimerobot
-          key: "{{HD_VAR_UPTIMEROBOT_KEY}}"
+          key: "{{DASHBOARD_VAR_UPTIMEROBOT_KEY}}"
 ```

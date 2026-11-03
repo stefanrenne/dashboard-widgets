@@ -20,7 +20,7 @@ No blocks: one row per currency.
         icon: coinmarketcap
         widget:
           type: coinmarketcap
-          key: "{{HD_VAR_CMC_KEY}}"
+          key: "{{DASHBOARD_VAR_CMC_KEY}}"
           symbols: [BTC, ETH, LTC]
           currency: EUR
           defaultinterval: 24h

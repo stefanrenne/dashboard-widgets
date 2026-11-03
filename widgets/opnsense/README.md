@@ -24,7 +24,7 @@ Learn more about [OPNsense](https://opnsense.org/).
         widget:
           type: opnsense
           url: https://opnsense.lan
-          username: "{{HD_VAR_OPNSENSE_KEY}}"
-          password: "{{HD_VAR_OPNSENSE_SECRET}}"
+          username: "{{DASHBOARD_VAR_OPNSENSE_KEY}}"
+          password: "{{DASHBOARD_VAR_OPNSENSE_SECRET}}"
           insecure: true
 ```

@@ -1,7 +1,7 @@
 id: trilium
 name: Trilium
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Version, notes and database size of Trilium Notes (homepage's trilium widget).
 refresh: 5m
 options:

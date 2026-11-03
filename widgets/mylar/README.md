@@ -21,5 +21,5 @@ Learn more about [Mylar3](https://github.com/mylar3/mylar3).
         widget:
           type: mylar
           url: http://mylar.lan:8090
-          key: "{{HD_VAR_MYLAR_KEY}}"
+          key: "{{DASHBOARD_VAR_MYLAR_KEY}}"
 ```

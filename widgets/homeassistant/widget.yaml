@@ -1,7 +1,7 @@
 id: homeassistant
 name: Home Assistant
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: People at home, lights and switches that are on, or up to four states and templates of your own (homepage's homeassistant widget).
 refresh: 30s
 options:

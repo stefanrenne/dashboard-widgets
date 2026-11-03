@@ -21,5 +21,5 @@ Learn more about [Plant-it](https://github.com/MDeLuise/plant-it).
         widget:
           type: plantit
           url: http://plantit.lan:8080
-          key: "{{HD_VAR_PLANTIT_KEY}}"
+          key: "{{DASHBOARD_VAR_PLANTIT_KEY}}"
 ```

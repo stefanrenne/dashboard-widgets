@@ -20,5 +20,5 @@ Learn more about [Sportarr](https://github.com/Sportarr/Sportarr).
         widget:
           type: sportarr
           url: http://sportarr.lan:1867
-          key: "{{HD_VAR_SPORTARR_KEY}}"
+          key: "{{DASHBOARD_VAR_SPORTARR_KEY}}"
 ```

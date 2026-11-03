@@ -1,7 +1,7 @@
 # To do
 
 Open work, roughly in order of value. Remove an item when it is done (the CHANGELOG records it).
-The dashboard keeps its own list: `../homelab-dashboard/todo.md`.
+The dashboard keeps its own list: `../dashboard/todo.md`.
 
 ## README examples and fixtures
 

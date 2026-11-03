@@ -21,5 +21,5 @@ Learn more about [BookLore](https://github.com/booklore-app/booklore).
           type: booklore
           url: http://booklore.lan:6060
           username: anna
-          password: "{{HD_VAR_BOOKLORE_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_BOOKLORE_PASSWORD}}"
 ```

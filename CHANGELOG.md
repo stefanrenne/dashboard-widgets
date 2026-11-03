@@ -4,6 +4,13 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Changed (breaking)
+- Every widget moves to widget API 2 (Dashboard, formerly Homelab Dashboard): `apiVersion: 2`,
+  `dash-` element and event names and `--dash-*` theme properties in `client.js`, and
+  `{{DASHBOARD_VAR_*}}` in the README examples: `adguard`, `apcups`, `arcane`, `argocd`, `atsumeru`, `audiobookshelf`, `authentik`, `autobrr`, `azuredevops`, `backrest`, `bazarr`, `beszel`, `booklore`, `bookorbit`, `button`, `caddy`, `calendar`, `calibreweb`, `changedetectionio`, `channelsdvrserver`, `checkmk`, `cloudflared`, `coinmarketcap`, `crowdsec`, `custom-api`, `datetime`, `deluge`, `develancacheui`, `diskstation`, `dispatcharr`, `docker`, `dockhand`, `downloadstation`, `duplicati`, `emby`, `esphome`, `evcc`, `feed`, `filebrowser`, `fileflows`, `firefly`, `flood`, `freshrss`, `frigate`, `fritzbox`, `gamedig`, `gatus`, `ghostfolio`, `gitea`, `gitlab`, `glances`, `gluetun`, `gotify`, `grafana`, `greeting`, `hdhomerun`, `headscale`, `healthchecks`, `homeassistant`, `homebox`, `homebridge`, `http-status`, `iframe`, `immich`, `jackett`, `jdownloader`, `jellyfin`, `jellystat`, `karakeep`, `kavita`, `komga`, `komodo`, `kopia`, `kubernetes`, `kubernetes-pods`, `lidarr`, `linkwarden`, `logo`, `longhorn`, `lubelogger`, `mailcow`, `maintainerr`, `mastodon`, `mealie`, `medusa`, `mikrotik`, `minecraft`, `miniflux`, `mjpeg`, `moonraker`, `mylar`, `myspeed`, `navidrome`, `netalertx`, `netbird`, `netdata`, `nextcloud`, `nextdns`, `npm`, `ntfy`, `nzbget`, `octoprint`, `omada`, `ombi`, `opendtu`, `openmediavault`, `openmeteo`, `openweathermap`, `openwrt`, `opnsense`, `pangolin`, `paperlessngx`, `peanut`, `pfsense`, `photoprism`, `pihole`, `ping`, `plantit`, `plex`, `portainer`, `prometheus`, `prometheusmetric`, `prowlarr`, `proxmox`, `proxmoxbackupserver`, `proxmoxvm`, `pterodactyl`, `pulse`, `pyload`, `qbittorrent`, `qnap`, `qui`, `radarr`, `readarr`, `resources`, `romm`, `rutorrent`, `sabnzbd`, `scrutiny`, `search`, `seerr`, `shelly`, `slskd`, `sonarr`, `sparkyfitness`, `speedtest`, `spoolman`, `sportarr`, `stash`, `stocks`, `strelaysrv`, `suwayomi`, `swagdashboard`, `syncthing`, `tailscale`, `tandoor`, `tautulli`, `tdarr`, `technitium`, `tracearr`, `traefik`, `transmission`, `trilium`, `truenas`, `tubearchivist`, `unifi`, `unifi-drive`, `unmanic`, `unraid`, `uptimekuma`, `uptimerobot`, `urbackup`, `vikunja`, `wallos`, `watchtower`, `wgeasy`, `whatsupdocker`, `xteve`, `yourspotify`, `zabbix`.
+- The collection is `stefanrenne/dashboard-widgets`; `logo` shows Dashboard's new mark, and
+  `button` runs `user: root` scripts through `/usr/local/bin/dashboard-root`. Needs Dashboard 0.19.0.
+
 ## [0.12.4] - 2026-11-03
 
 ### Fixed

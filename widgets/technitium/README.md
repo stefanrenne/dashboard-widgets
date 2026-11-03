@@ -26,6 +26,6 @@ Learn more about [Technitium DNS Server](https://technitium.com/dns/).
         widget:
           type: technitium
           url: http://dns.lan:5380
-          key: "{{HD_VAR_TECHNITIUM_TOKEN}}"
+          key: "{{DASHBOARD_VAR_TECHNITIUM_TOKEN}}"
           range: LastDay
 ```

@@ -1,7 +1,7 @@
 id: healthchecks
 name: Health checks
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Checks up and down in Healthchecks.io, or one check's state and last ping (homepage's healthchecks widget).
 refresh: 60s
 options:

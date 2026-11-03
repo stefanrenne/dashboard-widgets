@@ -23,5 +23,5 @@ Learn more about [File Browser](https://filebrowser.org).
           type: filebrowser
           url: http://files.lan:8080
           username: dashboard
-          password: "{{HD_VAR_FILEBROWSER_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_FILEBROWSER_PASSWORD}}"
 ```

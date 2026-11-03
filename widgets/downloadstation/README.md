@@ -22,5 +22,5 @@ Learn more about [Download Station](https://www.synology.com/dsm/packages/Downlo
           type: downloadstation
           url: http://nas.lan:5000
           username: downloads
-          password: "{{HD_VAR_SYNOLOGY_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_SYNOLOGY_PASSWORD}}"
 ```

@@ -1,7 +1,7 @@
 id: radarr
 name: Radarr
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Wanted, missing, queued and downloaded movies, with the download queue (homepage's radarr widget).
 refresh: 30s
 options:

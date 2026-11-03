@@ -24,7 +24,7 @@ Learn more about [Kopia](https://kopia.io/).
           type: kopia
           url: https://kopia.lan:51515
           username: kopia
-          password: "{{HD_VAR_KOPIA_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_KOPIA_PASSWORD}}"
           snapshotHost: nas
           snapshotPath: /photos
           insecure: true

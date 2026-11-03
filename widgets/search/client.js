@@ -1,7 +1,7 @@
 // Client-only widget: one search box for the dashboard and the web.
 //
-// While typing it sends `hd-search-input` ({ query }), on Enter a cancelable
-// `hd-search-submit`; the dashboard filters its services and cancels the submit when it
+// While typing it sends `dash-search-input` ({ query }), on Enter a cancelable
+// `dash-search-submit`; the dashboard filters its services and cancels the submit when it
 // opened the only match. Otherwise Enter searches the web with the chosen engine.
 const PROVIDERS = {
   duckduckgo: { url: 'https://duckduckgo.com/?q={q}', mark: 'D', name: 'DuckDuckGo' },
@@ -12,7 +12,7 @@ const PROVIDERS = {
   brave: { url: 'https://search.brave.com/search?q={q}', mark: 'B', name: 'Brave' },
 };
 
-class HdSearch extends HTMLElement {
+class DashSearch extends HTMLElement {
   connectedCallback() {
     const t = this.t ?? ((k) => k);
     const o = this.options ?? {};
@@ -23,13 +23,13 @@ class HdSearch extends HTMLElement {
       <style>
         form { display: flex; align-items: center; position: relative; }
         input { width: 100%; box-sizing: border-box; min-height: 2.25rem; padding: .4rem 2.75rem .4rem .65rem; border-radius: 6px; font: inherit; font-size: .875rem;
-          border: 1px solid color-mix(in srgb, var(--hd-text) 35%, transparent);
-          background: color-mix(in srgb, var(--hd-text) 6%, transparent); color: var(--hd-text); outline: none; }
-        input:focus-visible { border-color: var(--hd-accent); box-shadow: 0 0 0 2px var(--hd-accent); }
-        input::placeholder { color: var(--hd-muted); opacity: 1; }
+          border: 1px solid color-mix(in srgb, var(--dash-text) 35%, transparent);
+          background: color-mix(in srgb, var(--dash-text) 6%, transparent); color: var(--dash-text); outline: none; }
+        input:focus-visible { border-color: var(--dash-accent); box-shadow: 0 0 0 2px var(--dash-accent); }
+        input::placeholder { color: var(--dash-muted); opacity: 1; }
         button { position: absolute; right: 4px; min-width: 28px; height: 28px; border: 0; border-radius: 4px; cursor: pointer;
-          font: 700 .75rem/1 inherit; color: var(--hd-text); background: color-mix(in srgb, var(--hd-text) 12%, transparent); }
-        button:focus-visible { outline: 2px solid var(--hd-accent); outline-offset: 1px; }
+          font: 700 .75rem/1 inherit; color: var(--dash-text); background: color-mix(in srgb, var(--dash-text) 12%, transparent); }
+        button:focus-visible { outline: 2px solid var(--dash-accent); outline-offset: 1px; }
       </style>
       <form role="search"><input type="search" autocomplete="off" enterkeyhint="search" list="suggestions"><button type="submit"></button>
         <datalist id="suggestions"></datalist></form>`;
@@ -43,7 +43,7 @@ class HdSearch extends HTMLElement {
     button.setAttribute('aria-label', button.title);
     const send = (name, cancelable = false) =>
       this.dispatchEvent(new CustomEvent(name, { detail: { query: input.value.trim() }, bubbles: true, composed: true, cancelable }));
-    if (filter) input.addEventListener('input', () => send('hd-search-input'));
+    if (filter) input.addEventListener('input', () => send('dash-search-input'));
     // showSearchSuggestions: the dashboard's api/suggest asks the search engine (the page may not)
     if (o.showSearchSuggestions && this.instanceId) {
       const list = root.querySelector('datalist');
@@ -65,16 +65,16 @@ class HdSearch extends HTMLElement {
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && input.value) {
         input.value = '';
-        if (filter) send('hd-search-input');
+        if (filter) send('dash-search-input');
       }
     });
     root.querySelector('form').addEventListener('submit', (e) => {
       e.preventDefault();
       if (!input.value.trim()) return;
-      if (filter && !send('hd-search-submit', true)) return; // the dashboard opened the only match
+      if (filter && !send('dash-search-submit', true)) return; // the dashboard opened the only match
       if (!provider?.url) return;
       window.open(provider.url.replace('{q}', encodeURIComponent(input.value.trim())), o.target ?? '_blank', 'noopener');
     });
   }
 }
-customElements.define('hd-search', HdSearch);
+customElements.define('dash-search', DashSearch);

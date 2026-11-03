@@ -23,5 +23,5 @@ Learn more about [ntfy](https://ntfy.sh/).
           type: ntfy
           url: https://ntfy.lan
           topic: backups
-          key: "{{HD_VAR_NTFY_TOKEN}}"
+          key: "{{DASHBOARD_VAR_NTFY_TOKEN}}"
 ```

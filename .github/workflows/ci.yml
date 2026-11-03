@@ -71,7 +71,7 @@ jobs:
           node scripts/release-notes.mjs "$version" > notes.md
           cat notes.md
           mkdir dist
-          zip -qr "dist/homelab-dashboard-widgets-$version.zip" widgets README.md LICENSE 2>/dev/null || zip -qr "dist/homelab-dashboard-widgets-$version.zip" widgets README.md
+          zip -qr "dist/dashboard-widgets-$version.zip" widgets README.md LICENSE 2>/dev/null || zip -qr "dist/dashboard-widgets-$version.zip" widgets README.md
           ls dist
       - if: env.SKIP != 'true'
         env:
@@ -82,11 +82,11 @@ jobs:
           gh release create "$TAG" dist/*.zip --title "$TAG" --notes-file notes.md "${target[@]}"
       # the dashboard's docs site builds a page per widget from the newest release: rebuild it now
       # instead of at its daily run (PAGES_DISPATCH_TOKEN: a fine-grained token with Actions read
-      # and write on homelab-dashboard; without it this step only says so)
+      # and write on dashboard; without it this step only says so)
       - name: Rebuild the documentation site
         if: env.SKIP != 'true'
         env:
           GH_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
         run: |
-          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run pages.yml in homelab-dashboard by hand"; exit 0; fi
-          gh workflow run pages.yml --repo stefanrenne/homelab-dashboard
+          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run pages.yml in dashboard by hand"; exit 0; fi
+          gh workflow run pages.yml --repo stefanrenne/dashboard

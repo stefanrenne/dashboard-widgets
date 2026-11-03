@@ -1,7 +1,7 @@
 id: calendar
 name: Calendar
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: A month or an agenda with releases from Sonarr, Radarr, Lidarr and Readarr and events from iCal feeds (homepage's calendar widget).
 refresh: 5m
 params: [month]   # the month the viewer pages to (YYYY-MM)

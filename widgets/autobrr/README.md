@@ -21,5 +21,5 @@ Learn more about [autobrr](https://autobrr.com/).
         widget:
           type: autobrr
           url: http://autobrr.lan:7474
-          key: "{{HD_VAR_AUTOBRR_KEY}}"
+          key: "{{DASHBOARD_VAR_AUTOBRR_KEY}}"
 ```

@@ -22,5 +22,5 @@ Learn more about [Readarr](https://github.com/Readarr/Readarr).
         widget:
           type: readarr
           url: http://readarr.lan:8787
-          key: "{{HD_VAR_READARR_KEY}}"
+          key: "{{DASHBOARD_VAR_READARR_KEY}}"
 ```

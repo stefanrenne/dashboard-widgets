@@ -21,5 +21,5 @@ Learn more about [Flood](https://github.com/jesec/flood).
           type: flood
           url: http://flood.lan:3000
           username: admin
-          password: "{{HD_VAR_FLOOD_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_FLOOD_PASSWORD}}"
 ```

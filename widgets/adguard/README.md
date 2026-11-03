@@ -24,5 +24,5 @@ Learn more about [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome).
           type: adguard
           url: http://adguard.lan:3000
           username: admin
-          password: "{{HD_VAR_ADGUARD_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_ADGUARD_PASSWORD}}"
 ```

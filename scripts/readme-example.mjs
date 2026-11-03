@@ -4,7 +4,7 @@
 // its connection from proxmox.yaml) or a header widget (widgets.yaml). `provider:` takes settings.yaml's providers as the dashboard
 // does (a map fills the options it names, a text the first unset secret option), option defaults
 // apply, every
-// {{HD_VAR_*}} becomes test-key, and every url option (given or by default) the mock's /<id>.
+// {{DASHBOARD_VAR_*}} becomes test-key, and every url option (given or by default) the mock's /<id>.
 // Used by tests/widgets.test.mjs, so every example on the docs site is known to run.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -61,7 +61,7 @@ export function readmeExample(id, mockUrl) {
   for (const [, block] of readme.slice(at).matchAll(/```ya?ml\n([\s\S]*?)```/g)) {
     let files;
     try {
-      files = Object.fromEntries(Object.entries(splitFiles(block.replace(/\{\{(HD|HOMEPAGE)_(VAR|FILE)_\w+\}\}/g, 'test-key')))
+      files = Object.fromEntries(Object.entries(splitFiles(block.replace(/\{\{(DASHBOARD|HOMEPAGE)_(VAR|FILE)_\w+\}\}/g, 'test-key')))
         .map(([f, text]) => [f, YAML.parse(text)]));
     } catch {
       continue;

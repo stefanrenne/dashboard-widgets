@@ -24,5 +24,5 @@ Learn more about [wg-easy](https://github.com/wg-easy/wg-easy).
           url: http://wg.lan:51821
           version: 2
           username: admin
-          password: "{{HD_VAR_WGEASY_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_WGEASY_PASSWORD}}"
 ```

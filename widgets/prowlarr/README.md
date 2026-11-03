@@ -19,5 +19,5 @@ Learn more about [Prowlarr](https://prowlarr.com).
         widget:
           type: prowlarr
           url: http://prowlarr:9696
-          key: "{{HD_VAR_PROWLARR_KEY}}"
+          key: "{{DASHBOARD_VAR_PROWLARR_KEY}}"
 ```

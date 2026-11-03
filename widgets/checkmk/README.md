@@ -24,5 +24,5 @@ Learn more about [Checkmk](https://checkmk.com/).
           url: http://checkmk.lan:5000
           site: cmk
           username: automation
-          password: "{{HD_VAR_CHECKMK_SECRET}}"
+          password: "{{DASHBOARD_VAR_CHECKMK_SECRET}}"
 ```

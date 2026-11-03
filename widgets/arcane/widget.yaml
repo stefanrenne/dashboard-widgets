@@ -1,7 +1,7 @@
 id: arcane
 name: Arcane
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Containers running, stopped and in total, images and image updates in Arcane (homepage's arcane widget).
 refresh: 1m
 defaultFields: [running, stopped, total, image_updates]

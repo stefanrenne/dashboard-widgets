@@ -1,7 +1,7 @@
 id: duplicati
 name: Duplicati
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Backup jobs, their last and next run, and their warnings and errors in Duplicati (homepage's duplicati widget).
 refresh: 60s
 defaultFields: [jobs, errors, lastBackup, nextRun]

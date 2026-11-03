@@ -21,5 +21,5 @@ Learn more about [Mailcow](https://mailcow.email/).
         widget:
           type: mailcow
           url: https://mail.lan
-          key: "{{HD_VAR_MAILCOW_KEY}}"
+          key: "{{DASHBOARD_VAR_MAILCOW_KEY}}"
 ```

@@ -24,6 +24,6 @@ Learn more about [UrBackup](https://www.urbackup.org/).
           type: urbackup
           url: http://urbackup.lan:55414
           username: dashboard
-          password: "{{HD_VAR_URBACKUP_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_URBACKUP_PASSWORD}}"
           maxDays: 5
 ```

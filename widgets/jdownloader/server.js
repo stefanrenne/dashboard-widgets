@@ -6,7 +6,7 @@
 
 import crypto from 'node:crypto';
 
-const APP_KEY = 'homelab-dashboard';
+const APP_KEY = 'dashboard';
 const sha256 = (data) => crypto.createHash('sha256').update(data).digest();
 
 /** AES-128-CBC with the first half of a 32-byte key as IV and the second half as key. */

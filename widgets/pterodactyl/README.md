@@ -21,5 +21,5 @@ Learn more about [Pterodactyl](https://pterodactyl.io/).
         widget:
           type: pterodactyl
           url: https://panel.lan
-          key: "{{HD_VAR_PTERODACTYL_KEY}}"
+          key: "{{DASHBOARD_VAR_PTERODACTYL_KEY}}"
 ```

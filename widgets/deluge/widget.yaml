@@ -1,7 +1,7 @@
 id: deluge
 name: Deluge
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: Torrents downloading and seeding with their rates, and optionally the downloads one per row (homepage's deluge widget).
 refresh: 10s
 options:

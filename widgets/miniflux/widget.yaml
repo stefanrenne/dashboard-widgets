@@ -1,7 +1,7 @@
 id: miniflux
 name: Miniflux
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Unread and read entries in Miniflux (homepage's miniflux widget).
 refresh: 5m
 options:

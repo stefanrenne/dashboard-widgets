@@ -1,6 +1,6 @@
 // A watchlist as homepage shows it: symbol, price and the day change, ▲ up and ▼ down
 // (the arrow carries the direction; `color` adds green and red).
-class HdStocks extends HTMLElement {
+class DashStocks extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; }
@@ -8,10 +8,10 @@ class HdStocks extends HTMLElement {
       li { display: flex; justify-content: space-between; gap: 8px; font-size: .8125rem; line-height: 1.25rem; font-variant-numeric: tabular-nums; }
       .sym { font-weight: 700; }
       .chg { white-space: nowrap; }
-      .color .up { color: var(--hd-ok); }
-      .color .down { color: var(--hd-error); }
-      .muted, .error { font-size: .75rem; color: var(--hd-muted); }
-      .error { color: var(--hd-error); }
+      .color .up { color: var(--dash-ok); }
+      .color .down { color: var(--dash-error); }
+      .muted, .error { font-size: .75rem; color: var(--dash-muted); }
+      .error { color: var(--dash-error); }
     </style><ul></ul>`;
     this.render();
   }
@@ -58,4 +58,4 @@ class HdStocks extends HTMLElement {
     }
   }
 }
-customElements.define('hd-stocks', HdStocks);
+customElements.define('dash-stocks', DashStocks);

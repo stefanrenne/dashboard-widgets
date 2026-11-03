@@ -1,7 +1,7 @@
 id: jackett
 name: Jackett
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Configured indexers and how many of them failed (homepage's jackett widget).
 refresh: 5m
 options:

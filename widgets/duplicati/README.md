@@ -22,5 +22,5 @@ Learn more about [Duplicati](https://www.duplicati.com/).
         widget:
           type: duplicati
           url: http://duplicati.lan:8200
-          password: "{{HD_VAR_DUPLICATI_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_DUPLICATI_PASSWORD}}"
 ```

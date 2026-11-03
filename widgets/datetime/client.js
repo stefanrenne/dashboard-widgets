@@ -1,9 +1,9 @@
 // Client-only widget: renders the time in the browser, no server part needed.
-class HdDatetime extends HTMLElement {
+class DashDatetime extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML =
       '<style>:host{display:block;font-variant-numeric:tabular-nums}' +
-      '.time{font-size:1.4rem;font-weight:600}.date{color:var(--hd-muted)}</style>' +
+      '.time{font-size:1.4rem;font-weight:600}.date{color:var(--dash-muted)}</style>' +
       '<div class="time"></div><div class="date"></div>';
     this.render();
     this.timer = setInterval(() => this.render(), 1000);
@@ -21,4 +21,4 @@ class HdDatetime extends HTMLElement {
     this.shadowRoot.querySelector('.date').textContent = part(o.dateStyle ?? 'long', 'dateStyle');
   }
 }
-customElements.define('hd-datetime', HdDatetime);
+customElements.define('dash-datetime', DashDatetime);

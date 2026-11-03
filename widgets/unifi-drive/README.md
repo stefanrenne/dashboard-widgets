@@ -23,6 +23,6 @@ Learn more about [UniFi Drive](https://ui.com/integrations/network-storage).
           type: unifi-drive
           url: https://unas.lan
           username: dashboard
-          password: "{{HD_VAR_UNAS_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_UNAS_PASSWORD}}"
           insecure: true
 ```

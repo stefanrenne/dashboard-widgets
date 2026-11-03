@@ -22,6 +22,6 @@ Learn more about [Arcane](https://github.com/getarcaneapp/arcane).
         widget:
           type: arcane
           url: http://arcane.lan:3552
-          key: "{{HD_VAR_ARCANE_KEY}}"
+          key: "{{DASHBOARD_VAR_ARCANE_KEY}}"
           env: 0
 ```

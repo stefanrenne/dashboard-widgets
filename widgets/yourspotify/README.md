@@ -23,6 +23,6 @@ Learn more about [Your Spotify](https://github.com/Yooooomi/your_spotify).
         widget:
           type: yourspotify
           url: http://spotify.lan/api
-          key: "{{HD_VAR_YOURSPOTIFY_TOKEN}}"
+          key: "{{DASHBOARD_VAR_YOURSPOTIFY_TOKEN}}"
           interval: month
 ```

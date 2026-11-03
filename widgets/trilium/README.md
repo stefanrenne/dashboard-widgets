@@ -21,5 +21,5 @@ Learn more about [Trilium Notes](https://github.com/TriliumNext/Trilium).
         widget:
           type: trilium
           url: https://trilium.lan
-          key: "{{HD_VAR_TRILIUM_TOKEN}}"
+          key: "{{DASHBOARD_VAR_TRILIUM_TOKEN}}"
 ```

@@ -11,11 +11,11 @@ function frameHeight(o = {}) {
   return last ? `${Number(last[1]) / 4}rem` : '15rem';
 }
 
-class HdIframe extends HTMLElement {
+class DashIframe extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; }
-      iframe { display: block; width: 100%; border: 0; border-radius: 6px; background: color-mix(in srgb, var(--hd-text) 6%, transparent); color-scheme: light; }
+      iframe { display: block; width: 100%; border: 0; border-radius: 6px; background: color-mix(in srgb, var(--dash-text) 6%, transparent); color-scheme: light; }
       iframe.noscroll { pointer-events: none; overflow: hidden; }
     </style>`;
     this.render();
@@ -53,4 +53,4 @@ class HdIframe extends HTMLElement {
     if (every > 0) this.timer = setInterval(() => { frame.src = src.href; }, Math.max(1000, every));
   }
 }
-customElements.define('hd-iframe', HdIframe);
+customElements.define('dash-iframe', DashIframe);

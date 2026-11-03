@@ -1,7 +1,7 @@
 id: netbird
 name: NetBird
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Peers online, users and peers whose login expired in NetBird (homepage's netbird widget).
 refresh: 60s
 defaultFields: [online, users]

@@ -22,5 +22,5 @@ Learn more about [slskd](https://github.com/slskd/slskd).
         widget:
           type: slskd
           url: http://slskd.lan:5030
-          key: "{{HD_VAR_SLSKD_KEY}}"
+          key: "{{DASHBOARD_VAR_SLSKD_KEY}}"
 ```

@@ -23,6 +23,6 @@ Learn more about [Immich](https://immich.app/).
         widget:
           type: immich
           url: http://immich.lan:2283
-          key: "{{HD_VAR_IMMICH_KEY}}"
+          key: "{{DASHBOARD_VAR_IMMICH_KEY}}"
           version: 2
 ```

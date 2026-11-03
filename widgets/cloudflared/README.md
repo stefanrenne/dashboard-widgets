@@ -23,5 +23,5 @@ Learn more about [Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/
           type: cloudflared
           accountid: 0123456789abcdef0123456789abcdef
           tunnelid: 01234567-89ab-cdef-0123-456789abcdef
-          key: "{{HD_VAR_CLOUDFLARE_TOKEN}}"
+          key: "{{DASHBOARD_VAR_CLOUDFLARE_TOKEN}}"
 ```

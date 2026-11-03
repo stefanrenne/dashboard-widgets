@@ -1,7 +1,7 @@
 id: nextdns
 name: NextDNS
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Queries of a NextDNS profile resolved, blocked, allowed and relayed (homepage's nextdns widget).
 refresh: 5m
 options:

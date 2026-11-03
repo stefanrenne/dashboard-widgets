@@ -1,7 +1,7 @@
 id: pfsense
 name: pfSense
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Load, memory, temperature, disk and the WAN's state and address of a pfSense firewall (homepage's pfsense widget).
 refresh: 30s
 defaultFields: [load, memory, temp, wanStatus]

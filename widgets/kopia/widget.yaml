@@ -1,7 +1,7 @@
 id: kopia
 name: Kopia
-version: 0.3.0
-apiVersion: 1
+version: 0.4.0
+apiVersion: 2
 description: A source's state, size, last snapshot and next snapshot in Kopia (homepage's kopia widget).
 refresh: 60s
 options:

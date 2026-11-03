@@ -1,7 +1,7 @@
 id: gitlab
 name: GitLab
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Groups, issues, merge requests and projects of a GitLab user (homepage's gitlab widget).
 refresh: 5m
 options:

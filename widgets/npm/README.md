@@ -22,5 +22,5 @@ Learn more about [Nginx Proxy Manager](https://nginxproxymanager.com/).
           type: npm
           url: http://npm.lan:81
           username: viewer@example.com
-          password: "{{HD_VAR_NPM_PASSWORD}}"
+          password: "{{DASHBOARD_VAR_NPM_PASSWORD}}"
 ```

@@ -2,14 +2,14 @@
 // over a blurred copy of itself as homepage shows it. The browser loads the stream directly;
 // a stream that fails shows a message instead.
 
-class HdMjpeg extends HTMLElement {
+class DashMjpeg extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; }
-      .box { position: relative; overflow: hidden; border-radius: 6px; background: color-mix(in srgb, var(--hd-text) 8%, transparent); }
+      .box { position: relative; overflow: hidden; border-radius: 6px; background: color-mix(in srgb, var(--dash-text) 8%, transparent); }
       img { position: absolute; inset: 0; width: 100%; height: 100%; }
       .bg { object-fit: fill; filter: blur(12px); transform: scale(1.1); opacity: .6; }
-      .failed { position: absolute; inset: 0; display: grid; place-items: center; font-size: .75rem; color: var(--hd-muted); }
+      .failed { position: absolute; inset: 0; display: grid; place-items: center; font-size: .75rem; color: var(--dash-muted); }
     </style><div class="box"></div>`;
     this.render();
   }
@@ -39,4 +39,4 @@ class HdMjpeg extends HTMLElement {
     box.replaceChildren(p);
   }
 }
-customElements.define('hd-mjpeg', HdMjpeg);
+customElements.define('dash-mjpeg', DashMjpeg);

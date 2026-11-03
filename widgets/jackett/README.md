@@ -21,6 +21,6 @@ Learn more about [Jackett](https://github.com/Jackett/Jackett).
         widget:
           type: jackett
           url: http://jackett.lan:9117
-          key: "{{HD_VAR_JACKETT_KEY}}"
-          password: "{{HD_VAR_JACKETT_PASSWORD}}"   # only with an admin password
+          key: "{{DASHBOARD_VAR_JACKETT_KEY}}"
+          password: "{{DASHBOARD_VAR_JACKETT_PASSWORD}}"   # only with an admin password
 ```

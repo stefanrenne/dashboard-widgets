@@ -27,7 +27,7 @@ Learn more about [Home Assistant](https://www.home-assistant.io/).
         widget:
           type: homeassistant
           url: http://homeassistant.lan:8123
-          key: "{{HD_VAR_HASS_TOKEN}}"
+          key: "{{DASHBOARD_VAR_HASS_TOKEN}}"
           custom:                      # optional: instead of people, lights and switches
             - state: sensor.total_power
             - state: sensor.energy_today

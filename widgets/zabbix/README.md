@@ -22,5 +22,5 @@ Learn more about [Zabbix](https://www.zabbix.com/).
         widget:
           type: zabbix
           url: http://zabbix.lan/zabbix
-          key: "{{HD_VAR_ZABBIX_TOKEN}}"
+          key: "{{DASHBOARD_VAR_ZABBIX_TOKEN}}"
 ```

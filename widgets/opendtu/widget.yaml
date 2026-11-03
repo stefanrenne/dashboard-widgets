@@ -1,7 +1,7 @@
 id: opendtu
 name: OpenDTU
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: Today's yield, the power now (also as a share of the limit) and the limit of the inverters on an OpenDTU (homepage's opendtu widget).
 refresh: 30s
 options:

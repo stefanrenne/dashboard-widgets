@@ -21,7 +21,7 @@ providers:
   longhorn:
     url: https://longhorn.lan
     username: admin
-    password: "{{HD_VAR_LONGHORN_PASSWORD}}"
+    password: "{{DASHBOARD_VAR_LONGHORN_PASSWORD}}"
 
 # services.yaml
 - Storage:

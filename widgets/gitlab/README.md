@@ -21,6 +21,6 @@ Learn more about [GitLab](https://about.gitlab.com/).
         widget:
           type: gitlab
           url: https://gitlab.lan
-          key: "{{HD_VAR_GITLAB_TOKEN}}"
+          key: "{{DASHBOARD_VAR_GITLAB_TOKEN}}"
           user_id: 42
 ```

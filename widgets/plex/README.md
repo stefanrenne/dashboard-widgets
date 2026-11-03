@@ -25,5 +25,5 @@ Learn more about [Plex](https://www.plex.tv/).
         widget:
           type: plex
           url: http://plex.lan:32400
-          key: "{{HD_VAR_PLEX_TOKEN}}"
+          key: "{{DASHBOARD_VAR_PLEX_TOKEN}}"
 ```

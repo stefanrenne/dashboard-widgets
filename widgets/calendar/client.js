@@ -1,6 +1,6 @@
 // The calendar as homepage shows it: a month with a dot per event and the chosen day's events
 // below it, or an agenda of the coming events. Dates in the viewer's time zone (or `timezone`)
-// and the page language; paging to another month asks the server for it (hd-widget-params).
+// and the page language; paging to another month asks the server for it (dash-widget-params).
 
 // homepage's colour names (Tailwind 500)
 const COLORS = {
@@ -8,38 +8,38 @@ const COLORS = {
   amber: '#f59e0b', yellow: '#eab308', lime: '#84cc16', green: '#22c55e', emerald: '#10b981', teal: '#14b8a6', cyan: '#06b6d4',
   sky: '#0ea5e9', blue: '#3b82f6', indigo: '#6366f1', violet: '#8b5cf6', purple: '#a855f7', fuchsia: '#d946ef', pink: '#ec4899', rose: '#f43f5e',
 };
-const color = (c) => COLORS[c] ?? (/^#[0-9a-f]{3,8}$/i.test(c ?? '') ? c : 'var(--hd-accent)');
+const color = (c) => COLORS[c] ?? (/^#[0-9a-f]{3,8}$/i.test(c ?? '') ? c : 'var(--dash-accent)');
 const DAY = 86400_000;
 
-class HdCalendar extends HTMLElement {
+class DashCalendar extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; font-size: .875rem; }
       .head { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
       .title { flex: 1; font-weight: 600; text-transform: capitalize; }
       button { font: inherit; color: inherit; background: none; border: 0; border-radius: 6px; cursor: pointer; min-width: 28px; min-height: 28px; }
-      button:hover { background: color-mix(in srgb, var(--hd-text) 10%, transparent); }
-      button:focus-visible { outline: 2px solid var(--hd-accent); outline-offset: 1px; }
+      button:hover { background: color-mix(in srgb, var(--dash-text) 10%, transparent); }
+      button:focus-visible { outline: 2px solid var(--dash-accent); outline-offset: 1px; }
       .today-btn { font-size: .75rem; padding: 0 8px; }
       .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 2px; text-align: center; }
-      .wd { font-size: .6875rem; color: var(--hd-muted); padding-bottom: 2px; }
+      .wd { font-size: .6875rem; color: var(--dash-muted); padding-bottom: 2px; }
       .day { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 3px 0; min-height: 34px; font-variant-numeric: tabular-nums; }
-      .day.other { color: var(--hd-muted); }
-      .day.today .n { outline: 1px solid var(--hd-accent); border-radius: 4px; padding: 0 3px; }
-      .day[aria-pressed="true"] { background: color-mix(in srgb, var(--hd-accent) 22%, transparent); }
+      .day.other { color: var(--dash-muted); }
+      .day.today .n { outline: 1px solid var(--dash-accent); border-radius: 4px; padding: 0 3px; }
+      .day[aria-pressed="true"] { background: color-mix(in srgb, var(--dash-accent) 22%, transparent); }
       .dots { display: flex; gap: 2px; height: 6px; margin-top: 2px; }
       .dot { width: 5px; height: 5px; border-radius: 50%; }
       ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
-      li { display: flex; align-items: baseline; gap: 6px; padding: 3px 6px; border-radius: 4px; background: color-mix(in srgb, var(--hd-text) 6%, transparent); }
+      li { display: flex; align-items: baseline; gap: 6px; padding: 3px 6px; border-radius: 4px; background: color-mix(in srgb, var(--dash-text) 6%, transparent); }
       li .bar { align-self: stretch; width: 3px; border-radius: 2px; flex: none; }
       li .t { flex: 1; min-width: 0; overflow-wrap: anywhere; }
-      li .d { color: var(--hd-muted); font-size: .75rem; white-space: nowrap; }
+      li .d { color: var(--dash-muted); font-size: .75rem; white-space: nowrap; }
       li.done .t { opacity: .7; }
       li a { color: inherit; }
-      h4 { margin: 10px 0 2px; font-size: .75rem; font-weight: 600; color: var(--hd-muted); text-transform: capitalize; }
+      h4 { margin: 10px 0 2px; font-size: .75rem; font-weight: 600; color: var(--dash-muted); text-transform: capitalize; }
       h4:first-child { margin-top: 0; }
-      .empty, .failed { margin-top: 8px; font-size: .75rem; color: var(--hd-muted); }
-      .failed { color: var(--hd-warn); }
+      .empty, .failed { margin-top: 8px; font-size: .75rem; color: var(--dash-muted); }
+      .failed { color: var(--dash-warn); }
     </style><div class="cal"></div>`;
     this.render();
   }
@@ -70,7 +70,7 @@ class HdCalendar extends HTMLElement {
     this._month = month;
     this._selected = day;
     if (other) this._asked = month;
-    if (other) this.dispatchEvent(new CustomEvent('hd-widget-params', { bubbles: true, composed: true, detail: { month } }));
+    if (other) this.dispatchEvent(new CustomEvent('dash-widget-params', { bubbles: true, composed: true, detail: { month } }));
     this.render();
   }
   item(e, t, lang, showTime) {
@@ -119,7 +119,7 @@ class HdCalendar extends HTMLElement {
     // viewer's): ask for this one, once
     if (cal?.month && cal.month !== this._month && this._asked !== this._month) {
       this._asked = this._month;
-      this.dispatchEvent(new CustomEvent('hd-widget-params', { bubbles: true, composed: true, detail: { month: this._month } }));
+      this.dispatchEvent(new CustomEvent('dash-widget-params', { bubbles: true, composed: true, detail: { month: this._month } }));
     }
     const events = cal?.events ?? [];
     const byDay = new Map();
@@ -235,4 +235,4 @@ class HdCalendar extends HTMLElement {
     }
   }
 }
-customElements.define('hd-calendar', HdCalendar);
+customElements.define('dash-calendar', DashCalendar);

@@ -3,23 +3,23 @@
 
 const UNITS = [['year', 31536000], ['month', 2592000], ['week', 604800], ['day', 86400], ['hour', 3600], ['minute', 60]];
 
-class HdFeed extends HTMLElement {
+class DashFeed extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' }).innerHTML = `<style>
       :host { display: block; font-size: .875rem; }
       ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-      li .item { display: flex; align-items: center; gap: 8px; min-height: 28px; padding: 3px 6px; border-radius: 4px; color: inherit; text-decoration: none; background: color-mix(in srgb, var(--hd-text) 6%, transparent); }
-      li a.item:hover { background: color-mix(in srgb, var(--hd-text) 12%, transparent); }
-      a:focus-visible { outline: 2px solid var(--hd-accent); outline-offset: 1px; }
+      li .item { display: flex; align-items: center; gap: 8px; min-height: 28px; padding: 3px 6px; border-radius: 4px; color: inherit; text-decoration: none; background: color-mix(in srgb, var(--dash-text) 6%, transparent); }
+      li a.item:hover { background: color-mix(in srgb, var(--dash-text) 12%, transparent); }
+      a:focus-visible { outline: 2px solid var(--dash-accent); outline-offset: 1px; }
       .thumb { width: 40px; height: 40px; flex: none; border-radius: 4px; object-fit: cover; }
       .t { flex: 1; min-width: 0; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .d { color: var(--hd-muted); font-size: .75rem; white-space: nowrap; }
+      .d { color: var(--dash-muted); font-size: .75rem; white-space: nowrap; }
       .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; }
-      .tile { position: relative; display: block; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; color: #fff; text-decoration: none; background: color-mix(in srgb, var(--hd-text) 12%, transparent); }
+      .tile { position: relative; display: block; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; color: #fff; text-decoration: none; background: color-mix(in srgb, var(--dash-text) 12%, transparent); }
       .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
       .tile span { position: absolute; inset: auto 0 0 0; padding: 14px 6px 4px; font-size: .75rem; line-height: 1.25; background: linear-gradient(transparent, rgb(0 0 0 / .8)); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-      .tile.noimg span { position: static; display: block; padding: 6px; color: var(--hd-text); background: none; }
-      .empty { font-size: .75rem; color: var(--hd-muted); }
+      .tile.noimg span { position: static; display: block; padding: 6px; color: var(--dash-text); background: none; }
+      .empty { font-size: .75rem; color: var(--dash-muted); }
     </style><div class="feed"></div>`;
     this.render();
   }
@@ -97,4 +97,4 @@ class HdFeed extends HTMLElement {
     root.append(ul);
   }
 }
-customElements.define('hd-feed', HdFeed);
+customElements.define('dash-feed', DashFeed);

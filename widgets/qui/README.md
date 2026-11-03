@@ -23,5 +23,5 @@ Learn more about [qui](https://github.com/autobrr/qui).
         widget:
           type: qui
           url: http://qui.lan:7476
-          key: "{{HD_VAR_QUI_KEY}}"
+          key: "{{DASHBOARD_VAR_QUI_KEY}}"
 ```

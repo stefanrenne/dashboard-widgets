@@ -1,7 +1,7 @@
 id: ntfy
 name: ntfy
-version: 0.2.0
-apiVersion: 1
+version: 0.3.0
+apiVersion: 2
 description: The latest notification of an ntfy topic, with its title, message, priority and age (homepage's ntfy widget).
 refresh: 60s
 defaultFields: [title, message, priority, lastReceived]

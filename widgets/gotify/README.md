@@ -21,5 +21,5 @@ Learn more about [Gotify](https://gotify.net/).
         widget:
           type: gotify
           url: http://gotify.lan
-          key: "{{HD_VAR_GOTIFY_CLIENT_TOKEN}}"
+          key: "{{DASHBOARD_VAR_GOTIFY_CLIENT_TOKEN}}"
 ```
