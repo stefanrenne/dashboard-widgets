@@ -65,7 +65,7 @@ function fakeCtx(options, overrides = {}) {
 }
 
 test('http-status: up, login wall, server error and offline', async () => {
-  const codes = { '/ok': 200, '/login': 401, '/broken': 503, '/nohead': 405 };
+  const codes = { '/ok': 200, '/login': 401, '/broken': 503, '/nohead': 405, '/gone': 404 };
   const srv = await serve((req, res) => {
     res.statusCode = req.url === '/nohead' && req.method === 'GET' ? 200 : codes[req.url];
     res.end();
@@ -76,11 +76,16 @@ test('http-status: up, login wall, server error and offline', async () => {
     assert.equal((await check('/login')).status, 'up');
     assert.equal((await check('/broken')).status, 'down');
     assert.equal((await check('/nohead')).blocks[0].value, 200);
+    // available and unavailable for a filter; a warning (404) is neither
+    assert.deepEqual((await check('/ok')).attributes, { available: true, unavailable: false });
+    assert.deepEqual((await check('/broken')).attributes, { available: false, unavailable: true });
+    assert.deepEqual((await check('/gone')).attributes, { available: false, unavailable: false });
   } finally {
     await srv.close();
   }
   const offline = await httpStatus.fetch(fakeCtx({ url: srv.url + '/ok', method: 'HEAD' }));
   assert.equal(offline.status, 'down');
+  assert.deepEqual(offline.attributes, { available: false, unavailable: true });
 });
 
 test('custom-api maps JSON fields to blocks', async () => {
@@ -357,6 +362,16 @@ test('ping: a homepage-style URL means its host', async () => {
   assert.equal(hostOf('http://192.168.1.50'), '192.168.1.50');
   assert.equal(hostOf('https://nas.lan:8443/x'), 'nas.lan');
   assert.equal(hostOf('nas.lan'), 'nas.lan');
+});
+
+test('ping: available while the host answers, unavailable while it does not', async () => {
+  const { default: ping } = await import('../widgets/ping/server.js');
+  const signal = new AbortController().signal;
+  const up = await ping.fetch(fakeCtx({ host: '127.0.0.1' }, { signal }));
+  assert.deepEqual([up.status, up.attributes], ['up', { available: true, unavailable: false }]);
+  // .invalid never resolves, so ping fails at once
+  const down = await ping.fetch(fakeCtx({ host: 'nothing.invalid' }, { signal }));
+  assert.deepEqual([down.status, down.attributes], ['down', { available: false, unavailable: true }]);
 });
 
 test('resources: meters with free space for the homepage look', async () => {

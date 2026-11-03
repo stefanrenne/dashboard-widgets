@@ -4,6 +4,11 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Added
+- `ping` and `http-status` publish `available` and `unavailable`, for the dashboard's
+  `filter: ping.unavailable` and `siteMonitor.unavailable`; for `http-status` a warning (another
+  4xx) is neither.
+
 ## [0.12.2] - 2026-11-02
 
 ### Changed

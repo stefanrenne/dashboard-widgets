@@ -21,12 +21,14 @@ export default {
       await res.body?.cancel();
     } catch (err) {
       if (ctx.signal.aborted) throw err;
-      return { status: 'down', blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
+      return { status: 'down', attributes: { available: false, unavailable: true }, blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
     }
     const latency = Math.round(performance.now() - start);
     const [status, blockStatus] = classify(res.status);
     return {
       status,
+      // a warning (another 4xx) is neither: something answers, but not as it should
+      attributes: { available: status === 'up', unavailable: status === 'down' },
       latency,
       blocks: [
         { label: 'status', value: res.status, status: blockStatus },

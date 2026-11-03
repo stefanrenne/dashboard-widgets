@@ -1,6 +1,6 @@
 id: http-status
 name: HTTP status
-version: 1.1.0
+version: 1.2.0
 apiVersion: 1
 description: Checks that a URL answers. Also used for the "siteMonitor" field of a service.
 refresh: 30s
@@ -12,3 +12,5 @@ attributes:                 # public values for a service's filter: (widget.<nam
   code: { type: number, from: status }               # the HTTP status code, such as 200
   latency: { type: number, from: latency }           # Latency, in ms
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
+  available: { type: boolean }     # true while the URL answers as up: 2xx, 3xx, or 401/403 (siteMonitor.available)
+  unavailable: { type: boolean }   # true while it is down: 5xx or no connection; another 4xx is neither
