@@ -29,11 +29,10 @@ export default {
     });
     if (ctx.signal.aborted) throw ctx.signal.reason;
     if (result.err?.code === 'ENOENT') throw new Error('the "ping" binary is not installed');
-    if (!result.ok) return { status: 'down', attributes: { available: false, unavailable: true }, blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
+    if (!result.ok) return { status: 'down', blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
     const latency = parseLatency(result.stdout);
     return {
       status: 'up',
-      attributes: { available: true, unavailable: false },
       latency,
       blocks: [{ label: 'latency', value: latency, unit: 'ms', status: 'ok' }],
     };

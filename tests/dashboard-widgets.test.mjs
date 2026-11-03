@@ -76,16 +76,14 @@ test('http-status: up, login wall, server error and offline', async () => {
     assert.equal((await check('/login')).status, 'up');
     assert.equal((await check('/broken')).status, 'down');
     assert.equal((await check('/nohead')).blocks[0].value, 200);
-    // available and unavailable for a filter; a warning (404) is neither
-    assert.deepEqual((await check('/ok')).attributes, { available: true, unavailable: false });
-    assert.deepEqual((await check('/broken')).attributes, { available: false, unavailable: true });
-    assert.deepEqual((await check('/gone')).attributes, { available: false, unavailable: false });
+    // the block's mark is the filter's attention (siteMonitor.attention): a 404 is a warning
+    assert.deepEqual(await Promise.all(['/ok', '/broken', '/gone'].map(async (p) => (await check(p)).blocks[0].status)), ['ok', 'error', 'warn']);
   } finally {
     await srv.close();
   }
   const offline = await httpStatus.fetch(fakeCtx({ url: srv.url + '/ok', method: 'HEAD' }));
   assert.equal(offline.status, 'down');
-  assert.deepEqual(offline.attributes, { available: false, unavailable: true, code: null });
+  assert.deepEqual(offline.attributes, { code: null }, 'code is null, not the block\'s "offline"');
 });
 
 test('custom-api maps JSON fields to blocks', async () => {
@@ -364,14 +362,14 @@ test('ping: a homepage-style URL means its host', async () => {
   assert.equal(hostOf('nas.lan'), 'nas.lan');
 });
 
-test('ping: available while the host answers, unavailable while it does not', async () => {
+test('ping: up while the host answers; down, marked (ping.attention), while it does not', async () => {
   const { default: ping } = await import('../widgets/ping/server.js');
   const signal = new AbortController().signal;
   const up = await ping.fetch(fakeCtx({ host: '127.0.0.1' }, { signal }));
-  assert.deepEqual([up.status, up.attributes], ['up', { available: true, unavailable: false }]);
+  assert.deepEqual([up.status, up.blocks[0].status], ['up', 'ok']);
   // .invalid never resolves, so ping fails at once
   const down = await ping.fetch(fakeCtx({ host: 'nothing.invalid' }, { signal }));
-  assert.deepEqual([down.status, down.attributes], ['down', { available: false, unavailable: true }]);
+  assert.deepEqual([down.status, down.blocks[0].status], ['down', 'error']);
 });
 
 test('resources: meters with free space for the homepage look', async () => {
