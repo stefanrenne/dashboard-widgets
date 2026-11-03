@@ -39,11 +39,9 @@ test('release notes: new and updated widgets with their own lines, the rest unde
 
 ## Updated widgets
 
-### \`radarr\` 0.2.0 → 0.3.0
+### 2 widgets
 
-- \`radarr\` and \`sonarr\` mark a blocked import, so a card can show only while something waits.
-
-### \`sonarr\` 0.3.0 → 0.4.0
+\`radarr\` 0.2.0 → 0.3.0, \`sonarr\` 0.3.0 → 0.4.0
 
 - \`radarr\` and \`sonarr\` mark a blocked import, so a card can show only while something waits.
 

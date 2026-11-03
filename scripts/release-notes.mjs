@@ -66,23 +66,32 @@ export function releaseNotes({ version, tag, repo, previous, changelog, before, 
   const widgetIds = new Set([...Object.keys(after), ...Object.keys(before)]);
 
   const out = [];
-  const widget = (id, versions) => {
-    out.push(`### \`${id}\` ${versions}`, '');
-    const lines = about(id);
-    if (lines.length) for (const b of lines) out.push(`- ${b}`);
-    else out.push(`- ${descriptions[id] ?? 'New widget.'}`);
-    out.push('');
+  // widgets with the same lines share one heading (one change across the collection stays short)
+  const widgets = (ids, versions) => {
+    const groups = new Map();
+    for (const id of ids) {
+      const lines = about(id).length ? about(id) : [descriptions[id] ?? 'New widget.'];
+      const key = lines.join('\n');
+      if (!groups.has(key)) groups.set(key, { ids: [], lines });
+      groups.get(key).ids.push(id);
+    }
+    for (const { ids: group, lines } of groups.values()) {
+      if (group.length === 1) out.push(`### \`${group[0]}\` ${versions(group[0])}`, '');
+      else out.push(`### ${group.length} widgets`, '', group.map((id) => `\`${id}\` ${versions(id)}`).join(', '), '');
+      for (const b of lines) out.push(`- ${b}`);
+      out.push('');
+    }
   };
   if (added.length) {
     out.push('## New widgets', '');
-    for (const id of added) widget(id, after[id]);
+    widgets(added, (id) => after[id]);
   }
   if (updated.length) {
     out.push('## Updated widgets', '');
     for (const id of updated) {
       if (!about(id).length) errors.push(`\`${id}\` went from ${before[id]} to ${after[id]}, but no line in CHANGELOG.md ${version} names it`);
-      widget(id, `${before[id]} → ${after[id]}`);
     }
+    widgets(updated, (id) => `${before[id]} → ${after[id]}`);
   }
   if (removed.length) {
     out.push('## Removed widgets', '', ...removed.map((id) => `- \`${id}\``), '');
