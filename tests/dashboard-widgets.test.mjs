@@ -142,13 +142,9 @@ test('docker: running container over a unix socket', async () => {
     assert.equal(out.status, 'up');
     assert.deepEqual(out.blocks.map((b) => [b.label, b.value, b.unit]), [['status', 'running (healthy)', undefined], ['cpu', 40, '%'], ['memory', 210, 'MB'], ['rx', 55.5, 'MB'], ['tx', 24.6, 'MB']], 'RX and TX over all networks, as homepage');
     assert.equal((await docker.fetch(ctxFor('nope'))).status, 'down');
-    // healthy and unhealthy for a service's filter (container.healthy); no healthcheck: both false
-    const health = async (c) => (await docker.fetch(ctxFor(c))).attributes;
-    assert.deepEqual(out.attributes, { healthy: true, unhealthy: false });
-    assert.deepEqual(await health('sick'), { healthy: false, unhealthy: true });
-    assert.deepEqual(await health('plain'), { healthy: false, unhealthy: false });
-    assert.deepEqual(await health('stopped'), { healthy: false, unhealthy: false }, 'a stopped container is not healthy');
-    assert.deepEqual(await health('nope'), { healthy: false, unhealthy: false });
+    // the status block's mark is the filter's container.attention: unhealthy, stopped or not found
+    const mark = async (c) => (await docker.fetch(ctxFor(c))).blocks[0].status;
+    assert.deepEqual([out.blocks[0].status, await mark('plain'), await mark('sick'), await mark('stopped'), await mark('nope')], ['ok', 'ok', 'warn', 'error', 'error']);
   } finally {
     await srv.close();
   }

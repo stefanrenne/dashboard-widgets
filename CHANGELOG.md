@@ -4,6 +4,11 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Removed
+- `docker`'s attributes `healthy` and `unhealthy`: `attention` already says it (true while the
+  container is unhealthy, stopped or not found), so `filter: container.attention == false` hides
+  a card while all is well.
+
 ### Fixed
 - `http-status` publishes `code: null` without a connection, instead of the status block's
   "offline" (which the dashboard dropped with a warning in its log).
