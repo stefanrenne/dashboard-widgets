@@ -85,7 +85,7 @@ test('http-status: up, login wall, server error and offline', async () => {
   }
   const offline = await httpStatus.fetch(fakeCtx({ url: srv.url + '/ok', method: 'HEAD' }));
   assert.equal(offline.status, 'down');
-  assert.deepEqual(offline.attributes, { available: false, unavailable: true });
+  assert.deepEqual(offline.attributes, { available: false, unavailable: true, code: null });
 });
 
 test('custom-api maps JSON fields to blocks', async () => {

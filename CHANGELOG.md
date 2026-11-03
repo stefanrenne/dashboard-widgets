@@ -8,6 +8,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 - `ping` and `http-status` publish `available` and `unavailable`, for the dashboard's
   `filter: ping.unavailable` and `siteMonitor.unavailable`; for `http-status` a warning (another
   4xx) is neither.
+- `http-status` publishes `code: null` without a connection, instead of the status block's
+  "offline" (which the dashboard dropped with a warning in its log).
 
 ## [0.12.2] - 2026-11-02
 

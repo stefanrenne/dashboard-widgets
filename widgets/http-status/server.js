@@ -21,7 +21,8 @@ export default {
       await res.body?.cancel();
     } catch (err) {
       if (ctx.signal.aborted) throw err;
-      return { status: 'down', attributes: { available: false, unavailable: true }, blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
+      // code: null, not the status block's "offline"
+      return { status: 'down', attributes: { available: false, unavailable: true, code: null }, blocks: [{ label: 'status', value: 'offline', status: 'error' }] };
     }
     const latency = Math.round(performance.now() - start);
     const [status, blockStatus] = classify(res.status);
