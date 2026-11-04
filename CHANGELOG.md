@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-11-04
+
 ### Added
 - Filter attributes with the raw value behind a formatted block, so a filter can compare numbers
   instead of "2d 4h" or "1.2 TB" text. Hours since start, `uptimeHours`: `diskstation`, `frigate`, `fritzbox`, `mikrotik`, `openwrt`,
