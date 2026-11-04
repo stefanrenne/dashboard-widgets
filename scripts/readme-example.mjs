@@ -14,7 +14,7 @@ import YAML from 'yaml';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // the dashboard's own keys on a widget entry, not options of the widget
-const DASHBOARD_KEYS = ['type', 'provider', 'fields', 'refreshInterval', 'refresh', 'hide_errors', 'highlight'];
+const DASHBOARD_KEYS = ['type', 'provider', 'fields', 'refreshInterval', 'refresh', 'hide_errors', 'highlight', 'confirm'];
 
 /** The YAML files in a code block that holds several (`# settings.yaml` ... `# services.yaml` ...). */
 export function splitFiles(block) {

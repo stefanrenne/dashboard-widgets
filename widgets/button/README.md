@@ -34,6 +34,15 @@ container, so set it only on a dashboard you trust. Anyone who can open the dash
 behind authentication before you add buttons that change things. `script` and `command` are kept
 on the server; the browser only gets the label.
 
+### Asking for a password
+
+With `DASHBOARD_ACTION_PASSWORD` on the dashboard container, a press can ask for that password
+first. A button with `user: root` asks by default; any button asks with `confirm: password`
+(then that browser stays unlocked for a while, 15 minutes by default) or `confirm: always`
+(every press). `confirm: none` turns it off for a root button. Without the variable nothing asks,
+and the dashboard's messages name the buttons that would. See the dashboard's
+[Action password](https://getdashboard.dev/configuration/#action-password).
+
 Several buttons on one card are several `button` widgets, each one full width.
 
 ## Fields
@@ -52,6 +61,7 @@ No blocks: the button is drawn by the widget.
             text: Pull new images
             command: docker compose -f stacks/media.yaml pull
             timeout: 600
+            confirm: password        # with DASHBOARD_ACTION_PASSWORD: ask first
           - type: button
             text: Back up the library
             script: scripts/backup-jellyfin.sh

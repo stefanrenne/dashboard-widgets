@@ -4,6 +4,13 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-11-04
+
+### Added
+- `button` with `user: root` asks for the dashboard's action password by default (`confirmWhen`
+  in widget.yaml), once the dashboard has `DASHBOARD_ACTION_PASSWORD`; `confirm: password`,
+  `always` or `none` on the entry changes that. Needs Dashboard 0.22.0; older ones ignore it.
+
 ## [0.14.0] - 2026-11-04
 
 ### Added
