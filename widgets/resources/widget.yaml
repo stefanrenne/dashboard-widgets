@@ -1,6 +1,6 @@
 id: resources
 name: System resources
-version: 1.6.0
+version: 1.6.1
 apiVersion: 2
 description: CPU, memory, disk, CPU temperature, uptime and network of the machine (or container) the dashboard runs on, as meters like homepage.
 refresh: 10s
@@ -18,6 +18,6 @@ options:
   expanded: { type: boolean, default: false } # also used / total, and the CPU load
   label: { type: string }                    # shown under the meters, e.g. "Media"
 attributes:                 # public values for a service's filter: (widget.<name>)
-  memory: { type: number, from: memory }             # Memory (%)
-  disk: { type: number, from: disk }                 # Disk (%)
+  memory: { type: number, from: memory }             # memory in use, in %
+  disk: { type: number, from: disk }                 # disk in use, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -9,6 +9,6 @@ options:
   username: { type: string }               # when ruTorrent sits behind basic authentication
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  active: { type: number, from: active }   # Active
+  active: { type: number, from: active }   # torrents started
   download: { type: number }               # download rate of all torrents, in MB/s
   upload: { type: number }                 # upload rate of all torrents, in MB/s

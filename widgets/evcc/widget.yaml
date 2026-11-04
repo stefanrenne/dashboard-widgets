@@ -1,13 +1,13 @@
 id: evcc
 name: evcc
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Solar, grid, home and charging power from evcc (homepage's evcc widget).
 refresh: 15s
 options:
   url: { type: url, required: true }       # e.g. http://evcc.lan:7070
 attributes:                 # public values for a service's filter: (widget.<name>)
-  pv_power: { type: number, from: pv_power }           # Solar, in kW
-  grid_power: { type: number, from: grid_power }       # Grid, in kW
-  home_power: { type: number, from: home_power }       # Home, in kW
-  charge_power: { type: number, from: charge_power }   # Charging, in kW
+  pv_power: { type: number, from: pv_power }           # solar power produced now, in kW
+  grid_power: { type: number, from: grid_power }       # power from the grid now, in kW; negative while delivering to it
+  home_power: { type: number, from: home_power }       # power the home uses now, in kW
+  charge_power: { type: number, from: charge_power }   # power the charger delivers now, in kW

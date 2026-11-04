@@ -9,6 +9,6 @@ options:
   nodeId: { type: string, required: true } # the ID from `headscale nodes list`
   key: { type: string, secret: true, required: true }   # from `headscale apikeys create`
 attributes:                 # public values for a service's filter: (widget.<name>)
-  status: { type: string, from: status }             # Status, a state such as offline
+  status: { type: string, from: status }             # online or offline
   hoursSinceSeen: { type: number }                   # hours since the node was last seen; 0 while online, null when never
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

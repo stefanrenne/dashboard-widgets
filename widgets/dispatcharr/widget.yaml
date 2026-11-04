@@ -1,6 +1,6 @@
 id: dispatcharr
 name: Dispatcharr
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Channels and active streams in Dispatcharr, and optionally the streams one per row (homepage's dispatcharr widget).
 refresh: 30s
@@ -10,5 +10,5 @@ options:
   password: { type: string, secret: true, required: true }
   enableActiveStreams: { type: boolean, default: false }   # a row per active stream
 attributes:                 # public values for a service's filter: (widget.<name>)
-  channels: { type: number, from: channels }   # Channels
-  streams: { type: number, from: streams }     # Streams
+  channels: { type: number, from: channels }   # channels
+  streams: { type: number, from: streams }     # streams playing now

@@ -1,14 +1,14 @@
 id: swagdashboard
 name: SWAG Dashboard
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Proxied and authenticated hosts, outdated configs and banned IPs in SWAG's dashboard (homepage's swagdashboard widget).
 refresh: 5m
 options:
   url: { type: url, required: true }       # SWAG's dashboard port, e.g. http://swag.lan:81
 attributes:                 # public values for a service's filter: (widget.<name>)
-  proxied: { type: number, from: proxied }           # Proxied
-  auth: { type: number, from: auth }                 # With login
-  outdated: { type: number, from: outdated }         # Outdated
-  banned: { type: number, from: banned }             # Banned
+  proxied: { type: number, from: proxied }           # hosts proxied
+  auth: { type: number, from: auth }                 # proxied hosts behind a login
+  outdated: { type: number, from: outdated }         # proxy configs older than their sample
+  banned: { type: number, from: banned }             # IP addresses banned by fail2ban
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

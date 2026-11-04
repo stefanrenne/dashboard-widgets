@@ -1,6 +1,6 @@
 id: trilium
 name: Trilium
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Version, notes and database size of Trilium Notes (homepage's trilium widget).
 refresh: 5m
@@ -8,5 +8,5 @@ options:
   url: { type: url, required: true }       # e.g. https://trilium.lan
   key: { type: string, secret: true, required: true }   # Options > ETAPI > Create new ETAPI token
 attributes:                 # public values for a service's filter: (widget.<name>)
-  version: { type: string, from: version }         # Version, such as v0.97.2
-  notesCount: { type: number, from: notesCount }   # Notes
+  version: { type: string, from: version }         # Trilium's version, such as v0.97.2
+  notesCount: { type: number, from: notesCount }   # notes

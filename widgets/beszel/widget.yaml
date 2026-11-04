@@ -1,6 +1,6 @@
 id: beszel
 name: Beszel
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Systems up of all in Beszel, or the status, CPU, memory, disk and network of one system (homepage's beszel widget).
 refresh: 1m
@@ -12,5 +12,5 @@ options:
   systemId: { type: string }               # one system: its id or its name; default all systems
   version: { type: number, default: 1 }    # 2 for Beszel 0.9 or later, as in homepage
 attributes:                 # public values for a service's filter: (widget.<name>)
-  systems: { type: number, from: systems }           # Systems
+  systems: { type: number, from: systems }           # systems monitored
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

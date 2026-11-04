@@ -1,13 +1,13 @@
 id: caddy
 name: Caddy
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Reverse proxy upstreams, their requests and failed requests from Caddy's admin API (homepage's caddy widget).
 refresh: 30s
 options:
   url: { type: url, required: true }       # Caddy's admin API, e.g. http://caddy.lan:2019 (see the page)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  upstreams: { type: number, from: upstreams }               # Upstreams
-  requests: { type: number, from: requests }                 # Requests
-  requests_failed: { type: number, from: requests_failed }   # Failed requests
+  upstreams: { type: number, from: upstreams }               # reverse proxy upstreams
+  requests: { type: number, from: requests }                 # requests in flight to the upstreams
+  requests_failed: { type: number, from: requests_failed }   # failed requests Caddy counts against the upstreams
   attention: { type: boolean, from: '@attention' }           # true while the card marks something as needing attention

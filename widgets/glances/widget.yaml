@@ -20,7 +20,7 @@ options:
   diskUnits: { type: enum, values: [bytes, bbytes], default: bytes }  # bbytes: KiB, MiB, GiB (1024)
   expanded: { type: boolean, default: false }                 # also memory used and total, and free space per disk
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cpu: { type: number, from: cpu }                   # CPU (%)
-  memory: { type: number, from: memory }             # Memory (%)
+  cpu: { type: number, from: cpu }                   # CPU in use, in %
+  memory: { type: number, from: memory }             # memory in use, in %
   uptimeHours: { type: number }                      # hours since the host started; null without uptime: true
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: technitium
 name: Technitium DNS Server
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Queries of a Technitium DNS server by outcome, and its clients (homepage's technitium widget).
 refresh: 60s
@@ -11,15 +11,15 @@ options:
   node: { type: string }                   # a cluster node's name, or cluster for all nodes; without it the server asked
   range: { type: enum, values: [LastHour, LastDay, LastWeek, LastMonth, LastYear], default: LastHour }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  totalQueries: { type: number, from: totalQueries }               # Queries
-  totalNoError: { type: number, from: totalNoError }               # No error
-  totalServerFailure: { type: number, from: totalServerFailure }   # Server failure
-  totalNxDomain: { type: number, from: totalNxDomain }             # NX domain
-  totalRefused: { type: number, from: totalRefused }               # Refused
-  totalAuthoritative: { type: number, from: totalAuthoritative }   # Own zones
-  totalRecursive: { type: number, from: totalRecursive }           # Recursive
-  totalCached: { type: number, from: totalCached }                 # Cached
-  totalBlocked: { type: number, from: totalBlocked }               # Blocked
-  totalDropped: { type: number, from: totalDropped }               # Dropped
-  totalClients: { type: number, from: totalClients }               # Clients
+  totalQueries: { type: number, from: totalQueries }               # queries in the chosen range
+  totalNoError: { type: number, from: totalNoError }               # queries answered without an error
+  totalServerFailure: { type: number, from: totalServerFailure }   # queries that ended in a server failure
+  totalNxDomain: { type: number, from: totalNxDomain }             # queries for a domain that does not exist
+  totalRefused: { type: number, from: totalRefused }               # queries refused
+  totalAuthoritative: { type: number, from: totalAuthoritative }   # queries answered from the server's own zones
+  totalRecursive: { type: number, from: totalRecursive }           # queries answered by recursion
+  totalCached: { type: number, from: totalCached }                 # queries answered from the cache
+  totalBlocked: { type: number, from: totalBlocked }               # queries blocked
+  totalDropped: { type: number, from: totalDropped }               # queries dropped
+  totalClients: { type: number, from: totalClients }               # clients that sent queries
   attention: { type: boolean, from: '@attention' }                 # true while the card marks something as needing attention

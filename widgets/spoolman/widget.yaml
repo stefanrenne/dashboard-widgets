@@ -1,6 +1,6 @@
 id: spoolman
 name: Spoolman
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: What is left on up to four filament spools in Spoolman (homepage's spoolman widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://spoolman.lan:7912
   spoolIds: { type: list }                 # the spools to show, e.g. [1, 2, 3, 4]; without it the first four
 attributes:                 # public values for a service's filter: (widget.<name>)
-  spool1: { type: number, from: spool1 }             # spool1 (%)
-  spool2: { type: number, from: spool2 }             # spool2 (%)
-  spool3: { type: number, from: spool3 }             # spool3 (%)
+  spool1: { type: number, from: spool1 }             # filament left on the first spool, in %
+  spool2: { type: number, from: spool2 }             # filament left on the second spool, in %
+  spool3: { type: number, from: spool3 }             # filament left on the third spool, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

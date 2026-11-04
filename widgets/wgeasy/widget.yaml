@@ -1,6 +1,6 @@
 id: wgeasy
 name: wg-easy
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: WireGuard clients connected, enabled, disabled and in total in wg-easy (homepage's wgeasy widget).
 refresh: 60s
@@ -12,7 +12,7 @@ options:
   password: { type: string, secret: true } # the web interface's password
   threshold: { type: number, default: 2 }  # minutes since the last handshake that still count as connected
 attributes:                 # public values for a service's filter: (widget.<name>)
-  connected: { type: number, from: connected }   # Connected
-  enabled: { type: number, from: enabled }       # Enabled
-  disabled: { type: number, from: disabled }     # Disabled
-  total: { type: number, from: total }           # Total
+  connected: { type: number, from: connected }   # clients with a handshake within the threshold
+  enabled: { type: number, from: enabled }       # clients enabled
+  disabled: { type: number, from: disabled }     # clients disabled
+  total: { type: number, from: total }           # clients in total

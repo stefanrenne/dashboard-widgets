@@ -1,6 +1,6 @@
 id: changedetectionio
 name: changedetection.io
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Watches with an unseen change, and all watches, in changedetection.io (homepage's changedetectionio widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://changedetection.lan:5000
   key: { type: string, secret: true, required: true }   # Settings > API
 attributes:                 # public values for a service's filter: (widget.<name>)
-  diffsDetected: { type: number, from: diffsDetected }   # Changes
-  totalObserved: { type: number, from: totalObserved }   # Watched
+  diffsDetected: { type: number, from: diffsDetected }   # watches with a change you have not viewed yet
+  totalObserved: { type: number, from: totalObserved }   # watches in total
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention

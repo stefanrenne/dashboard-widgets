@@ -1,6 +1,6 @@
 id: opendtu
 name: OpenDTU
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Today's yield, the power now (also as a share of the limit) and the limit of the inverters on an OpenDTU (homepage's opendtu widget).
 refresh: 30s
@@ -9,7 +9,7 @@ options:
   username: { type: string }               # when the live data are protected (default user admin)
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  yieldDay: { type: number, from: yieldDay }             # Yield today, in Wh
-  relativePower: { type: number, from: relativePower }   # Power share (%)
-  absolutePower: { type: number, from: absolutePower }   # Power, in W
-  limit: { type: number, from: limit }                   # Limit, in W
+  yieldDay: { type: number, from: yieldDay }             # energy produced today, in Wh
+  relativePower: { type: number, from: relativePower }   # power now, in % of the inverters' limit
+  absolutePower: { type: number, from: absolutePower }   # power now, in W
+  limit: { type: number, from: limit }                   # the inverters' limit together, in W

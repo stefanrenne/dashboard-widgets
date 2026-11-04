@@ -1,6 +1,6 @@
 id: miniflux
 name: Miniflux
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Unread and read entries in Miniflux (homepage's miniflux widget).
 refresh: 5m
@@ -8,5 +8,5 @@ options:
   url: { type: url, required: true }       # e.g. http://miniflux.lan:8080
   key: { type: string, secret: true, required: true }   # Settings > API Keys
 attributes:                 # public values for a service's filter: (widget.<name>)
-  unread: { type: number, from: unread }   # Unread
-  read: { type: number, from: read }       # Read
+  unread: { type: number, from: unread }   # unread entries
+  read: { type: number, from: read }       # read entries

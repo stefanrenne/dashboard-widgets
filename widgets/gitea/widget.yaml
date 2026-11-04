@@ -1,6 +1,6 @@
 id: gitea
 name: Gitea
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Notifications, issues, pull requests and repositories in Gitea or Forgejo (homepage's gitea widget).
 refresh: 5m
@@ -8,8 +8,8 @@ options:
   url: { type: url, required: true }       # e.g. http://gitea.lan:3000
   key: { type: string, secret: true, required: true }   # an access token with read on notification, repository and issue
 attributes:                 # public values for a service's filter: (widget.<name>)
-  notifications: { type: number, from: notifications }   # Unread
-  issues: { type: number, from: issues }                 # Issues
-  pulls: { type: number, from: pulls }                   # Pull requests
-  repositories: { type: number, from: repositories }     # Repositories
+  notifications: { type: number, from: notifications }   # unread notifications
+  issues: { type: number, from: issues }                 # open issues the token can see
+  pulls: { type: number, from: pulls }                   # open pull requests the token can see
+  repositories: { type: number, from: repositories }     # repositories the token can see
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention

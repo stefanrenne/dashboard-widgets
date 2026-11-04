@@ -1,6 +1,6 @@
 id: longhorn
 name: Longhorn
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Storage of the Longhorn nodes in a Kubernetes cluster, in total and per node (homepage's longhorn info widget).
 refresh: 1m
@@ -14,8 +14,8 @@ options:
   labels: { type: boolean, default: true }    # the node names as labels (else "node 1", ...)
   expanded: { type: boolean, default: false } # free of total per node as rows with a bar
 attributes:                 # public values for a service's filter: (widget.<name>)
-  total: { type: number, from: total }               # Total (%)
-  node1: { type: number, from: node1 }               # node1 (%)
-  node2: { type: number, from: node2 }               # node2 (%)
-  node3: { type: number, from: node3 }               # node3 (%)
+  total: { type: number, from: total }               # storage in use on all nodes, in %
+  node1: { type: number, from: node1 }               # storage in use on the first node, in %
+  node2: { type: number, from: node2 }               # storage in use on the second node, in %
+  node3: { type: number, from: node3 }               # storage in use on the third node, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

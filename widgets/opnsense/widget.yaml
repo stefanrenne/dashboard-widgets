@@ -1,6 +1,6 @@
 id: opnsense
 name: OPNsense
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: CPU use, active memory and the traffic sent and received on the WAN of an OPNsense firewall (homepage's opnsense widget).
 refresh: 30s
@@ -11,5 +11,5 @@ options:
   wan: { type: string, default: wan }      # the interface, as named under Interfaces > Assignments (e.g. opt1)
   insecure: { type: boolean, default: false }  # accept the firewall's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cpu: { type: number, from: cpu }                   # CPU (%)
+  cpu: { type: number, from: cpu }                   # CPU in use, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

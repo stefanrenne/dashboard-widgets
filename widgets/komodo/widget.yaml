@@ -1,6 +1,6 @@
 id: komodo
 name: Komodo
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Containers, or stacks, or a summary of servers, stacks and containers, in Komodo (homepage's komodo widget).
 refresh: 30s
@@ -12,9 +12,9 @@ options:
   showStacks: { type: boolean, default: false }    # stacks instead of containers
   showSummary: { type: boolean, default: false }   # servers, stacks and containers running of all; wins over showStacks
 attributes:                 # public values for a service's filter: (widget.<name>)
-  total: { type: number, from: total }               # Total
-  running: { type: number, from: running }           # Running
-  stopped: { type: number, from: stopped }           # Stopped
-  unhealthy: { type: number, from: unhealthy }       # Unhealthy
-  unknown: { type: number, from: unknown }           # Unknown
+  total: { type: number, from: total }               # containers in total (stacks with showStacks)
+  running: { type: number, from: running }           # containers running (stacks with showStacks)
+  stopped: { type: number, from: stopped }           # containers stopped (stacks with showStacks)
+  unhealthy: { type: number, from: unhealthy }       # containers unhealthy (stacks with showStacks)
+  unknown: { type: number, from: unknown }           # containers in an unknown state (stacks with showStacks)
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: pihole
 name: Pi-hole
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: DNS queries, how many were blocked and the size of the blocklist (homepage's pihole widget).
 refresh: 1m
@@ -10,7 +10,7 @@ options:
   version: { type: number, default: 5 }    # 6 for Pi-hole 6 or later, as in homepage
   key: { type: string, secret: true }      # Pi-hole 6: the web password or an app password; 5: Settings > API > Show API token
 attributes:                 # public values for a service's filter: (widget.<name>)
-  queries: { type: number, from: queries }                   # Queries
-  blocked: { type: number, from: blocked }                   # Blocked
-  blocked_percent: { type: number, from: blocked_percent }   # blocked_percent (%)
-  gravity: { type: number, from: gravity }                   # Blocklist
+  queries: { type: number, from: queries }                   # DNS queries today
+  blocked: { type: number, from: blocked }                   # DNS queries blocked today
+  blocked_percent: { type: number, from: blocked_percent }   # DNS queries blocked today, in %
+  gravity: { type: number, from: gravity }                   # domains on the blocklist

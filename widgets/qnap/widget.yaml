@@ -1,6 +1,6 @@
 id: qnap
 name: QNAP
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: CPU, memory, temperature and pool or volume use of a QNAP NAS (homepage's qnap widget).
 refresh: 60s
@@ -11,8 +11,8 @@ options:
   volume: { type: string }                 # one volume's name as in Storage & Snapshots; without it all volumes together
   insecure: { type: boolean, default: false }  # accept the NAS's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cpuUsage: { type: number, from: cpuUsage }         # CPU (%)
-  memUsage: { type: number, from: memUsage }         # Memory (%)
-  systemTempC: { type: number, from: systemTempC }   # Temperature, in °C
-  poolUsage: { type: number, from: poolUsage }       # Storage used (%)
+  cpuUsage: { type: number, from: cpuUsage }         # CPU in use, in %
+  memUsage: { type: number, from: memUsage }         # memory in use, in %
+  systemTempC: { type: number, from: systemTempC }   # system temperature, in °C
+  poolUsage: { type: number, from: poolUsage }       # space in use on the pool or volume, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

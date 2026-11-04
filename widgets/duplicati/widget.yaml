@@ -1,6 +1,6 @@
 id: duplicati
 name: Duplicati
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Backup jobs, their last and next run, and their warnings and errors in Duplicati (homepage's duplicati widget).
 refresh: 60s
@@ -9,9 +9,9 @@ options:
   url: { type: url, required: true }       # e.g. http://duplicati.lan:8200
   password: { type: string, secret: true, required: true }   # the web interface password
 attributes:                 # public values for a service's filter: (widget.<name>)
-  jobs: { type: number, from: jobs }                 # Jobs
-  running: { type: number, from: running }           # Running
-  warnings: { type: number, from: warnings }         # Warnings
-  errors: { type: number, from: errors }             # Errors
+  jobs: { type: number, from: jobs }                 # backup jobs
+  running: { type: number, from: running }           # 1 while a backup runs, else 0
+  warnings: { type: number, from: warnings }         # backups with warnings in their notifications
+  errors: { type: number, from: errors }             # backups with errors in their notifications
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
   hoursSinceBackup: { type: number }   # hours since the newest backup finished; null when there is none

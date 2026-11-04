@@ -1,6 +1,6 @@
 id: mylar
 name: Mylar3
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Series, issues and wanted issues in Mylar3 (homepage's mylar widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://mylar.lan:8090
   key: { type: string, secret: true, required: true }   # Settings > Web Interface > API key (with the API turned on)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  series: { type: number, from: series }             # Series
-  issues: { type: number, from: issues }             # Issues
-  wanted: { type: number, from: wanted }             # Wanted
+  series: { type: number, from: series }             # series
+  issues: { type: number, from: issues }             # issues of all series
+  wanted: { type: number, from: wanted }             # issues wanted and not downloaded
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

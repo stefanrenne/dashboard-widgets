@@ -1,6 +1,6 @@
 id: pfsense
 name: pfSense
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Load, memory, temperature, disk and the WAN's state and address of a pfSense firewall (homepage's pfsense widget).
 refresh: 30s
@@ -15,9 +15,9 @@ options:
   insecure: { type: boolean, default: false }  # accept the firewall's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: '@status' }          # up or down, as the status label
-  load: { type: number, from: load }                 # Load
-  memory: { type: number, from: memory }             # Memory (%)
-  temp: { type: number, from: temp }                 # Temperature, in °C
-  wanStatus: { type: string, from: wanStatus }       # WAN, a state such as up
-  disk: { type: number, from: disk }                 # Disk (%)
+  load: { type: number, from: load }                 # load average of the last minute
+  memory: { type: number, from: memory }             # memory in use, in %
+  temp: { type: number, from: temp }                 # CPU temperature, in °C
+  wanStatus: { type: string, from: wanStatus }       # the WAN's state: up or down
+  disk: { type: number, from: disk }                 # disk in use, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

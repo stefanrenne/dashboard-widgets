@@ -1,6 +1,6 @@
 id: bazarr
 name: Bazarr
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Episodes and movies that still miss subtitles.
 refresh: 5m
@@ -8,5 +8,5 @@ options:
   url: { type: url, required: true }      # e.g. http://bazarr:6767
   key: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  missingEpisodes: { type: number, from: missingEpisodes }   # Missing Episodes
-  missingMovies: { type: number, from: missingMovies }       # Missing Movies
+  missingEpisodes: { type: number, from: missingEpisodes }   # episodes that still miss subtitles
+  missingMovies: { type: number, from: missingMovies }       # movies that still miss subtitles

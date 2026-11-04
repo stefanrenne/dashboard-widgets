@@ -1,6 +1,6 @@
 id: peanut
 name: PeaNUT
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: A UPS's battery charge, load and state through PeaNUT (homepage's peanut widget).
 refresh: 30s
@@ -10,7 +10,7 @@ options:
   username: { type: string }               # when PeaNUT has authentication on
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  battery_charge: { type: number, from: battery_charge }   # Battery (%)
-  ups_load: { type: number, from: ups_load }               # UPS load (%)
-  ups_status: { type: string, from: ups_status }           # Status, a state such as online
+  battery_charge: { type: number, from: battery_charge }   # battery charge, in %
+  ups_load: { type: number, from: ups_load }               # load on the UPS, in % of its capacity
+  ups_status: { type: string, from: ups_status }           # the UPS's state: online, on_battery, low_battery or unknown
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

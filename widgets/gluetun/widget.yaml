@@ -1,6 +1,6 @@
 id: gluetun
 name: Gluetun
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: The VPN's public IP address, region and country, and the forwarded port, in Gluetun (homepage's gluetun widget).
 refresh: 60s
@@ -10,4 +10,4 @@ options:
   key: { type: string, secret: true }      # the control server's API key, when its routes need one
   version: { type: number, default: 1 }    # 2 for Gluetun 3.40.1 and later
 attributes:                 # public values for a service's filter: (widget.<name>)
-  country: { type: string, from: country }   # Country, a state such as Netherlands
+  country: { type: string, from: country }   # the country of the VPN's public IP address, such as Netherlands

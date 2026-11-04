@@ -1,6 +1,6 @@
 id: tandoor
 name: Tandoor
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Users, recipes and keywords in Tandoor Recipes (homepage's tandoor widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://tandoor.lan:8080
   key: { type: string, secret: true, required: true }   # Settings > API > Generate, scope read
 attributes:                 # public values for a service's filter: (widget.<name>)
-  users: { type: number, from: users }         # Users
-  recipes: { type: number, from: recipes }     # Recipes
-  keywords: { type: number, from: keywords }   # Keywords
+  users: { type: number, from: users }         # users of the space
+  recipes: { type: number, from: recipes }     # recipes in the space
+  keywords: { type: number, from: keywords }   # keywords

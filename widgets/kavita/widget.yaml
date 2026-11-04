@@ -1,6 +1,6 @@
 id: kavita
 name: Kavita
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Series and files in Kavita (homepage's kavita widget).
 refresh: 5m
@@ -10,5 +10,5 @@ options:
   password: { type: string, secret: true }
   key: { type: string, secret: true }      # instead of a user: the API key under User settings > API Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  seriesCount: { type: number, from: seriesCount }   # Series
-  totalFiles: { type: number, from: totalFiles }     # Files
+  seriesCount: { type: number, from: seriesCount }   # series in all libraries
+  totalFiles: { type: number, from: totalFiles }     # files in all libraries

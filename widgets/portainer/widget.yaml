@@ -1,6 +1,6 @@
 id: portainer
 name: Portainer
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Running, stopped and total containers of one Portainer environment.
 refresh: 30s
@@ -9,6 +9,6 @@ options:
   key: { type: string, secret: true, required: true }   # an access token (My account > Access tokens)
   env: { type: number, required: true }   # environment id, the number in Portainer's URL
 attributes:                 # public values for a service's filter: (widget.<name>)
-  running: { type: number, from: running }   # Running
-  stopped: { type: number, from: stopped }   # Stopped
-  total: { type: number, from: total }       # Total
+  running: { type: number, from: running }   # containers running
+  stopped: { type: number, from: stopped }   # containers stopped
+  total: { type: number, from: total }       # containers in total

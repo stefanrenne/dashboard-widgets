@@ -1,6 +1,6 @@
 id: medusa
 name: Medusa
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Episodes wanted and snatched, and active shows, in Medusa (homepage's medusa widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://medusa.lan:8081
   key: { type: string, secret: true, required: true }   # Settings > General > Interface > API Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  wanted: { type: number, from: wanted }   # Wanted
-  queued: { type: number, from: queued }   # Snatched
-  series: { type: number, from: series }   # Shows
+  wanted: { type: number, from: wanted }   # episodes wanted: missed, today, soon and later
+  queued: { type: number, from: queued }   # episodes snatched and not yet downloaded
+  series: { type: number, from: series }   # active shows

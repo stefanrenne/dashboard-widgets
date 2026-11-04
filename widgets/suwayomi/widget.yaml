@@ -1,6 +1,6 @@
 id: suwayomi
 name: Suwayomi
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Manga chapters downloaded or not and read or not in Suwayomi's library (homepage's suwayomi widget).
 refresh: 5m
@@ -11,11 +11,11 @@ options:
   password: { type: string, secret: true }
   category: { type: number }               # one category's ID (?tab=<id> in its address); without it the whole library
 attributes:                 # public values for a service's filter: (widget.<name>)
-  download: { type: number, from: download }                         # Downloaded
-  nondownload: { type: number, from: nondownload }                   # To download
-  read: { type: number, from: read }                                 # Read
-  unread: { type: number, from: unread }                             # Unread
-  downloadedread: { type: number, from: downloadedread }             # Downloaded and read
-  downloadedunread: { type: number, from: downloadedunread }         # Downloaded, unread
-  nondownloadedread: { type: number, from: nondownloadedread }       # Not downloaded, read
-  nondownloadedunread: { type: number, from: nondownloadedunread }   # Not downloaded, unread
+  download: { type: number, from: download }                         # chapters downloaded
+  nondownload: { type: number, from: nondownload }                   # chapters not downloaded
+  read: { type: number, from: read }                                 # chapters read
+  unread: { type: number, from: unread }                             # chapters not read
+  downloadedread: { type: number, from: downloadedread }             # chapters downloaded and read
+  downloadedunread: { type: number, from: downloadedunread }         # chapters downloaded and not read
+  nondownloadedread: { type: number, from: nondownloadedread }       # chapters read and not downloaded
+  nondownloadedunread: { type: number, from: nondownloadedunread }   # chapters not downloaded and not read

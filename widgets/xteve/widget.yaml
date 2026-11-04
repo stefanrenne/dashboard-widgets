@@ -1,6 +1,6 @@
 id: xteve
 name: xTeVe
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Streams in all, active and mapped to the EPG in xTeVe (homepage's xteve widget).
 refresh: 5m
@@ -9,6 +9,6 @@ options:
   username: { type: string }               # when xTeVe's authentication is on
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  streams_all: { type: number, from: streams_all }         # Streams
-  streams_active: { type: number, from: streams_active }   # Active
-  streams_xepg: { type: number, from: streams_xepg }       # In the EPG
+  streams_all: { type: number, from: streams_all }         # streams in total
+  streams_active: { type: number, from: streams_active }   # streams active
+  streams_xepg: { type: number, from: streams_xepg }       # streams mapped to the EPG

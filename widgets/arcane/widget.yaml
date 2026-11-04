@@ -1,6 +1,6 @@
 id: arcane
 name: Arcane
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Containers running, stopped and in total, images and image updates in Arcane (homepage's arcane widget).
 refresh: 1m
@@ -10,11 +10,11 @@ options:
   key: { type: string, secret: true, required: true }   # an API key with containers:list, images:list and image-updates:read
   env: { type: string, default: '0' }      # the environment id; 0 is Arcane's local one
 attributes:                 # public values for a service's filter: (widget.<name>)
-  running: { type: number, from: running }               # Running
-  stopped: { type: number, from: stopped }               # Stopped
-  total: { type: number, from: total }                   # Total
-  images: { type: number, from: images }                 # Images
-  images_used: { type: number, from: images_used }       # Images used
-  images_unused: { type: number, from: images_unused }   # Images unused
-  image_updates: { type: number, from: image_updates }   # image_updates
+  running: { type: number, from: running }               # containers running
+  stopped: { type: number, from: stopped }               # containers stopped
+  total: { type: number, from: total }                   # containers in total
+  images: { type: number, from: images }                 # images in total
+  images_used: { type: number, from: images_used }       # images a container uses
+  images_unused: { type: number, from: images_unused }   # images no container uses
+  image_updates: { type: number, from: image_updates }   # images with a newer version available
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention

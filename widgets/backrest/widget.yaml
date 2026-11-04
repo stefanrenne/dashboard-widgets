@@ -10,10 +10,10 @@ options:
   username: { type: string }               # with authentication on in Backrest
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  num_plans: { type: number, from: num_plans }                     # Plans
-  num_success_latest: { type: number, from: num_success_latest }   # Last OK
-  num_failure_latest: { type: number, from: num_failure_latest }   # Last failed
-  num_success_30: { type: number, from: num_success_30 }           # OK in 30 days
-  num_failure_30: { type: number, from: num_failure_30 }           # Failed 30 days
+  num_plans: { type: number, from: num_plans }                     # backup plans
+  num_success_latest: { type: number, from: num_success_latest }   # plans whose latest backup succeeded
+  num_failure_latest: { type: number, from: num_failure_latest }   # plans whose latest backup failed
+  num_success_30: { type: number, from: num_success_30 }           # backups that succeeded in the last 30 days
+  num_failure_30: { type: number, from: num_failure_30 }           # backups that failed in the last 30 days
   bytes_added_30: { type: number }                                 # data added by the backups of the last 30 days, in GB
   attention: { type: boolean, from: '@attention' }                 # true while the card marks something as needing attention

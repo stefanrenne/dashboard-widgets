@@ -1,6 +1,6 @@
 id: kopia
 name: Kopia
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: A source's state, size, last snapshot and next snapshot in Kopia (homepage's kopia widget).
 refresh: 60s
@@ -12,7 +12,7 @@ options:
   snapshotPath: { type: string }           # the source's path, when there are several
   insecure: { type: boolean, default: false }   # accept Kopia's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
-  status: { type: string, from: status }             # Status, a state such as idle
+  status: { type: string, from: status }             # the source's state, such as idle or uploading
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
   hoursSinceRun: { type: number }   # hours since the last snapshot started; null when there is none
   failed: { type: boolean }         # true when the last snapshot had errors

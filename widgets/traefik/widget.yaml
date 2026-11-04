@@ -1,6 +1,6 @@
 id: traefik
 name: Traefik
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: HTTP routers, services and middlewares of Traefik, marked when they report errors or warnings (homepage's traefik widget).
 refresh: 1m
@@ -9,7 +9,7 @@ options:
   username: { type: string }               # when the API is behind basic authentication
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  routers: { type: number, from: routers }           # Routers
-  services: { type: number, from: services }         # Services
-  middleware: { type: number, from: middleware }     # Middleware
+  routers: { type: number, from: routers }           # HTTP routers
+  services: { type: number, from: services }         # HTTP services
+  middleware: { type: number, from: middleware }     # HTTP middlewares
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

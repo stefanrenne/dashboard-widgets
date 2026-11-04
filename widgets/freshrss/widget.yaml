@@ -1,6 +1,6 @@
 id: freshrss
 name: FreshRSS
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Unread articles and subscriptions in FreshRSS (homepage's freshrss widget).
 refresh: 5m
@@ -9,5 +9,5 @@ options:
   username: { type: string, required: true }
   password: { type: string, secret: true, required: true }   # the API password of the user's profile
 attributes:                 # public values for a service's filter: (widget.<name>)
-  unread: { type: number, from: unread }                 # Unread
-  subscriptions: { type: number, from: subscriptions }   # Feeds
+  unread: { type: number, from: unread }                 # unread articles
+  subscriptions: { type: number, from: subscriptions }   # feeds subscribed to

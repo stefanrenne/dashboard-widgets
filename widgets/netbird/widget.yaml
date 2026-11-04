@@ -1,6 +1,6 @@
 id: netbird
 name: NetBird
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Peers online, users and peers whose login expired in NetBird (homepage's netbird widget).
 refresh: 60s
@@ -9,6 +9,6 @@ options:
   url: { type: url, required: true }       # the management API, e.g. https://netbird.lan (or https://api.netbird.io)
   key: { type: string, secret: true, required: true }   # a personal access token of an admin (a service user is best)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  users: { type: number, from: users }                   # Users
-  login_expired: { type: number, from: login_expired }   # Login expired
+  users: { type: number, from: users }                   # users (service users left out)
+  login_expired: { type: number, from: login_expired }   # peers whose login expired
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: proxmoxbackupserver
 name: Proxmox Backup Server
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Datastore usage, failed tasks of the last 24 hours, CPU and memory of a Proxmox Backup Server (homepage's proxmoxbackupserver widget).
 refresh: 1m
@@ -11,8 +11,8 @@ options:
   datastore: { type: string }              # only this datastore; default all together
   insecure: { type: boolean, default: true }   # accept the self-signed certificate (as homepage does)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  datastore_usage: { type: number, from: datastore_usage }     # Datastore (%)
-  failed_tasks_24h: { type: number, from: failed_tasks_24h }   # Failed tasks
-  cpu_usage: { type: number, from: cpu_usage }                 # cpu_usage (%)
-  memory_usage: { type: number, from: memory_usage }           # memory_usage (%)
+  datastore_usage: { type: number, from: datastore_usage }     # space in use on the datastores, in %
+  failed_tasks_24h: { type: number, from: failed_tasks_24h }   # tasks that failed in the last 24 hours (100 at most)
+  cpu_usage: { type: number, from: cpu_usage }                 # CPU in use, in %
+  memory_usage: { type: number, from: memory_usage }           # memory in use, in %
   attention: { type: boolean, from: '@attention' }             # true while the card marks something as needing attention

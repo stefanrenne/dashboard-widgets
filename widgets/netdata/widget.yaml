@@ -1,12 +1,12 @@
 id: netdata
 name: Netdata
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Warning and critical alarms in Netdata (homepage's netdata widget).
 refresh: 60s
 options:
   url: { type: url, required: true }       # e.g. http://netdata.lan:19999
 attributes:                 # public values for a service's filter: (widget.<name>)
-  warnings: { type: number, from: warnings }         # Warnings
-  criticals: { type: number, from: criticals }       # Critical
+  warnings: { type: number, from: warnings }         # alarms in warning
+  criticals: { type: number, from: criticals }       # alarms critical
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

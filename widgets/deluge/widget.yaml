@@ -1,6 +1,6 @@
 id: deluge
 name: Deluge
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Torrents downloading and seeding with their rates, and optionally the downloads one per row (homepage's deluge widget).
 refresh: 10s
@@ -10,8 +10,8 @@ options:
   enableLeechProgress: { type: boolean, default: false }     # a row per download with its progress and time left
   queueLimit: { type: number, default: 5 }  # rows before "+N more"
 attributes:                 # public values for a service's filter: (widget.<name>)
-  leech: { type: number, from: leech }               # Leeching
-  seed: { type: number, from: seed }                 # Seeding
+  leech: { type: number, from: leech }               # torrents downloading
+  seed: { type: number, from: seed }                 # torrents seeding
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
   download: { type: number }   # download rate of all torrents, in MB/s
   upload: { type: number }     # upload rate of all torrents, in MB/s

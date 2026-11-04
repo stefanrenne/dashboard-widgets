@@ -11,6 +11,6 @@ options:
   interfaceName: { type: string }          # a device, e.g. eth0; without it the system's uptime and load
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: '@status' }          # up or down, as the status label
-  cpuLoad: { type: number, from: cpuLoad }           # Load
+  cpuLoad: { type: number, from: cpuLoad }           # load average of the last 5 minutes; not set with interfaceName
   uptimeHours: { type: number }                      # hours since the router started; not set with interfaceName
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

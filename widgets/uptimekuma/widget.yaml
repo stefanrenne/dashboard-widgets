@@ -1,6 +1,6 @@
 id: uptimekuma
 name: Uptime Kuma
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Monitors up and down, average uptime and the incident of one status page (homepage's uptimekuma widget).
 refresh: 1m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://uptime-kuma.lan:3001
   slug: { type: string, required: true }   # the status page's address after /status/
 attributes:                 # public values for a service's filter: (widget.<name>)
-  up: { type: number, from: up }                     # Up
-  down: { type: number, from: down }                 # Down
-  uptime: { type: number, from: uptime }             # Uptime (%)
+  up: { type: number, from: up }                     # monitors up
+  down: { type: number, from: down }                 # monitors down
+  uptime: { type: number, from: uptime }             # average uptime of the monitors over 24 hours, in %
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: plex
 name: Plex
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Active streams and the size of the movie, TV and music libraries of a Plex Media Server (homepage's plex widget).
 refresh: 15s
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }        # e.g. http://plex.lan:32400
   key: { type: string, secret: true, required: true }   # your X-Plex-Token
 attributes:                 # public values for a service's filter: (widget.<name>)
-  streams: { type: number, from: streams }   # Streams
-  albums: { type: number, from: albums }     # Albums
-  movies: { type: number, from: movies }     # Movies
-  tv: { type: number, from: tv }             # TV shows
+  streams: { type: number, from: streams }   # streams playing now
+  albums: { type: number, from: albums }     # albums in all music libraries
+  movies: { type: number, from: movies }     # movies in all movie libraries
+  tv: { type: number, from: tv }             # shows in all TV libraries

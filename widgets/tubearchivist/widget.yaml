@@ -1,6 +1,6 @@
 id: tubearchivist
 name: Tube Archivist
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Downloads waiting, and the videos, channels and playlists in Tube Archivist (homepage's tubearchivist widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://tubearchivist.lan:8000
   key: { type: string, secret: true, required: true }   # Settings > Application > API Token
 attributes:                 # public values for a service's filter: (widget.<name>)
-  downloads: { type: number, from: downloads }   # Downloads
-  videos: { type: number, from: videos }         # Videos
-  channels: { type: number, from: channels }     # Channels
-  playlists: { type: number, from: playlists }   # Playlists
+  downloads: { type: number, from: downloads }   # videos waiting in the download queue
+  videos: { type: number, from: videos }         # videos
+  channels: { type: number, from: channels }     # channels
+  playlists: { type: number, from: playlists }   # playlists

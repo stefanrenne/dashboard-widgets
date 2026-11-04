@@ -11,6 +11,6 @@ options:
   key: { type: string, secret: true }      # pyload-ng's API key, instead of a user
 attributes:                 # public values for a service's filter: (widget.<name>)
   speed: { type: number }                  # download speed, in MB/s
-  active: { type: number, from: active }   # Active
-  queue: { type: number, from: queue }     # Queue
-  total: { type: number, from: total }     # Total
+  active: { type: number, from: active }   # downloads running
+  queue: { type: number, from: queue }     # downloads in the queue
+  total: { type: number, from: total }     # downloads in total

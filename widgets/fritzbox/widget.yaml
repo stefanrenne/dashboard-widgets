@@ -9,7 +9,7 @@ options:
   url: { type: url, required: true }       # the box, e.g. http://fritz.box (port 49000, or 49443 with https)
   insecure: { type: boolean, default: false }   # accept the box's self-signed certificate (https)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  connectionStatus: { type: string, from: connectionStatus }   # Connection, a state such as connected
+  connectionStatus: { type: string, from: connectionStatus }   # the internet connection's state: connected, connecting, disconnected or unconfigured
   uptimeHours: { type: number }                                # hours the internet connection is up
   down: { type: number }                                       # download speed now, in MB/s
   up: { type: number }                                         # upload speed now, in MB/s

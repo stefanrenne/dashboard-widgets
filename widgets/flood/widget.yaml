@@ -1,6 +1,6 @@
 id: flood
 name: Flood
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Torrents downloading and seeding, with their rates, in Flood (homepage's flood widget).
 refresh: 15s
@@ -9,7 +9,7 @@ options:
   username: { type: string }               # when Flood's authentication is on
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  leech: { type: number, from: leech }   # Leeching
-  seed: { type: number, from: seed }     # Seeding
+  leech: { type: number, from: leech }   # torrents downloading
+  seed: { type: number, from: seed }     # torrents seeding
   download: { type: number }   # download rate of all torrents, in MB/s
   upload: { type: number }     # upload rate of all torrents, in MB/s

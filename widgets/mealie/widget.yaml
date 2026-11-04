@@ -1,6 +1,6 @@
 id: mealie
 name: Mealie
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Recipes, users, categories and tags in Mealie (homepage's mealie widget).
 refresh: 5m
@@ -9,7 +9,7 @@ options:
   key: { type: string, secret: true, required: true }   # Profile > Manage Your API Tokens > Generate
   version: { type: number, default: 1 }    # 2 for Mealie 2 and later (households)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  recipes: { type: number, from: recipes }         # Recipes
-  users: { type: number, from: users }             # Users
-  categories: { type: number, from: categories }   # Categories
-  tags: { type: number, from: tags }               # Tags
+  recipes: { type: number, from: recipes }         # recipes
+  users: { type: number, from: users }             # users
+  categories: { type: number, from: categories }   # recipe categories
+  tags: { type: number, from: tags }               # recipe tags

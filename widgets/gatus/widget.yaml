@@ -1,13 +1,13 @@
 id: gatus
 name: Gatus
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Endpoints up and down, and the uptime over their recent results, in Gatus (homepage's gatus widget).
 refresh: 60s
 options:
   url: { type: url, required: true }       # e.g. http://gatus.lan:8080
 attributes:                 # public values for a service's filter: (widget.<name>)
-  up: { type: number, from: up }                     # Up
-  down: { type: number, from: down }                 # Down
-  uptime: { type: number, from: uptime }             # Uptime (%)
+  up: { type: number, from: up }                     # endpoints whose latest check succeeded
+  down: { type: number, from: down }                 # endpoints whose latest check failed
+  uptime: { type: number, from: uptime }             # successful checks of all endpoints, in % of the results Gatus keeps
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

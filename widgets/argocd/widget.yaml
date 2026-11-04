@@ -1,6 +1,6 @@
 id: argocd
 name: Argo CD
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Applications by sync and health status in Argo CD (homepage's argocd widget).
 refresh: 1m
@@ -9,11 +9,11 @@ options:
   url: { type: url, required: true }       # e.g. https://argocd.example.com
   key: { type: string, secret: true, required: true }   # a token of a read-only account (see the page)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  apps: { type: number, from: apps }                 # Applications
-  synced: { type: number, from: synced }             # Synced
-  outOfSync: { type: number, from: outOfSync }       # Out of sync
-  healthy: { type: number, from: healthy }           # Healthy
-  progressing: { type: number, from: progressing }   # Progressing
-  degraded: { type: number, from: degraded }         # Degraded
-  suspended: { type: number, from: suspended }       # Suspended
-  missing: { type: number, from: missing }           # Missing
+  apps: { type: number, from: apps }                 # applications in total
+  synced: { type: number, from: synced }             # applications in sync with their source
+  outOfSync: { type: number, from: outOfSync }       # applications out of sync with their source
+  healthy: { type: number, from: healthy }           # applications that are healthy
+  progressing: { type: number, from: progressing }   # applications still progressing
+  degraded: { type: number, from: degraded }         # applications that are degraded
+  suspended: { type: number, from: suspended }       # applications that are suspended
+  missing: { type: number, from: missing }           # applications with missing resources

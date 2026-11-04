@@ -1,6 +1,6 @@
 id: wallos
 name: Wallos
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Active subscriptions, the next to renew and the cost of last, this and next month in Wallos (homepage's wallos widget).
 refresh: 1h
@@ -9,4 +9,4 @@ options:
   url: { type: url, required: true }       # e.g. http://wallos.lan:8282
   key: { type: string, secret: true, required: true }   # Profile > API Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  activeSubscriptions: { type: number, from: activeSubscriptions }   # Active
+  activeSubscriptions: { type: number, from: activeSubscriptions }   # active subscriptions

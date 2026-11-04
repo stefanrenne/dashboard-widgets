@@ -1,6 +1,6 @@
 id: watchtower
 name: Watchtower
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Containers scanned, updated and failed in Watchtower's last run (homepage's watchtower widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://watchtower.lan:8080
   key: { type: string, secret: true, required: true }   # WATCHTOWER_HTTP_API_TOKEN
 attributes:                 # public values for a service's filter: (widget.<name>)
-  containers_scanned: { type: number, from: containers_scanned }   # Scanned
-  containers_updated: { type: number, from: containers_updated }   # Updated
-  containers_failed: { type: number, from: containers_failed }     # Failed
+  containers_scanned: { type: number, from: containers_scanned }   # containers scanned in the last run
+  containers_updated: { type: number, from: containers_updated }   # containers updated in the last run
+  containers_failed: { type: number, from: containers_failed }     # containers whose update failed in the last run
   attention: { type: boolean, from: '@attention' }                 # true while the card marks something as needing attention

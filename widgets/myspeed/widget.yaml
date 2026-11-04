@@ -1,6 +1,6 @@
 id: myspeed
 name: MySpeed
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Download, upload and ping of MySpeed's latest speed test (homepage's myspeed widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://myspeed.lan:5216
   password: { type: string, secret: true } # when MySpeed has a password
 attributes:                 # public values for a service's filter: (widget.<name>)
-  download: { type: number, from: download }   # Download, in Mbit/s
-  upload: { type: number, from: upload }       # Upload, in Mbit/s
-  ping: { type: number, from: ping }           # Ping, in ms
+  download: { type: number, from: download }   # download speed of the latest test, in Mbit/s
+  upload: { type: number, from: upload }       # upload speed of the latest test, in Mbit/s
+  ping: { type: number, from: ping }           # ping of the latest test, in ms

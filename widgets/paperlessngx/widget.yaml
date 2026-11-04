@@ -1,6 +1,6 @@
 id: paperlessngx
 name: Paperless-ngx
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Documents in the inbox and in total (homepage's paperlessngx widget).
 refresh: 5m
@@ -10,6 +10,6 @@ options:
   username: { type: string }               # instead of key
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  inbox: { type: number, from: inbox }               # Inbox
-  total: { type: number, from: total }               # Documents
+  inbox: { type: number, from: inbox }               # documents in the inbox
+  total: { type: number, from: total }               # documents in total
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

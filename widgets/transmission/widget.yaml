@@ -1,6 +1,6 @@
 id: transmission
 name: Transmission
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Torrents downloading and seeding with their rates (homepage's transmission widget).
 refresh: 10s
@@ -10,7 +10,7 @@ options:
   password: { type: string, secret: true }
   rpcUrl: { type: string, default: /transmission/ }   # the RPC path; change it only when Transmission's rpc-url is changed
 attributes:                 # public values for a service's filter: (widget.<name>)
-  leech: { type: number, from: leech }   # Leeching
-  seed: { type: number, from: seed }     # Seeding
+  leech: { type: number, from: leech }   # torrents downloading
+  seed: { type: number, from: seed }     # torrents seeding
   download: { type: number }   # download rate of all torrents, in MB/s
   upload: { type: number }     # upload rate of all torrents, in MB/s

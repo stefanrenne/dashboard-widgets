@@ -10,6 +10,6 @@ options:
   client: { type: string, required: true }     # the device name of the JDownloader instance (Settings > My.JDownloader)
   url: { type: url, default: "https://api.jdownloader.org" }   # only for another My.JDownloader server
 attributes:                 # public values for a service's filter: (widget.<name>)
-  downloadCount: { type: number, from: downloadCount }   # Packages
+  downloadCount: { type: number, from: downloadCount }   # packages in the download list
   downloadBytesRemaining: { type: number }               # still to download over all packages, in GB
   downloadSpeed: { type: number }                        # download speed of the running packages, in MB/s

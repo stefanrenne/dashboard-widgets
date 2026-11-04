@@ -1,6 +1,6 @@
 id: syncthing
 name: Syncthing
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Devices connected, how far in sync, errors and the data shared in Syncthing (homepage's syncthing widget).
 refresh: 1m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://syncthing.lan:8384
   key: { type: string, secret: true, required: true }   # Actions > Settings > General > API Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  synced: { type: number, from: synced }             # Synced (%)
-  errors: { type: number, from: errors }             # Errors
+  synced: { type: number, from: synced }             # how far all folders and devices are in sync, in %
+  errors: { type: number, from: errors }             # errors Syncthing reports
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

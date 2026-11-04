@@ -6,11 +6,6 @@ The dashboard keeps its own list: `../dashboard/todo.md`.
 ## README examples and fixtures
 
 
-## Filter attributes
-
-- [ ] **Better attribute descriptions.** Most are the block's label ("Wanted", "Queued"). Say what
-  the value is and its unit ("movies wanted and not downloaded").
-
 ## Tests and CI
 
 - [ ] **Tests of their own for widgets with logic.** 112 widgets are only covered by the checks

@@ -1,6 +1,6 @@
 id: calibreweb
 name: Calibre-Web
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Books, authors, categories and series in Calibre-Web (homepage's calibreweb widget).
 refresh: 10m
@@ -9,7 +9,7 @@ options:
   username: { type: string, required: true }
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  books: { type: number, from: books }             # Books
-  authors: { type: number, from: authors }         # Authors
-  categories: { type: number, from: categories }   # Categories
-  series: { type: number, from: series }           # Series
+  books: { type: number, from: books }             # books in the library
+  authors: { type: number, from: authors }         # authors in the library
+  categories: { type: number, from: categories }   # categories (tags) in the library
+  series: { type: number, from: series }           # series in the library

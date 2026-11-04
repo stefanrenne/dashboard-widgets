@@ -1,6 +1,6 @@
 id: gotify
 name: Gotify
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Applications, clients and messages in Gotify (homepage's gotify widget).
 refresh: 60s
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://gotify.lan
   key: { type: string, secret: true, required: true }   # a client token (Clients in Gotify's web interface)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  apps: { type: number, from: apps }           # Apps
-  clients: { type: number, from: clients }     # Clients
-  messages: { type: number, from: messages }   # Messages
+  apps: { type: number, from: apps }           # applications that can send messages
+  clients: { type: number, from: clients }     # clients that can read messages
+  messages: { type: number, from: messages }   # messages (200 at most)

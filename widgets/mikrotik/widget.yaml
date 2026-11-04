@@ -10,8 +10,8 @@ options:
   password: { type: string, secret: true, required: true }
   insecure: { type: boolean, default: false }   # accept the router's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cpuLoad: { type: number, from: cpuLoad }                 # CPU (%)
-  memoryUsed: { type: number, from: memoryUsed }           # Memory (%)
+  cpuLoad: { type: number, from: cpuLoad }                 # CPU load, in %
+  memoryUsed: { type: number, from: memoryUsed }           # memory in use, in %
   numberOfLeases: { type: number, from: numberOfLeases }   # DHCP leases
   uptimeHours: { type: number }                            # hours since the router started
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

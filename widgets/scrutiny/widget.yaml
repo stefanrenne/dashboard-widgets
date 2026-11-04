@@ -1,13 +1,13 @@
 id: scrutiny
 name: Scrutiny
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Disks that passed, failed and are unknown in Scrutiny (homepage's scrutiny widget).
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://scrutiny.lan:8080
 attributes:                 # public values for a service's filter: (widget.<name>)
-  passed: { type: number, from: passed }             # Passed
-  failed: { type: number, from: failed }             # Failed
-  unknown: { type: number, from: unknown }           # Unknown
+  passed: { type: number, from: passed }             # disks that passed
+  failed: { type: number, from: failed }             # disks that failed
+  unknown: { type: number, from: unknown }           # disks with an unknown status
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

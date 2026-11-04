@@ -1,6 +1,6 @@
 id: minecraft
 name: Minecraft
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Whether a Minecraft server is up, its players and its version (homepage's minecraft widget).
 refresh: 30s
@@ -9,5 +9,5 @@ options:
   timeout: { type: number, default: 3 }    # seconds to wait for an answer
 attributes:                 # public values for a service's filter: (widget.<name>)
   serviceStatus: { type: string, from: '@status' }   # up or down, as the status label
-  status: { type: string, from: status }             # Status, a state such as up
+  status: { type: string, from: status }             # up or down
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

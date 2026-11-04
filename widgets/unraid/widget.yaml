@@ -1,6 +1,6 @@
 id: unraid
 name: Unraid
-version: 0.5.0
+version: 0.5.1
 apiVersion: 2
 description: CPU, memory, array and pool usage through the Unraid API (Unraid 7 / Connect).
 refresh: 15s
@@ -13,12 +13,12 @@ options:
   pool3: { type: string }
   pool4: { type: string }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  memoryPercent: { type: number, from: memoryPercent }         # memoryPercent (%)
-  cpu: { type: number, from: cpu }                             # CPU (%)
-  notifications: { type: number, from: notifications }         # Alerts
-  status: { type: string, from: status }                       # Array State, a state such as started
-  arrayUsedPercent: { type: number, from: arrayUsedPercent }   # arrayUsedPercent (%)
-  pool1UsedPercent: { type: number, from: pool1UsedPercent }   # pool1UsedPercent (%)
+  memoryPercent: { type: number, from: memoryPercent }         # memory in use, in %
+  cpu: { type: number, from: cpu }                             # CPU in use, in %
+  notifications: { type: number, from: notifications }         # unread notifications
+  status: { type: string, from: status }                       # the array's state, such as started or stopped
+  arrayUsedPercent: { type: number, from: arrayUsedPercent }   # space in use on the array, in %
+  pool1UsedPercent: { type: number, from: pool1UsedPercent }   # space in use on the pool named in pool1, in %
   attention: { type: boolean, from: '@attention' }             # true while the card marks something as needing attention
   arrayFree: { type: number }   # free space on the array, in GB
   pool1Free: { type: number }   # free space on pool1, in GB

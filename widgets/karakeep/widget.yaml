@@ -1,6 +1,6 @@
 id: karakeep
 name: Karakeep
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Bookmarks, favorites, archived items, highlights, lists and tags in Karakeep (homepage's karakeep widget).
 refresh: 5m
@@ -9,9 +9,9 @@ options:
   url: { type: url, required: true }       # e.g. http://karakeep.lan:3000
   key: { type: string, secret: true, required: true }   # User Settings > API Keys
 attributes:                 # public values for a service's filter: (widget.<name>)
-  bookmarks: { type: number, from: bookmarks }     # Bookmarks
-  favorites: { type: number, from: favorites }     # Favorites
-  archived: { type: number, from: archived }       # Archived
-  highlights: { type: number, from: highlights }   # Highlights
-  lists: { type: number, from: lists }             # Lists
-  tags: { type: number, from: tags }               # Tags
+  bookmarks: { type: number, from: bookmarks }     # bookmarks
+  favorites: { type: number, from: favorites }     # bookmarks marked as favorite
+  archived: { type: number, from: archived }       # bookmarks archived
+  highlights: { type: number, from: highlights }   # highlights
+  lists: { type: number, from: lists }             # lists
+  tags: { type: number, from: tags }               # tags

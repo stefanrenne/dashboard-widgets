@@ -1,6 +1,6 @@
 id: speedtest
 name: Speedtest Tracker
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Download, upload and ping of the latest Speedtest Tracker result (homepage's speedtest widget).
 refresh: 5m
@@ -12,4 +12,4 @@ options:
 attributes:                 # public values for a service's filter: (widget.<name>)
   download: { type: number }           # download speed of the last test, in Mbit/s
   upload: { type: number }             # upload speed of the last test, in Mbit/s
-  ping: { type: number, from: ping }   # Ping, in ms
+  ping: { type: number, from: ping }   # ping of the latest test, in ms

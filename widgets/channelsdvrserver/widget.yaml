@@ -1,13 +1,13 @@
 id: channelsdvrserver
 name: Channels DVR Server
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Shows, recordings, scheduled recordings and passes of a Channels DVR Server (homepage's channelsdvrserver widget).
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://channels.lan:8089
 attributes:                 # public values for a service's filter: (widget.<name>)
-  shows: { type: number, from: shows }             # Shows
-  recordings: { type: number, from: recordings }   # Recordings
-  scheduled: { type: number, from: scheduled }     # Scheduled
-  passes: { type: number, from: passes }           # Passes
+  shows: { type: number, from: shows }             # shows recorded
+  recordings: { type: number, from: recordings }   # recordings
+  scheduled: { type: number, from: scheduled }     # recordings scheduled
+  passes: { type: number, from: passes }           # passes (recording rules)

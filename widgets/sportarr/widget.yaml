@@ -1,6 +1,6 @@
 id: sportarr
 name: Sportarr
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Events wanted and queued, and leagues, in Sportarr (homepage's sportarr widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. http://sportarr.lan:1867
   key: { type: string, secret: true, required: true }   # Settings > General > API Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  wanted: { type: number, from: wanted }     # Wanted
-  queued: { type: number, from: queued }     # Queued
-  leagues: { type: number, from: leagues }   # Leagues
+  wanted: { type: number, from: wanted }     # events wanted and not downloaded
+  queued: { type: number, from: queued }     # events in the download queue
+  leagues: { type: number, from: leagues }   # leagues

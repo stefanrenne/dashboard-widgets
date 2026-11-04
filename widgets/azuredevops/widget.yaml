@@ -1,6 +1,6 @@
 id: azuredevops
 name: Azure DevOps
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: The last run of a pipeline, and open pull requests in a repository (homepage's azuredevops widget).
 refresh: 5m
@@ -14,8 +14,8 @@ options:
   userEmail: { type: string }       # pull requests: whose are "mine"
   url: { type: url, default: https://dev.azure.com }   # Azure DevOps Server: your collection's address
 attributes:                 # public values for a service's filter: (widget.<name>)
-  result: { type: string, from: result }             # Pipeline, a state such as failed
-  totalPrs: { type: number, from: totalPrs }         # Open PRs
-  myPrs: { type: number, from: myPrs }               # My PRs
-  approved: { type: number, from: approved }         # Approved
+  result: { type: string, from: result }             # the latest run's result (succeeded, failed, ...), or its status while it runs
+  totalPrs: { type: number, from: totalPrs }         # open pull requests in the repository
+  myPrs: { type: number, from: myPrs }               # open pull requests you created
+  approved: { type: number, from: approved }         # open pull requests you created that have an approval
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: urbackup
 name: UrBackup
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Clients whose backups are fine, failed or not recent in UrBackup, and the space used (homepage's urbackup widget).
 refresh: 5m
@@ -11,7 +11,7 @@ options:
   password: { type: string, secret: true }
   maxDays: { type: number, default: 3 }    # days after which a client's last backup is not recent
 attributes:                 # public values for a service's filter: (widget.<name>)
-  ok: { type: number, from: ok }                     # Fine
-  errored: { type: number, from: errored }           # Failed
-  noRecent: { type: number, from: noRecent }         # Not recent
+  ok: { type: number, from: ok }                     # clients whose backups are recent and without errors
+  errored: { type: number, from: errored }           # clients whose last backup failed
+  noRecent: { type: number, from: noRecent }         # clients without a recent backup
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

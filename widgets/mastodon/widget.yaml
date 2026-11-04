@@ -1,12 +1,12 @@
 id: mastodon
 name: Mastodon
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Users, posts and known domains of a Mastodon instance (homepage's mastodon widget).
 refresh: 15m
 options:
   url: { type: url, required: true }       # the instance, e.g. https://mastodon.example.com
 attributes:                 # public values for a service's filter: (widget.<name>)
-  user_count: { type: number, from: user_count }       # Users
-  status_count: { type: number, from: status_count }   # Posts
-  domain_count: { type: number, from: domain_count }   # Domains
+  user_count: { type: number, from: user_count }       # users of the instance
+  status_count: { type: number, from: status_count }   # posts on the instance
+  domain_count: { type: number, from: domain_count }   # other domains the instance knows

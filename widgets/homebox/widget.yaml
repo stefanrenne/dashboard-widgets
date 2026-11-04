@@ -1,6 +1,6 @@
 id: homebox
 name: Homebox
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Items, locations, labels, users and the total value of your inventory in Homebox (homepage's homebox widget).
 refresh: 5m
@@ -10,8 +10,8 @@ options:
   username: { type: string, required: true }   # the e-mail address you log in with
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  items: { type: number, from: items }                           # Items
-  totalWithWarranty: { type: number, from: totalWithWarranty }   # Under warranty
-  locations: { type: number, from: locations }                   # Locations
-  labels: { type: number, from: labels }                         # Labels
-  users: { type: number, from: users }                           # Users
+  items: { type: number, from: items }                           # items in the inventory
+  totalWithWarranty: { type: number, from: totalWithWarranty }   # items under warranty
+  locations: { type: number, from: locations }                   # locations
+  labels: { type: number, from: labels }                         # labels
+  users: { type: number, from: users }                           # users

@@ -280,6 +280,7 @@ test('kubernetes-pods: state, pods, CPU and memory of an app\'s pods, as in home
     assert.deepEqual(j.blocks.map((b) => [b.key, b.value, b.unit]), [['status', 'running', undefined], ['pods', '2/2', undefined], ['cpu', 30, '%'], ['mem', 1.2, 'GB']]);
     const half = await run({ app: 'half' });
     assert.deepEqual([half.status, half.blocks[1].value, half.blocks[1].status, half.blocks[2].value], ['warn', '1/2', 'warn', 0.02], 'no limits: cores');
+    assert.deepEqual([half.blocks[3].value, half.blocks[3].unit, half.attributes.mem, j.attributes.mem], [100, 'MB', 0.1, 1.2], 'the attribute is GB, also when the card shows MB');
     const down = await run({ app: 'down' });
     assert.deepEqual([down.status, down.statusText, down.blocks.length], ['down', 'not running', 2]);
     assert.equal((await run({ app: 'nope' })).statusText, 'not found');

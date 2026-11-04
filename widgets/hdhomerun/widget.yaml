@@ -1,6 +1,6 @@
 id: hdhomerun
 name: HDHomeRun
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Channels, tuners in use and a tuner's channel and signal on an HDHomeRun (homepage's hdhomerun widget).
 refresh: 30s
@@ -9,10 +9,10 @@ options:
   url: { type: url, required: true }       # e.g. http://hdhomerun.lan
   tuner: { type: number, default: 0 }      # the tuner for the tuner fields, from 0
 attributes:                 # public values for a service's filter: (widget.<name>)
-  channels: { type: number, from: channels }               # Channels
-  hd: { type: number, from: hd }                           # HD channels
-  signalStrength: { type: number, from: signalStrength }   # Signal strength (%)
-  signalQuality: { type: number, from: signalQuality }     # Signal quality (%)
-  symbolQuality: { type: number, from: symbolQuality }     # Symbol quality (%)
-  networkRate: { type: number, from: networkRate }         # Bitrate, in Mbit/s
+  channels: { type: number, from: channels }               # channels in the lineup
+  hd: { type: number, from: hd }                           # HD channels in the lineup
+  signalStrength: { type: number, from: signalStrength }   # signal strength of the tuner, in %; null while it is idle
+  signalQuality: { type: number, from: signalQuality }     # signal quality of the tuner, in %; null while it is idle
+  symbolQuality: { type: number, from: symbolQuality }     # symbol quality of the tuner, in %; null while it is idle
+  networkRate: { type: number, from: networkRate }         # bit rate the tuner streams, in Mbit/s; null while it is idle
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

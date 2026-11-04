@@ -1,6 +1,6 @@
 id: ombi
 name: Ombi
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Pending, approved and available requests (homepage's ombi widget).
 refresh: 1m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://ombi.lan:3579
   key: { type: string, secret: true, required: true }   # Settings > Configuration > General > Api Key
 attributes:                 # public values for a service's filter: (widget.<name>)
-  pending: { type: number, from: pending }           # Pending
-  approved: { type: number, from: approved }         # Approved
-  available: { type: number, from: available }       # Available
+  pending: { type: number, from: pending }           # requests waiting for approval
+  approved: { type: number, from: approved }         # requests approved and not yet available
+  available: { type: number, from: available }       # requests available to watch
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

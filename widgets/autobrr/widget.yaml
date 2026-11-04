@@ -1,6 +1,6 @@
 id: autobrr
 name: autobrr
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Approved and rejected pushes, filters and indexers in autobrr (homepage's autobrr widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # e.g. http://autobrr.lan:7474
   key: { type: string, secret: true, required: true }   # Settings > API Keys
 attributes:                 # public values for a service's filter: (widget.<name>)
-  approvedPushes: { type: number, from: approvedPushes }   # Approved pushes
-  rejectedPushes: { type: number, from: rejectedPushes }   # Rejected pushes
-  filters: { type: number, from: filters }                 # Filters
-  indexers: { type: number, from: indexers }               # Indexers
+  approvedPushes: { type: number, from: approvedPushes }   # releases pushed to a client
+  rejectedPushes: { type: number, from: rejectedPushes }   # releases a client rejected
+  filters: { type: number, from: filters }                 # filters
+  indexers: { type: number, from: indexers }               # indexers

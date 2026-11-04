@@ -1,6 +1,6 @@
 id: netalertx
 name: NetAlertX
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Devices, connected devices, new devices and down alerts in NetAlertX (homepage's netalertx widget).
 refresh: 60s
@@ -9,8 +9,8 @@ options:
   key: { type: string, secret: true }      # Settings > API_TOKEN
   version: { type: number, default: 1 }    # 2 for NetAlertX 26.1.17 and later
 attributes:                 # public values for a service's filter: (widget.<name>)
-  total: { type: number, from: total }               # Total
-  connected: { type: number, from: connected }       # Connected
-  new_devices: { type: number, from: new_devices }   # New devices
-  down_alerts: { type: number, from: down_alerts }   # Down alerts
+  total: { type: number, from: total }               # devices known
+  connected: { type: number, from: connected }       # devices connected now
+  new_devices: { type: number, from: new_devices }   # devices seen for the first time and not yet reviewed
+  down_alerts: { type: number, from: down_alerts }   # devices with an alert for being down
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

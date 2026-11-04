@@ -1,6 +1,6 @@
 id: sparkyfitness
 name: SparkyFitness
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Calories eaten, burned and remaining and today's steps in SparkyFitness (homepage's sparkyfitness widget).
 refresh: 5m
@@ -8,8 +8,8 @@ options:
   url: { type: url, required: true }       # e.g. http://sparkyfitness.lan:3004
   key: { type: string, secret: true, required: true }   # an API key from SparkyFitness's settings
 attributes:                 # public values for a service's filter: (widget.<name>)
-  eaten: { type: number, from: eaten }               # Eaten, in kcal
-  burned: { type: number, from: burned }             # Burned, in kcal
-  remaining: { type: number, from: remaining }       # Remaining, in kcal
-  steps: { type: number, from: steps }               # Steps
+  eaten: { type: number, from: eaten }               # calories eaten today, in kcal
+  burned: { type: number, from: burned }             # calories burned today, in kcal
+  remaining: { type: number, from: remaining }       # calories left of today's goal, in kcal
+  steps: { type: number, from: steps }               # steps today
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

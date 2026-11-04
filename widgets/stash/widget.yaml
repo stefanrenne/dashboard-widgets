@@ -1,6 +1,6 @@
 id: stash
 name: Stash
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Library counts from Stash. Shows scenes, performers and tags; pick others with `fields`.
 defaultFields: [scenes, performers, tags]
@@ -9,9 +9,9 @@ options:
   url: { type: url, required: true }      # e.g. http://stash:9999
   key: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  scenes: { type: number, from: scenes }           # Scenes
-  images: { type: number, from: images }           # Images
-  galleries: { type: number, from: galleries }     # Galleries
-  performers: { type: number, from: performers }   # Performers
-  studios: { type: number, from: studios }         # Studios
-  tags: { type: number, from: tags }               # Tags
+  scenes: { type: number, from: scenes }           # scenes
+  images: { type: number, from: images }           # images
+  galleries: { type: number, from: galleries }     # galleries
+  performers: { type: number, from: performers }   # performers
+  studios: { type: number, from: studios }         # studios
+  tags: { type: number, from: tags }               # tags

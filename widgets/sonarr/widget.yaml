@@ -1,6 +1,6 @@
 id: sonarr
 name: Sonarr
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Wanted and queued episodes and the number of series, with the download queue (homepage's sonarr widget).
 refresh: 30s
@@ -10,7 +10,7 @@ options:
   enableQueue: { type: boolean, default: false }
   queueLimit: { type: number, default: 5 }     # rows shown; problems come first, the rest as "+N more"
 attributes:                 # public values for a service's filter: (widget.<name>)
-  wanted: { type: number, from: wanted }             # Wanted
-  queued: { type: number, from: queued }             # Queued
-  series: { type: number, from: series }             # Series
+  wanted: { type: number, from: wanted }             # episodes wanted and not downloaded
+  queued: { type: number, from: queued }             # episodes in the download queue
+  series: { type: number, from: series }             # series
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

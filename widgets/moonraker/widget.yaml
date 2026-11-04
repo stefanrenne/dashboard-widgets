@@ -1,6 +1,6 @@
 id: moonraker
 name: Moonraker
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: A Klipper printer's state, the print's progress and layers, through Moonraker (homepage's moonraker widget).
 refresh: 10s
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # Moonraker, e.g. http://printer.lan:7125
   key: { type: string, secret: true }      # when Moonraker's authorization is on and the dashboard is not trusted
 attributes:                 # public values for a service's filter: (widget.<name>)
-  printer_state: { type: string, from: printer_state }     # Printer, a state such as ready
-  print_progress: { type: number, from: print_progress }   # Progress (%)
-  print_status: { type: string, from: print_status }       # Print, a state such as printing
+  printer_state: { type: string, from: printer_state }     # the printer's state: ready, startup, shutdown or error
+  print_progress: { type: number, from: print_progress }   # progress of the print, in %
+  print_status: { type: string, from: print_status }       # the print's state: standby, printing, paused, complete, cancelled or error
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

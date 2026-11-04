@@ -1,6 +1,6 @@
 id: esphome
 name: ESPHome
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: ESPHome devices online, offline and unknown (homepage's esphome widget).
 refresh: 1m
@@ -11,9 +11,9 @@ options:
   password: { type: string, secret: true }
   key: { type: string, secret: true }      # instead: the value of the dashboard's "authenticated" cookie
 attributes:                 # public values for a service's filter: (widget.<name>)
-  online: { type: number, from: online }             # Online
-  offline: { type: number, from: offline }           # Offline
-  offline_alt: { type: number, from: offline_alt }   # Not online
-  unknown: { type: number, from: unknown }           # Unknown
-  total: { type: number, from: total }               # Total
+  online: { type: number, from: online }             # devices online
+  offline: { type: number, from: offline }           # devices offline
+  offline_alt: { type: number, from: offline_alt }   # devices not online: offline and unknown together
+  unknown: { type: number, from: unknown }           # devices with an unknown state (a bad config or a name that does not resolve)
+  total: { type: number, from: total }               # devices in total
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -102,6 +102,7 @@ export default {
       { key: 'status', label: 'status', value: state, status: status === 'up' ? 'ok' : status },
       { key: 'pods', label: 'pods', value: `${ready}/${pods.length}`, ...(status === 'up' ? {} : { status: status === 'warn' ? 'warn' : 'error' }) },
     ];
+    let memGB = null;
     if (ready > 0) {
       const names = new Set(pods.map((p) => p.metadata?.name));
       let cpuLimit = 0;
@@ -124,8 +125,9 @@ export default {
           ? { key: 'cpu', label: 'cpu', value: Math.round((1000 * cpu) / cpuLimit) / 10, unit: '%' }
           : { key: 'cpu', label: 'cpu', value: Math.round(cpu * 1000) / 1000 }); // cores, as in homepage, without limits
         blocks.push(memoryBlock(mem));
+        memGB = Math.round(mem / 1e8) / 10;
       }
     }
-    return { status, statusText: state, blocks };
+    return { status, statusText: state, attributes: { mem: memGB }, blocks };
   },
 };

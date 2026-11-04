@@ -1,6 +1,6 @@
 id: lubelogger
 name: LubeLogger
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Vehicles, service records and reminders in LubeLogger, or one vehicle with its next reminder (homepage's lubelogger widget).
 refresh: 5m
@@ -10,7 +10,7 @@ options:
   password: { type: string, secret: true }
   vehicleID: { type: number }              # one vehicle (the number in its address)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  vehicles: { type: number, from: vehicles }               # Vehicles
-  serviceRecords: { type: number, from: serviceRecords }   # Service records
-  reminders: { type: number, from: reminders }             # Reminders
+  vehicles: { type: number, from: vehicles }               # vehicles
+  serviceRecords: { type: number, from: serviceRecords }   # service records of all vehicles (or the one vehicle)
+  reminders: { type: number, from: reminders }             # reminders of all vehicles (or the one vehicle)
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

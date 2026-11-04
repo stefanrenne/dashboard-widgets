@@ -9,7 +9,7 @@ options:
   key: { type: string, secret: true, required: true }   # an admin's API key with server.statistics: Account Settings > API Keys
   version: { type: number, default: 1 }    # 2 for Immich 1.118 or later, as in homepage
 attributes:                 # public values for a service's filter: (widget.<name>)
-  users: { type: number, from: users }     # Users
-  photos: { type: number, from: photos }   # Photos
-  videos: { type: number, from: videos }   # Videos
+  users: { type: number, from: users }     # users
+  photos: { type: number, from: photos }   # photos
+  videos: { type: number, from: videos }   # videos
   storage: { type: number }                # space the photos and videos take, in GB

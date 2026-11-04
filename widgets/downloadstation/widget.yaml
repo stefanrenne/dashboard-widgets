@@ -1,6 +1,6 @@
 id: downloadstation
 name: Synology Download Station
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Downloads in progress and done, with their rates, in Synology Download Station (homepage's downloadstation widget).
 refresh: 30s
@@ -10,7 +10,7 @@ options:
   password: { type: string, secret: true, required: true }
   insecure: { type: boolean, default: false }   # accept a self-signed certificate (https on port 5001)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  leech: { type: number, from: leech }   # Leeching
-  seed: { type: number, from: seed }     # Seeding
+  leech: { type: number, from: leech }   # downloads in progress
+  seed: { type: number, from: seed }     # downloads done and seeding
   download: { type: number }   # download rate of all torrents, in MB/s
   upload: { type: number }     # upload rate of all torrents, in MB/s

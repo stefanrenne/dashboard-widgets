@@ -1,6 +1,6 @@
 id: kubernetes-pods
 name: Kubernetes pods
-version: 1.2.0
+version: 1.3.0
 apiVersion: 2
 description: State, CPU and memory of an app's pods. Used for services with "app:" (and "namespace:", "podSelector:"), as in homepage.
 refresh: 15s
@@ -19,7 +19,7 @@ options:
   insecure: { type: boolean, default: false }   # skip the certificate check (insecure-skip-tls-verify)
 attributes:                 # public values for a service's filter: (widget.<name>)
   serviceStatus: { type: string, from: '@status' }   # up or down, as the status label
-  status: { type: string, from: status }             # Status, a state such as running
-  cpu: { type: number, from: cpu }                   # CPU (%)
-  mem: { type: number, from: mem }                   # mem, in GB
+  status: { type: string, from: status }             # the pods' state: running, partial, not running or not found
+  cpu: { type: number, from: cpu }                   # CPU the pods use, in % of their limits; in cores when they have no limits
+  mem: { type: number }                              # memory the pods use, in GB (the card shows MB below 1 GB); null without metrics-server
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

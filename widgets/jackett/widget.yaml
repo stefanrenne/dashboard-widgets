@@ -1,6 +1,6 @@
 id: jackett
 name: Jackett
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Configured indexers and how many of them failed (homepage's jackett widget).
 refresh: 5m
@@ -9,6 +9,6 @@ options:
   key: { type: string, secret: true, required: true }   # the API Key at the top of Jackett's page
   password: { type: string, secret: true } # the admin password, when one is set
 attributes:                 # public values for a service's filter: (widget.<name>)
-  configured: { type: number, from: configured }     # Configured
-  errored: { type: number, from: errored }           # Errored
+  configured: { type: number, from: configured }     # indexers configured
+  errored: { type: number, from: errored }           # configured indexers whose last search failed
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

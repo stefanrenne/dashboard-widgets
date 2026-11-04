@@ -1,6 +1,6 @@
 id: komga
 name: Komga
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Libraries, series and books in Komga (homepage's komga widget).
 refresh: 5m
@@ -11,6 +11,6 @@ options:
   key: { type: string, secret: true }      # an API key (Account settings > API Keys), instead of a user
   version: { type: number, default: 1 }    # 2 for Komga 1.x with the v2 search (POST series/list)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  libraries: { type: number, from: libraries }   # Libraries
-  series: { type: number, from: series }         # Series
-  books: { type: number, from: books }           # Books
+  libraries: { type: number, from: libraries }   # libraries
+  series: { type: number, from: series }         # series in all libraries
+  books: { type: number, from: books }           # books in all libraries

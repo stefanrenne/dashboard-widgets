@@ -8,9 +8,9 @@ defaultFields: [itemsHandled, episodesHandled, moviesHandled, reclaimable]
 options:
   url: { type: url, required: true }       # e.g. http://maintainerr.lan:6246
 attributes:                 # public values for a service's filter: (widget.<name>)
-  itemsHandled: { type: number, from: itemsHandled }         # Items removed
-  episodesHandled: { type: number, from: episodesHandled }   # Episodes removed
-  moviesHandled: { type: number, from: moviesHandled }       # Movies removed
-  showsHandled: { type: number, from: showsHandled }         # Shows removed
-  seasonsHandled: { type: number, from: seasonsHandled }     # Seasons removed
+  itemsHandled: { type: number, from: itemsHandled }         # media items removed by Maintainerr
+  episodesHandled: { type: number, from: episodesHandled }   # episodes removed
+  moviesHandled: { type: number, from: moviesHandled }       # movies removed
+  showsHandled: { type: number, from: showsHandled }         # shows removed
+  seasonsHandled: { type: number, from: seasonsHandled }     # seasons removed
   reclaimable: { type: number }                              # space the media in the active collections takes, in GB

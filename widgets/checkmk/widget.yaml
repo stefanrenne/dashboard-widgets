@@ -1,6 +1,6 @@
 id: checkmk
 name: Checkmk
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Services and hosts that are not OK in a Checkmk site (homepage's checkmk widget).
 refresh: 1m
@@ -10,6 +10,6 @@ options:
   username: { type: string, required: true }               # an automation user
   password: { type: string, secret: true, required: true } # its automation secret
 attributes:                 # public values for a service's filter: (widget.<name>)
-  serviceErrors: { type: number, from: serviceErrors }   # Service problems
-  hostErrors: { type: number, from: hostErrors }         # Host problems
+  serviceErrors: { type: number, from: serviceErrors }   # services that are not OK
+  hostErrors: { type: number, from: hostErrors }         # hosts that are not up
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention

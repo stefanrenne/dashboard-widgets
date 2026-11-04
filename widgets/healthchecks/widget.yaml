@@ -1,6 +1,6 @@
 id: healthchecks
 name: Health checks
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Checks up and down in Healthchecks.io, or one check's state and last ping (homepage's healthchecks widget).
 refresh: 60s
@@ -9,6 +9,6 @@ options:
   key: { type: string, secret: true, required: true }   # Project Settings > API Keys (read-only is enough)
   uuid: { type: string }                   # one check; without it the totals of all checks
 attributes:                 # public values for a service's filter: (widget.<name>)
-  up: { type: number, from: up }                     # Up
-  down: { type: number, from: down }                 # Down
+  up: { type: number, from: up }                     # checks up
+  down: { type: number, from: down }                 # checks down
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

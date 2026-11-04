@@ -1,6 +1,6 @@
 id: stocks
 name: Stocks
-version: 1.3.0
+version: 1.3.1
 apiVersion: 2
 description: The price and day change of up to eight stocks, from Finnhub (homepage's stocks widget).
 refresh: 1m
@@ -11,4 +11,4 @@ options:
   color: { type: boolean, default: true }                     # green up, red down (the arrows show it either way)
   cache: { type: number, default: 1 }                         # minutes between calls to Finnhub
 attributes:                 # public values for a service's filter: (widget.<name>)
-  AAPL: { type: number, from: AAPL }   # AAPL
+  AAPL: { type: number, from: AAPL }   # price of a symbol in the watchlist, named after it (here AAPL), in its currency

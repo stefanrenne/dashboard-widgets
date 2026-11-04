@@ -1,6 +1,6 @@
 id: nextdns
 name: NextDNS
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Queries of a NextDNS profile resolved, blocked, allowed and relayed (homepage's nextdns widget).
 refresh: 5m
@@ -9,7 +9,7 @@ options:
   key: { type: string, secret: true, required: true }   # Account > API
   url: { type: url, default: "https://api.nextdns.io" }   # only for testing against another server
 attributes:                 # public values for a service's filter: (widget.<name>)
-  default: { type: number, from: default }   # Resolved
-  blocked: { type: number, from: blocked }   # Blocked
-  allowed: { type: number, from: allowed }   # Allowed
-  relayed: { type: number, from: relayed }   # Relayed
+  default: { type: number, from: default }   # queries resolved, in NextDNS's default period
+  blocked: { type: number, from: blocked }   # queries blocked, in NextDNS's default period
+  allowed: { type: number, from: allowed }   # queries allowed by the allowlist, in NextDNS's default period
+  relayed: { type: number, from: relayed }   # queries relayed, in NextDNS's default period

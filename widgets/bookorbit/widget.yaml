@@ -1,6 +1,6 @@
 id: bookorbit
 name: BookOrbit
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Books, authors, and books you are reading and finished in BookOrbit (homepage's bookorbit widget).
 refresh: 10m
@@ -10,8 +10,8 @@ options:
   username: { type: string, required: true }
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  books: { type: number, from: books }         # Books
-  authors: { type: number, from: authors }     # Authors
-  series: { type: number, from: series }       # Series
-  reading: { type: number, from: reading }     # Reading
-  finished: { type: number, from: finished }   # Finished
+  books: { type: number, from: books }         # books in the library
+  authors: { type: number, from: authors }     # authors in the library
+  series: { type: number, from: series }       # series in the library
+  reading: { type: number, from: reading }     # books you are reading
+  finished: { type: number, from: finished }   # books you finished

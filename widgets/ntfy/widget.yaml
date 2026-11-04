@@ -12,6 +12,6 @@ options:
   username: { type: string }               # or a user for a protected topic
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  priority: { type: string, from: priority }         # Priority, a state such as high
+  priority: { type: string, from: priority }         # the latest message's priority: min, low, default, high or urgent; none without a message
   hoursSinceMessage: { type: number }                # hours since the last message; null when there is none
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: vikunja
 name: Vikunja
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Projects and open tasks due within a week, overdue and in progress in Vikunja, and optionally the next tasks (homepage's vikunja widget).
 refresh: 5m
@@ -10,8 +10,8 @@ options:
   version: { type: number, default: 1 }    # 2 for Vikunja 1.0.0-rc4 and later
   enableTaskList: { type: boolean, default: false }     # the next five tasks by due date as rows
 attributes:                 # public values for a service's filter: (widget.<name>)
-  projects: { type: number, from: projects }                 # Projects
-  tasks7d: { type: number, from: tasks7d }                   # Due this week
-  tasksOverdue: { type: number, from: tasksOverdue }         # Overdue
-  tasksInProgress: { type: number, from: tasksInProgress }   # In progress
+  projects: { type: number, from: projects }                 # projects
+  tasks7d: { type: number, from: tasks7d }                   # open tasks due within a week
+  tasksOverdue: { type: number, from: tasksOverdue }         # open tasks past their due date
+  tasksInProgress: { type: number, from: tasksInProgress }   # open tasks in progress
   attention: { type: boolean, from: '@attention' }           # true while the card marks something as needing attention

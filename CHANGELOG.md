@@ -14,6 +14,12 @@ Changes to the widget collection. Each widget also has its own `version` in its 
   `unifi-drive` `available` (and `usedPercent`). Times: `headscale` and `tailscale` `hoursSinceSeen`,
   `tailscale` `daysUntilExpiry`, `ntfy` `hoursSinceMessage`, `apcups` and `sabnzbd` `timeleft` in minutes.
 
+### Changed
+- Filter attributes say what the value is and its unit ("movies monitored, released and not downloaded", "memory in use, in %") instead of the block's label, on the widgets' pages: `adguard`, `apcups`, `arcane`, `argocd`, `atsumeru`, `audiobookshelf`, `authentik`, `autobrr`, `azuredevops`, `backrest`, `bazarr`, `beszel`, `booklore`, `bookorbit`, `caddy`, `calibreweb`, `changedetectionio`, `channelsdvrserver`, `checkmk`, `cloudflared`, `crowdsec`, `deluge`, `dispatcharr`, `dockhand`, `downloadstation`, `duplicati`, `esphome`, `evcc`, `fileflows`, `flood`, `freshrss`, `frigate`, `fritzbox`, `gamedig`, `gatus`, `gitea`, `gitlab`, `glances`, `gluetun`, `gotify`, `grafana`, `hdhomerun`, `headscale`, `healthchecks`, `homebox`, `homebridge`, `http-status`, `immich`, `jackett`, `jdownloader`, `jellystat`, `karakeep`, `kavita`, `komga`, `komodo`, `kopia`, `kubernetes`, `kubernetes-pods`, `lidarr`, `linkwarden`, `longhorn`, `lubelogger`, `mailcow`, `maintainerr`, `mastodon`, `mealie`, `medusa`, `mikrotik`, `minecraft`, `miniflux`, `moonraker`, `mylar`, `myspeed`, `netalertx`, `netbird`, `netdata`, `nextcloud`, `nextdns`, `npm`, `ntfy`, `octoprint`, `omada`, `ombi`, `opendtu`, `openmediavault`, `openmeteo`, `openweathermap`, `openwrt`, `opnsense`, `paperlessngx`, `peanut`, `pfsense`, `photoprism`, `pihole`, `ping`, `plantit`, `plex`, `portainer`, `prometheus`, `prowlarr`, `proxmoxbackupserver`, `pterodactyl`, `pyload`, `qbittorrent`, `qnap`, `qui`, `radarr`, `readarr`, `resources`, `romm`, `rutorrent`, `sabnzbd`, `scrutiny`, `seerr`, `slskd`, `sonarr`, `sparkyfitness`, `speedtest`, `spoolman`, `sportarr`, `stash`, `stocks`, `strelaysrv`, `suwayomi`, `swagdashboard`, `syncthing`, `tailscale`, `tandoor`, `tdarr`, `technitium`, `traefik`, `transmission`, `trilium`, `truenas`, `tubearchivist`, `unifi`, `unifi-drive`, `unmanic`, `unraid`, `uptimekuma`, `uptimerobot`, `urbackup`, `vikunja`, `wallos`, `watchtower`, `wgeasy`, `whatsupdocker`, `xteve`, `yourspotify`, `zabbix`.
+
+### Fixed
+- `kubernetes-pods`' attribute `mem` is always in GB; it was in MB while the pods used less than 1 GB, as the card shows it.
+
 ## [0.13.0] - 2026-11-03
 
 ### Changed (breaking)

@@ -1,6 +1,6 @@
 id: octoprint
 name: OctoPrint
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: A 3D printer's state, tool and bed temperatures and the job's progress in OctoPrint (homepage's octoprint widget).
 refresh: 10s
@@ -8,8 +8,8 @@ options:
   url: { type: url, required: true }       # e.g. http://octopi.lan
   key: { type: string, secret: true, required: true }   # Settings > Application Keys (or the global API key)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  printer_state: { type: string, from: printer_state }     # Printer, a state such as printing
-  temp_tool: { type: number, from: temp_tool }             # Tool, in °C
-  temp_bed: { type: number, from: temp_bed }               # Bed, in °C
-  job_completion: { type: number, from: job_completion }   # Progress (%)
+  printer_state: { type: string, from: printer_state }     # the printer's state, such as operational, printing, paused, offline or error
+  temp_tool: { type: number, from: temp_tool }             # temperature of the tool (hot end), in °C
+  temp_bed: { type: number, from: temp_bed }               # temperature of the bed, in °C
+  job_completion: { type: number, from: job_completion }   # progress of the print, in %
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention

@@ -11,9 +11,9 @@ options:
   username: { type: string }               # an admin, instead of key
   password: { type: string, secret: true } # an app password: Personal settings > Security
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cpuload: { type: number, from: cpuload }           # CPU load
-  memoryusage: { type: number, from: memoryusage }   # memoryusage (%)
-  activeusers: { type: number, from: activeusers }   # Active users
-  numfiles: { type: number, from: numfiles }         # Files
-  numshares: { type: number, from: numshares }       # Shares
+  cpuload: { type: number, from: cpuload }           # CPU load average of the last minute
+  memoryusage: { type: number, from: memoryusage }   # memory in use, in %
+  activeusers: { type: number, from: activeusers }   # users active in the last 24 hours
+  numfiles: { type: number, from: numfiles }         # files stored
+  numshares: { type: number, from: numshares }       # shares
   freespace: { type: number }                        # free space for the data folder, in GB

@@ -1,6 +1,6 @@
 id: jellystat
 name: Jellystat
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Songs, movies, episodes and other items played in the past days, from Jellystat (homepage's jellystat widget).
 refresh: 5m
@@ -9,7 +9,7 @@ options:
   key: { type: string, secret: true, required: true }   # Settings > API Keys
   days: { type: number, default: 30 }      # the period, in days
 attributes:                 # public values for a service's filter: (widget.<name>)
-  songs: { type: number, from: songs }         # Songs
-  movies: { type: number, from: movies }       # Movies
-  episodes: { type: number, from: episodes }   # Episodes
-  other: { type: number, from: other }         # Other
+  songs: { type: number, from: songs }         # songs played in the past days
+  movies: { type: number, from: movies }       # movies played in the past days
+  episodes: { type: number, from: episodes }   # episodes played in the past days
+  other: { type: number, from: other }         # other items played in the past days

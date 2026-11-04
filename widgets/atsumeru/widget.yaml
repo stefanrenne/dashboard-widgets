@@ -1,6 +1,6 @@
 id: atsumeru
 name: Atsumeru
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Series, archives, chapters and categories in Atsumeru (homepage's atsumeru widget).
 refresh: 10m
@@ -9,7 +9,7 @@ options:
   username: { type: string, required: true }
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  series: { type: number, from: series }           # Series
-  archives: { type: number, from: archives }       # Archives
-  chapters: { type: number, from: chapters }       # Chapters
-  categories: { type: number, from: categories }   # Categories
+  series: { type: number, from: series }           # series in the library
+  archives: { type: number, from: archives }       # archives (volumes) in the library
+  chapters: { type: number, from: chapters }       # chapters in the library
+  categories: { type: number, from: categories }   # categories in the library

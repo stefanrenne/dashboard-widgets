@@ -11,6 +11,6 @@ options:
   enableRecentEvents: { type: boolean, default: false }   # a row per recent event
   insecure: { type: boolean, default: false }             # accept Frigate's self-signed certificate (port 8971)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  cameras: { type: number, from: cameras }   # Cameras
-  version: { type: string, from: version }   # Version, such as 0.16.2
+  cameras: { type: number, from: cameras }   # cameras
+  version: { type: string, from: version }   # Frigate's version, such as 0.16.2
   uptimeHours: { type: number }              # hours since Frigate started

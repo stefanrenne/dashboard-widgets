@@ -1,6 +1,6 @@
 id: crowdsec
 name: CrowdSec
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Alerts of the last 24 hours and active bans of a CrowdSec local API (homepage's crowdsec widget).
 refresh: 5m
@@ -9,6 +9,6 @@ options:
   username: { type: string, required: true }               # a machine_id (see /etc/crowdsec/local_api_credentials.yaml)
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  alerts: { type: number, from: alerts }             # Alerts
-  bans: { type: number, from: bans }                 # Bans
+  alerts: { type: number, from: alerts }             # alerts of the last 24 hours (500 at most)
+  bans: { type: number, from: bans }                 # alerts with an active ban
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

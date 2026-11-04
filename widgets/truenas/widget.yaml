@@ -14,7 +14,7 @@ options:
   nasType: { type: enum, values: [scale, core], default: scale }   # homepage's option; both work the same here
   insecure: { type: boolean, default: false }      # accept a self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
-  load: { type: number, from: load }                 # Load
-  alerts: { type: number, from: alerts }             # Alerts
+  load: { type: number, from: load }                 # load average of the last minute
+  alerts: { type: number, from: alerts }             # alerts not dismissed
   uptimeHours: { type: number }                      # hours since the server started
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

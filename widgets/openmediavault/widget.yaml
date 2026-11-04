@@ -1,6 +1,6 @@
 id: openmediavault
 name: OpenMediaVault
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Services running and stopped, S.M.A.R.T. results or downloads of OpenMediaVault, one per `method` (homepage's openmediavault widget).
 refresh: 1m
@@ -11,7 +11,7 @@ options:
   # services.getStatus (running, stopped, total), smart.getListBg (passed, failed) or downloader.getDownloadList (downloading, total)
   method: { type: enum, values: [services.getStatus, smart.getListBg, downloader.getDownloadList], required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  running: { type: number, from: running }           # Running
-  stopped: { type: number, from: stopped }           # Stopped
-  total: { type: number, from: total }               # Total
+  running: { type: number, from: running }           # services running
+  stopped: { type: number, from: stopped }           # services stopped
+  total: { type: number, from: total }               # services in total
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

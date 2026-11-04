@@ -1,6 +1,6 @@
 id: seerr
 name: Seerr
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Pending, approved and completed requests in Overseerr, Jellyseerr or Seerr.
 refresh: 1m
@@ -9,7 +9,7 @@ options:
   url: { type: url, required: true }      # e.g. http://seerr:5055
   key: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  pending: { type: number, from: pending }           # Pending
-  approved: { type: number, from: approved }         # Approved
-  completed: { type: number, from: completed }       # Completed
+  pending: { type: number, from: pending }           # requests waiting for approval
+  approved: { type: number, from: approved }         # requests approved and not yet available
+  completed: { type: number, from: completed }       # requests available
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

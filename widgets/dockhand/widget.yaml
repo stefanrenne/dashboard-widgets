@@ -1,6 +1,6 @@
 id: dockhand
 name: Dockhand
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Containers, CPU, memory, images, volumes, stacks and updates in Dockhand, for one environment or all (homepage's dockhand widget).
 refresh: 1m
@@ -12,14 +12,14 @@ options:
   password: { type: string, secret: true }
   key: { type: string, secret: true }      # an API key instead of a login
 attributes:                 # public values for a service's filter: (widget.<name>)
-  running: { type: number, from: running }                   # Running
-  stopped: { type: number, from: stopped }                   # Stopped
-  paused: { type: number, from: paused }                     # Paused
-  pending_updates: { type: number, from: pending_updates }   # pending_updates
-  total: { type: number, from: total }                       # Total
-  cpu: { type: number, from: cpu }                           # CPU (%)
-  memory: { type: number, from: memory }                     # Memory (%)
-  images: { type: number, from: images }                     # Images
-  volumes: { type: number, from: volumes }                   # Volumes
-  events_today: { type: number, from: events_today }         # Events today
+  running: { type: number, from: running }                   # containers running
+  stopped: { type: number, from: stopped }                   # containers stopped
+  paused: { type: number, from: paused }                     # containers paused
+  pending_updates: { type: number, from: pending_updates }   # containers with an image update available
+  total: { type: number, from: total }                       # containers in total
+  cpu: { type: number, from: cpu }                           # CPU in use, in %
+  memory: { type: number, from: memory }                     # memory in use, in %
+  images: { type: number, from: images }                     # images
+  volumes: { type: number, from: volumes }                   # volumes
+  events_today: { type: number, from: events_today }         # container events today
   attention: { type: boolean, from: '@attention' }           # true while the card marks something as needing attention

@@ -1,6 +1,6 @@
 id: gamedig
 name: GameDig
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Status, map, players and ping of a game server that answers Valve's server query (homepage's gamedig widget).
 refresh: 30s
@@ -10,9 +10,9 @@ options:
   serverType: { type: string }             # homepage's game id, e.g. csgo (only Valve-query games)
   timeout: { type: number, default: 3 }    # seconds to wait for an answer
 attributes:                 # public values for a service's filter: (widget.<name>)
-  status: { type: string, from: status }             # Status, a state such as online
-  players: { type: number, from: players }           # Players
-  maxPlayers: { type: number, from: maxPlayers }     # Maximum players
-  bots: { type: number, from: bots }                 # Bots
-  ping: { type: number, from: ping }                 # Ping, in ms
+  status: { type: string, from: status }             # online or offline
+  players: { type: number, from: players }           # players on the server now
+  maxPlayers: { type: number, from: maxPlayers }     # players the server allows
+  bots: { type: number, from: bots }                 # bots on the server now
+  ping: { type: number, from: ping }                 # time the server took to answer, in ms
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

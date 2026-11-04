@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }      # e.g. http://sabnzbd:8080
   key: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  queue: { type: number, from: queue }               # Queue
+  queue: { type: number, from: queue }               # items in the download queue
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
   rate: { type: number }      # download rate in MB/s; 0 while paused
   paused: { type: boolean }   # true while the queue is paused

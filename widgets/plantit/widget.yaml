@@ -1,6 +1,6 @@
 id: plantit
 name: Plant-it
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Diary events, plants, photos and species in Plant-it (homepage's plantit widget).
 refresh: 5m
@@ -8,7 +8,7 @@ options:
   url: { type: url, required: true }       # the API port, e.g. http://plantit.lan:8080
   key: { type: string, secret: true, required: true }   # an API key, created through Plant-it's API (/api/api-key)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  events: { type: number, from: events }     # Events
-  plants: { type: number, from: plants }     # Plants
-  photos: { type: number, from: photos }     # Photos
-  species: { type: number, from: species }   # Species
+  events: { type: number, from: events }     # diary events
+  plants: { type: number, from: plants }     # plants
+  photos: { type: number, from: photos }     # photos
+  species: { type: number, from: species }   # species

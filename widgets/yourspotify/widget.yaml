@@ -1,6 +1,6 @@
 id: yourspotify
 name: Your Spotify
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Songs, listening time and artists over the past day, week, month or year in Your Spotify (homepage's yourspotify widget).
 refresh: 15m
@@ -9,5 +9,5 @@ options:
   key: { type: string, secret: true, required: true }   # Settings > Account > Public token: the part after ?token=
   interval: { type: enum, values: [day, week, month, year, all], default: week }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  songs: { type: number, from: songs }       # Songs
-  artists: { type: number, from: artists }   # Artists
+  songs: { type: number, from: songs }       # songs played in the interval
+  artists: { type: number, from: artists }   # different artists played in the interval

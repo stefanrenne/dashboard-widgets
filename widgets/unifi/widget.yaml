@@ -15,12 +15,12 @@ options:
   insecure: { type: boolean, default: false } # true: accept the controller's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: '@status' }            # up or down, as the status label
-  wan: { type: string, from: wan }                     # WAN, a state such as up
-  lan: { type: string, from: lan }                     # LAN, a state such as up
-  lan_users: { type: number, from: lan_users }         # LAN users
-  lan_devices: { type: number, from: lan_devices }     # LAN devices
-  wlan: { type: string, from: wlan }                   # WLAN, a state such as up
-  wlan_users: { type: number, from: wlan_users }       # WLAN users
-  wlan_devices: { type: number, from: wlan_devices }   # WLAN devices
+  wan: { type: string, from: wan }                     # the WAN's state, such as up or down
+  lan: { type: string, from: lan }                     # the LAN's state, such as up or down
+  lan_users: { type: number, from: lan_users }         # clients on the LAN, guests included
+  lan_devices: { type: number, from: lan_devices }     # switches adopted
+  wlan: { type: string, from: wlan }                   # the WLAN's state, such as up or down
+  wlan_users: { type: number, from: wlan_users }       # clients on the WLAN, guests included
+  wlan_devices: { type: number, from: wlan_devices }   # access points adopted
   uptimeHours: { type: number }                        # hours since the gateway started
   attention: { type: boolean, from: '@attention' }     # true while the card marks something as needing attention

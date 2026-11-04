@@ -1,6 +1,6 @@
 id: whatsupdocker
 name: What's up Docker
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Containers being watched and how many have an update.
 refresh: 5m
@@ -9,6 +9,6 @@ options:
   username: { type: string }
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  monitoring: { type: number, from: monitoring }     # Monitoring
-  updates: { type: number, from: updates }           # Updates
+  monitoring: { type: number, from: monitoring }     # containers watched
+  updates: { type: number, from: updates }           # watched containers with an update available
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

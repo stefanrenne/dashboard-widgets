@@ -1,6 +1,6 @@
 id: openmeteo
 name: Open-Meteo
-version: 1.4.0
+version: 1.4.1
 apiVersion: 2
 description: The current weather from Open-Meteo, no account needed (homepage's recommended weather widget).
 refresh: 5m
@@ -15,5 +15,5 @@ options:
   cache: { type: number, default: 5 }                         # minutes between calls to Open-Meteo
   format: { type: object }                                    # Intl.NumberFormat options, e.g. { maximumFractionDigits: 1 }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  temperature: { type: number, from: temperature }   # Temperature, in °C
-  condition: { type: string, from: condition }       # Condition, a state such as drizzle
+  temperature: { type: number, from: temperature }   # the temperature now, in °C (°F with units: imperial)
+  condition: { type: string, from: condition }       # the weather now, such as clear, cloudy or drizzle

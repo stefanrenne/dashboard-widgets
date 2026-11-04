@@ -1,6 +1,6 @@
 id: prowlarr
 name: Prowlarr
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Grabs and queries over all indexers, and how many failed.
 refresh: 1m
@@ -8,8 +8,8 @@ options:
   url: { type: url, required: true }      # e.g. http://prowlarr:9696
   key: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  grabs: { type: number, from: grabs }               # Grabs
-  queries: { type: number, from: queries }           # Queries
-  failGrabs: { type: number, from: failGrabs }       # Failed Grabs
-  failQueries: { type: number, from: failQueries }   # Failed Queries
+  grabs: { type: number, from: grabs }               # releases grabbed over all indexers
+  queries: { type: number, from: queries }           # searches over all indexers
+  failGrabs: { type: number, from: failGrabs }       # grabs that failed
+  failQueries: { type: number, from: failQueries }   # searches that failed
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

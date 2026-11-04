@@ -1,6 +1,6 @@
 id: mailcow
 name: Mailcow
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Domains, mailboxes, messages and storage in Mailcow (homepage's mailcow widget).
 refresh: 5m
@@ -8,6 +8,6 @@ options:
   url: { type: url, required: true }       # e.g. https://mail.lan
   key: { type: string, secret: true, required: true }   # System > Configuration > Access > API (read-only is enough)
 attributes:                 # public values for a service's filter: (widget.<name>)
-  domains: { type: number, from: domains }       # Domains
-  mailboxes: { type: number, from: mailboxes }   # Mailboxes
-  mails: { type: number, from: mails }           # Messages
+  domains: { type: number, from: domains }       # mail domains
+  mailboxes: { type: number, from: mailboxes }   # mailboxes in all domains
+  mails: { type: number, from: mails }           # messages in all mailboxes

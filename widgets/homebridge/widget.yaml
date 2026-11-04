@@ -1,6 +1,6 @@
 id: homebridge
 name: Homebridge
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Whether Homebridge runs, updates for it and its plugins, and the child bridges running (homepage's homebridge widget).
 refresh: 60s
@@ -9,6 +9,6 @@ options:
   username: { type: string, required: true }
   password: { type: string, secret: true, required: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  status: { type: string, from: status }             # Status, a state such as up
-  updates: { type: string, from: updates }           # Updates, a state such as updateAvailable
+  status: { type: string, from: status }             # Homebridge's state: up, pending or down
+  updates: { type: string, from: updates }           # updateAvailable when Homebridge or a plugin has an update, else upToDate
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

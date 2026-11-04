@@ -1,6 +1,6 @@
 id: slskd
 name: slskd
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Soulseek connection, updates, downloads, uploads and shared files in slskd (homepage's slskd widget).
 refresh: 60s
@@ -9,9 +9,9 @@ options:
   url: { type: url, required: true }       # e.g. http://slskd.lan:5030
   key: { type: string, secret: true, required: true }   # an API key from slskd.yml (web > authentication > api_keys), role readonly
 attributes:                 # public values for a service's filter: (widget.<name>)
-  slskStatus: { type: string, from: slskStatus }       # Soulseek, a state such as connected
-  updateStatus: { type: string, from: updateStatus }   # Updates, a state such as updateAvailable
-  downloads: { type: number, from: downloads }         # Downloads
-  uploads: { type: number, from: uploads }             # Uploads
-  sharedFiles: { type: number, from: sharedFiles }     # Shared
+  slskStatus: { type: string, from: slskStatus }       # connected or disconnected to Soulseek
+  updateStatus: { type: string, from: updateStatus }   # updateAvailable when slskd has an update, else upToDate
+  downloads: { type: number, from: downloads }         # users you download from now
+  uploads: { type: number, from: uploads }             # users you upload to now
+  sharedFiles: { type: number, from: sharedFiles }     # files you share
   attention: { type: boolean, from: '@attention' }     # true while the card marks something as needing attention

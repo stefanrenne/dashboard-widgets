@@ -1,6 +1,6 @@
 id: authentik
 name: authentik
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Users, and logins, failed logins and (version 2) authorizations of the last 24 hours in authentik (homepage's authentik widget).
 refresh: 5m
@@ -9,7 +9,7 @@ options:
   key: { type: string, secret: true, required: true }   # an API token: Admin interface > Directory > Tokens and App passwords
   version: { type: number, default: 1 }    # 2 for authentik 2025.8 or later, as in homepage
 attributes:                 # public values for a service's filter: (widget.<name>)
-  users: { type: number, from: users }                               # Users
-  loginsLast24H: { type: number, from: loginsLast24H }               # Logins
-  failedLoginsLast24H: { type: number, from: failedLoginsLast24H }   # Failed logins
+  users: { type: number, from: users }                               # user accounts
+  loginsLast24H: { type: number, from: loginsLast24H }               # logins in the last 24 hours
+  failedLoginsLast24H: { type: number, from: failedLoginsLast24H }   # failed logins in the last 24 hours
   attention: { type: boolean, from: '@attention' }                   # true while the card marks something as needing attention

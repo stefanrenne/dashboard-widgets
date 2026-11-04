@@ -1,6 +1,6 @@
 id: romm
 name: RomM
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Platforms, games, saves, states, screenshots and size of a RomM library (homepage's romm widget).
 refresh: 5m
@@ -10,8 +10,8 @@ options:
   username: { type: string }               # when the stats need a login
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  platforms: { type: number, from: platforms }       # Platforms
-  totalRoms: { type: number, from: totalRoms }       # Games
-  saves: { type: number, from: saves }               # Saves
-  states: { type: number, from: states }             # States
-  screenshots: { type: number, from: screenshots }   # Screenshots
+  platforms: { type: number, from: platforms }       # platforms
+  totalRoms: { type: number, from: totalRoms }       # games
+  saves: { type: number, from: saves }               # saves
+  states: { type: number, from: states }             # save states
+  screenshots: { type: number, from: screenshots }   # screenshots

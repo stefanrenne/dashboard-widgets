@@ -1,6 +1,6 @@
 id: audiobookshelf
 name: Audiobookshelf
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Podcasts and books in Audiobookshelf, with their total length (homepage's audiobookshelf widget).
 refresh: 10m
@@ -8,5 +8,5 @@ options:
   url: { type: url, required: true }       # e.g. http://audiobookshelf.lan:13378
   key: { type: string, secret: true, required: true }   # an admin's API token: Settings > Users > your account
 attributes:                 # public values for a service's filter: (widget.<name>)
-  podcasts: { type: number, from: podcasts }   # Podcasts
-  books: { type: number, from: books }         # Books
+  podcasts: { type: number, from: podcasts }   # podcasts in all libraries
+  books: { type: number, from: books }         # books in all libraries

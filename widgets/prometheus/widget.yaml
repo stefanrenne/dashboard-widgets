@@ -1,6 +1,6 @@
 id: prometheus
 name: Prometheus
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Active scrape targets up, down and in total in Prometheus (homepage's prometheus widget).
 refresh: 60s
@@ -9,7 +9,7 @@ options:
   username: { type: string }               # when Prometheus sits behind basic authentication
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
-  targets_up: { type: number, from: targets_up }         # Targets up
-  targets_down: { type: number, from: targets_down }     # Targets down
-  targets_total: { type: number, from: targets_total }   # Targets
+  targets_up: { type: number, from: targets_up }         # active scrape targets up
+  targets_down: { type: number, from: targets_down }     # active scrape targets down
+  targets_total: { type: number, from: targets_total }   # active scrape targets in total
   attention: { type: boolean, from: '@attention' }       # true while the card marks something as needing attention
