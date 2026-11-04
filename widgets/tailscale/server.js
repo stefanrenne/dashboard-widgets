@@ -30,6 +30,10 @@ export default {
     }
     const yesNo = (v) => (v ? 'yes' : 'no');
     return {
+      attributes: {
+        hoursSinceSeen: lastSeen === 'now' ? (Number.isFinite(seen) || d.connectedToControl ? 0 : null) : Math.round((now - seen) / 360000) / 10,
+        daysUntilExpiry: d.keyExpiryDisabled || !Number.isFinite(expires) ? null : Math.max(0, Math.round((expires - now) / 8640000) / 10),
+      },
       blocks: [
         { key: 'address', label: 'address', value: d.addresses?.[0] ?? null },
         { key: 'last_seen', label: 'last_seen', value: lastSeen },

@@ -373,6 +373,8 @@ test('glances: CPU, memory, the hottest CPU sensor, uptime and disks; version 4;
     cpu: '23.4%', memory: '62.5%', memoryUsed: '10 GB', memoryTotal: '16 GB', cputemp: '51°C', uptime: '12d 4h',
     '/': '40%', '/Free': '300 GB', '/mnt/data': '75%', '/mnt/dataFree': '1 TB',
   });
+  assert.equal(typeof out.attributes.uptimeHours, 'number', 'uptime as hours for a filter');
+  assert.ok(out.attributes.uptimeHours >= 292 && out.attributes.uptimeHours < 293, `12d 4h: ${out.attributes.uptimeHours}`);
   assert.equal(lastRequest('glances').headers.authorization, `Basic ${Buffer.from('g:p').toString('base64')}`);
   assert.deepEqual(values(await run('glances', { version: 4 })), { cpu: '11%', memory: '50%' });
   assert.equal(values(await run('glances', { cpu: false, mem: false, cputemp: true, unit: 'imperial', cpuSensorLabel: 'acpitz' })).cputemp, '123.8°F');
@@ -1896,14 +1898,13 @@ test('raw values behind formatted blocks: rates, free space and the time since a
   assert.deepEqual(await attrs('transmission'), { download: 2.8, upload: 0.5 });
   assert.deepEqual(await attrs('flood'), { download: 3, upload: 0.2 }, '150 kB/s rounds to 0.2 MB/s');
   assert.deepEqual(await attrs('downloadstation'), { download: 3, upload: 0.2 });
-  assert.deepEqual(await attrs('sabnzbd'), { rate: 45.7, paused: false });
-  assert.deepEqual(await attrs('diskstation'), { volumeFree: 600, volumeFreePercent: 7.5 });
+  assert.deepEqual(await attrs('sabnzbd'), { rate: 45.7, paused: false, timeleft: 12.5 }, '12:30 left is 12.5 minutes');
   assert.deepEqual(await attrs('filebrowser'), { available: 2765.5, usedPercent: 30.9 });
   // Unraid counts KiB: 25.7 TB on the card is 25,697 GB
   assert.deepEqual(await attrs('unraid', { pool1: 'trunk' }), { arrayFree: 25697, pool1Free: 1300.3, pool2Free: null, pool3Free: null, pool4Free: null });
   const { default: sab } = await import(path.join(WIDGETS, 'sabnzbd', 'server.js'));
   const fake = (body) => ({ options: { url: 'http://sab.lan', key: 'k' }, fetch: async () => ({ ok: true, json: async () => body }) });
-  assert.deepEqual((await sab.fetch(fake({ queue: { status: 'Paused', kbpersec: '900' } }))).attributes, { rate: 0, paused: true });
+  assert.deepEqual((await sab.fetch(fake({ queue: { status: 'Paused', kbpersec: '900' } }))).attributes, { rate: 0, paused: true, timeleft: null });
   // hours since the newest backup (the fixture's 2026-03-02 03:15 UTC)
   const hours = (iso) => Math.round((Date.now() - Date.parse(iso)) / 360000) / 10;
   const dup = await attrs('duplicati');
@@ -1911,4 +1912,35 @@ test('raw values behind formatted blocks: rates, free space and the time since a
   const kopia = await attrs('kopia');
   assert.equal(kopia.failed, false);
   assert.equal(typeof kopia.hoursSinceRun, 'number');
+});
+
+test('raw values behind formatted blocks: uptimes, sizes, rates and times left', async () => {
+  const attrs = async (id, options = {}) => (await run(id, options)).attributes;
+  // hours since start, next to "5d 3h" on the card
+  assert.deepEqual(await attrs('diskstation'), { uptimeHours: 123.8, volumeFree: 600, volumeFreePercent: 7.5 });
+  assert.deepEqual(await attrs('frigate'), { uptimeHours: 53.2 });
+  assert.deepEqual(await attrs('mikrotik'), { uptimeHours: 219.1 });
+  assert.deepEqual(await attrs('openwrt'), { uptimeHours: 99 });
+  assert.deepEqual(await attrs('truenas'), { uptimeHours: 292 });
+  assert.deepEqual(await attrs('unifi'), { uptimeHours: 312 });
+  assert.deepEqual(await attrs('fritzbox'), { uptimeHours: 99, down: 1.3, up: 0 }, '12.5 kB/s rounds to 0 MB/s');
+  // MB/s and GB
+  assert.deepEqual(await attrs('jdownloader'), { downloadBytesRemaining: 3, downloadSpeed: 2.5 });
+  assert.deepEqual(await attrs('nzbget'), { rate: 12.5, remaining: 4 });
+  assert.deepEqual(await attrs('pyload'), { speed: 3.3 });
+  assert.deepEqual(await attrs('qui'), { download: 4.2, upload: 0.8 });
+  assert.deepEqual(await attrs('rutorrent'), { download: 2.5, upload: 0.2 });
+  assert.deepEqual(await attrs('backrest'), { bytes_added_30: 5 });
+  assert.deepEqual(await attrs('immich'), { storage: 400 });
+  assert.deepEqual(await attrs('maintainerr'), { reclaimable: 1840 }, '1.8 TB on the card');
+  assert.deepEqual(await attrs('nextcloud'), { freespace: 412.3 });
+  assert.deepEqual(await attrs('unifi-drive'), { available: 10800, usedPercent: 32.5 });
+  // minutes left
+  assert.deepEqual(await attrs('apcups'), { timeleft: 60 }, '1:00:00 on the card');
+  // times relative to now: the fixtures' dates are fixed
+  for (const [id, names] of [['headscale', ['hoursSinceSeen']], ['ntfy', ['hoursSinceMessage']], ['tailscale', ['hoursSinceSeen', 'daysUntilExpiry']], ['uptimerobot', ['uptimeHours', 'hoursSinceDown']]]) {
+    const a = await attrs(id);
+    for (const name of names) assert.ok(typeof a[name] === 'number' && a[name] >= 0, `${id} ${name}: ${a[name]}`);
+  }
+  assert.equal((await attrs('uptimerobot')).uptimeHours, 99);
 });

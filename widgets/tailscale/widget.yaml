@@ -1,6 +1,6 @@
 id: tailscale
 name: Tailscale
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Address, last seen and key expiry of one device in your tailnet, and more through fields (homepage's tailscale widget).
 refresh: 5m
@@ -16,4 +16,6 @@ attributes:                 # public values for a service's filter: (widget.<nam
   authorized: { type: string, from: authorized }               # Authorized, a state such as yes
   is_external: { type: string, from: is_external }             # External, a state such as no
   update_available: { type: string, from: update_available }   # Update, a state such as yes
+  hoursSinceSeen: { type: number }                             # hours since the device was last seen; 0 while connected
+  daysUntilExpiry: { type: number }                            # days until the device's key expires; 0 once expired, null when it never does
   attention: { type: boolean, from: '@attention' }             # true while the card marks something as needing attention

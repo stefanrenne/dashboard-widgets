@@ -16,6 +16,7 @@ export default {
     const c = m.cleanupTotals ?? {};
     const s = m.collectionSummary ?? {};
     return {
+      attributes: { reclaimable: Math.round((Number(s.activeSizeBytes) || 0) / 1e8) / 10 },
       blocks: [
         { key: 'itemsHandled', label: 'itemsHandled', value: c.itemsHandled ?? 0 },
         { key: 'episodesHandled', label: 'episodesHandled', value: c.episodesHandled ?? 0 },

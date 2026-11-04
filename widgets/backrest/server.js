@@ -23,6 +23,7 @@ export default {
     const failedLatest = latest('STATUS_ERROR');
     const failed30 = sum('backupsFailed30days');
     return {
+      attributes: { bytes_added_30: Math.round(sum('bytesAddedLast30days') / 1e8) / 10 },
       blocks: [
         { key: 'num_plans', label: 'num_plans', value: plans.length },
         { key: 'num_success_latest', label: 'num_success_latest', value: latest('STATUS_SUCCESS') },

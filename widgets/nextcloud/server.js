@@ -23,7 +23,9 @@ export default {
     const system = nc.system ?? {};
     const memTotal = Number(system.mem_total);
     const load = Array.isArray(system.cpuload) ? Number(system.cpuload[0]) : null;
+    const free = Number(system.freespace);
     return {
+      attributes: { freespace: system.freespace === undefined || !Number.isFinite(free) ? null : Math.round(free / 1e8) / 10 },
       blocks: [
         { key: 'cpuload', label: 'cpuload', value: Number.isFinite(load) ? Math.round(load * 100) / 100 : null },
         { key: 'memoryusage', label: 'memory', value: memTotal > 0 ? Math.round((1000 * (memTotal - Number(system.mem_free))) / memTotal) / 10 : null, unit: '%' },

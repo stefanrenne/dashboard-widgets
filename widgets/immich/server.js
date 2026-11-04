@@ -17,6 +17,7 @@ export default {
     if (!res.ok) throw new Error(`Immich statistics answered ${res.status}`);
     const s = await res.json();
     return {
+      attributes: { storage: s.usage === undefined ? null : Math.round((Number(s.usage) || 0) / 1e8) / 10 },
       blocks: [
         { key: 'users', label: 'users', value: Array.isArray(s.usageByUser) ? s.usageByUser.length : null },
         { key: 'photos', label: 'photos', value: s.photos ?? null },

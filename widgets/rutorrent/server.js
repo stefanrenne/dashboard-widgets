@@ -20,6 +20,7 @@ export default {
     const list = Object.values((await res.json()).t ?? {});
     const sum = (i) => list.reduce((s, t) => s + (parseInt(t[i], 10) || 0), 0);
     return {
+      attributes: { upload: Math.round(sum(11) / 1e5) / 10, download: Math.round(sum(12) / 1e5) / 10 },
       blocks: [
         { key: 'active', label: 'active', value: list.filter((t) => String(t[3]) === '1').length },
         { key: 'upload', label: 'upload', value: formatRate(sum(11)) },

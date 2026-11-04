@@ -1,6 +1,6 @@
 id: fritzbox
 name: FRITZ!Box
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Internet connection, uptime, line speed and traffic of a FRITZ!Box (homepage's fritzbox widget).
 refresh: 30s
@@ -10,4 +10,7 @@ options:
   insecure: { type: boolean, default: false }   # accept the box's self-signed certificate (https)
 attributes:                 # public values for a service's filter: (widget.<name>)
   connectionStatus: { type: string, from: connectionStatus }   # Connection, a state such as connected
+  uptimeHours: { type: number }                                # hours the internet connection is up
+  down: { type: number }                                       # download speed now, in MB/s
+  up: { type: number }                                         # upload speed now, in MB/s
   attention: { type: boolean, from: '@attention' }             # true while the card marks something as needing attention

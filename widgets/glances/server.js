@@ -63,7 +63,13 @@ export default {
       const value = celsius === null ? null : Math.round((imperial ? celsius * 9 / 5 + 32 : celsius) * 10) / 10;
       blocks.push({ key: 'cputemp', label: 'cputemp', value, unit: imperial ? '°F' : '°C', ...(value !== null && celsius >= 85 ? { status: 'warn' } : {}) });
     }
-    if (o.uptime) blocks.push({ key: 'uptime', label: 'uptime', value: formatUptime(await get('uptime')) });
+    let uptimeHours = null;
+    if (o.uptime) {
+      const text = await get('uptime');
+      const m = /^(?:(\d+) days?, )?(\d+):(\d+):(\d+)/.exec(String(text ?? '').trim());
+      if (m) uptimeHours = Math.round((Number(m[1] ?? 0) * 24 + Number(m[2]) + Number(m[3]) / 60) * 10) / 10;
+      blocks.push({ key: 'uptime', label: 'uptime', value: formatUptime(text) });
+    }
     if (Array.isArray(o.disk) && o.disk.length) {
       const fs = await get('fs');
       for (const mount of o.disk) {
@@ -73,6 +79,6 @@ export default {
         if (o.expanded && d) blocks.push({ key: `${key}Free`, label: 'free', value: formatBytes(d.free ?? d.size - d.used, binary) });
       }
     }
-    return { blocks };
+    return { attributes: { uptimeHours }, blocks };
   },
 };

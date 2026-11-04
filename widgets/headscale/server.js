@@ -19,6 +19,7 @@ export default {
     const n = (await res.json()).node ?? {};
     const seen = Date.parse(n.lastSeen ?? '');
     return {
+      attributes: { hoursSinceSeen: n.online ? 0 : Number.isFinite(seen) ? Math.round((Date.now() - seen) / 360000) / 10 : null },
       blocks: [
         { key: 'name', label: 'name', value: n.givenName ?? n.name ?? null },
         { key: 'address', label: 'address', value: n.ipAddresses?.[0] ?? null },

@@ -1,6 +1,6 @@
 id: uptimerobot
 name: UptimeRobot
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Monitors up and down in UptimeRobot, or one monitor's state, uptime and last downtime (homepage's uptimerobot widget).
 refresh: 5m
@@ -9,4 +9,6 @@ options:
   url: { type: url, default: "https://api.uptimerobot.com" }
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: status }             # Status, a state such as up
+  uptimeHours: { type: number }                      # hours the monitor is up; null while it is not up, and with a key for several monitors
+  hoursSinceDown: { type: number }                   # hours since the monitor last went down; null when it never did
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

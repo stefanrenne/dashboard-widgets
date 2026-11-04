@@ -35,6 +35,7 @@ export default {
       blocks.push({ key: 'ratio', label: 'ratio', value: Math.round(parseFloat(d.serverState.global_ratio) * 100) / 100 || 0 });
       blocks.push({ key: 'freeSpace', label: 'freeSpace', value: formatBytes(d.serverState.free_space_on_disk) });
     }
-    return { blocks };
+    const mbps = (bytes) => Math.round((Number(bytes) || 0) / 1e5) / 10;
+    return { attributes: { download: mbps(s.totalDownloadSpeed), upload: mbps(s.totalUploadSpeed) }, blocks };
   },
 };

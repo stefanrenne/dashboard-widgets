@@ -1,6 +1,6 @@
 id: unifi
 name: UniFi Controller
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 aliases: [unifi_console]   # homepage's name for the header widget
 description: Uptime, WAN status and LAN and WLAN users and devices from a UniFi Network controller (homepage's unifi widget).
@@ -22,4 +22,5 @@ attributes:                 # public values for a service's filter: (widget.<nam
   wlan: { type: string, from: wlan }                   # WLAN, a state such as up
   wlan_users: { type: number, from: wlan_users }       # WLAN users
   wlan_devices: { type: number, from: wlan_devices }   # WLAN devices
+  uptimeHours: { type: number }                        # hours since the gateway started
   attention: { type: boolean, from: '@attention' }     # true while the card marks something as needing attention

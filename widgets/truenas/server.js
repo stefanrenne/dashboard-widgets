@@ -142,7 +142,9 @@ export default {
     const url = ctx.options.url.replace(/\/+$/, '');
     const { alerts, info, pools, datasets } = Number(ctx.options.version) >= 2 ? await viaWebSocket(ctx, url) : await viaRest(ctx, url);
     const pending = (alerts ?? []).filter((a) => a?.dismissed === false).length;
+    const uptime = Number(info?.uptime_seconds);
     const out = {
+      attributes: { uptimeHours: Number.isFinite(uptime) && uptime > 0 ? Math.round(uptime / 360) / 10 : null },
       blocks: [
         { key: 'load', label: 'load', value: Array.isArray(info?.loadavg) ? Math.round(info.loadavg[0] * 100) / 100 : null },
         { key: 'uptime', label: 'uptime', value: formatUptime(info?.uptime_seconds) },

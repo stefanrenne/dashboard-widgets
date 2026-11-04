@@ -32,6 +32,7 @@ export default {
     }
     const priority = PRIORITIES[m?.priority ?? 3] ?? 'default';
     return {
+      attributes: { hoursSinceMessage: m?.time ? Math.round((Date.now() - m.time * 1000) / 360000) / 10 : null },
       blocks: [
         { key: 'title', label: 'title', value: m?.title || 'none' },
         { key: 'message', label: 'message', value: m?.message || 'none' },

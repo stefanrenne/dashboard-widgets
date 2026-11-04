@@ -40,6 +40,7 @@ export default {
       blocks.push({ key: 'lastDown', label: 'lastDown', value: span(Date.now() / 1000 - lastDown.datetime) });
       blocks.push({ key: 'downDuration', label: 'downDuration', value: span(lastDown.duration) });
     }
-    return { blocks };
+    const hoursAgo = lastDown ? Math.round((Date.now() / 1000 - lastDown.datetime) / 360) / 10 : null;
+    return { attributes: { uptimeHours: state === 'up' && Number.isFinite(Number(lastUp?.duration)) ? Math.round(lastUp.duration / 360) / 10 : null, hoursSinceDown: Number.isFinite(hoursAgo) ? hoursAgo : null }, blocks };
   },
 };

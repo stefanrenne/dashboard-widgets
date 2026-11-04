@@ -4,6 +4,16 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Added
+- Filter attributes with the raw value behind a formatted block, so a filter can compare numbers
+  instead of "2d 4h" or "1.2 TB" text. Hours since start, `uptimeHours`: `diskstation`, `frigate`, `fritzbox`, `mikrotik`, `openwrt`,
+  `glances` (with `uptime: true`), `truenas`, `unifi`, `uptimerobot` (also `hoursSinceDown`). Rates in MB/s: `fritzbox` `down`/`up`,
+  `jdownloader` `downloadSpeed`, `nzbget` `rate`, `pyload` `speed`, `qui` and `rutorrent`
+  `download`/`upload`. Sizes in GB: `backrest` `bytes_added_30`, `immich` `storage`, `jdownloader`
+  `downloadBytesRemaining`, `maintainerr` `reclaimable`, `nextcloud` `freespace`, `nzbget` `remaining`,
+  `unifi-drive` `available` (and `usedPercent`). Times: `headscale` and `tailscale` `hoursSinceSeen`,
+  `tailscale` `daysUntilExpiry`, `ntfy` `hoursSinceMessage`, `apcups` and `sabnzbd` `timeleft` in minutes.
+
 ## [0.13.0] - 2026-11-03
 
 ### Changed (breaking)

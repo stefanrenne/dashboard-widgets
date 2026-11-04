@@ -22,6 +22,10 @@ export default {
     if (json.error) throw new Error(`NZBGet: ${json.error.message ?? 'error'}`);
     const s = json.result ?? {};
     return {
+      attributes: {
+        rate: s.DownloadPaused ? 0 : Math.round((Number(s.DownloadRate) || 0) / 1e5) / 10,
+        remaining: Math.round(((Number(s.RemainingSizeMB) || 0) * 1024 * 1024) / 1e8) / 10,
+      },
       blocks: [
         s.DownloadPaused
           ? { key: 'rate', label: 'rate', value: 'paused', status: 'warn' }

@@ -1,6 +1,6 @@
 id: apcups
 name: APC UPS
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Status, load, battery charge and runtime left of an APC UPS through apcupsd (homepage's apcups widget).
 refresh: 30s
@@ -10,4 +10,5 @@ attributes:                 # public values for a service's filter: (widget.<nam
   status: { type: string, from: status }             # Status, a state such as online
   load: { type: number, from: load }                 # Load (%)
   bcharge: { type: number, from: bcharge }           # Battery (%)
+  timeleft: { type: number }                         # minutes the battery lasts at the current load
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

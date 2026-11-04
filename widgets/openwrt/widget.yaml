@@ -1,6 +1,6 @@
 id: openwrt
 name: OpenWrt
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: An OpenWrt router's uptime and load, or with interfaceName an interface's state and traffic (homepage's openwrt widget).
 refresh: 30s
@@ -12,4 +12,5 @@ options:
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: '@status' }          # up or down, as the status label
   cpuLoad: { type: number, from: cpuLoad }           # Load
+  uptimeHours: { type: number }                      # hours since the router started; not set with interfaceName
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

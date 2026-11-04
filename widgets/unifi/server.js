@@ -72,6 +72,7 @@ export default {
         blocks.push({ key: `${name}_devices`, label: `${name}_devices`, value: Number(h.num_adopted ?? 0) });
       }
     }
-    return { blocks };
+    const up = Number(uptime);
+    return { attributes: { uptimeHours: Number.isFinite(up) && up > 0 ? Math.round(up / 360) / 10 : null }, blocks };
   },
 };

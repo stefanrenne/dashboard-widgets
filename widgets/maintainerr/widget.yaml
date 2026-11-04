@@ -1,6 +1,6 @@
 id: maintainerr
 name: Maintainerr
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Items, episodes, movies, shows and seasons handled, and the space to reclaim, in Maintainerr (homepage's maintainerr widget).
 refresh: 5m
@@ -13,3 +13,4 @@ attributes:                 # public values for a service's filter: (widget.<nam
   moviesHandled: { type: number, from: moviesHandled }       # Movies removed
   showsHandled: { type: number, from: showsHandled }         # Shows removed
   seasonsHandled: { type: number, from: seasonsHandled }     # Seasons removed
+  reclaimable: { type: number }                              # space the media in the active collections takes, in GB

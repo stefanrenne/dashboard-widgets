@@ -1,6 +1,6 @@
 id: headscale
 name: Headscale
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: A node's name, address, last seen and online state in Headscale (homepage's headscale widget).
 refresh: 60s
@@ -10,4 +10,5 @@ options:
   key: { type: string, secret: true, required: true }   # from `headscale apikeys create`
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: status }             # Status, a state such as offline
+  hoursSinceSeen: { type: number }                   # hours since the node was last seen; 0 while online, null when never
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

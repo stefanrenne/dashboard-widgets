@@ -1,6 +1,6 @@
 id: diskstation
 name: Synology DiskStation
-version: 0.4.0
+version: 0.5.0
 apiVersion: 2
 description: Uptime, free space on a volume, CPU and memory of a Synology NAS (homepage's diskstation widget).
 refresh: 1m
@@ -12,5 +12,6 @@ options:
   insecure: { type: boolean, default: false }   # accept a self-signed certificate (https on port 5001)
 attributes:                 # public values for a service's filter: (widget.<name>)
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
+  uptimeHours: { type: number }         # hours since the NAS started
   volumeFree: { type: number }          # free space on the volume, in GB
   volumeFreePercent: { type: number }   # free space on the volume, in % of its size

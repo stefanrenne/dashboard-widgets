@@ -1,6 +1,6 @@
 id: backrest
 name: Backrest
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: The latest backups that succeeded and failed, and the last 30 days of Backrest's plans (homepage's backrest widget).
 refresh: 5m
@@ -15,4 +15,5 @@ attributes:                 # public values for a service's filter: (widget.<nam
   num_failure_latest: { type: number, from: num_failure_latest }   # Last failed
   num_success_30: { type: number, from: num_success_30 }           # OK in 30 days
   num_failure_30: { type: number, from: num_failure_30 }           # Failed 30 days
+  bytes_added_30: { type: number }                                 # data added by the backups of the last 30 days, in GB
   attention: { type: boolean, from: '@attention' }                 # true while the card marks something as needing attention

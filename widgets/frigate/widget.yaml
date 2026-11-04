@@ -1,6 +1,6 @@
 id: frigate
 name: Frigate
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Cameras, uptime and version of Frigate, and optionally its recent events (homepage's frigate widget).
 refresh: 1m
@@ -13,3 +13,4 @@ options:
 attributes:                 # public values for a service's filter: (widget.<name>)
   cameras: { type: number, from: cameras }   # Cameras
   version: { type: string, from: version }   # Version, such as 0.16.2
+  uptimeHours: { type: number }              # hours since Frigate started

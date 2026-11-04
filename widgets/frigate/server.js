@@ -32,7 +32,9 @@ export default {
       return res.json();
     };
     const stats = await get('stats');
+    const uptime = Number(stats.service?.uptime);
     const out = {
+      attributes: { uptimeHours: stats.service?.uptime === undefined || !Number.isFinite(uptime) ? null : Math.round(uptime / 360) / 10 },
       blocks: [
         { key: 'cameras', label: 'cameras', value: stats.cameras ? Object.keys(stats.cameras).length : 0 },
         { key: 'uptime', label: 'uptime', value: stats.service?.uptime === undefined ? null : span(stats.service.uptime) },

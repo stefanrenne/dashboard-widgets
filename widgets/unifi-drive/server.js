@@ -38,6 +38,10 @@ export default {
     const degraded = pools.some((p) => p.status === 'degraded');
     const state = degraded ? 'degraded' : ['fullyOperational', 'noDataProtectionYet'].includes(pools[0].status) ? 'healthy' : 'unknown';
     return {
+      attributes: {
+        available: Math.round(Math.max(0, total - used) / 1e8) / 10,
+        usedPercent: total > 0 ? Math.round((1000 * used) / total) / 10 : null,
+      },
       blocks: [
         { key: 'total', label: 'total', value: formatBytes(total) },
         { key: 'used', label: 'used', value: formatBytes(used), ...(total && used / total > 0.9 ? { status: 'warn' } : {}) },

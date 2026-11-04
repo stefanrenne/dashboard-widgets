@@ -1,6 +1,6 @@
 id: ntfy
 name: ntfy
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: The latest notification of an ntfy topic, with its title, message, priority and age (homepage's ntfy widget).
 refresh: 60s
@@ -13,4 +13,5 @@ options:
   password: { type: string, secret: true }
 attributes:                 # public values for a service's filter: (widget.<name>)
   priority: { type: string, from: priority }         # Priority, a state such as high
+  hoursSinceMessage: { type: number }                # hours since the last message; null when there is none
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

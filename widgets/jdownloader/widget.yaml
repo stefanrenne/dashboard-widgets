@@ -1,6 +1,6 @@
 id: jdownloader
 name: JDownloader
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Packages in the download list, their size, what is left and the download rate, through My.JDownloader (homepage's jdownloader widget).
 refresh: 30s
@@ -11,3 +11,5 @@ options:
   url: { type: url, default: "https://api.jdownloader.org" }   # only for another My.JDownloader server
 attributes:                 # public values for a service's filter: (widget.<name>)
   downloadCount: { type: number, from: downloadCount }   # Packages
+  downloadBytesRemaining: { type: number }               # still to download over all packages, in GB
+  downloadSpeed: { type: number }                        # download speed of the running packages, in MB/s

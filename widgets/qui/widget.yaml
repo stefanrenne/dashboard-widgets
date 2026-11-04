@@ -1,6 +1,6 @@
 id: qui
 name: qui
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Torrents downloading and seeding with their rates across the qBittorrent instances of qui (homepage's qui widget).
 refresh: 15s
@@ -10,6 +10,8 @@ options:
   key: { type: string, secret: true, required: true }   # Settings > API Keys
   instance: { type: string }               # one instance's ID; without it all instances together
 attributes:                 # public values for a service's filter: (widget.<name>)
+  download: { type: number }                         # download rate of all torrents, in MB/s
+  upload: { type: number }                           # upload rate of all torrents, in MB/s
   total: { type: number, from: total }               # Total
   errored: { type: number, from: errored }           # Errored
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

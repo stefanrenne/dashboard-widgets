@@ -33,7 +33,9 @@ export default {
     const cpu = Number(sys['cpu-load']) || 0;
     const total = Number(sys['total-memory']) || 0;
     const memory = total ? Math.round((1 - (Number(sys['free-memory']) || 0) / total) * 100) : null;
+    const uptime = sys.uptime ? routerosSeconds(sys.uptime) : null;
     return {
+      attributes: { uptimeHours: uptime === null ? null : Math.round(uptime / 360) / 10 },
       blocks: [
         { key: 'uptime', label: 'uptime', value: span(routerosSeconds(sys.uptime)) },
         { key: 'cpuLoad', label: 'cpuLoad', value: cpu, unit: '%', ...high(cpu) },

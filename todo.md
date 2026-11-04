@@ -8,10 +8,6 @@ The dashboard keeps its own list: `../dashboard/todo.md`.
 
 ## Filter attributes
 
-- [ ] **Raw values behind formatted blocks, the rest.** Transfer rates, free space (diskstation,
-  filebrowser, unraid) and the time since a backup (duplicati, kopia) are done. Still formatted
-  only: uptimes (glances, diskstation, truenas, ...), backrest's bytes added, and the other
-  blocks with "1.2 TB" or "2d 4h" text in about 55 widgets.
 - [ ] **Better attribute descriptions.** Most are the block's label ("Wanted", "Queued"). Say what
   the value is and its unit ("movies wanted and not downloaded").
 

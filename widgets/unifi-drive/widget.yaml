@@ -1,6 +1,6 @@
 id: unifi-drive
 name: UniFi Drive
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Total, used and free space and the state of the storage pools of a UniFi NAS (homepage's unifi_drive widget).
 refresh: 5m
@@ -12,4 +12,6 @@ options:
   insecure: { type: boolean, default: false }  # accept the device's self-signed certificate
 attributes:                 # public values for a service's filter: (widget.<name>)
   status: { type: string, from: status }             # Status, a state such as healthy
+  available: { type: number }                        # free space over all pools, in GB
+  usedPercent: { type: number }                      # space in use, in % of the total
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

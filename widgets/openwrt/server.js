@@ -57,7 +57,9 @@ export default {
       };
     }
     const load = r.data.load?.[1];
+    const uptime = Number(r.data.uptime);
     return {
+      attributes: { uptimeHours: r.data.uptime === undefined || !Number.isFinite(uptime) ? null : Math.round(uptime / 360) / 10 },
       blocks: [
         { key: 'uptime', label: 'uptime', value: span(r.data.uptime) },
         { key: 'cpuLoad', label: 'cpuLoad', value: typeof load === 'number' ? Math.round((load / 65536) * 100) / 100 : null },

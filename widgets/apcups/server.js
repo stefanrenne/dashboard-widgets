@@ -76,6 +76,7 @@ export default {
     const state = status.includes('COMMLOST') ? 'lost' : status.includes('ONBATT') ? 'onBattery' : status.includes('ONLINE') ? 'online' : status.toLowerCase() || null;
     const left = number(s.TIMELEFT);
     return {
+      attributes: { timeleft: left },
       blocks: [
         { key: 'status', label: 'status', value: state, ...(state === 'onBattery' ? { status: 'warn' } : state === 'lost' ? { status: 'error' } : {}) },
         { key: 'load', label: 'load', value: number(s.LOADPCT), unit: '%' },

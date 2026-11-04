@@ -46,6 +46,7 @@ export default {
       status = await res.json();
     }
     return {
+      attributes: { speed: Math.round((Number(status.speed) || 0) / 1e5) / 10 },
       blocks: [
         { key: 'speed', label: 'speed', value: formatRate(status.speed) },
         { key: 'active', label: 'active', value: status.active ?? 0 },

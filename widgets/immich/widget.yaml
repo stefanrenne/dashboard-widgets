@@ -1,6 +1,6 @@
 id: immich
 name: Immich
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Users, photos, videos and storage used of an Immich server (homepage's immich widget).
 refresh: 5m
@@ -12,3 +12,4 @@ attributes:                 # public values for a service's filter: (widget.<nam
   users: { type: number, from: users }     # Users
   photos: { type: number, from: photos }   # Photos
   videos: { type: number, from: videos }   # Videos
+  storage: { type: number }                # space the photos and videos take, in GB

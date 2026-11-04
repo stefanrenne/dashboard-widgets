@@ -50,7 +50,14 @@ export default {
     ]);
     const state = STATES[status.NewConnectionStatus] ?? 'unconfigured';
     const rate = (bytes) => `${formatBytes(bytes)}/s`;
+    const mbps = (bytes) => (Number.isFinite(Number(bytes)) && bytes !== undefined ? Math.round(Number(bytes) / 1e5) / 10 : null);
+    const uptime = Number(status.NewUptime);
     return {
+      attributes: {
+        uptimeHours: status.NewUptime === undefined || !Number.isFinite(uptime) ? null : Math.round(uptime / 360) / 10,
+        down: mbps(traffic.NewByteReceiveRate),
+        up: mbps(traffic.NewByteSendRate),
+      },
       blocks: [
         { key: 'connectionStatus', label: 'connectionStatus', value: state, ...(state === 'connected' ? {} : { status: state === 'connecting' ? 'warn' : 'error' }) },
         { key: 'uptime', label: 'uptime', value: span(status.NewUptime) },

@@ -84,6 +84,10 @@ export default {
     const loaded = packages.reduce((s, p) => s + (Number(p.bytesLoaded) || 0), 0);
     const speed = packages.filter((p) => p.finished !== true).reduce((s, p) => s + (Number(p.speed) || 0), 0);
     return {
+      attributes: {
+        downloadBytesRemaining: Math.round(Math.max(0, total - loaded) / 1e8) / 10,
+        downloadSpeed: Math.round(speed / 1e5) / 10,
+      },
       blocks: [
         { key: 'downloadCount', label: 'downloadCount', value: packages.length },
         { key: 'downloadTotalBytes', label: 'downloadTotalBytes', value: formatBytes(total) },

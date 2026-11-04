@@ -1,6 +1,6 @@
 id: glances
 name: Glances
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: CPU, memory, CPU temperature, uptime and disks of a machine running Glances (homepage's glances info widget).
 refresh: 10s
@@ -22,4 +22,5 @@ options:
 attributes:                 # public values for a service's filter: (widget.<name>)
   cpu: { type: number, from: cpu }                   # CPU (%)
   memory: { type: number, from: memory }             # Memory (%)
+  uptimeHours: { type: number }                      # hours since the host started; null without uptime: true
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention

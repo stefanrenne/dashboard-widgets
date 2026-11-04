@@ -1,6 +1,6 @@
 id: mikrotik
 name: MikroTik
-version: 0.3.0
+version: 0.4.0
 apiVersion: 2
 description: Uptime, CPU load, memory used and DHCP leases of a MikroTik router (homepage's mikrotik widget).
 refresh: 30s
@@ -13,4 +13,5 @@ attributes:                 # public values for a service's filter: (widget.<nam
   cpuLoad: { type: number, from: cpuLoad }                 # CPU (%)
   memoryUsed: { type: number, from: memoryUsed }           # Memory (%)
   numberOfLeases: { type: number, from: numberOfLeases }   # DHCP leases
+  uptimeHours: { type: number }                            # hours since the router started
   attention: { type: boolean, from: '@attention' }         # true while the card marks something as needing attention
