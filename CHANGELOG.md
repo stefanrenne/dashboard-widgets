@@ -4,6 +4,10 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Changed
+- `button`: its README names the dashboard's admin password (formerly the action password,
+  `DASHBOARD_ACTION_PASSWORD`), which can be in its settings.yaml, and its login page.
+
 ### Added
 - `images:` in widget.yaml: the Docker images the dashboard's setup wizard recognises a service by, where the image's name is not the widget's id (`plexinc/pms-docker` for `plex`): `adguard`, `authentik`, `channelsdvrserver`, `emby`, `firefly`, `gitlab`, `gotify`, `immich`, `jdownloader`, `komodo`, `minecraft`, `mylar`, `npm`, `omada`, `plantit`, `plex`, `portainer`, `pterodactyl`, `pyload`, `seerr`, `speedtest`, `suwayomi`, `swagdashboard`, `tandoor`, `technitium`, `trilium`, `unifi`, `uptimekuma`, `urbackup`, `whatsupdocker`, `yourspotify`.
 

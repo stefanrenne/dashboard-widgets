@@ -36,12 +36,14 @@ on the server; the browser only gets the label.
 
 ### Asking for a password
 
-With `DASHBOARD_ACTION_PASSWORD` on the dashboard container, a press can ask for that password
-first. A button with `user: root` asks by default; any button asks with `confirm: password`
-(then that browser stays unlocked for a while, 15 minutes by default) or `confirm: always`
-(every press). `confirm: none` turns it off for a root button. Without the variable nothing asks,
+With an admin password on the dashboard (`adminPassword` in its settings.yaml, which its setup
+wizard writes, or `DASHBOARD_ADMIN_PASSWORD`), a press can ask for that password first. A button
+with `user: root` asks by default; any button asks with `confirm: password` (then that browser
+stays unlocked for a while, 15 minutes by default) or `confirm: always` (every press).
+`confirm: none` turns it off for a root button. Without an admin password nothing asks,
 and the dashboard's messages name the buttons that would. See the dashboard's
-[Action password](https://getdashboard.dev/configuration/#action-password).
+[Admin password](https://getdashboard.dev/configuration/#admin-password). With the dashboard's login
+page (`login: true`) a login counts: only `confirm: always` asks again.
 
 Several buttons on one card are several `button` widgets, each one full width.
 
@@ -61,7 +63,7 @@ No blocks: the button is drawn by the widget.
             text: Pull new images
             command: docker compose -f stacks/media.yaml pull
             timeout: 600
-            confirm: password        # with DASHBOARD_ACTION_PASSWORD: ask first
+            confirm: password        # with an admin password: ask first
           - type: button
             text: Back up the library
             script: scripts/backup-jellyfin.sh

@@ -1,6 +1,6 @@
 id: button
 name: Button
-version: 1.5.0
+version: 1.5.1
 apiVersion: 2
 description: A button that opens a link or runs a script or shell command on the dashboard's server.
 options:
@@ -11,6 +11,6 @@ options:
   timeout: { type: number, default: 300 }   # seconds before the run is stopped
   inheritEnv: { type: boolean, default: false }   # give the run the dashboard's whole environment, not only PATH and HOME
   user: { type: enum, values: [node, root], default: node }   # root needs DASHBOARD_ALLOW_ROOT_SCRIPTS=true on the dashboard container
-confirmWhen: { user: root }   # with DASHBOARD_ACTION_PASSWORD on the dashboard, a root run asks for it by default
+confirmWhen: { user: root }   # with an admin password on the dashboard, a root run asks for it by default
 attributes:                 # public values for a service's filter: (widget.<name>)
   attention: { type: boolean, from: '@attention' }   # true while the card marks something as needing attention
