@@ -1,8 +1,9 @@
 id: portainer
 name: Portainer
-version: 0.4.1
+version: 0.4.2
 apiVersion: 2
 description: Running, stopped and total containers of one Portainer environment.
+images: [portainer/portainer-ce, portainer/portainer-ee]   # the setup wizard recognises the service by these Docker images
 refresh: 30s
 options:
   url: { type: url, required: true }      # e.g. https://portainer:9443

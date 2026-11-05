@@ -1,8 +1,9 @@
 id: pyload
 name: pyLoad
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Download rate, active and queued downloads in pyLoad (homepage's pyload widget).
+images: [linuxserver/pyload-ng]   # the setup wizard recognises the service by these Docker images
 refresh: 15s
 options:
   url: { type: url, required: true }       # e.g. http://pyload.lan:8000

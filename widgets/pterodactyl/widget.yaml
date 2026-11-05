@@ -1,8 +1,9 @@
 id: pterodactyl
 name: Pterodactyl
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Nodes and game servers in a Pterodactyl panel (homepage's pterodactyl widget).
+images: [pterodactyl/panel]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # the panel, e.g. https://panel.lan

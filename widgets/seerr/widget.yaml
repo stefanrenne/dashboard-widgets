@@ -1,10 +1,11 @@
 id: seerr
 name: Seerr
-version: 0.4.1
+version: 0.4.2
 apiVersion: 2
 description: Pending, approved and completed requests in Overseerr, Jellyseerr or Seerr.
 refresh: 1m
 aliases: [overseerr, jellyseerr]   # homepage's overseerr widget (dashboard 0.5 and later)
+images: [fallenbagel/jellyseerr, sctx/overseerr]   # the setup wizard recognises the service by these Docker images
 options:
   url: { type: url, required: true }      # e.g. http://seerr:5055
   key: { type: string, secret: true, required: true }

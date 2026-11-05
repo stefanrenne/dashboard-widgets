@@ -1,8 +1,9 @@
 id: gotify
 name: Gotify
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Applications, clients and messages in Gotify (homepage's gotify widget).
+images: [gotify/server]   # the setup wizard recognises the service by these Docker images
 refresh: 60s
 options:
   url: { type: url, required: true }       # e.g. http://gotify.lan

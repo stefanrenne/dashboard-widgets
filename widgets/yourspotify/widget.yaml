@@ -1,8 +1,9 @@
 id: yourspotify
 name: Your Spotify
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Songs, listening time and artists over the past day, week, month or year in Your Spotify (homepage's yourspotify widget).
+images: [yooooomi/your_spotify_server]   # the setup wizard recognises the service by these Docker images
 refresh: 15m
 options:
   url: { type: url, required: true }       # the API, e.g. http://spotify.lan:8080 (with linuxserver's image: http://spotify.lan/api)

@@ -1,8 +1,9 @@
 id: authentik
 name: authentik
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Users, and logins, failed logins and (version 2) authorizations of the last 24 hours in authentik (homepage's authentik widget).
+images: [goauthentik/server]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. https://auth.example.com

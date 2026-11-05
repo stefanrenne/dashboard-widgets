@@ -1,8 +1,9 @@
 id: urbackup
 name: UrBackup
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Clients whose backups are fine, failed or not recent in UrBackup, and the space used (homepage's urbackup widget).
+images: [uroni/urbackup-server]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 defaultFields: [ok, errored, noRecent]
 options:

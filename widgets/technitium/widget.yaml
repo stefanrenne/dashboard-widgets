@@ -1,8 +1,9 @@
 id: technitium
 name: Technitium DNS Server
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Queries of a Technitium DNS server by outcome, and its clients (homepage's technitium widget).
+images: [technitium/dns-server]   # the setup wizard recognises the service by these Docker images
 refresh: 60s
 defaultFields: [totalQueries, totalAuthoritative, totalCached, totalServerFailure]
 options:

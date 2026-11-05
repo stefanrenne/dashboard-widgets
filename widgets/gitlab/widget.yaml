@@ -1,8 +1,9 @@
 id: gitlab
 name: GitLab
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Groups, issues, merge requests and projects of a GitLab user (homepage's gitlab widget).
+images: [gitlab/gitlab-ce, gitlab/gitlab-ee]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. https://gitlab.lan

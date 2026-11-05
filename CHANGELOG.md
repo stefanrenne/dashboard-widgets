@@ -4,6 +4,9 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Added
+- `images:` in widget.yaml: the Docker images the dashboard's setup wizard recognises a service by, where the image's name is not the widget's id (`plexinc/pms-docker` for `plex`): `adguard`, `authentik`, `channelsdvrserver`, `emby`, `firefly`, `gitlab`, `gotify`, `immich`, `jdownloader`, `komodo`, `minecraft`, `mylar`, `npm`, `omada`, `plantit`, `plex`, `portainer`, `pterodactyl`, `pyload`, `seerr`, `speedtest`, `suwayomi`, `swagdashboard`, `tandoor`, `technitium`, `trilium`, `unifi`, `uptimekuma`, `urbackup`, `whatsupdocker`, `yourspotify`.
+
 ## [0.15.0] - 2026-11-04
 
 ### Added

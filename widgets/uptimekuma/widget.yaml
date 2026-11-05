@@ -1,8 +1,9 @@
 id: uptimekuma
 name: Uptime Kuma
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Monitors up and down, average uptime and the incident of one status page (homepage's uptimekuma widget).
+images: [louislam/uptime-kuma]   # the setup wizard recognises the service by these Docker images
 refresh: 1m
 options:
   url: { type: url, required: true }       # e.g. http://uptime-kuma.lan:3001

@@ -1,8 +1,9 @@
 id: plantit
 name: Plant-it
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Diary events, plants, photos and species in Plant-it (homepage's plantit widget).
+images: [msdeluise/plant-it-server]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # the API port, e.g. http://plantit.lan:8080

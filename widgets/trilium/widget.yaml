@@ -1,8 +1,9 @@
 id: trilium
 name: Trilium
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Version, notes and database size of Trilium Notes (homepage's trilium widget).
+images: [triliumnext/notes, triliumnext/trilium, zadam/trilium]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. https://trilium.lan

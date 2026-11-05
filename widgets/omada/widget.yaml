@@ -1,8 +1,9 @@
 id: omada
 name: TP-Link Omada
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Access points, clients, alerts, gateways and switches of an Omada site (homepage's omada widget).
+images: [mbentley/omada-controller]   # the setup wizard recognises the service by these Docker images
 refresh: 60s
 defaultFields: [connectedAp, activeUser, alerts, connectedGateways]
 options:

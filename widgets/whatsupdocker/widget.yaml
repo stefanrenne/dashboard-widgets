@@ -1,8 +1,9 @@
 id: whatsupdocker
 name: What's up Docker
-version: 0.4.1
+version: 0.4.2
 apiVersion: 2
 description: Containers being watched and how many have an update.
+images: [getwud/wud, fmartinou/whats-up-docker]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }      # e.g. http://wud:3000

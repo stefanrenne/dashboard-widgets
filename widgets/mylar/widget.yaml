@@ -1,8 +1,9 @@
 id: mylar
 name: Mylar3
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Series, issues and wanted issues in Mylar3 (homepage's mylar widget).
+images: [linuxserver/mylar3]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://mylar.lan:8090

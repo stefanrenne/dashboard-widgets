@@ -1,8 +1,9 @@
 id: immich
 name: Immich
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Users, photos, videos and storage used of an Immich server (homepage's immich widget).
+images: [immich-app/immich-server]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://immich.lan:2283

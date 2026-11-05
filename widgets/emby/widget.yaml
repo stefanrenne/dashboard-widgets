@@ -1,8 +1,9 @@
 id: emby
 name: Emby
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: What is playing on Emby, one row per stream, and optionally the library counts (homepage's emby widget).
+images: [emby/embyserver]   # the setup wizard recognises the service by these Docker images
 refresh: 10s
 options:
   url: { type: url, required: true }       # e.g. http://emby.lan:8096

@@ -1,8 +1,9 @@
 id: unifi
 name: UniFi Controller
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 aliases: [unifi_console]   # homepage's name for the header widget
+images: [linuxserver/unifi-network-application, jacobalberty/unifi]   # the setup wizard recognises the service by these Docker images
 description: Uptime, WAN status and LAN and WLAN users and devices from a UniFi Network controller (homepage's unifi widget).
 refresh: 30s
 defaultFields: [uptime, wan, lan_users, wlan_users]

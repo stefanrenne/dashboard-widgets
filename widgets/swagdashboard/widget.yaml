@@ -1,8 +1,9 @@
 id: swagdashboard
 name: SWAG Dashboard
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Proxied and authenticated hosts, outdated configs and banned IPs in SWAG's dashboard (homepage's swagdashboard widget).
+images: [linuxserver/swag]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # SWAG's dashboard port, e.g. http://swag.lan:81

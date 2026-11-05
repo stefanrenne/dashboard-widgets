@@ -1,8 +1,9 @@
 id: suwayomi
 name: Suwayomi
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Manga chapters downloaded or not and read or not in Suwayomi's library (homepage's suwayomi widget).
+images: [suwayomi/tachidesk, suwayomi/suwayomi-server]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 defaultFields: [download, nondownload, read, unread]
 options:

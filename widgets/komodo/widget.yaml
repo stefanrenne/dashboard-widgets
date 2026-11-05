@@ -1,8 +1,9 @@
 id: komodo
 name: Komodo
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Containers, or stacks, or a summary of servers, stacks and containers, in Komodo (homepage's komodo widget).
+images: [moghtech/komodo-core]   # the setup wizard recognises the service by these Docker images
 refresh: 30s
 defaultFields: [total, running, stopped, down, unhealthy, servers, stacks, containers]
 options:

@@ -1,8 +1,9 @@
 id: plex
 name: Plex
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Active streams and the size of the movie, TV and music libraries of a Plex Media Server (homepage's plex widget).
+images: [plexinc/pms-docker]   # the setup wizard recognises the service by these Docker images
 refresh: 15s
 options:
   url: { type: url, required: true }        # e.g. http://plex.lan:32400

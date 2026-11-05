@@ -1,8 +1,9 @@
 id: firefly
 name: Firefly III
-version: 0.3.0
+version: 0.3.1
 apiVersion: 2
 description: Net worth and this month's budget in Firefly III (homepage's firefly widget).
+images: [fireflyiii/core]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. https://firefly.lan

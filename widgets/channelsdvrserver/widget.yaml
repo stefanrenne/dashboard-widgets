@@ -1,8 +1,9 @@
 id: channelsdvrserver
 name: Channels DVR Server
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Shows, recordings, scheduled recordings and passes of a Channels DVR Server (homepage's channelsdvrserver widget).
+images: [fancybits/channels-dvr]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://channels.lan:8089

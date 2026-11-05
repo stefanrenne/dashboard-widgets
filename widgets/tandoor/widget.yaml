@@ -1,8 +1,9 @@
 id: tandoor
 name: Tandoor
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: Users, recipes and keywords in Tandoor Recipes (homepage's tandoor widget).
+images: [vabene1111/recipes, tandoorrecipes/recipes]   # the setup wizard recognises the service by these Docker images
 refresh: 5m
 options:
   url: { type: url, required: true }       # e.g. http://tandoor.lan:8080

@@ -1,8 +1,9 @@
 id: jdownloader
 name: JDownloader
-version: 0.4.0
+version: 0.4.1
 apiVersion: 2
 description: Packages in the download list, their size, what is left and the download rate, through My.JDownloader (homepage's jdownloader widget).
+images: [jlesage/jdownloader-2]   # the setup wizard recognises the service by these Docker images
 refresh: 30s
 options:
   username: { type: string, required: true }   # the e-mail address of your My.JDownloader account

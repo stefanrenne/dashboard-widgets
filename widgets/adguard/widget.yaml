@@ -1,8 +1,9 @@
 id: adguard
 name: AdGuard Home
-version: 0.3.1
+version: 0.3.2
 apiVersion: 2
 description: DNS queries, blocked and filtered queries and the processing time of AdGuard Home (homepage's adguard widget).
+images: [adguard/adguardhome]   # the setup wizard recognises the service by these Docker images
 refresh: 1m
 options:
   url: { type: url, required: true }       # e.g. http://adguard.lan:3000
