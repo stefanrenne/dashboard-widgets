@@ -74,8 +74,13 @@ them only in a backward-compatible way.
 
 ## Releasing
 
-Bump the changed widgets' `version`, add a CHANGELOG section, set `package.json`'s version, run
-`npm run release-notes -- X.Y.Z`, tag `vX.Y.Z`, push with tags. **Every CHANGELOG line about a
+**Work happens on `develop`**: commit and push there (a develop build of the dashboard installs
+it). `main` only moves to `develop` for a release, as a fast-forward, and never gets commits of
+its own. Dependabot's PRs go into `develop` too.
+
+On `develop`: bump the changed widgets' `version`, add a CHANGELOG section, set `package.json`'s
+version, run `npm run release-notes -- X.Y.Z`, commit and push `develop`, then
+`git push origin develop:main`, then tag `vX.Y.Z` on that commit and push the tag. **Every CHANGELOG line about a
 widget names it in backticks** (`radarr`; several in one line when one change covers them): the
 release text (`scripts/release-notes.mjs`) lists only the widgets that are new or whose `version`
 went up since the previous tag, each with the lines that name it, and fails when an updated widget
@@ -89,7 +94,7 @@ and creates the tag.
 repository from this collection's newest release. The release job starts that build itself (the
 secret `PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on
 dashboard); without the secret, or when it failed, run
-`gh workflow run pages.yml --repo stefanrenne/dashboard`. Then check
+`gh workflow run pages.yml --repo stefanrenne/dashboard --ref main`. Then check
 that each new or changed widget's page is there
 (`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.

@@ -1,8 +1,11 @@
 name: CI
 
+# Work happens on develop: every push there is tested, and a develop build of the dashboard
+# installs this branch. main only moves to develop for a release (a fast-forward); a tag vX.Y.Z
+# on main is a release.
 on:
   push:
-    branches: [main]
+    branches: [develop, main]
     tags: ["v*"]
   pull_request:
   workflow_dispatch:
@@ -53,8 +56,7 @@ jobs:
           pkg=$(node -p "require('./package.json').version")
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             tag="v$pkg"
-            # dependabot-automerge.yml starts runs on main too: a released version is no release
-            if gh release view "$tag" >/dev/null 2>&1; then echo "$tag is released already: nothing to release"; echo "SKIP=true" >> "$GITHUB_ENV"; exit 0; fi
+                  if gh release view "$tag" >/dev/null 2>&1; then echo "$tag is released already: nothing to release"; echo "SKIP=true" >> "$GITHUB_ENV"; exit 0; fi
           else
             tag="$GITHUB_REF_NAME"
           fi
@@ -89,4 +91,4 @@ jobs:
           GH_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
         run: |
           if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run pages.yml in dashboard by hand"; exit 0; fi
-          gh workflow run pages.yml --repo stefanrenne/dashboard
+          gh workflow run pages.yml --repo stefanrenne/dashboard --ref main
