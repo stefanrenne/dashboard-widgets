@@ -5,6 +5,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 ## [Unreleased]
 
 ### Changed
+- `openmeteo`, `openweathermap`: coordinates from the page are rounded to two decimals (as
+  their `client.js` sends them) and checked; at most 50 locations are cached.
 - `button`: its README says that `inheritEnv: true` no longer passes `DASHBOARD_VAR_*` /
   `DASHBOARD_FILE_*` (the dashboard's widget worker leaves them out).
 - `button`: `script`, `command`, `user` and `inheritEnv` are `discoverable: false`: a button from

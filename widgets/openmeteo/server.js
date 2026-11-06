@@ -21,9 +21,10 @@ export default {
     const o = { ...ctx.options };
     // no coordinates in the options: the viewer's location, sent by client.js (ctx.params)
     if (o.latitude === undefined || o.longitude === undefined) {
-      const lat = Number(ctx.params?.latitude);
-      const lon = Number(ctx.params?.longitude);
-      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return { blocks: [], weather: null, needsLocation: true };
+      // rounded to about a kilometre, as client.js sends them: finer values would only cost API calls
+      const lat = Math.round(Number(ctx.params?.latitude) * 100) / 100;
+      const lon = Math.round(Number(ctx.params?.longitude) * 100) / 100;
+      if (!(Math.abs(lat) <= 90) || !(Math.abs(lon) <= 180)) return { blocks: [], weather: null, needsLocation: true };
       Object.assign(o, { latitude: lat, longitude: lon });
     }
     const cacheKey = `weather:${o.latitude},${o.longitude}`;
@@ -52,6 +53,8 @@ export default {
       weather: { temperature, unit, condition: key, day: current.is_day !== 0, label: o.label ?? null, format: o.format ?? null },
     };
     ctx.cache.set(cacheKey, { at: Date.now(), data });
+    // many viewers in many places: keep the newest 50 locations
+    for (const key of ctx.cache.keys()) if (ctx.cache.size > 50) ctx.cache.delete(key);
     return data;
   },
 };

@@ -1,6 +1,6 @@
 id: openweathermap
 name: OpenWeatherMap
-version: 1.4.1
+version: 1.4.2
 apiVersion: 2
 description: The current weather from OpenWeatherMap, with your API key or a shared provider (homepage's openweathermap widget).
 refresh: 5m

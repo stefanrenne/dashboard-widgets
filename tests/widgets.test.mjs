@@ -513,6 +513,11 @@ test('weather widgets: no coordinates ask for the viewer\'s location, then use i
     assert.equal(typeof out.weather.temperature, 'number');
     const q = lastRequest(id).query;
     assert.deepEqual([q.latitude ?? q.lat, q.longitude ?? q.lon], ['51.44', '5.47']);
+    // finer or impossible coordinates: rounded to two decimals, or refused
+    await run(id, { latitude: undefined, longitude: undefined }, { params: { latitude: '51.43871', longitude: '5.4712' } });
+    const r = lastRequest(id).query;
+    assert.deepEqual([r.latitude ?? r.lat, r.longitude ?? r.lon], ['51.44', '5.47']);
+    assert.deepEqual(await run(id, { latitude: undefined, longitude: undefined }, { params: { latitude: '91', longitude: '5' } }), { blocks: [], weather: null, needsLocation: true });
   }
   const secure = await renderClient('openmeteo');
   Object.defineProperty(secure.window, 'isSecureContext', { value: true });

@@ -1,6 +1,6 @@
 id: openmeteo
 name: Open-Meteo
-version: 1.4.1
+version: 1.4.2
 apiVersion: 2
 description: The current weather from Open-Meteo, no account needed (homepage's recommended weather widget).
 refresh: 5m
