@@ -34,10 +34,15 @@ container, so set it only on a dashboard you trust. Anyone who can open the dash
 behind authentication before you add buttons that change things. `script` and `command` are kept
 on the server; the browser only gets the label.
 
+`script`, `command`, `user` and `inheritEnv` are only taken from services.yaml: a button found
+through Docker labels or Kubernetes annotations can open a link, but runs nothing (the dashboard
+names the label in its messages). Labels are written by whoever starts a container, or come with
+its image.
+
 ### Asking for a password
 
 With an admin password on the dashboard (`adminPassword` in its settings.yaml, which its setup
-wizard writes, or `DASHBOARD_ADMIN_PASSWORD`), a press can ask for that password first. A button
+wizard and settings page write), a press can ask for that password first. A button
 with `user: root` asks by default; any button asks with `confirm: password` (then that browser
 stays unlocked for a while, 15 minutes by default) or `confirm: always` (every press).
 `confirm: none` turns it off for a root button. Without an admin password nothing asks,
