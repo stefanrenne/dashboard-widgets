@@ -17,7 +17,9 @@ exit code; the output can be copied from there. A run that takes longer than `ti
 `{{DASHBOARD_VAR_*}}` are scrubbed from the output.
 
 The run gets only `PATH` and `HOME` from the dashboard's environment; set `inheritEnv: true` to
-pass all of it (including every `DASHBOARD_VAR_*`). It runs as the dashboard's user (`node`, uid 1000, in
+pass all of it, except the `DASHBOARD_VAR_*` and `DASHBOARD_FILE_*` variables when the button runs
+in the dashboard's widget worker (the default). Give a script a value in its command instead:
+`command: TOKEN={{DASHBOARD_VAR_TOKEN}} scripts/deploy.sh`. It runs as the dashboard's user (`node`, uid 1000, in
 the image), so tools such as `curl`, `jq` or `docker` must be in the image and the Docker socket
 must allow that user.
 

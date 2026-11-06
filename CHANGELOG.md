@@ -5,6 +5,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 ## [Unreleased]
 
 ### Changed
+- `button`: its README says that `inheritEnv: true` no longer passes `DASHBOARD_VAR_*` /
+  `DASHBOARD_FILE_*` (the dashboard's widget worker leaves them out).
 - `button`: `script`, `command`, `user` and `inheritEnv` are `discoverable: false`: a button from
   a Docker label or Kubernetes annotation opens a link but runs nothing. Older dashboards ignore it.
 - `button`: its README names the dashboard's admin password (formerly the action password,

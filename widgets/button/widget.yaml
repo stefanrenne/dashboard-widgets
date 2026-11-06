@@ -9,7 +9,7 @@ options:
   script: { type: string, secret: true, discoverable: false }    # a bash script to run, e.g. scripts/update.sh (relative to the config folder)
   command: { type: string, secret: true, discoverable: false }   # a shell command to run with bash -c, e.g. docker compose pull
   timeout: { type: number, default: 300 }   # seconds before the run is stopped
-  inheritEnv: { type: boolean, default: false, discoverable: false }   # give the run the dashboard's whole environment, not only PATH and HOME
+  inheritEnv: { type: boolean, default: false, discoverable: false }   # give the run the dashboard's environment (without DASHBOARD_VAR_*), not only PATH and HOME
   user: { type: enum, values: [node, root], default: node, discoverable: false }   # root needs DASHBOARD_ALLOW_ROOT_SCRIPTS=true on the dashboard container
 confirmWhen: { user: root }   # with an admin password on the dashboard, a root run asks for it by default
 attributes:                 # public values for a service's filter: (widget.<name>)
