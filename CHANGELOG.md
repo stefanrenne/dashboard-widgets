@@ -4,6 +4,12 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Changed
+- `tailscale`: the filter attributes `authorized`, `is_external` and `update_available` are booleans
+  instead of the text `yes` / `no` (the card still shows yes or no). A filter such as
+  `widget.update_available == 'yes'` becomes `widget.update_available == true`, or just
+  `widget.update_available`.
+
 ## [0.16.0] - 2026-11-11
 
 ### Changed

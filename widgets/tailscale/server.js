@@ -29,8 +29,13 @@ export default {
       expiry = expires <= now ? { value: 'expired', status: 'error' } : { value: span(expires - now), ...(expires - now < WEEK ? { status: 'warn' } : {}) };
     }
     const yesNo = (v) => (v ? 'yes' : 'no');
+    // the card says yes or no (as homepage's); a filter compares true or false
+    const bool = (v) => (typeof v === 'boolean' ? v : null);
     return {
       attributes: {
+        authorized: bool(d.authorized),
+        is_external: bool(d.isExternal),
+        update_available: bool(d.updateAvailable),
         hoursSinceSeen: lastSeen === 'now' ? (Number.isFinite(seen) || d.connectedToControl ? 0 : null) : Math.round((now - seen) / 360000) / 10,
         daysUntilExpiry: d.keyExpiryDisabled || !Number.isFinite(expires) ? null : Math.max(0, Math.round((expires - now) / 8640000) / 10),
       },

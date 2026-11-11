@@ -1016,6 +1016,9 @@ test('tailscale: address, last seen and key expiry as spans, expiry soon and upd
   assert.deepEqual([v.last_seen, v.expires, v.client_version, v.created, v.update_available], ['3h 5m', '3d 1h', '1.88.3', '2025-03-01', 'yes']);
   const marks = Object.fromEntries((await ask(device)).blocks.map((b) => [b.key, b.status ?? null]));
   assert.deepEqual([marks.expires, marks.update_available, marks.authorized], ['warn', 'warn', null]);
+  // the card says yes or no; the filter attributes are booleans, null when the API leaves one out
+  assert.deepEqual((await ask({ ...device, isExternal: false })).attributes, { authorized: true, is_external: false, update_available: true, hoursSinceSeen: 3.1, daysUntilExpiry: 3 });
+  assert.equal((await ask(device)).attributes.is_external, null);
   assert.equal(values(await ask({ ...device, keyExpiryDisabled: true, connectedToControl: true })).expires, 'never');
   assert.equal(values(await ask({ ...device, connectedToControl: true })).last_seen, 'now');
   assert.deepEqual((await ask({ ...device, expires: '2020-01-01T00:00:00Z' })).blocks[2], { key: 'expires', label: 'expires', value: 'expired', status: 'error' });
