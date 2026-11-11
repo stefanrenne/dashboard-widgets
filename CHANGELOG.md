@@ -5,13 +5,17 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 ## [Unreleased]
 
 ### Changed
-- `tailscale`: the filter attributes `authorized`, `is_external` and `update_available` are booleans
-  instead of the text `yes` / `no` (the card still shows yes or no). A filter such as
-  `widget.update_available == 'yes'` becomes `widget.update_available == true`, or just
-  `widget.update_available`.
-- `homebridge` (`updates`), `slskd` (`updateStatus`): the filter attribute is a boolean instead of
-  the text `updateAvailable` / `upToDate` (the card still shows those). `widget.updates ==
-  'updateAvailable'` becomes `widget.updates == true`, or just `widget.updates`.
+- `homebridge`, `slskd`, `tailscale`: their yes/no filter attributes are booleans under the
+  names the collection's other widgets use (`shelly.update`, `sabnzbd.paused`); the cards still
+  show the same text. What a filter becomes:
+
+  | Widget | Was | Now |
+  |---|---|---|
+  | `homebridge` | `widget.updates == 'updateAvailable'` | `widget.update` |
+  | `slskd` | `widget.updateStatus == 'updateAvailable'` | `widget.update` |
+  | `tailscale` | `widget.update_available == 'yes'` | `widget.update` |
+  | `tailscale` | `widget.is_external == 'yes'` | `widget.external` |
+  | `tailscale` | `widget.authorized == 'yes'` | `widget.authorized` |
 
 ## [0.16.0] - 2026-11-11
 

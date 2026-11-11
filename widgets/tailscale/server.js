@@ -34,8 +34,8 @@ export default {
     return {
       attributes: {
         authorized: bool(d.authorized),
-        is_external: bool(d.isExternal),
-        update_available: bool(d.updateAvailable),
+        external: bool(d.isExternal),
+        update: bool(d.updateAvailable),
         hoursSinceSeen: lastSeen === 'now' ? (Number.isFinite(seen) || d.connectedToControl ? 0 : null) : Math.round((now - seen) / 360000) / 10,
         daysUntilExpiry: d.keyExpiryDisabled || !Number.isFinite(expires) ? null : Math.max(0, Math.round((expires - now) / 8640000) / 10),
       },

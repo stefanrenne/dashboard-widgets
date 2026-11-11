@@ -15,7 +15,7 @@ export default {
     const update = Boolean(app.version?.isUpdateAvailable);
     // the card says updateAvailable or upToDate (as homepage's); a filter compares true or false
     return {
-      attributes: { updateStatus: update },
+      attributes: { update },
       blocks: [
         { key: 'slskStatus', label: 'slskStatus', value: connected ? 'connected' : 'disconnected', ...(connected ? {} : { status: 'error' }) },
         { key: 'updateStatus', label: 'updateStatus', value: update ? 'updateAvailable' : 'upToDate', ...(update ? { status: 'warn' } : {}) },

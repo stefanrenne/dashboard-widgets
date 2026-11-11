@@ -14,8 +14,8 @@ attributes:                 # public values for a service's filter: (widget.<nam
   client_version: { type: string, from: client_version }       # the device's Tailscale version, such as 1.88.3
   os: { type: string, from: os }                               # the device's operating system, such as linux
   authorized: { type: boolean }                                # true when the device is authorized in the tailnet
-  is_external: { type: boolean }                               # true when the device is shared in from another tailnet
-  update_available: { type: boolean }                          # true when a Tailscale update is available for the device
+  external: { type: boolean }                                  # true when the device is shared in from another tailnet
+  update: { type: boolean }                                    # true when a Tailscale update is available for the device
   hoursSinceSeen: { type: number }                             # hours since the device was last seen; 0 while connected
   daysUntilExpiry: { type: number }                            # days until the device's key expires; 0 once expired, null when it never does
   attention: { type: boolean, from: '@attention' }             # true while the card marks something as needing attention

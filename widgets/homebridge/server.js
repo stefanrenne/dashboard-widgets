@@ -34,6 +34,6 @@ export default {
     ];
     if (kids.length) blocks.push({ key: 'child_bridges', label: 'child_bridges', value: `${running} / ${kids.length}`, ...(running < kids.length ? { status: 'warn' } : {}) });
     // the card says updateAvailable or upToDate (as homepage's); a filter compares true or false
-    return { attributes: { updates: update }, blocks };
+    return { attributes: { update }, blocks };
   },
 };

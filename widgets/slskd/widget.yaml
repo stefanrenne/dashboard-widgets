@@ -10,7 +10,7 @@ options:
   key: { type: string, secret: true, required: true }   # an API key from slskd.yml (web > authentication > api_keys), role readonly
 attributes:                 # public values for a service's filter: (widget.<name>)
   slskStatus: { type: string, from: slskStatus }       # connected or disconnected to Soulseek
-  updateStatus: { type: boolean }                      # true when slskd has an update
+  update: { type: boolean }                            # true when slskd has an update
   downloads: { type: number, from: downloads }         # users you download from now
   uploads: { type: number, from: uploads }             # users you upload to now
   sharedFiles: { type: number, from: sharedFiles }     # files you share

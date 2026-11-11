@@ -1017,8 +1017,8 @@ test('tailscale: address, last seen and key expiry as spans, expiry soon and upd
   const marks = Object.fromEntries((await ask(device)).blocks.map((b) => [b.key, b.status ?? null]));
   assert.deepEqual([marks.expires, marks.update_available, marks.authorized], ['warn', 'warn', null]);
   // the card says yes or no; the filter attributes are booleans, null when the API leaves one out
-  assert.deepEqual((await ask({ ...device, isExternal: false })).attributes, { authorized: true, is_external: false, update_available: true, hoursSinceSeen: 3.1, daysUntilExpiry: 3 });
-  assert.equal((await ask(device)).attributes.is_external, null);
+  assert.deepEqual((await ask({ ...device, isExternal: false })).attributes, { authorized: true, external: false, update: true, hoursSinceSeen: 3.1, daysUntilExpiry: 3 });
+  assert.equal((await ask(device)).attributes.external, null);
   assert.equal(values(await ask({ ...device, keyExpiryDisabled: true, connectedToControl: true })).expires, 'never');
   assert.equal(values(await ask({ ...device, connectedToControl: true })).last_seen, 'now');
   assert.deepEqual((await ask({ ...device, expires: '2020-01-01T00:00:00Z' })).blocks[2], { key: 'expires', label: 'expires', value: 'expired', status: 'error' });
@@ -1425,7 +1425,7 @@ test('healthchecks, homebox, homebridge, jdownloader, jellystat, karakeep and ka
   const hb = await run('homebridge');
   assert.deepEqual(values(hb), { status: 'up', updates: 'updateAvailable', child_bridges: '1 / 2' });
   assert.deepEqual(hb.blocks.map((b) => b.status ?? null), [null, 'warn', 'warn']);
-  assert.equal(hb.attributes.updates, true, 'a boolean for filters; the card says updateAvailable');
+  assert.equal(hb.attributes.update, true, 'a boolean for filters; the card says updateAvailable');
   assert.equal(lastRequest('homebridge').headers.authorization, 'Bearer hb-jwt');
 
   const ctx = { options: { ...REQUIRED.jdownloader }, cache: new Map(), log: silent, fetch: (u, i) => fetch(u, i) };
@@ -1660,7 +1660,7 @@ test('rutorrent, slskd, sparkyfitness, spoolman, sportarr, strelaysrv, suwayomi 
   const sl = await run('slskd');
   assert.deepEqual(values(sl), { slskStatus: 'connected', updateStatus: 'updateAvailable', downloads: 2, uploads: 1, sharedFiles: 18342 });
   assert.equal(sl.blocks[1].status, 'warn');
-  assert.equal(sl.attributes.updateStatus, true, 'a boolean for filters; the card says updateAvailable');
+  assert.equal(sl.attributes.update, true, 'a boolean for filters; the card says updateAvailable');
   assert.equal(lastRequest('slskd').headers['x-api-key'], 'test-key');
 
   assert.deepEqual(values(await run('sparkyfitness')), { eaten: '1840kcal', burned: '520kcal', remaining: '380kcal', steps: 8412 });
