@@ -9,6 +9,9 @@ Changes to the widget collection. Each widget also has its own `version` in its 
   instead of the text `yes` / `no` (the card still shows yes or no). A filter such as
   `widget.update_available == 'yes'` becomes `widget.update_available == true`, or just
   `widget.update_available`.
+- `homebridge` (`updates`), `slskd` (`updateStatus`): the filter attribute is a boolean instead of
+  the text `updateAvailable` / `upToDate` (the card still shows those). `widget.updates ==
+  'updateAvailable'` becomes `widget.updates == true`, or just `widget.updates`.
 
 ## [0.16.0] - 2026-11-11
 
