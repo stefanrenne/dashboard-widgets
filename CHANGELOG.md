@@ -4,6 +4,8 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+## [0.16.0] - 2026-11-11
+
 ### Changed
 - `openmeteo`, `openweathermap`: coordinates from the page are rounded to two decimals (as
   their `client.js` sends them) and checked; at most 50 locations are cached.
