@@ -15,6 +15,7 @@ them only in a backward-compatible way.
 |---|---|
 | `widgets/<id>/` | `widget.yaml`, `server.js`, `i18n.json`, `README.md` (its docs page, rule 13), `fixture.json` (below), optionally `client.js` (its own look; mjpeg has only a `client.js`). Folder name = widget id. |
 | `widgets/<id>/fixture.json` | The widget's API answers per route (`"GET /api/v3/movie": ...`; `{ "_headers": {...}, "_body": ... }` for headers, `"_text"` for a plain text body), used by tests and the mock. |
+| `docs/` | The widgets part of the docs site (getdashboard.dev/widgets/): its home page (`README.md`, the list of widgets is added to it), `catalogue.md` (packages by others; a listing comes in by pull request) and `_config.yml` (their menu). A page per widget is generated from `widgets/<id>/`. Staged by the dashboard's `scripts/pages.sh` with its theme; link to the dashboard's docs with `https://getdashboard.dev/...`. |
 | `scripts/mock-homelab.mjs` | Serves the fixtures at `/<id>/...`; the tests start it, `npm run mock` too. |
 | `scripts/readme-example.mjs` | A widget's README example as the options the dashboard would give it (providers, proxmox.yaml, option defaults), pointed at the mock; `tests/widgets.test.mjs` runs every example on its fixture. |
 | `scripts/release-notes.mjs` | The GitHub release text: new and updated widgets since the previous tag, with their CHANGELOG lines; tested in `tests/release-notes.test.mjs`. |
@@ -91,11 +92,14 @@ package.json and that it is a commit on `main` (a push to `main` alone releases 
 and creates the tag.
 
 **Every widget update reaches the documentation site.** The site is built by
-[dashboard-site](https://github.com/stefanrenne/dashboard-site): its root from this collection's
-newest release, `/develop/` from `develop`. The release job rebuilds the root itself (the secret
-`PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on dashboard-site);
-without the secret, or when it failed, run
-`gh workflow run site.yml --repo stefanrenne/dashboard-site -f mode=collection`. Then check
+[dashboard-site](https://github.com/stefanrenne/dashboard-site), which has a widgets part with
+its own releases: `/widgets/develop/` from `develop` (`site.yml` here, on a push that changes
+`docs/`, `widgets/` or the mock), and `/widgets/` from the newest release (a copy of
+`/widgets/develop/`, published by the release job). Both with the secret `PAGES_DISPATCH_TOKEN`, a
+fine-grained token with Actions read and write on dashboard-site; without the secret, or when it
+failed, run `gh workflow run site.yml --repo stefanrenne/dashboard-site -f mode=widgets-release`.
+Release this collection on its own schedule: the dashboard's releases do not touch the widgets
+part. Then check
 that each new or changed widget's page is there
 (`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.

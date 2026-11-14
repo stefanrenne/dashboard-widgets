@@ -1,0 +1,7 @@
+# The widgets part of https://getdashboard.dev/ (/widgets/, develop under /widgets/develop/). It is
+# staged by the dashboard's scripts/pages.sh (DOCS_PART=widgets): the theme's settings come from
+# there, this file adds the menu of these pages. The pages per widget (Service widgets and Header
+# widgets, nav_order 2 and 3) are generated from widgets/<id>/ by its scripts/pages-widgets.mjs.
+defaults:
+  - { scope: { path: README.md }, values: { title: Widgets, nav_order: 1, permalink: / } }
+  - { scope: { path: catalogue.md }, values: { title: Catalogue, nav_order: 4 } }

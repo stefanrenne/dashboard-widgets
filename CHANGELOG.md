@@ -4,6 +4,11 @@ Changes to the widget collection. Each widget also has its own `version` in its 
 
 ## [Unreleased]
 
+### Changed
+- The widgets part of the documentation site (getdashboard.dev/widgets/) is published from here,
+  with its own releases and version menu: its home page and the catalogue of widget packages by
+  others are in `docs/` (they were in the dashboard repository).
+
 ## [0.17.0] - 2026-11-11
 
 ### Changed
