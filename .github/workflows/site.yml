@@ -1,0 +1,22 @@
+name: Docs site
+
+# The dashboard's docs site (stefanrenne/dashboard-site) shows this collection's develop under
+# /develop/: a push to develop builds it again (a release rebuilds the root: ci.yml's release job).
+# PAGES_DISPATCH_TOKEN: a fine-grained token with Actions read and write on dashboard-site;
+# without it this only says so.
+on:
+  push:
+    branches: [develop]
+    paths: [widgets/**, scripts/mock-homelab.mjs, scripts/fakes.mjs]
+
+permissions: {}
+
+jobs:
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run site.yml in stefanrenne/dashboard-site by hand (mode develop)"; exit 0; fi
+          gh workflow run site.yml --repo stefanrenne/dashboard-site -f mode=develop

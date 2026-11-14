@@ -90,11 +90,12 @@ package.json and that it is a commit on `main` (a push to `main` alone releases 
 `main` (workflow_dispatch): it releases package.json's version (unless released already)
 and creates the tag.
 
-**Every widget update reaches the documentation site.** The site is built by the dashboard
-repository from this collection's newest release. The release job starts that build itself (the
-secret `PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on
-dashboard); without the secret, or when it failed, run
-`gh workflow run pages.yml --repo stefanrenne/dashboard --ref main`. Then check
+**Every widget update reaches the documentation site.** The site is built by
+[dashboard-site](https://github.com/stefanrenne/dashboard-site): its root from this collection's
+newest release, `/develop/` from `develop`. The release job rebuilds the root itself (the secret
+`PAGES_DISPATCH_TOKEN`, a fine-grained token with Actions read and write on dashboard-site);
+without the secret, or when it failed, run
+`gh workflow run site.yml --repo stefanrenne/dashboard-site -f mode=collection`. Then check
 that each new or changed widget's page is there
 (`https://getdashboard.dev/widgets/collection/<id>.html`) and shows the
 new version.

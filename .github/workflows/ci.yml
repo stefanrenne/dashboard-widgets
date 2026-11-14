@@ -82,13 +82,13 @@ jobs:
         run: |
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then target=(--target "$GITHUB_SHA"); else target=(--verify-tag); fi
           gh release create "$TAG" dist/*.zip --title "$TAG" --notes-file notes.md "${target[@]}"
-      # the dashboard's docs site builds a page per widget from the newest release: rebuild it now
-      # instead of at its daily run (PAGES_DISPATCH_TOKEN: a fine-grained token with Actions read
-      # and write on dashboard; without it this step only says so)
+      # the dashboard's docs site (stefanrenne/dashboard-site) builds a page per widget, at the root
+      # from the newest release: rebuild the root now (PAGES_DISPATCH_TOKEN: a fine-grained token
+      # with Actions read and write on dashboard-site; without it this step only says so)
       - name: Rebuild the documentation site
         if: env.SKIP != 'true'
         env:
           GH_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
         run: |
-          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run pages.yml in dashboard by hand"; exit 0; fi
-          gh workflow run pages.yml --repo stefanrenne/dashboard --ref main
+          if [ -z "$GH_TOKEN" ]; then echo "::notice::no PAGES_DISPATCH_TOKEN: run site.yml in dashboard-site by hand (mode collection)"; exit 0; fi
+          gh workflow run site.yml --repo stefanrenne/dashboard-site -f mode=collection
