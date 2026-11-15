@@ -3,9 +3,9 @@ name: Dependabot auto-merge
 # When CI passed on a Dependabot pull request (the tests), merge it and run CI on develop, where its PRs go (dependabot.yml).
 # Runs as workflow_run, in the context of the default branch: it never checks out the PR's code.
 #
-# GITHUB_TOKEN may not merge a change to a workflow file (the github-actions updates touch ci.yml).
-# For those, store a fine-grained token as the repository secret AUTOMERGE_TOKEN (this repository only;
-# Contents, Pull requests and Workflows: read and write). Without it those PRs stay open for a manual merge.
+# Only patch and minor updates are merged; major updates and workflow changes (github-actions updates)
+# wait for a review. AUTOMERGE_TOKEN (optional, a fine-grained token for this repository only: Contents
+# and Pull requests read and write) makes the merge a normal push, so CI starts by itself.
 on:
   workflow_run:
     workflows: [CI]
@@ -41,19 +41,20 @@ jobs:
                  --jq ".[] | select(.author.login == \"app/dependabot\" and .headRefOid == \"$SHA\") | \"\\(.number) \\(.baseRefName)\"")
           read -r pr base <<<"$pr"
           if [ -z "$pr" ]; then echo "No open Dependabot PR for $BRANCH at $SHA"; exit 0; fi
-          # A PR that changes a workflow file and is behind its base branch (another PR was merged first) cannot be merged
-          # with GITHUB_TOKEN: the squash would write a new version of that file. It needs a rebase first, and
-          # Dependabot only takes "@dependabot rebase" from a user with push access: so only with AUTOMERGE_TOKEN.
-          # Every other PR (npm, pip, docker) is merged as it is, also when it is behind.
-          behind=$(gh api "repos/$REPO/compare/$base...$SHA" --jq .behind_by)
+          # Only patch and minor updates go in by themselves. A major update (another first version number)
+          # and a change to a workflow file (an action update: it runs with this repository's tokens) wait
+          # for a review: merge those by hand.
           workflows=$(gh pr diff "$pr" --repo "$REPO" --name-only | grep -c '^\.github/workflows/' || true)
-          if [ "$behind" != "0" ] && [ "$workflows" != "0" ]; then
-            if [ "$OWN_TOKEN" = "true" ]; then
-              gh pr comment "$pr" --repo "$REPO" --body "@dependabot rebase"
-              echo "::notice::PR #$pr changes a workflow file and is $behind commit(s) behind $base; asked Dependabot to rebase it."
-            else
-              echo "::notice::PR #$pr changes a workflow file and is behind $base: merge it by hand, comment '@dependabot rebase', or add the AUTOMERGE_TOKEN secret."
-            fi
+          if [ "$workflows" != "0" ]; then
+            echo "::notice::PR #$pr changes a workflow file: review and merge it by hand."
+            exit 0
+          fi
+          majors=$(gh pr view "$pr" --repo "$REPO" --json title,body --jq '.title + "\n" + .body' \
+            | grep -oE 'from `?v?[0-9][^ `]*`? to `?v?[0-9][^ `]*' \
+            | awk '{ a = $2; b = $4; gsub(/[`v]/, "", a); gsub(/[`v]/, "", b); ma = a; mb = b; sub(/[^0-9].*/, "", ma); sub(/[^0-9].*/, "", mb); if (ma != mb) print a " -> " b }' \
+            | sort -u | paste -sd, -)
+          if [ -n "$majors" ]; then
+            echo "::notice::PR #$pr has a major update ($majors): review and merge it by hand."
             exit 0
           fi
           if ! out=$(gh pr merge "$pr" --repo "$REPO" --squash --delete-branch --match-head-commit "$SHA" 2>&1); then
